@@ -10,8 +10,7 @@ class Profile extends CI_Controller
         $this->load->view('_partials/header', $data);
         $this->load->view('_partials/topbar', $data);
         $this->load->view('_partials/hero', $data);
-        $this->load->view('_partials/clients', $data);
-        $this->load->view('frontend/why-us', $data);
+        $this->load->view('frontend/profile', $data);
         $this->load->view('_partials/footer', $data);
         $this->load->view('_partials/js', $data);
     }

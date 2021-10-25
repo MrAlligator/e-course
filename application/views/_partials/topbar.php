@@ -34,7 +34,7 @@
                 <?php if (isset($user['email'])) : ?>
                     <li class="dropdown"><a href="#"><img class="img-profile rounded-circle img-thumbnail" width="40" src="<?= base_url('assets/img/userimage/') . $user['foto_user']; ?>"><i class="bi bi-chevron-down"></i></a>
                         <ul>
-                            <li><a href="#">Profile</a></li>
+                            <li><a href="<?= base_url('frontend/profile') ?>">Profile</a></li>
                             <li><a href="<?= base_url('auth/logout') ?>">Log out</a></li>
                         </ul>
                     </li>
