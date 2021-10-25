@@ -5,11 +5,13 @@ class Home extends CI_Controller
 {
     public function index()
     {
-        $this->load->view('_partials/header');
-        $this->load->view('_partials/topbar');
-        $this->load->view('_partials/hero');
-        $this->load->view('frontend/about');
-        $this->load->view('_partials/footer');
-        $this->load->view('_partials/js');
+        $data['user'] = $this->db->get_where('tb_user', ['email' => $this->session->userdata('email')])->row_array();
+
+        $this->load->view('_partials/header', $data);
+        $this->load->view('_partials/topbar', $data);
+        $this->load->view('_partials/hero', $data);
+        $this->load->view('frontend/about', $data);
+        $this->load->view('_partials/footer', $data);
+        $this->load->view('_partials/js', $data);
     }
 }

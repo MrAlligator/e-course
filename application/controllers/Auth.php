@@ -92,4 +92,15 @@ class Auth extends CI_Controller
             redirect('auth/register');
         }
     }
+
+    public function logout()
+    {
+        $this->session->unset_userdata('email');
+        $this->session->unset_userdata('id_user');
+        $this->session->unset_userdata('name');
+        $this->session->unset_userdata('role_id');
+
+        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Anda Sudah Logout</div>');
+        redirect('home');
+    }
 }

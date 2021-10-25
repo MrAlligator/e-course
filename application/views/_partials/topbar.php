@@ -11,7 +11,7 @@
                 <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
                 <li><a class="nav-link scrollto" href="#about">About</a></li>
                 <li><a class="nav-link scrollto" href="#services">Services</a></li>
-                <li><a class="nav-link   scrollto" href="#portfolio">Portfolio</a></li>
+                <li><a class="nav-link scrollto" href="#portfolio">Portfolio</a></li>
                 <li><a class="nav-link scrollto" href="#team">Team</a></li>
                 <li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down"></i></a>
                     <ul>
@@ -31,7 +31,16 @@
                     </ul>
                 </li>
                 <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
-                <li><a class="getstarted scrollto" href="<?= base_url('auth') ?>">Login</a></li>
+                <?php if (isset($user['email'])) : ?>
+                    <li class="dropdown"><a href="#"><img class="img-profile rounded-circle img-thumbnail" width="40" src="<?= base_url('assets/img/userimage/') . $user['foto_user']; ?>"><i class="bi bi-chevron-down"></i></a>
+                        <ul>
+                            <li><a href="#">Profile</a></li>
+                            <li><a href="<?= base_url('auth/logout') ?>">Log out</a></li>
+                        </ul>
+                    </li>
+                <?php else : ?>
+                    <li><a class="getstarted scrollto" href="<?= base_url('auth') ?>">Login</a></li>
+                <?php endif; ?>
             </ul>
             <i class="bi bi-list mobile-nav-toggle"></i>
         </nav><!-- .navbar -->
