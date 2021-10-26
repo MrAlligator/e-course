@@ -27,9 +27,14 @@
                                 <li>
                                     <a data-bs-toggle="collapse" class="collapsed" data-bs-target="#accordion-list-4">Change Profile Picture<i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
                                     <div id="accordion-list-4" class="collapse" data-bs-parent=".accordion-list">
-                                        <p>
-                                            Feugiat pretium nibh ipsum consequat. Tempus iaculis urna id volutpat lacus laoreet non curabitur gravida. Venenatis lectus magna fringilla urna porttitor rhoncus dolor purus non.
-                                        </p>
+                                        <p></p>
+                                        <form action="">
+                                            <div class="mb-3">
+                                                <label for="foto" class="form-label">New Picture</label>
+                                                <input type="file" class="form-control" name="foto" id="foto">
+                                            </div>
+                                            <button type="submit" class="btn btn-primary">Save</button>
+                                        </form>
                                     </div>
                                 </li>
                             </ul>
@@ -42,14 +47,15 @@
                                 <strong>Renew</strong> or <strong>update</strong> your password regularly to prevent account break-ins
                             </p>
                             <!-- <button class="btn btn-primary" onclick="">Change Password?</button> -->
+                            <?php echo $this->session->flashdata('message'); ?>
                         </div>
                         <div class="accordion-list">
                             <ul>
                                 <li>
-                                    <a data-bs-toggle="collapse" class="collapsed" data-bs-target="#accordion-list-1">Change Password Form <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+                                    <a data-bs-toggle="collapse" class="collapsed" data-bs-target="#accordion-list-1">Change Password<i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
                                     <div id="accordion-list-1" class="collapse" data-bs-parent=".accordion-list">
                                         <p></p>
-                                        <form action="" method="POST">
+                                        <form action="<?= base_url('frontend/profile/changePass') ?>" method="POST">
                                             <div class="mb-3">
                                                 <label for="old-password" class="form-label">Old Password</label>
                                                 <input type="password" class="form-control" name="old-password" id="old-password" placeholder="Input Your Old Password Here">
@@ -62,16 +68,17 @@
                                                 <label for="konf-password" class="form-label">Confirm Password</label>
                                                 <input type="password" class="form-control" name="konf-password" id="konf-password" placeholder="Confirm Your New Password Here">
                                             </div>
-                                            <button type="submit" class="btn btn-success">Save Password</button>
+                                            <button type="submit" class="btn btn-primary">Save Password</button>
                                         </form>
                                     </div>
                                 </li>
                                 <li>
                                     <a data-bs-toggle="collapse" data-bs-target="#accordion-list-2" class="collapsed">Delete Account<i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
                                     <div id="accordion-list-2" class="collapse" data-bs-parent=".accordion-list">
-                                        <p>
-                                            Dolor sit amet consectetur adipiscing elit pellentesque habitant morbi. Id interdum velit laoreet id donec ultrices. Fringilla phasellus faucibus scelerisque eleifend donec pretium. Est pellentesque elit ullamcorper dignissim. Mauris ultrices eros in cursus turpis massa tincidunt dui.
-                                        </p>
+                                        <p></p>
+                                        <div class="d-grid gap-2">
+                                            <a href="<?= base_url('frontend/profile/delete/' . $user['id_user']) ?>" class="btn btn-danger">Delete My Account</a>
+                                        </div>
                                     </div>
                                 </li>
                             </ul>
