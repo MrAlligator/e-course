@@ -892,6 +892,85 @@ section {
 }
 
 /*--------------------------------------------------------------
+# kontenig
+--------------------------------------------------------------*/
+.kontenig #kontenig-flters {
+  list-style: none;
+  margin-bottom: 5px;
+}
+.kontenig #kontenig-flters li {
+  cursor: pointer;
+  display: inline-block;
+  margin: 10px 5px;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1;
+  color: #444444;
+  transition: all 0.3s;
+  padding: 8px 20px;
+  border-radius: 50px;
+  font-family: "Poppins", sans-serif;
+}
+.kontenig #kontenig-flters li:hover, .kontenig #kontenig-flters li.filter-active {
+  background: #47b2e4;
+  color: #fff;
+}
+.kontenig .kontenig-item {
+  margin-bottom: 30px;
+}
+.kontenig .kontenig-item .kontenig-img {
+  overflow: hidden;
+}
+.kontenig .kontenig-item .kontenig-img img {
+  transition: all 0.6s;
+  width:80px;
+  height:100px;
+}
+.kontenig .kontenig-item .kontenig-info {
+  opacity: 0;
+  position: absolute;
+  left: 15px;
+  bottom: 0;
+  z-index: 3;
+  right: 15px;
+  transition: all 0.3s;
+  background: rgba(55, 81, 126, 0.8);
+  padding: 10px 15px;
+}
+.kontenig .kontenig-item .kontenig-info h4 {
+  font-size: 18px;
+  color: #fff;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: 0px;
+}
+.kontenig .kontenig-item .kontenig-info p {
+  color: #f9fcfe;
+  font-size: 14px;
+  margin-bottom: 0;
+}
+.kontenig .kontenig-item .kontenig-info .preview-link, .kontenig .kontenig-item .kontenig-info .details-link {
+  position: absolute;
+  right: 40px;
+  font-size: 24px;
+  top: calc(50% - 18px);
+  color: #fff;
+  transition: 0.3s;
+}
+.kontenig .kontenig-item .kontenig-info .preview-link:hover, .kontenig .kontenig-item .kontenig-info .details-link:hover {
+  color: #47b2e4;
+}
+.kontenig .kontenig-item .kontenig-info .details-link {
+  right: 10px;
+}
+.kontenig .kontenig-item:hover .kontenig-img img {
+  transform: scale(1.15);
+}
+.kontenig .kontenig-item:hover .kontenig-info {
+  opacity: 1;
+}
+
+/*--------------------------------------------------------------
 # Portfolio Details
 --------------------------------------------------------------*/
 .portfolio-details {
