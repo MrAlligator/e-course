@@ -64,5 +64,4 @@ class Home extends CI_Controller
         $this->load->view('_partials/footer', $data);
         $this->load->view('_partials/js', $data);
     }
-    
 }
