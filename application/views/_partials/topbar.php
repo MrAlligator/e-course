@@ -15,6 +15,7 @@
                         <li><a href="#">Inquiry</a></li>
                     </ul>
                 <li><a href="#articles">Articles</a></li>  
+                <li><a href="#membership">Membership</a></li>  
                 <li><a href="<?= base_url('home/forum') ?>">Forum</a></li>
                 <!-- <li><a href="#about">About</a></li>  
                 <li><a href="#services">Services</a></li>
