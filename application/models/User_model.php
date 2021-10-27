@@ -32,4 +32,9 @@ class User_model extends CI_Model
             return $this->db->delete($this->_table, array("id_user" => $id));
         }
     }
+
+    public function update($id, $data)
+    {
+        return $this->db->where('id_user', $id)->update($this->_table, $data);
+    }
 }
