@@ -63,25 +63,24 @@
                             </p>
                             <!-- <button class="btn btn-primary" onclick="">Change Password?</button> -->
                             <?php echo $this->session->flashdata('message'); ?>
-                            <form action="<?= site_url('frontend/profile/changepass') ?>" method="POST" enctype="multipart/form-data">
-                                <div class="mb-3">
-                                    <label for="old-password" class="form-label">Old Password</label>
-                                    <input type="password" class="form-control" name="old-password" id="old-password" placeholder="Input Your Old Password Here"><?= form_error('old-password', '<small class="text-danger pl-3">', '</small>') ?>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="new-password" class="form-label">New Password</label>
-                                    <input type="password" class="form-control" name="new-password" id="new-password" placeholder="Input Your New Password Here"><?= form_error('new-password', '<small class="text-danger pl-3">', '</small>') ?>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="konf-password" class="form-label">Confirm Password</label>
-                                    <input type="password" class="form-control" name="konf-password" id="konf-password" placeholder="Confirm Your New Password Here"><?= form_error('konf-password', '<small class="text-danger pl-3">', '</small>') ?>
-                                </div>
-                                <button type="submit" class="btn btn-primary">Save Password</button>
-                            </form>
                         </div>
                         <br>
                         <div class="accordion-list">
                             <ul>
+                                <li>
+                                    <a data-bs-toggle="collapse" class="collapsed" data-bs-target="#accordion-list-1">Change Password<i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+                                    <div id="accordion-list-1" class="collapse" data-bs-parent=".accordion-list">
+                                        <p></p>
+                                        <form action="<?= site_url('frontend/profile/changepass') ?>" method="POST" enctype="multipart/form-data">
+                                            <div class="d-grid gap-2">
+                                                <input type="password" class="form-control" name="old-password" id="old-password" placeholder="Input Your Old Password Here"><?= form_error('old-password', '<small class="text-danger pl-3">', '</small>') ?>
+                                                <input type="password" class="form-control" name="new-password" id="new-password" placeholder="Input Your New Password Here"><?= form_error('new-password', '<small class="text-danger pl-3">', '</small>') ?>
+                                                <input type="password" class="form-control" name="konf-password" id="konf-password" placeholder="Confirm Your New Password Here"><?= form_error('konf-password', '<small class="text-danger pl-3">', '</small>') ?>
+                                                <button type="submit" class="btn btn-primary">Save Password</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </li>
                                 <li>
                                     <a data-bs-toggle="collapse" data-bs-target="#accordion-list-2" class="collapsed">Delete Account<i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
                                     <div id="accordion-list-2" class="collapse" data-bs-parent=".accordion-list">
