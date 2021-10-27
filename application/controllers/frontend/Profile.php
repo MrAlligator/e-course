@@ -8,6 +8,7 @@ class Profile extends CI_Controller
     {
         parent::__construct();
         $this->load->model('User_model');
+        $this->load->library('form_validation');
     }
 
     public function index()
@@ -22,7 +23,7 @@ class Profile extends CI_Controller
         $this->load->view('_partials/js', $data);
     }
 
-    public function changePass()
+    public function changepass()
     {
         $data['user'] = $this->db->get_where('tb_user', ['email' => $this->session->userdata('email')])->row_array();
 
@@ -34,26 +35,26 @@ class Profile extends CI_Controller
             $this->session->set_flashdata('error', "Data Gagal Di Edit");
             redirect('frontend/profile');
         } else {
-            $current_password = $this->input->post('old_password');
-            $new_password = $this->input->post('new_password');
-            if (!password_verify($current_password, $data['user']['password'])) {
-                $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Password lama Salah!</div>');
-                redirect('frontend/profile');
-            } else {
-                if ($current_password == $new_password) {
-                    $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Password baru tidak boleh sama dengan Password lama!</div>');
-                    redirect('frontend/profile');
-                } else {
-                    $password_hash = password_hash($new_password, PASSWORD_DEFAULT);
+            // $current_password = $this->input->post('old_password');
+            // $new_password = $this->input->post('new_password');
+            // if (!password_verify($current_password, $data['user']['password'])) {
+            //     $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Password lama Salah!</div>');
+            //     redirect('frontend/profile');
+            // } else {
+            //     if ($current_password == $new_password) {
+            //         $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Password baru tidak boleh sama dengan Password lama!</div>');
+            //         redirect('frontend/profile');
+            //     } else {
+            //         $password_hash = password_hash($new_password, PASSWORD_DEFAULT);
 
-                    $this->db->set('password', $password_hash);
-                    $this->db->where('email', $this->session->userdata('email'));
-                    $this->db->update('tb_user');
+            //         $this->db->set('password', $password_hash);
+            //         $this->db->where('email', $this->session->userdata('email'));
+            //         $this->db->update('tb_user');
 
-                    $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Password berhasil diganti!</div>');
-                    redirect('frontend/profile');
-                }
-            }
+            //         $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Password berhasil diganti!</div>');
+            //         redirect('frontend/profile');
+            //     }
+            // }
         }
     }
 
