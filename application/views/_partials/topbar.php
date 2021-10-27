@@ -14,7 +14,9 @@
                         <li><a href="<?= base_url('frontend/buyers') ?>">Buyers</a></li>
                         <li><a href="#">Inquiry</a></li>
                     </ul>
-                <!-- <li><a href="#about">About</a></li>
+                <li><a href="#articles">Articles</a></li>  
+                <li><a href="<?= base_url('home/forum') ?>">Forum</a></li>
+                <!-- <li><a href="#about">About</a></li>  
                 <li><a href="#services">Services</a></li>
                 <li><a href="#portfolio">Portfolio</a></li>
                 <li><a href="#team">Team</a></li> -->
