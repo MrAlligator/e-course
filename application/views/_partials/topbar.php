@@ -12,7 +12,7 @@
                 <li class="dropdown"><a href="#"><span>Our Data</span> <i class="bi bi-chevron-down"></i></a>
                     <ul>
                         <li><a href="<?= base_url('frontend/buyers') ?>">Buyers</a></li>
-                        <li><a href="#">Inquiry</a></li>
+                        <li><a href="<?= base_url('frontend/Inquiry') ?>">Inquiry</a></li>
                     </ul>
                 <!-- <li><a href="#about">About</a></li>
                 <li><a href="#services">Services</a></li>
