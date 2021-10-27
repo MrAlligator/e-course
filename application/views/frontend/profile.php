@@ -16,7 +16,14 @@
                                         <div class="card-body">
                                             <h5 class="card-title"><?= $user['nama'] ?></h5>
                                             <p class="card-text"><?= $user['email']; ?></p>
-                                            <p class="card-text"><small class="text-muted">Joined Since <?php echo date('d F Y', $user['date_created']); ?> </small></p>
+                                            <p class="card-text">
+                                                <?php if ($user['is_active'] == 1) {
+                                                    echo "You're a Member";
+                                                } else if ($user['is_active'] == 0) {
+                                                    echo "You're not a Member";
+                                                } ?>
+                                            </p>
+                                            <p class="card-text"><small class="text-muted">Joined Since <?= date('d F Y', $user['date_created']); ?> </small></p>
                                         </div>
                                     </div>
                                 </div>
@@ -56,11 +63,11 @@
                                     <a data-bs-toggle="collapse" class="collapsed" data-bs-target="#accordion-list-1">Change Password<i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
                                     <div id="accordion-list-1" class="collapse" data-bs-parent=".accordion-list">
                                         <p></p>
-                                        <form action="<?= site_url('frontend/profile/changepass') ?>" method="POST" enctype="multipart/form-data">
+                                        <form action="<?= site_url('frontend/profile') ?>" method="POST" enctype="multipart/form-data">
                                             <div class="d-grid gap-2">
-                                                <input type="password" class="form-control" name="old-password" id="old-password" placeholder="Input Your Old Password Here"><?= form_error('old-password', '<small class="text-danger pl-3">', '</small>') ?>
-                                                <input type="password" class="form-control" name="new-password" id="new-password" placeholder="Input Your New Password Here"><?= form_error('new-password', '<small class="text-danger pl-3">', '</small>') ?>
-                                                <input type="password" class="form-control" name="konf-password" id="konf-password" placeholder="Confirm Your New Password Here"><?= form_error('konf-password', '<small class="text-danger pl-3">', '</small>') ?>
+                                                <input type="password" class="form-control" name="old-password" id="old-password" placeholder="Input Your Old Password Here">
+                                                <input type="password" class="form-control" name="new-password" id="new-password" placeholder="Input Your New Password Here">
+                                                <input type="password" class="form-control" name="konf-password" id="konf-password" placeholder="Confirm Your New Password Here">
                                                 <button type="submit" class="btn btn-primary">Save Password</button>
                                             </div>
                                         </form>

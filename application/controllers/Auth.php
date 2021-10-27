@@ -76,8 +76,8 @@ class Auth extends CI_Controller
                 'foto_user' => 'default.png',
                 'password' => password_hash($this->input->post('password'), PASSWORD_DEFAULT),
                 'view_password' => htmlspecialchars($this->input->post('password', true)),
-                'role_id' => 3,
-                'is_active' => 1,
+                'role_id' => 2,
+                'is_active' => 0,
                 'date_created' => time()
             ];
 
