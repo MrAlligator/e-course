@@ -2,8 +2,8 @@
             <div class="container" data-aos="fade-up">
 
                 <div class="section-title">
-                    <h2>Buyers Data</h2>
-                    <p>Buyers data provide you the buyers from across the world, you might want to promote your product</p>
+                    <h2>Inquiry Data</h2>
+                    <p>Inquiry data provide you the inquiries form the buyers need</p>
                 </div>
 
                 <div class="row">

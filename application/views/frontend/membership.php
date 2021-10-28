@@ -22,7 +22,7 @@
                                 <!-- <li class="na"><i class="bx bx-x"></i> <span>Pharetra massa massa ultricies</span></li>
                                 <li class="na"><i class="bx bx-x"></i> <span>Massa ultricies mi quis hendrerit</span></li> -->
                             </ul>
-                            <a href="<?= base_url('auth') ?>" class="buy-btn">Get Started</a>
+                            <a href="<?= base_url('auth/register') ?>" class="buy-btn">Get Started</a>
                         </div>
                     </div>
 
@@ -38,7 +38,7 @@
                                 <li><i class="bx bx-check"></i> Export and Import Information</li>
                                 <li><i class="bx bx-check"></i> Exclusive Export Import Training</li>
                             </ul>
-                            <a href="#" class="buy-btn">Get Started</a>
+                            <a href="<?= base_url('auth/register') ?>" class="buy-btn">Get Started</a>
                         </div>
                     </div>
 
