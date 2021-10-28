@@ -17,8 +17,8 @@ class Inquiry extends CI_Controller
         $this->load->view('_partials/topbar', $data);
         $this->load->view('_partials/hero', $data);
         $this->load->view('frontend/inquiries', $data);
-        $this->load->view('frontend/articles', $data);
-        $this->load->view('frontend/membership', $data);
+        //$this->load->view('frontend/articles', $data);
+        //$this->load->view('frontend/membership', $data);
         $this->load->view('_partials/footer', $data);
         $this->load->view('_partials/js', $data);
     }
@@ -31,8 +31,8 @@ class Inquiry extends CI_Controller
         $this->load->view('_partials/topbar', $data);
         $this->load->view('_partials/hero', $data);
         $this->load->view('frontend/inquiry_detail', $data);
-        $this->load->view('frontend/articles', $data);
-        $this->load->view('frontend/membership', $data);
+        //$this->load->view('frontend/articles', $data);
+        //$this->load->view('frontend/membership', $data);
         $this->load->view('_partials/footer', $data);
         $this->load->view('_partials/js', $data);
     }
