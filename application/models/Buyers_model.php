@@ -11,6 +11,12 @@ class Buyers_model extends CI_Model
 
     public function getRandom()
     {
-        return $this->db->get($this->_table)->result();
+        return $this->db->order_by('rand()')->limit(10)->get($this->_table)->result();
     }
+
+    public function getById($id)
+    {
+        return $this->db->where('id_buyers',$id)->get($this->_table)->result();
+    }
+    
 }

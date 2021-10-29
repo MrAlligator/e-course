@@ -11,6 +11,8 @@ class Inquiry_model extends CI_Model
 
     public function getRandom()
     {
-        return $this->db->get($this->_table)->result();
+    $this->db->order_by('rand()');
+    $this->db->limit(10);
+    return $this->db->get($this->_table)->result();
     }
 }

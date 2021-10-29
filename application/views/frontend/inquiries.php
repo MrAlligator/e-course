@@ -6,6 +6,38 @@
   <title>Data Inquiry</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- <section id="contact" class="contact">
+            <div class="container" data-aos="fade-up">
+
+                <div class="section-title">
+                    <h2>Inquiry Data</h2>
+                    <p>Inquiry data provide you the inquiries form the buyers need</p>
+                </div>
+
+                <div class="row">
+
+<table>
+
+    <tr>
+ <th>ID</th>
+ <th>Wanted</th>
+ <th>Country</th>
+ <th>Detail</th>
+</tr>
+
+<tr>
+    <?php foreach($inquiries as $inquiry):?>
+    <td><?=$inquiry->id_inquiry?></td>
+    <td><?=$inquiry->produk?></td>
+    <td><?=$inquiry->negara?></td>
+    <?php if (isset($_SESSION['email'])) { ?>
+        <td><a href="#">See detail<a></td>
+    <?php }else{ ?>
+        <td><a href="<?= base_url('home/membership') ?>">See detail<a></td>
+    <?php } ?>
+</tr>
+    <?php endforeach ?>
+</table> -->
 
   <!-- Font Awesome -->
   <link rel="stylesheet" href="<?php echo base_url('assets/plugins/fontawesome-free/css/all.min.css');?>">
@@ -58,26 +90,26 @@
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
                 <!-- maksimal 5 th biar bisa nampilin page dan sorting -->
-                <tr>
-                  <th width="20">No</th>      
-                  <th width="150">ID Inquiry</th>			
-                  <th width="150">Tanggal</th>
+                <tr>    
+                  <th width="50">No</th>	
+                  <th width="150">ID Inquiry</th>	
                   <th width="500">Wanted</th>
                   <th width="400">Country</th>		
                   <th colspan="1">Action</th>
                 </tr>
             
     
+            <?php $i=1;foreach($inquiries as $inquiry):?>
             <tr>
-              <td>1</td>      
-              <td>ID0001</td>			
-              <td>23/04/2021</td>
-              <td>Black Papper</td>
-                    <td>Egypt</td>
-              
-              <td> <a class="btn btn-info btn-sm" <?php echo anchor('frontend/Inquiry/detail','Detail'); ?></a> </td>
-                    
+              <td><?=$i++?></td>
+              <td><?=$inquiry->id_inquiry?></td>
+              <td><?=$inquiry->produk?></td>
+              <td><?=$inquiry->negara?></td>
+              <td>
+                <a class="btn btn-info btn-sm" <?php echo anchor('frontend/Inquiry/detail','Detail'); ?></a>
+              </td>
             </tr>
+            <?php endforeach ?>
 
      
                 </tbody>
