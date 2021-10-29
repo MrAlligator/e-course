@@ -21,24 +21,25 @@
             <div class="row">
 
                 <div class="col-lg-3 col-md-6 footer-contact">
-                    <h3>Arsha</h3>
+                    <h3>Elecomp Indonesia</h3>
                     <p>
-                        A108 Adam Street <br>
-                        New York, NY 535022<br>
-                        United States <br><br>
-                        <strong>Phone:</strong> +1 5589 55488 55<br>
-                        <strong>Email:</strong> info@example.com<br>
+                        Jalan Danau Bratan Timur Raya H5 A5,<br>
+                        Madyopuro, Kec. Kedungkandang,<br>
+                        Malang, Jawa Timur<br>
+                        Indonesia <br><br>
+                        <strong>Phone:</strong> 0821-3122-2331<br>
+                        <strong>Email:</strong> elecomp.sh@gmail.com<br>
                     </p>
                 </div>
 
                 <div class="col-lg-3 col-md-6 footer-links">
                     <h4>Useful Links</h4>
                     <ul>
-                        <li><i class="bx bx-chevron-right"></i> <a href="#">Home</a></li>
-                        <li><i class="bx bx-chevron-right"></i> <a href="#">About us</a></li>
-                        <li><i class="bx bx-chevron-right"></i> <a href="#">Services</a></li>
+                        <li><i class="bx bx-chevron-right"></i> <a href="<?=base_url()?>">Beranda</a></li>
+                        <li><i class="bx bx-chevron-right"></i> <a href="<?=base_url()?>">Tentang Kami</a></li>
+                        <!-- <li><i class="bx bx-chevron-right"></i> <a href="#">Services</a></li>
                         <li><i class="bx bx-chevron-right"></i> <a href="#">Terms of service</a></li>
-                        <li><i class="bx bx-chevron-right"></i> <a href="#">Privacy policy</a></li>
+                        <li><i class="bx bx-chevron-right"></i> <a href="#">Privacy policy</a></li> -->
                     </ul>
                 </div>
 
@@ -71,14 +72,14 @@
 
     <div class="container footer-bottom clearfix">
         <div class="copyright">
-            &copy; Copyright <strong><span>Arsha</span></strong>. All Rights Reserved
+            &copy; Copyright <strong><span>Elecomp Indonesia</span></strong>. All Rights Reserved
         </div>
         <div class="credits">
             <!-- All the links in the footer should remain intact. -->
             <!-- You can delete the links only if you purchased the pro version. -->
             <!-- Licensing information: https://bootstrapmade.com/license/ -->
             <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/arsha-free-bootstrap-html-template-corporate/ -->
-            Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+            Didesain oleh <a href="https://elecompindonesia.com/">Elecomp Indonesia</a>
         </div>
     </div>
 </footer><!-- End Footer -->
