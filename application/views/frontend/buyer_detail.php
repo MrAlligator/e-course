@@ -2,8 +2,8 @@
             <div class="container" data-aos="fade-up">
 
                 <div class="section-title">
-                    <h2>Buyers Detail</h2>
-                    <p>Buyers detail provide you the detailed description from the buyers</p>
+                    <h2>Detail Importir</h2>
+                    <p>Detail Importir menampilkan informasi secara detail dari sebuah perusahaan importir</p>
                 </div>
 
 <?php foreach($buyers as $buyer):?>
@@ -12,7 +12,7 @@
     <div class="info">
         <div class="address">
             <i class="bi bi-geo-alt"></i>
-            <h4>Location:</h4>
+            <h4>Lokasi:</h4>
             <p><?=$buyer->alamat?></p>
         </div>
 
@@ -24,7 +24,7 @@
 
         <div class="phone">
             <i class="bi bi-phone"></i>
-            <h4>Call:</h4>
+            <h4>Telepon:</h4>
             <p><?=$buyer->telepon?></p>
         </div>
 
@@ -42,18 +42,18 @@
     <form action="forms/contact.php" method="post" role="form" class="php-email-form">
         <div class="row">
             <div class="form-group col-md-6">
-                <label for="name">Name</label>
+                <label for="name">Nama Perusahaan</label>
                 <h4><?=$buyer->nama_perusahaan?></h4>
                 <!-- <input type="text" name="name" class="form-control" id="name" required> -->
             </div>
             <div class="form-group col-md-6">
-                <label for="name">Negara</label>
+                <label for="name">Asal Negara</label>
                 <h4><?=$buyer->negara?></h4>
                 <!-- <input type="email" class="form-control" name="email" id="email" required> -->
             </div>
         </div>
         <div class="form-group">
-            <label for="name">Bussiness Inquiries</label>
+            <label for="name">Permintaan Produk</label>
             <h4><?=$buyer->produk?></h4>
             <!-- <input type="text" class="form-control" name="subject" id="subject" required> -->
         </div>
@@ -63,7 +63,7 @@
             <!-- <input type="text" class="form-control" name="subject" id="subject" required> -->
         </div>
         <div class="form-group">
-            <label for="name">Contact Person</label>
+            <label for="name">Narahubung</label>
             <h4><?=$buyer->contact_person?></h4>
             <!-- <input type="text" class="form-control" name="subject" id="subject" required> -->
         </div>

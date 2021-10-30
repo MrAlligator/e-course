@@ -14,6 +14,8 @@ class Profile extends CI_Controller
     public function index()
     {
         $data['user'] = $this->db->get_where('tb_user', ['email' => $this->session->userdata('email')])->row_array();
+        $raw = $this->db->where('email', $this->session->userdata('email'))->get('tb_user')->row_array();
+        $data['title'] = "EXIM-Community | ".$raw['nama'];
 
         if ($this->form_validation->run() == FALSE) {
             $this->load->view('_partials/header', $data);

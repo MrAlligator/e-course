@@ -13,7 +13,7 @@ class Inquiry extends CI_Controller
     {
         $data['user'] = $this->db->get_where('tb_user', ['email' => $this->session->userdata('email')])->row_array();
         $data['inquiries'] = $this->Inquiry_model->getRandom();
-        $data['title'] = "EXIM-Community | Inquiry data";
+        $data['title'] = "EXIM-Community | Inquiry Data";
 
         $this->load->view('_partials/header', $data);
         $this->load->view('_partials/topbar', $data);
@@ -29,7 +29,7 @@ class Inquiry extends CI_Controller
     public function detail()
     {
         $data['user'] = $this->db->get_where('tb_user', ['email' => $this->session->userdata('email')])->row_array();
-        $data['title'] = "EXIM-Community | Inquiries data";
+        $data['title'] = "EXIM-Community | Inquiries Detail";
 
         $this->load->view('_partials/header', $data);
         $this->load->view('_partials/topbar', $data);
