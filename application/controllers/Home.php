@@ -92,4 +92,10 @@ class Home extends CI_Controller
         $this->Forum_model->create($data);
         redirect('home/forum');
     }
+
+    public function del_post($id)
+    {
+        $this->Forum_model->delete($id);
+        redirect('home/forum');
+    }
 }

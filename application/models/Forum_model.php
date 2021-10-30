@@ -19,9 +19,16 @@ class Forum_model extends CI_Model
         return $this->db->where('id_buyers',$id)->get($this->_table)->result();
     }
 
+    public function delete($id)
+    {
+        $this->db->delete($this->_table,['id_post'=>$id]);
+        return $this->db->get($this->_table)->result();
+    }
+
     public function create($data)
     {
-        return $this->db->insert($this->_table, $data)->result();
+        $this->db->insert($this->_table, $data);
+        return $this->db->get($this->_table)->result();
     }
     
 }

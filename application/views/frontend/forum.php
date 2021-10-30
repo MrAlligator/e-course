@@ -17,7 +17,7 @@
     <div class="php-email-form">
         <div class="row"><?php date_default_timezone_set("Asia/Jakarta");?>
             <div class="form-group col-md">
-                <label>What Happen?</label>
+                <h5>Posting pertanyaanmu atau informasi yang kalian ketahui</h5>
                 <textarea class="form-control" rows=8 required name="postingan"></textarea>
                 <input hidden type="text" value="<?=$user['id_user']?>" name="id_user">
                 <input hidden type="number" value=0 name="like">
@@ -51,8 +51,20 @@
         diposting tanggal <?=date('d F Y', strtotime($postingan->tanggal))?> pukul <?=$postingan->jam?>
         <?php $poster = $this->db->where('id_user', $postingan->id_user)->get('tb_user')->row_array()?>
         <div class="card-header">
-            <?=$poster['nama'] ?>
-            <h4><?=$postingan->postingan?></h4>
+            <div class="row">
+            <div class="col-sm-1">
+                <img width="50" src="<?= base_url('/assets/img/userimage/').$poster['foto_user'];?>" class="img-profile rounded-circle img-thumbnail">
+            </div>
+            <div class="col">
+                <?=$poster['nama'] ?>
+                <h4><?=$postingan->postingan?></h4>
+            </div>
+            <div class="col-sm-1">
+                <?php if(isset($_SESSION['email'])&&$poster['email']===$_SESSION['email']):?>
+                    <a href="<?=base_url('home/del_post/').$postingan->id_post?>"><i class="bx bx-trash"></i></a>
+                <?php endif ?>
+            </div>
+            </div>
         </div>
             <h6>
                 <!-- <i class="bx bx-like"></i><?=$postingan->like?>
