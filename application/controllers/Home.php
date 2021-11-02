@@ -73,7 +73,8 @@ class Home extends CI_Controller
     public function articles()
     {
         $data['user'] = $this->db->get_where('tb_user', ['email' => $this->session->userdata('email')])->row_array();
-
+        $data['title'] = "EXIM-Community | Semua Artikel";
+        
         $this->load->view('_partials/header', $data);
         $this->load->view('_partials/topbar', $data);
         $this->load->view('_partials/hero', $data);
@@ -102,6 +103,12 @@ class Home extends CI_Controller
     }
 
     public function del_post($id)
+    {
+        $this->Forum_model->delete($id);
+        redirect('home/forum');
+    }
+
+    public function article_read($id)
     {
         $this->Forum_model->delete($id);
         redirect('home/forum');
