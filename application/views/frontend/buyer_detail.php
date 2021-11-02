@@ -1,10 +1,10 @@
 <section id="contact" class="contact">
-            <div class="container" data-aos="fade-up">
+    <div class="container" data-aos="fade-up">
 
-                <div class="section-title">
-                    <h2>Detail Importir</h2>
-                    <p>Detail Importir menampilkan informasi secara detail dari sebuah perusahaan importir</p>
-                </div>
+<div class="section-title">
+    <h2>Detail Importir</h2>
+    <p>Detail Importir menampilkan informasi secara detail dari sebuah perusahaan importir</p>
+</div>
 
 <?php foreach($buyers as $buyer):?>
 <div class="row">
