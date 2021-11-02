@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>JTI SURAT | Surat Pending</title>
+  <title>Detail Inquiry</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -57,44 +57,25 @@
         <div class="card-body">
         <table class="table table-bordered table-hover">		
 		
+        <?php $i=1;foreach($inquiries as $inquiry):?>
     <tr ><td colspan="2"><b>Data Inquiry</b></td></tr> 		     
     <tr>
-      <td><?php echo "Quantity" ?></td>
-			<td>27 Ton/Tons</td>
+      <td><?php echo "Tanggal Masuk" ?></td>
+			<td><?php echo $inquiry->tanggal_input ?></td>
     </tr>
     <tr>
-      <td><?php echo "Shipping" ?></td>
-			<td>CIF</td>
+      <td><?php echo "Produk" ?></td>
+			<td><?php echo $inquiry->produk ?></td>
     </tr>
     <tr>
-      <td><?php echo "Destination" ?></td>
-			<td>Alexandria, Egypt</td>
+      <td><?php echo "Negara" ?></td>
+			<td><?php echo $inquiry->negara ?></td>
     </tr>
     <tr>
-      <td><?php echo "Payment" ?></td>
-			<td>To be discussed with supplier</td>
+      <td><?php echo "Detail" ?></td>
+			<td><?php echo $inquiry->detail ?></td>
     </tr>
-    <tr>
-      <td><?php echo "Supplier From" ?></td>
-			<td>Worldwide</td>
-    </tr>
-    <tr>
-      <td><?php echo "Addres" ?></td>
-			<td>Egypt</td>
-    </tr>
-    <tr>
-      <td><?php echo "Contact" ?></td>
-			<td>Kirolos</td>
-    </tr>
-    <tr>
-      <td><?php echo "Email" ?></td>
-			<td>albekhitalattar@gmail.com</td>
-    </tr>
-    <tr>
-      <td><?php echo "Phone" ?></td>
-			<td>+2021276444257</td>
-    </tr>
-
+    
 	</table>
   
       
@@ -127,16 +108,3 @@
 </html>
 
 
-<!-- jQuery 
-<tr ><td colspan="2"><b>Dosen MataKuliah / Pembimbing</b></td></tr>    
-    <tr>
-      <td><?php echo "NIP Dosen" ?></td>
-			<td><?php echo $u->NIP ?></td>
-    </tr>    
-<th width="180">Qyt</th>
-            <th width="180">Shipping</th>
-            <th width="180">Destination</th>
-            <th width="180">Payment</th>
-            <th width="180">Qyt</th>
-            <th width="180">Qyt</th>
-            <th width="180">Qyt</th>-->

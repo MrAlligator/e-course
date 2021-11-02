@@ -83,7 +83,7 @@
 
           <div class="card">
             <div class="card-header">
-              <h3 class="card-title">Inquiry data is data on demand for imported export products from all companies that are members of the world</h3>
+              <h3 class="card-title">Data Inquiry adalah datat yang menampilkan detai data permintaan</h3>
             </div>
             <!-- /.card-header -->
             <div class="card-body">
@@ -105,16 +105,20 @@
               <td><?=$inquiry->id_inquiry?></td>
               <td><?=$inquiry->produk?></td>
               <td><?=$inquiry->negara?></td>
+              <?php if (isset($_SESSION['email'])) { ?>
               <td>
                 <a class="btn btn-info btn-sm" <?php echo anchor('frontend/Inquiry/detail','Detail'); ?></a>
               </td>
+              <?php }else{ ?>
+                <td><a class="btn btn-info btn-sm" <?php echo anchor('home/membership','Membersip'); ?><a></td>
+            <?php } ?>
             </tr>
             <?php endforeach ?>
 
      
                 </tbody>
               </table>
-                
+   
             </div>
             <!-- /.card-body -->
           </div>
