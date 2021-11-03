@@ -5,7 +5,7 @@ class Auth extends CI_Controller
 {
     public function index()
     {
-        $data['title'] = "EXIM-Community | Masuk";
+        $data['title'] = "Masuk";
         $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email');
         $this->form_validation->set_rules('password', 'Password', 'required|trim');
 
@@ -59,7 +59,7 @@ class Auth extends CI_Controller
 
     public function register()
     {
-        $data['title'] = "EXIM-Community | Daftar";
+        $data['title'] = "Daftar";
         $this->form_validation->set_rules('nama', 'Nama', 'required|trim', [
             'required' => 'Nama Tidak Boleh Kosong!'
         ]);

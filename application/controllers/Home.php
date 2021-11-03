@@ -12,7 +12,7 @@ class Home extends CI_Controller
     public function index()
     {
         $data['user'] = $this->db->get_where('tb_user', ['email' => $this->session->userdata('email')])->row_array();
-        $data['title'] = "EXIM-Community | Beranda";
+        $data['title'] = "Beranda";
 
         $this->load->view('_partials/header', $data);
         $this->load->view('_partials/topbar', $data);
@@ -38,7 +38,7 @@ class Home extends CI_Controller
     public function membership()
     {
         $data['user'] = $this->db->get_where('tb_user', ['email' => $this->session->userdata('email')])->row_array();
-        $data['title'] = "EXIM-Community | Membership";
+        $data['title'] = "Membership";
 
         $this->load->view('_partials/header', $data);
         $this->load->view('_partials/topbar', $data);
@@ -46,7 +46,7 @@ class Home extends CI_Controller
         $this->load->view('_partials/clients', $data);
         if (!isset($_SESSION['email'])) {
             $this->load->view('frontend/membership', $data);
-            }
+        }
         $this->load->view('_partials/footer', $data);
         $this->load->view('_partials/js', $data);
     }
@@ -55,7 +55,7 @@ class Home extends CI_Controller
     {
         $data['user'] = $this->db->get_where('tb_user', ['email' => $this->session->userdata('email')])->row_array();
         $data['post'] = $this->Forum_model->getAll();
-        $data['title'] = "EXIM-Community | Forum";
+        $data['title'] = "Forum";
 
         $this->load->view('_partials/header', $data);
         $this->load->view('_partials/topbar', $data);
@@ -65,7 +65,7 @@ class Home extends CI_Controller
         $this->load->view('frontend/articles', $data);
         if (!isset($_SESSION['email'])) {
             $this->load->view('frontend/membership', $data);
-            }
+        }
         $this->load->view('_partials/footer', $data);
         $this->load->view('_partials/js', $data);
     }
@@ -80,7 +80,7 @@ class Home extends CI_Controller
         $this->load->view('_partials/clients', $data);
         $this->load->view('frontend/articles_all', $data);
         if (!isset($_SESSION['email'])) {
-        $this->load->view('frontend/membership', $data);
+            $this->load->view('frontend/membership', $data);
         }
         $this->load->view('_partials/footer', $data);
         $this->load->view('_partials/js', $data);
@@ -89,12 +89,12 @@ class Home extends CI_Controller
     public function post_forum()
     {
         $data = [
-        'id_user'=>$this->input->post('id_user'),
-        'postingan'=>$this->input->post('postingan'),
-        'like'=>$this->input->post('like'),
-        'dislike'=>$this->input->post('dislike'),
-        'tanggal'=>$this->input->post('tanggal'),
-        'jam'=>$this->input->post('jam')
+            'id_user' => $this->input->post('id_user'),
+            'postingan' => $this->input->post('postingan'),
+            'like' => $this->input->post('like'),
+            'dislike' => $this->input->post('dislike'),
+            'tanggal' => $this->input->post('tanggal'),
+            'jam' => $this->input->post('jam')
         ];
 
         $this->Forum_model->create($data);
