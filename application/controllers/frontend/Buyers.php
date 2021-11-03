@@ -20,7 +20,9 @@ class Buyers extends CI_Controller
         $this->load->view('_partials/hero', $data);
         $this->load->view('frontend/buyers', $data);
         $this->load->view('frontend/articles', $data);
-        $this->load->view('frontend/membership', $data);
+        if (!isset($_SESSION['email'])) {
+            $this->load->view('frontend/membership', $data);
+            }
         $this->load->view('_partials/footer', $data);
         $this->load->view('_partials/js', $data);
     }
@@ -38,7 +40,9 @@ class Buyers extends CI_Controller
         $this->load->view('_partials/hero', $data);
         $this->load->view('frontend/buyer_detail', $data);
         $this->load->view('frontend/articles', $data);
-        $this->load->view('frontend/membership', $data);
+        if (!isset($_SESSION['email'])) {
+            $this->load->view('frontend/membership', $data);
+            }
         $this->load->view('_partials/footer', $data);
         $this->load->view('_partials/js', $data);
     }

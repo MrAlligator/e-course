@@ -2,7 +2,7 @@
 <header id="header" class="fixed-top ">
     <div class="container d-flex align-items-center">
 
-        <h1 class="logo me-auto"><a href="" <?= base_url() ?>">Komunitas Ekspor-Impor</a></h1>
+        <h1 class="logo me-auto"><a href="<?= base_url() ?>">Komunitas Omni-Exim</a></h1>
         <!-- Uncomment below if you prefer to use an image logo -->
         <!-- <a href="index.html" class="logo me-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
 
@@ -14,8 +14,10 @@
                         <li><a href="<?= base_url('frontend/buyers') ?>">Importir</a></li>
                         <li><a href="<?= base_url('frontend/Inquiry') ?>">Permintaan</a></li>
                     </ul>
-                <li><a href="#articles">Artikel</a></li>
-                <li><a href="#membership">Keanggotaan</a></li>
+                <li><a href="<?= base_url('home/articles') ?>">Artikel</a></li>
+                <?php if (!isset($user['email'])) : ?>
+                    <li><a href="<?= base_url('home/membership') ?>">Keanggotaan</a></li>
+                <?php endif ?>
                 <li><a href="<?= base_url('home/forum') ?>">Forum</a></li>
                 <!-- <li><a href="#about">About</a></li>  
                 <li><a href="#services">Services</a></li>

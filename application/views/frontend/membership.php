@@ -3,8 +3,8 @@
             <div class="container" data-aos="fade-up">
 
                 <div class="section-title">
-                    <h2>Membership</h2>
-                    <p>Join our membership to unlocks the features</p>
+                    <h2>Keanggotaan</h2>
+                    <p>Bergabunglah Dengan Keanggotaan Kami Untuk Membuka Fitur</p>
                 </div>
 
                 <div class="row">
@@ -12,33 +12,33 @@
                     <div class="col-lg-6 mt-4 mt-lg-0" data-aos="fade-up" data-aos-delay="100">
                         <div class="box">
                             <h3>Free Member</h3>
-                            <h4><sup>Rp</sup>0<span>per month</span><br><span>benefits</span></h4>
+                            <h4><sup>Rp</sup>0<span>per bulan</span><br><span>Keuntungan</span></h4>
                             <ul>
-                                <li><i class="bx bx-check"></i> Bussiness Content</li>
-                                <li><i class="bx bx-check"></i> Buyers Data from Around the World</li>
-                                <li><i class="bx bx-check"></i> Inquiry Data</li>
-                                <li><i class="bx bx-check"></i> Forum Community</li>
-                                <li><i class="bx bx-check"></i> Export and Import Information</li>
+                                <li><i class="bx bx-check"></i> Konten Bisnis</li>
+                                <li><i class="bx bx-check"></i> Data Pembeli Dari Seluruh Dunia</li>
+                                <li><i class="bx bx-check"></i> Data Inquiry</li>
+                                <li><i class="bx bx-check"></i> Komunitas Forum</li>
+                                <li><i class="bx bx-check"></i> Informasi Export Dan Import</li>
                                 <!-- <li class="na"><i class="bx bx-x"></i> <span>Pharetra massa massa ultricies</span></li>
                                 <li class="na"><i class="bx bx-x"></i> <span>Massa ultricies mi quis hendrerit</span></li> -->
                             </ul>
-                            <a href="<?= base_url('auth/register') ?>" class="buy-btn">Get Started</a>
+                            <a href="<?= base_url('auth/register') ?>" class="buy-btn">Bergabung</a>
                         </div>
                     </div>
 
                     <div class="col-lg-6 mt-4 mt-lg-0" data-aos="fade-up" data-aos-delay="200">
                         <div class="box">
-                            <h3>Premium Member</h3>
-                            <h4><sup>Rp</sup>150.000<span>per month</span><br><span>benefits</span></h4>
+                            <h3>Keanggotaan Premium </h3>
+                            <h4><sup>Rp</sup>150.000<span>per Bulan</span><br><span>Keuntungan</span></h4>
                             <ul>
-                                <li><i class="bx bx-check"></i> Bussiness Content</li>
-                                <li><i class="bx bx-check"></i> <strong>Detailed</strong> Buyers Data from Around the World</li>
-                                <li><i class="bx bx-check"></i> <strong>Detailed</strong> Inquiry Data Information</li>
-                                <li><i class="bx bx-check"></i> <strong>Member Only</strong> Forum Community</li>
-                                <li><i class="bx bx-check"></i> Export and Import Information</li>
-                                <li><i class="bx bx-check"></i> Exclusive Export Import Training</li>
+                                <li><i class="bx bx-check"></i> Konten Bisnis</li>
+                                <li><i class="bx bx-check"></i> <strong>Detail</strong> Data Buyers Dari Seluruh Dunia</li>
+                                <li><i class="bx bx-check"></i> <strong>Detail</strong> Informasi Data Inquiry</li>
+                                <li><i class="bx bx-check"></i> <strong>Hanya Member</strong> Komunitas Forum</li>
+                                <li><i class="bx bx-check"></i> Informasi Export dan Import</li>
+                                <li><i class="bx bx-check"></i> Pelatihan Ekspor Impor Eksklusif</li>
                             </ul>
-                            <a href="<?= base_url('auth/register') ?>" class="buy-btn">Get Started</a>
+                            <a href="<?= base_url('auth/register') ?>" class="buy-btn">Bergabung</a>
                         </div>
                     </div>
 

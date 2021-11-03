@@ -20,27 +20,25 @@ class Inquiry extends CI_Controller
         $this->load->view('_partials/hero', $data);
         $this->load->view('frontend/inquiries', $data);
         $this->load->view('frontend/articles', $data);
-        if (!isset($_SESSION['email'])) {
-            $this->load->view('frontend/membership', $data);
-            }
+        $this->load->view('frontend/membership', $data);
         $this->load->view('_partials/footer', $data);
-        $this->load->view('_partials/js', $data);
-        
+        $this->load->view('_partials/js', $data);     
     }
 
-    public function detail()
+    public function detail($id)
     {
         $data['user'] = $this->db->get_where('tb_user', ['email' => $this->session->userdata('email')])->row_array();
-        $data['title'] = "EXIM-Community | Inquiries Detail";
+        $data['inquiries'] = $this->Inquiry_model->getById($id);
+        $raw = $this->db->where('id_inquiry',$id)->get('tb_inquiry')->row_array();;
+        $data['title'] = "EXIM-Community | ".$raw['produk'];
 
         $this->load->view('_partials/header', $data);
         $this->load->view('_partials/topbar', $data);
         $this->load->view('_partials/hero', $data);
         $this->load->view('frontend/inquiry_detail', $data);
         $this->load->view('frontend/articles', $data);
-        if (!isset($_SESSION['email'])) {
-            $this->load->view('frontend/membership', $data);
-        }$this->load->view('_partials/footer', $data);
+        $this->load->view('frontend/membership', $data);
+        $this->load->view('_partials/footer', $data);
         $this->load->view('_partials/js', $data);
     }
 }

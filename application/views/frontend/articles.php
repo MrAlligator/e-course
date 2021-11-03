@@ -3,7 +3,7 @@
     <div class="container" data-aos="fade-up">
 
         <div class="section-title">
-            <h2>Articles</h2>
+            <h2>Artikel</h2>
         </div>
 
         <div class="row">
@@ -29,7 +29,7 @@
                             <p>Seperti Apa Biaya Periode Dan Bedanya Dengan Biaya Produk?</p>
                         </div>
                     </div>
-                    <a href="<?= base_url('/home/articles')?>" class="btn-learn-more">View All Articles >></a>
+                    <a href="<?= base_url('/home/articles')?>" class="btn-learn-more">Lihat Semua >>></a>
 
     </div>
 </section><!-- End About Us Section -->

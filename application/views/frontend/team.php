@@ -1,10 +1,10 @@
         <!-- ======= Team Section ======= -->
-        <<section id="kontenig" class="kontenig">
+        <<section id="kontenig" class="team">
                 <div class="container" data-aos="fade-up">
 
                 <div class="section-title">
-                    <h2>Content</h2>
-                    <p>Enjoy our content</p>
+                    <h2>Konten</h2>
+                    <p>Konten Kami</p>
                 </div>
 
                 <div class="row kontenig-container" data-aos="fade-up" data-aos-delay="200">
