@@ -25,7 +25,7 @@ class Inquiry extends CI_Controller
         $this->load->view('_partials/js', $data);     
     }
 
-    public function detail()
+    public function detail($id)
     {
         $data['user'] = $this->db->get_where('tb_user', ['email' => $this->session->userdata('email')])->row_array();
         $data['inquiries'] = $this->Inquiry_model->getById($id);

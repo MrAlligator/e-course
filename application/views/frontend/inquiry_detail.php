@@ -26,18 +26,12 @@
   <!-- Content Wrapper. Contains page content -->
   <div class="">
     <!-- Content Header (Page header) -->
-    <section class="content-header">
-      <div class="container-fluid">
-        <div class="row mb-2">
-          <div class="col-sm-6">
-            <h1>Detail Inquiry</h1>
-          </div>
-          <div class="col-sm-6">
-            
-          </div>
+    <section class="contact">
+      <div class="section-title">
+            <h2>Detail Inquiry</h2>
         </div>
-      </div><!-- /.container-fluid -->
-    </section>
+    </div><!-- /.container-fluid -->
+  </section>
 
     <!-- Main content -->
     <section class="content">
@@ -75,7 +69,7 @@
       <td><?php echo "Detail" ?></td>
 			<td><?php echo $inquiry->detail ?></td>
     </tr>
-    
+    <?php endforeach; ?>
 	</table>
   
       

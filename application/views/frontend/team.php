@@ -1,5 +1,5 @@
         <!-- ======= Team Section ======= -->
-        <<section id="kontenig" class="kontenig">
+        <<section id="kontenig" class="team">
                 <div class="container" data-aos="fade-up">
 
                 <div class="section-title">

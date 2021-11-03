@@ -107,10 +107,10 @@
               <td><?=$inquiry->negara?></td>
               <?php if (isset($_SESSION['email'])) { ?>
               <td>
-                <a class="btn btn-info btn-sm" <?php echo anchor('frontend/Inquiry/detail','Detail'); ?></a>
+                <a class="btn btn-info btn-sm" <?php echo anchor('frontend/Inquiry/detail/'.$inquiry->id_inquiry,'Detail'); ?></a>
               </td>
               <?php }else{ ?>
-                <td><a class="btn btn-info btn-sm" <?php echo anchor('home/membership','Membersip'); ?><a></td>
+                <td><a class="btn btn-info btn-sm" <?php echo anchor('home/membership','Membership'); ?><a></td>
             <?php } ?>
             </tr>
             <?php endforeach ?>
