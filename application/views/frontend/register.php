@@ -13,20 +13,19 @@
                                 <div class="d-grid gap-2">
                                     <input type="text" class="form-control" name="nama" id="nama" placeholder="Input Your Name Here"> <?= form_error('nama', '<small class="text-danger pl-3">', '</small>') ?>
                                     <input type="email" name="email" class="form-control" id="email" placeholder="Input Your Email Here"> <?= form_error('email', '<small class="text-danger pl-3">', '</small>') ?>
-                                    <input type="password" class="form-control" name="password" id="password" placeholder="Input Your Password Here"> <?= form_error('password', '<small class="text-danger pl-3">', '</small>') ?>
-                                    <input type="password" class="form-control" name="konf-password" id="konf-password" placeholder="Confirm Your Password Here"> <?= form_error('konf-password', '<small class="text-danger pl-3">', '</small>') ?>
                                     <div class="row">
-                                        <div class="form-group col-md-6">
-                                            <div class="d-grid gap-2">
-                                                <button type="submit" class="btn btn-success">Register</button>
-                                            </div>
+                                        <div class="col">
+                                            <input type="password" class="form-control" name="password" id="password" placeholder="Input Your Password Here"> <?= form_error('password', '<small class="text-danger pl-3">', '</small>') ?>
                                         </div>
-                                        <div class="form-group col-md-6">
-                                            <div class="d-grid gap-2">
-                                                <a href="<?= base_url('auth') ?>" type="submit" class="btn btn-primary">Back</a>
-                                            </div>
+                                        <div class="col">
+                                            <input type="password" class="form-control" name="konf-password" id="konf-password" placeholder="Confirm Your Password Here"> <?= form_error('konf-password', '<small class="text-danger pl-3">', '</small>') ?>
                                         </div>
                                     </div>
+                                    <button type="submit" class="btn-get-started">Register</button>
+                                </div>
+                                <br>
+                                <div class="text-center">
+                                    <a class="text-white">Sudah Memiliki Akun?</a><a href="<?= base_url('auth') ?>"><strong> Masuk</strong></a>
                                 </div>
                             </div>
                         </div>

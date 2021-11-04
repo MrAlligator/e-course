@@ -13,23 +13,11 @@
                                 <div class="d-grid gap-2">
                                     <input type="email" name="email" class="form-control" id="email" placeholder="Input Your Email Here"><?= form_error('email', '<small class="text-danger pl-3">', '</small>') ?>
                                     <input type="password" class="form-control" name="password" id="password" placeholder="Input Your Password Here"><?= form_error('password', '<small class="text-danger pl-3">', '</small>') ?>
-                                    <div class="row">
-                                        <div class="form-group col-md-4">
-                                            <div class="d-grid gap-2">
-                                                <button type="submit" class="btn btn-primary">Login</button>
-                                            </div>
-                                        </div>
-                                        <div class="form-group col-md-4">
-                                            <div class="d-grid gap-2">
-                                                <a href="<?= base_url('auth/register') ?>" class="btn btn-success">Register</a>
-                                            </div>
-                                        </div>
-                                        <div class="form-group col-md-4">
-                                            <div class="d-grid gap-2">
-                                                <a href="<?= base_url('') ?>" class="btn btn-warning">Home</a>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    <button type="submit" class="btn-get-started">Login</button>
+                                </div>
+                                <br>
+                                <div class="text-center">
+                                    <a class="text-white">Belum Memiliki Akun?</a><a href="<?= base_url('auth/register') ?>"><strong> Daftar</strong></a>
                                 </div>
                             </div>
                         </div>

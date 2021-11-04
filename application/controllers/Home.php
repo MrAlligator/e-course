@@ -119,7 +119,7 @@ class Home extends CI_Controller
         $this->load->view('_partials/clients', $data);
         $this->load->view('frontend/articles_read', $data);
         if (!isset($_SESSION['email'])) {
-        $this->load->view('frontend/membership', $data);
+            $this->load->view('frontend/membership', $data);
         }
         $this->load->view('_partials/footer', $data);
         $this->load->view('_partials/js', $data);

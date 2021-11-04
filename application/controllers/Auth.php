@@ -10,7 +10,8 @@ class Auth extends CI_Controller
         $this->form_validation->set_rules('password', 'Password', 'required|trim');
 
         if ($this->form_validation->run() == false) {
-            $this->load->view('_partials/header',$data);
+            $this->load->view('_partials/header', $data);
+            $this->load->view('_partials/topbar');
             $this->load->view('frontend/login');
             $this->load->view('_partials/clients');
             $this->load->view('_partials/js');
@@ -68,6 +69,7 @@ class Auth extends CI_Controller
         $this->form_validation->set_rules('konf-password', 'Password', 'required|trim|matches[password]');
         if ($this->form_validation->run() == false) {
             $this->load->view('_partials/header', $data);
+            $this->load->view('_partials/topbar');
             $this->load->view('frontend/register');
             $this->load->view('_partials/clients');
             $this->load->view('_partials/js');

@@ -19,7 +19,7 @@
                 <div class="row">
                     <div class="col-lg-6 d-flex flex-column justify-content-center align-items-stretch  order-2 order-lg-1">
                         <div class="content">
-                            <h3><strong>Manage</strong> Your Account</h3>
+                            <h3><strong>Atur</strong> Akun</h3>
                             <p></p>
                             <div class="card">
                                 <div class="row g-0">
@@ -32,12 +32,12 @@
                                             <p class="card-text"><?= $user['email']; ?></p>
                                             <p class="card-text">
                                                 <?php if ($user['is_active'] == 1) {
-                                                    echo "You're a Member";
+                                                    echo "Kamu sudah menjadi Anggota";
                                                 } else if ($user['is_active'] == 0) {
-                                                    echo "You're not a Member";
+                                                    echo "Kamu belum menjadi Anggota";
                                                 } ?>
                                             </p>
-                                            <p class="card-text"><small class="text-muted">Joined Since <?= date('d F Y', $user['date_created']); ?> </small></p>
+                                            <p class="card-text"><small class="text-muted">Bergabung Sejak <?= date('d F Y', $user['date_created']); ?> </small></p>
                                         </div>
                                     </div>
                                 </div>
@@ -47,8 +47,8 @@
                         <div class="accordion-list">
                             <ul>
                                 <li>
-                                    <a data-bs-toggle="collapse" class="collapsed" data-bs-target="#accordion-list-3">Ubah Nama Pengguna<i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
-                                    <div id="accordion-list-3" class="collapse" data-bs-parent=".accordion-list">
+                                    <h5>Ubah Nama Pengguna</h5>
+                                    <div id="accordion-list-3" class="collapse show" data-bs-parent=".accordion-list">
                                         <p></p>
                                         <form action="<?= base_url('profile/changeName') ?>" method="POST" enctype="multipart/form-data">
                                             <div class="d-grid gap-2">
@@ -59,8 +59,8 @@
                                     </div>
                                 </li>
                                 <li>
-                                    <a data-bs-toggle="collapse" class="collapsed" data-bs-target="#accordion-list-4">Ubah Foto Profil<i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
-                                    <div id="accordion-list-4" class="collapse" data-bs-parent=".accordion-list">
+                                    <h5>Ubah Foto Profil</h5>
+                                    <div id="accordion-list-4" class="collapse show" data-bs-parent=".accordion-list">
                                         <p></p>
                                         <form action="<?= base_url('profile/changeImage') ?>" method="POST" enctype="multipart/form-data">
                                             <div class="mb-3">
@@ -77,14 +77,15 @@
                     </div>
                     <div class="col-lg-6 d-flex flex-column justify-content-center align-items-stretch  order-2 order-lg-1">
                         <div class="content">
-                            <h3><strong>Manage</strong> Your Account</h3>
+                            <h3><strong>Perbaharui</strong> Password</h3>
+                            <p>Perbaharui password secara rutin untuk menghindari pembobolan akun.</p>
                         </div>
                         <br>
                         <div class="accordion-list">
                             <ul>
                                 <li>
-                                    <a data-bs-toggle="collapse" class="collapsed" data-bs-target="#accordion-list-1">Ubah Password<i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
-                                    <div id="accordion-list-1" class="collapse" data-bs-parent=".accordion-list">
+                                    <h5>Ubah Password</h5>
+                                    <div id="accordion-list-1" class="collapse show" data-bs-parent=".accordion-list">
                                         <p></p>
                                         <form action="<?= site_url('profile') ?>" method="POST" enctype="multipart/form-data">
                                             <div class="d-grid gap-2">
@@ -97,8 +98,8 @@
                                     </div>
                                 </li>
                                 <li>
-                                    <a data-bs-toggle="collapse" class="collapsed" data-bs-target="#accordion-list-2">Ubah Nama Pengguna<i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
-                                    <div id="accordion-list-2" class="collapse" data-bs-parent=".accordion-list">
+                                    <h5>Hapus Akun</h5>
+                                    <div id="accordion-list-2" class="collapse show" data-bs-parent=".accordion-list">
                                         <p></p>
                                         <div class="d-grid gap-2">
                                             <a href="<?= base_url('profile/delete/' . $user['id_user']) ?>" class="btn btn-danger">Hapus Akun</a>
