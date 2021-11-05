@@ -11,14 +11,21 @@
                             <div class="form-group col-md-10">
                                 <?php echo $this->session->flashdata('message'); ?>
                                 <div class="d-grid gap-2">
-                                    <input type="text" class="form-control" name="nama" id="nama" placeholder="Input Your Name Here"> <?= form_error('nama', '<small class="text-danger pl-3">', '</small>') ?>
-                                    <input type="email" name="email" class="form-control" id="email" placeholder="Input Your Email Here"> <?= form_error('email', '<small class="text-danger pl-3">', '</small>') ?>
+                                    <input type="text" class="form-control" name="nama" id="nama" placeholder="Nama Lengkap"> <?= form_error('nama', '<small class="text-danger pl-3">', '</small>') ?>
                                     <div class="row">
                                         <div class="col">
-                                            <input type="password" class="form-control" name="password" id="password" placeholder="Input Your Password Here"> <?= form_error('password', '<small class="text-danger pl-3">', '</small>') ?>
+                                            <input type="email" name="email" class="form-control" id="email" placeholder="Email Aktif"> <?= form_error('email', '<small class="text-danger pl-3">', '</small>') ?>
                                         </div>
                                         <div class="col">
-                                            <input type="password" class="form-control" name="konf-password" id="konf-password" placeholder="Confirm Your Password Here"> <?= form_error('konf-password', '<small class="text-danger pl-3">', '</small>') ?>
+                                            <input type="text" onkeypress="return hanyaAngka(event)" name="nomor" class="form-control" id="nomor" placeholder="Nomor Handphone"> <?= form_error('nomor', '<small class="text-danger pl-3">', '</small>') ?>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <input type="password" class="form-control" name="password" id="password" placeholder="Password"> <?= form_error('password', '<small class="text-danger pl-3">', '</small>') ?>
+                                        </div>
+                                        <div class="col">
+                                            <input type="password" class="form-control" name="konf-password" id="konf-password" placeholder="Konfirmasi Password"> <?= form_error('konf-password', '<small class="text-danger pl-3">', '</small>') ?>
                                         </div>
                                     </div>
                                     <button type="submit" class="btn-get-started">Register</button>
@@ -36,5 +43,12 @@
                 </div>
             </div>
         </div>
-
+        <script>
+            function hanyaAngka(event) {
+                var angka = (event.which) ? event.which : event.keyCode
+                if (angka != 46 && angka > 31 && (angka < 48 || angka > 57))
+                    return false;
+                return true;
+            }
+        </script>
     </section><!-- End Hero -->
