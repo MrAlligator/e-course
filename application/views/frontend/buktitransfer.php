@@ -12,40 +12,60 @@
         }
     }
 </script>
-<section id="about" class="about">
-    <div class="container" data-aos="fade-up">
+<section id="why-us" class="why-us section-bg">
+    <div class="container-fluid" data-aos="fade-up">
 
         <div class="section-title">
-            <h2>Daftar Membership Berbayar</h2>
+            <h2>Menjadi Anggota Premium</h2>
         </div>
+        
+<div class="row">
+    <div class="col-lg-12 d-flex flex-column justify-content-center align-items-stretch  order-2 order-lg-1">
+        <div class="content">
 
-        <div class="row">
-            <div class="col-lg d-flex flex-column justify-content-center align-items-stretch  order-2 order-lg-1">
-                <div class="content">
-                    <p></p>
-                    <div class="row">
-                        <div class="col-lg-4">
-                            <img src="" alt="">
-                        </div>
-                        <div class="col-lg-8">
-                            <p>Tata cara untuk mendaftar sebagai member <strong>Premium</strong></p>
-                            <ul>
-                                <li>fafsaf</li>
-                                <li>safasfsaf</li>
-                            </ul>
+<div class="row">
+    <div class="col-lg-8">
 
-                            <form action="" method="post">
-                                <div class="d-grid gap-2">
-                                    <input type="file" accept="image/*" onchange="previewFile(this);" class="form-control" name="buktitf" id="buktitf">
-                                    <input hidden type="text" class="form-control" name="id_user" id="id_user" value="<?= $user['id_user'] ?>">
-                                    <button type="submit" class="btn btn-primary">Upload Bukti Transfer</button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
+        
+<div class="accordion-list">
+    <ul>
+        <li>
+            <a data-bs-toggle="collapse" class="collapsed" data-bs-target="#accordion-list-3">Apa keuntungan menjadi anggota premium ?<i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+            <div id="accordion-list-3" class="collapse" data-bs-parent=".accordion-list">
+                <p>1. Mendapatkan detail data importir dari seluruh dunia</a> </p>
+                <p>2. Mendapatkan detail data permintaan perusahaan importir</a> </p>
+                <p>3. Pelatihan Ekspor dan Impor</p>
+                <p>4. Berdiskusi melalui forum</p>
             </div>
-        </div>
+        <li>
+            <a data-bs-toggle="collapse" class="collapsed" data-bs-target="#accordion-list-2">Bagaimana cara menjadi member premium ?<i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+            <div id="accordion-list-2" class="collapse" data-bs-parent=".accordion-list">
+                <p>1. Mendaftar, anda dapat melakukan pendaftaran <a href="<?=base_url('auth/register')?>">disini</a> </p>
+                <p>2. Melakukan Pembayaran</p>
+                <p>3. Mengunggah Bukti Transfer</p>
+                <p>4. Nikmati Keuntungannya</p>
+            </div>
+        </li>
+    </ul>
+</div>
+
+</div>
+                            
+<div class="col-lg-4">
+    <form action="" method="post">
+        <h5 class="text-center">Upload bukti transfer anda disini</h5>
+        <img id="buktitf" height="200px" src="<?=base_url('assets/img/no-image.png')?>" class="img-thumbnail" alt="Buktitransfer">
+            <input type="file" accept="image/*" onchange="previewFile(this);" class="form-control" name="buktitf" id="buktitf">
+            <input hidden type="text" class="form-control" name="id_user" id="id_user" value="<?= $user['id_user'] ?>">
+            <button type="submit" class="btn btn-primary btn-block">Upload Bukti Transfer</button>
+    </form>
+</div>
+                    
+    </div>
+</div>
+    
+    </div>    
+</div>
 
     </div>
 </section><!-- End About Us Section -->
