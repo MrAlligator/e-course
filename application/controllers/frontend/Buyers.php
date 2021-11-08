@@ -13,13 +13,31 @@ class Buyers extends CI_Controller
     {
         $data['user'] = $this->db->get_where('tb_user', ['email' => $this->session->userdata('email')])->row_array();
         $data['buyers'] = $this->Buyers_model->getRandom();
-        $data['title'] = "EXIM-Community | Importer data";
+        $data['title'] = "Data Importir";
+        $data['semua'] = 0;
  
         $this->load->view('_partials/header', $data);
         $this->load->view('_partials/topbar', $data);
         $this->load->view('_partials/hero', $data);
         $this->load->view('frontend/buyers', $data);
-        $this->load->view('frontend/articles', $data);
+        if (!isset($_SESSION['email'])) {
+            $this->load->view('frontend/membership', $data);
+            }
+        $this->load->view('_partials/footer', $data);
+        $this->load->view('_partials/js', $data);
+    }
+
+    public function getAll()
+    {
+        $data['user'] = $this->db->get_where('tb_user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['buyers'] = $this->Buyers_model->getAll();
+        $data['title'] = "Data Importir";
+        $data['semua'] = 1;
+ 
+        $this->load->view('_partials/header', $data);
+        $this->load->view('_partials/topbar', $data);
+        $this->load->view('_partials/hero', $data);
+        $this->load->view('frontend/buyers', $data);
         if (!isset($_SESSION['email'])) {
             $this->load->view('frontend/membership', $data);
             }
@@ -33,7 +51,7 @@ class Buyers extends CI_Controller
         $data['buyers'] = $this->Buyers_model->getById($id);
 
         $raw = $this->db->where('id_buyers',$id)->get('tb_buyers')->row_array();;
-        $data['title'] = "EXIM-Community | ".$raw['nama_perusahaan'];
+        $data['title'] = $raw['nama_perusahaan'];
 
         $this->load->view('_partials/header', $data);
         $this->load->view('_partials/topbar', $data);

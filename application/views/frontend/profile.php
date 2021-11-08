@@ -30,19 +30,25 @@
                                         <div class="card-body">
                                             <h5 class="card-title"><?= $user['nama'] ?></h5>
                                             <p class="card-text"><?= $user['email']; ?></p>
+                                            <p class="card-text"><small class="text-muted">Bergabung Sejak <?= date('d F Y', $user['date_created']); ?> </small></p>
                                             <p class="card-text">
-                                                <?php if ($user['is_active'] == 1) {
-                                                    echo "Kamu sudah menjadi Anggota";
-                                                } else if ($user['is_active'] == 0) {
-                                                    echo "Kamu belum menjadi Anggota";
+                                                <?php if ($user['role_id'] == 3) {
+                                                    echo "Anggota Premium";
+                                                } else if ($user['role_id'] == 2) {
+                                                    echo "Keanggotaan Gratis";
+                                                } else if ($user['role_id'] == 1) {
+                                                    echo "Administrator";
                                                 } ?>
                                             </p>
-                                            <p class="card-text"><small class="text-muted">Bergabung Sejak <?= date('d F Y', $user['date_created']); ?> </small></p>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        <br>
+                        <?php if ($user['role_id'] == 2) { ?>
+                        <a href="<?= base_url('frontend/membership') ?>" class="btn btn-primary">Menjadi Anggota Premium</a>
+                        <?php } ?>
                         <br>
                         <div class="accordion-list">
                             <ul>
