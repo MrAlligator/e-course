@@ -30,26 +30,37 @@ class Auth extends CI_Controller
         // die;
         //jika user ada
         if ($user) {
-            //cek role
-            if ($user['role_id'] == 3) {
-                //cek pass
-                if (password_verify($password, $user['password'])) {
-                    $data = [
-                        'email' => $user['email'],
-                        'id_user' => $user['id_user'],
-                        'nama' => $user['nama'],
-                        'role_id' => $user['role_id']
-                    ];
-                    $this->session->set_userdata($data);
-                    // var_dump($data);
-                    // die;
-                    redirect('home');
+            //cek aktif
+            if ($user['is_active'] == 1) {
+                //cek role
+                if ($user['role_id'] == 2) {
+                    //cek pass
+                    if (password_verify($password, $user['password'])) {
+                        $data = [
+                            'email' => $user['email'],
+                            'id_user' => $user['id_user'],
+                            'nama' => $user['nama'],
+                            'role_id' => $user['role_id'],
+                            'is_member' => $user['is_member']
+                        ];
+                        $this->session->set_userdata($data);
+                        // var_dump($data);
+                        // die;
+                        if ($user['is_member'] == 1) {
+                            redirect('home');
+                        } else {
+                            redirect('home/membership');
+                        }
+                    } else {
+                        $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Password Salah!</div>');
+                        redirect('auth');
+                    }
                 } else {
-                    $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Password Salah!</div>');
+                    $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Anda Tidak Memiliki hak untuk Mengakses Halaman Ini</div>');
                     redirect('auth');
                 }
             } else {
-                $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Anda Tidak Memiliki hak untuk Mengakses Halaman Ini</div>');
+                $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Akun anda belum diaktivasi</div>');
                 redirect('auth');
             }
         } else {

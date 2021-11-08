@@ -17,6 +17,8 @@
                 <li><a href="<?= base_url('home/articles') ?>">Artikel</a></li>
                 <?php if (!isset($user['email'])) : ?>
                     <li><a href="<?= base_url('home/membership') ?>">Keanggotaan</a></li>
+                <?php elseif (isset($user['email']) && $user['is_member'] == 0) : ?>
+                    <li><a href="<?= base_url('home/membership') ?>">Keanggotaan</a></li>
                 <?php endif ?>
                 <li><a href="<?= base_url('home/forum') ?>">Forum</a></li>
                 <!-- <li><a href="#about">About</a></li>  
