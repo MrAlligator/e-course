@@ -7,9 +7,13 @@
                     <h1>Tempat Terbaik Untuk Belajar Bisnis Ekspor-Impor</h1>
                     <h2>Kami akan membantu anda untuk belajar tentang bisnis ekspor dan impor</h2>
                     <div class="d-flex justify-content-center justify-content-lg-start">
-                        <a href="<?= base_url('home/membership') ?>" class="btn-get-started scrollto">Menjadi Anggota</a>
-                        <!-- <a href="https://www.youtube.com/watch?v=jDDaplaOz7Q" class="glightbox btn-watch-video"><i class="bi bi-play-circle"></i><span>Watch Video</span></a> -->
+                        <?php if (isset($user['email']) && $user['is_member'] == 0) : ?>
+                            <a href="<?= base_url('frontend/membership') ?>" class="btn-get-started scrollto">Menjadi Anggota</a>
+                        <?php elseif (!isset($user['email'])) : ?>
+                            <a href="<?= base_url('home/membership') ?>" class="btn-get-started scrollto">Menjadi Anggota</a>
+                        <?php endif; ?>
                     </div>
+
                 </div>
                 <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="zoom-in" data-aos-delay="200">
                     <img src="<?= base_url() ?>/assets/img/hero-img.png" class="img-fluid animated" alt="">

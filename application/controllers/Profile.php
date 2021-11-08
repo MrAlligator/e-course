@@ -17,12 +17,16 @@ class Profile extends CI_Controller
         $raw = $this->db->where('email', $this->session->userdata('email'))->get('tb_user')->row_array();
         $data['title'] = $raw['nama'];
 
-        $this->form_validation->set_rules('old-password', 'Password Lama', 'required|trim');
+        $this->form_validation->set_rules('old-password', 'Password Lama', 'required|trim', [
+            'required' => 'Field tidak boleh kosong'
+        ]);
         $this->form_validation->set_rules('new-password', 'Password Baru', 'required|trim|min_length[8]|matches[konf-password]', [
+            'required' => 'Field tidak boleh kosong',
             'matches' => 'Password tidak Sama!',
             'min_length' => 'Password tidak boleh kurang dari 8 karakter!'
         ]);
         $this->form_validation->set_rules('konf-password', 'Konfirmasi Password Baru', 'required|trim|min_length[8]|matches[new-password]', [
+            'required' => 'Field tidak boleh kosong',
             'matches' => 'Password tidak Sama!',
             'min_length' => 'Password tidak boleh kurang dari 8 karakter!'
         ]);

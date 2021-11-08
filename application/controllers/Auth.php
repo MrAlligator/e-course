@@ -107,10 +107,7 @@ class Auth extends CI_Controller
 
             $this->db->insert('tb_user', $data);
             $this->db->insert('tb_token', $user_token);
-
             $this->_sendEmail($token, 'verify');
-
-            $this->db->insert('tb_user', $data);
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Selamat! Akun berhasil dibuat.</div>');
             redirect('auth/register');
         }
