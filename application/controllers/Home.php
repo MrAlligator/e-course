@@ -12,6 +12,7 @@ class Home extends CI_Controller
     public function index()
     {
         $data['user'] = $this->db->get_where('tb_user', ['email' => $this->session->userdata('email')])->row_array();
+        $raw = $this->db->where('email', $this->session->userdata('email'))->get('tb_user')->row_array();
         $data['title'] = "Beranda";
 
         $this->load->view('_partials/header', $data);
@@ -22,7 +23,7 @@ class Home extends CI_Controller
         $this->load->view('frontend/articles', $data);
         if (!isset($_SESSION['email'])) {
             $this->load->view('frontend/membership', $data);
-        } elseif (isset($_SESSION['email']) && $_SESSION['is_member'] == 0) {
+        } elseif (isset($_SESSION['email']) && $raw['is_member'] == 0) {
             $this->load->view('frontend/membership', $data);
         }
         $this->load->view('frontend/team', $data);

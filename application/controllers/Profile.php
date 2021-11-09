@@ -80,19 +80,6 @@ class Profile extends CI_Controller
         redirect('profile');
     }
 
-
-    public function changePass()
-    {
-        $data['user'] = $this->db->get_where('tb_user', ['email' => $this->session->userdata('email')])->row_array();
-
-        $this->load->view('_partials/header', $data);
-        $this->load->view('_partials/topbar', $data);
-        $this->load->view('_partials/hero', $data);
-        $this->load->view('frontend/changepassword', $data);
-        $this->load->view('_partials/footer', $data);
-        $this->load->view('_partials/js', $data);
-    }
-
     public function changeImage()
     {
         $config['upload_path']          = './assets/img/userimage';
@@ -130,33 +117,4 @@ class Profile extends CI_Controller
             redirect(site_url('home'));
         }
     }
-
-    // public function changeImage()
-    // {
-    //     $config['upload_path']          = './assets/img/userimage';
-    //     $config['allowed_types']        = 'gif|jpg|png|jpeg|PNG|JPG';
-    //     $config['max_size']             = 20480;
-
-    //     $this->load->library('upload', $config);
-
-    //     if ($this->upload->do_upload('foto')) {
-    //         $data = $this->upload->data();
-    //         $file = $data['file_name'];
-    //         $data = array(
-    //             'foto_user' => $file
-    //         );
-    //     } else {
-    //         $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Data gagal diubah</div>');
-    //         redirect('frontend/profile');
-    //     }
-
-
-    //     if ($this->User_model->update($this->input->post('id_user'), $data)) {
-    //         $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">' . $file . 'Data diubah</div>');
-    //         redirect('frontend/profile');
-    //     } else {
-    //         $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Data gagal diubah</div>');
-    //         redirect('frontend/profile');
-    //     }
-    // }
 }
