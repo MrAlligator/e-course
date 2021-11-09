@@ -14,7 +14,7 @@ class Buyers extends CI_Controller
         $data['user'] = $this->db->get_where('tb_user', ['email' => $this->session->userdata('email')])->row_array();
         $data['buyers'] = $this->Buyers_model->getRandom();
         $data['title'] = "EXIM-Community | Importer data";
- 
+
         $this->load->view('_partials/header', $data);
         $this->load->view('_partials/topbar', $data);
         $this->load->view('_partials/hero', $data);
@@ -22,7 +22,9 @@ class Buyers extends CI_Controller
         $this->load->view('frontend/articles', $data);
         if (!isset($_SESSION['email'])) {
             $this->load->view('frontend/membership', $data);
-            }
+        } elseif (isset($_SESSION['email']) && $_SESSION['is_member'] == 0) {
+            $this->load->view('frontend/membership', $data);
+        }
         $this->load->view('_partials/footer', $data);
         $this->load->view('_partials/js', $data);
     }
@@ -32,8 +34,8 @@ class Buyers extends CI_Controller
         $data['user'] = $this->db->get_where('tb_user', ['email' => $this->session->userdata('email')])->row_array();
         $data['buyers'] = $this->Buyers_model->getById($id);
 
-        $raw = $this->db->where('id_buyers',$id)->get('tb_buyers')->row_array();;
-        $data['title'] = "EXIM-Community | ".$raw['nama_perusahaan'];
+        $raw = $this->db->where('id_buyers', $id)->get('tb_buyers')->row_array();;
+        $data['title'] = "EXIM-Community | " . $raw['nama_perusahaan'];
 
         $this->load->view('_partials/header', $data);
         $this->load->view('_partials/topbar', $data);
@@ -42,8 +44,13 @@ class Buyers extends CI_Controller
         $this->load->view('frontend/articles', $data);
         if (!isset($_SESSION['email'])) {
             $this->load->view('frontend/membership', $data);
-            }
+        }
         $this->load->view('_partials/footer', $data);
         $this->load->view('_partials/js', $data);
+    }
+
+    public function get_buyers()
+    {
+        echo json_encode($this->Buyers_model->getAll()->result());
     }
 }
