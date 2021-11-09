@@ -2,7 +2,7 @@
 
 class Buyers_model extends CI_Model
 {
-    private $_table = "tb_buyers";
+    private $_table = "tb_importir";
 
     public function getAll()
     {
@@ -11,7 +11,7 @@ class Buyers_model extends CI_Model
 
     public function getRandom()
     {
-        return $this->db->order_by('rand()')->limit(10)->get($this->_table)->result();
+        return $this->db->order_by('rand()')->limit(20)->get($this->_table)->result();
     }
 
     public function getById($id)
