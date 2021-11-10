@@ -33,7 +33,7 @@ class Auth extends CI_Controller
             //cek aktif
             if ($user['is_active'] == 1) {
                 //cek role
-                if ($user['role_id'] == 2) {
+                if ($user['role_id'] == 1 or $user['role_id'] == 2) {
                     //cek pass
                     if (password_verify($password, $user['password'])) {
                         $data = [

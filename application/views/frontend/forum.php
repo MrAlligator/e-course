@@ -56,8 +56,9 @@
                 <img width="50" src="<?= base_url('/assets/img/userimage/').$poster['foto_user'];?>" class="img-profile rounded-circle img-thumbnail">
             </div>
             <div class="col">
-                <?=$poster['nama'] ?>
-                <h4><?=$postingan->postingan?></h4>
+                <?=$poster['nama']." ";
+                if($poster['role_id']==1){?><i class="bx bx-badge-check bx-solid"></i><?php }?>
+                    <h4><?=$postingan->postingan?></h4>
             </div>
             <div class="col-sm-1">
                 <?php if(isset($_SESSION['email'])&&$poster['email']===$_SESSION['email']):?>
