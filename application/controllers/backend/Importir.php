@@ -13,9 +13,9 @@ class Importir extends CI_Controller
     {
         //PAGINATION
         //Config
-        $config['base_url'] = 'http://localhost/e-course/backend/importir/index';
+        $config['base_url'] = 'http://' . $_SERVER['HTTP_HOST'] . str_replace(basename($_SERVER['SCRIPT_NAME']), "", $_SERVER['SCRIPT_NAME']) . 'backend/importir/index';
         $config['total_rows'] = $this->Buyers_model->hitung_jumlah_buyers();
-        $config['per_page'] = '25';
+        $config['per_page'] = '100';
 
         //Styling
         $config['full_tag_open'] = '<nav><ul class="pagination pagination-sm justify-content-center">';

@@ -10,14 +10,12 @@
         <div class="navbar-inner">
             <!-- Collapse -->
             <div class="collapse navbar-collapse" id="sidenav-collapse-main">
+                <!-- Heading -->
+                <h6 class="navbar-heading p-0 text-muted">
+                    <span class="docs-normal">Navigasi</span>
+                </h6>
                 <!-- Nav items -->
                 <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link" href="<?= base_url('backend/home') ?>">
-                            <i class="ni ni-tv-2 text-primary"></i>
-                            <span class="nav-link-text">Dashboard</span>
-                        </a>
-                    </li>
                     <li class="nav-item">
                         <a class="nav-link" href="<?= base_url('backend/importir') ?>">
                             <i class="ni ni-shop text-orange"></i>
@@ -55,6 +53,12 @@
                         <a class="nav-link" href="<?= base_url('home') ?>">
                             <i class="ni ni-spaceship"></i>
                             <span class="nav-link-text">Kembali ke Frontend?</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="<?= base_url('backend/home') ?>">
+                            <i class="ni ni-tv-2 text-primary"></i>
+                            <span class="nav-link-text">Dashboard</span>
                         </a>
                     </li>
                 </ul>
