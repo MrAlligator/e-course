@@ -40,11 +40,11 @@
                                 <?php $i = 1;
                                 foreach ($buyers as $buyer) : ?>
                                     <td><?= $i++ ?></td>
-                                    <td><?= $buyer->nama_perusahaan ?></a></td>
-                                    <td><?= $buyer->produk ?></td>
-                                    <td><?= $buyer->negara ?></td>
+                                    <td><?= $buyer['nama_perusahaan'] ?></a></td>
+                                    <td><?= $buyer['produk'] ?></td>
+                                    <td><?= $buyer['negara'] ?></td>
                                     <?php if (isset($_SESSION['email'])) { ?>
-                                        <td><a href="<?= base_url('frontend/buyers/detail/') . $buyer->id_importir ?>">Selengkapnya<a></td>
+                                        <td><a href="<?= base_url('frontend/buyers/detail/') . $buyer['id_importir'] ?>">Selengkapnya<a></td>
                                     <?php } else { ?>
                                         <td><a href="<?= base_url('home/membership') ?>">Selengkapnya<a></td>
                                     <?php } ?>
@@ -54,3 +54,4 @@
                     </table>
                 </div>
             </div>
+            <?= $this->pagination->create_links() ?>

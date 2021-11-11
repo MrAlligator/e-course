@@ -18,4 +18,19 @@ class Buyers_model extends CI_Model
     {
         return $this->db->where('id_buyers', $id)->get($this->_table)->result();
     }
+
+    public function getSome($limit, $start)
+    {
+        return $this->db->get($this->_table, $limit, $start)->result_array();
+    }
+
+    public function hitung_jumlah_buyers()
+    {
+        $query = $this->db->get($this->_table);
+        if ($query->num_rows() > 0) {
+            return $query->num_rows();
+        } else {
+            return 0;
+        }
+    }
 }
