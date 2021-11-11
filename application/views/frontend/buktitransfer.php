@@ -16,6 +16,7 @@
     <div class="container-fluid" data-aos="fade-up">
 
         <div class="section-title">
+            <?php echo $this->session->flashdata('message'); ?>
             <h2>Menjadi Anggota Premium</h2>
         </div>
 
