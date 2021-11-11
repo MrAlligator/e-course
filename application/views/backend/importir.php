@@ -39,7 +39,7 @@
                             <tr>
                                 <?php $i = 1;
                                 foreach ($buyers as $buyer) : ?>
-                                    <td><?= $i++ ?></td>
+                                    <td><?= ++$start; ?></td>
                                     <td><?= $buyer['nama_perusahaan'] ?></a></td>
                                     <td><?= $buyer['produk'] ?></td>
                                     <td><?= $buyer['negara'] ?></td>

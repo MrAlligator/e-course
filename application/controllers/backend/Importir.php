@@ -13,7 +13,7 @@ class Importir extends CI_Controller
     {
         //PAGINATION
         //Config
-        $config['base_url'] = 'http://' . $_SERVER['HTTP_HOST'] . str_replace(basename($_SERVER['SCRIPT_NAME']), "", $_SERVER['SCRIPT_NAME']) . 'backend/importir/index';
+        $config['base_url'] = 'http://localhost/e-course/backend/importir/index';
         $config['total_rows'] = $this->Buyers_model->hitung_jumlah_buyers();
         $config['per_page'] = '25';
 
@@ -47,7 +47,7 @@ class Importir extends CI_Controller
 
         //Initialize
         $this->pagination->initialize($config);
-        $data['start'] = $this->uri->segment(3);
+        $data['start'] = $this->uri->segment(4);
         $data['title'] = "Importir";
         $data['buyers'] = $this->Buyers_model->getSome($config['per_page'], $data['start']);
 
