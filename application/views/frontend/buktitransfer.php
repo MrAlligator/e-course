@@ -52,7 +52,7 @@
                         </div>
 
                         <div class="col-lg-4">
-                            <form action="<?= base_url('frontend/membership') ?>" method="post">
+                            <form action="<?= base_url('frontend/membership/upload') ?>" method="post" enctype="multipart/form-data">
                                 <h5 class="text-center">Upload bukti transfer anda disini</h5>
                                 <div class="d-grid gap-2">
                                     <img id="buktitf" height="200px" src="<?= base_url('assets/img/no-image.png') ?>" class="img-thumbnail" alt="Buktitransfer">
