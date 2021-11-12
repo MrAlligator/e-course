@@ -7,6 +7,9 @@
                         <div class="col-lg-6 col-7">
                             <h6 class="h2 text-white d-inline-block mb-0"><?= $title ?></h6>
                         </div>
+                        <div class="col-lg-6 col-5 text-right">
+                            <a href="" class="btn btn-neutral">Konfirmasi Membership</a>
+                        </div>
                     </div>
                     <!-- Card stats -->
                     <div class="row">
@@ -110,7 +113,7 @@
                         <div class="card-header border-0">
                             <div class="row align-items-center">
                                 <div class="col">
-                                    <h3 class="mb-0">Free Member</h3>
+                                    <h3 class="mb-0">Pengguna</h3>
                                 </div>
                             </div>
                         </div>
@@ -160,3 +163,50 @@
                     </div>
                 </div>
             </div>
+
+            <!-- Modal Info -->
+            <?php foreach ($user as $pengguna) : ?>
+                <div class="modal fade" id="infoModal<?= $pengguna['id_user'] ?>" tabindex="-1" role="dialog" aria-labelledby="infoModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal- modal-dialog-centered modal-xl" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="infoModalLabel">Detail User</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body p-0">
+                                <div class="card border-0 mb-0">
+                                    <div class="card-body px-lg-5 py-lg-5">
+                                        <div class="row">
+                                            <div class="col">
+                                                <div class="form-group mb-3">
+                                                    <div class="input-group input-group-merge input-group-alternative">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text"><i class="ni ni-building"></i></span>
+                                                        </div>
+                                                        <input class="form-control-plaintext" disabled type="text" value="<?= $pengguna['nama'] ?>">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col">
+                                                <div class="form-group mb-3">
+                                                    <div class="input-group input-group-merge input-group-alternative">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text"><i class="ni ni-building"></i></span>
+                                                        </div>
+                                                        <input class="form-control-plaintext" disabled type="text" value="<?= $pengguna['email'] ?>">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <?php endforeach ?>
