@@ -60,4 +60,14 @@ class Pengguna extends CI_Controller
         $this->load->view('backend/pengguna', $data);
         $this->load->view('_partadm/js', $data);
     }
+
+    public function delete($id = null)
+    {
+        if (!isset($id)) show_404();
+
+        if ($this->User_model->delete($id)) {
+            $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Pendaftaran User tidak Dikonfirmasi</div>');
+            redirect(site_url('backend/pengguna'));
+        }
+    }
 }
