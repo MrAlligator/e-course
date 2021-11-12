@@ -44,7 +44,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="<?= base_url('backend/home') ?>">
+                        <a class="nav-link" href="<?= base_url('backend/inquiry') ?>">
                             <i class="ni ni-archive-2 text-primary"></i>
                             <span class="nav-link-text">Permintaan</span>
                         </a>

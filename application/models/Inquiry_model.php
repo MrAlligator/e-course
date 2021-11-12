@@ -9,9 +9,25 @@ class Inquiry_model extends CI_Model
         return $this->db->get($this->_table)->result();
     }
 
+    public function getSome($limit, $start)
+    {
+        return $this->db->get($this->_table, $limit, $start)->result_array();
+
+    }
+
     public function getRandom()
     {
         return $this->db->order_by('rand()')->limit(10)->get($this->_table)->result();
+    }
+
+    public function hitung_jumlah_inquiries()
+    {
+        $query = $this->db->get($this->_table);
+        if ($query->num_rows() > 0) {
+            return $query->num_rows();
+        } else {
+            return 0;
+        }
     }
 
     public function getById($id)
