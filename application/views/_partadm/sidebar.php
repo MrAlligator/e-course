@@ -50,7 +50,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="<?= base_url('backend/home') ?>">
+                        <a class="nav-link" href="<?= base_url('backend/pengguna') ?>">
                             <i class="ni ni-single-02 text-yellow"></i>
                             <span class="nav-link-text">Pengguna</span>
                         </a>

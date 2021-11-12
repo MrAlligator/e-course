@@ -37,4 +37,24 @@ class User_model extends CI_Model
     {
         return $this->db->where('id_user', $id)->update($this->_table, $data);
     }
+
+    public function getSome($limit, $start)
+    {
+        return $this->db->where('is_member', 0)->get($this->_table, $limit, $start)->result_array();
+    }
+
+    public function getPremium($limit, $start)
+    {
+        return $this->db->where('is_member', 1)->get($this->_table, $limit, $start)->result_array();
+    }
+
+    public function hitung_jumlah_user()
+    {
+        $query = $this->db->get($this->_table);
+        if ($query->num_rows() > 0) {
+            return $query->num_rows();
+        } else {
+            return 0;
+        }
+    }
 }
