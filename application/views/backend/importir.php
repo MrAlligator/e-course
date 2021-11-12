@@ -315,7 +315,7 @@
                 <div class="modal fade" id="editModal<?= $buyer['id_importir'] ?>" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
                     <div class="modal-dialog modal- modal-dialog-centered modal-xl" role="document">
                         <div class="modal-content">
-                            <form action="" method="POST">
+                            <form action="<?= base_url('backend/importir/edit') ?>" method="POST">
                                 <div class="modal-header">
                                     <h5 class="modal-title" id="editModalLabel">Edit Detail Importir</h5>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
