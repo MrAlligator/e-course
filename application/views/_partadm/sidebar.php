@@ -14,6 +14,27 @@
                 <h6 class="navbar-heading p-0 text-muted">
                     <span class="docs-normal">Navigasi</span>
                 </h6>
+                <!-- Navigation -->
+                <ul class="navbar-nav mb-md-3">
+                    <li class="nav-item">
+                        <a class="nav-link" href="<?= base_url('backend/home') ?>">
+                            <i class="ni ni-tv-2 text-primary"></i>
+                            <span class="nav-link-text">Dashboard</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="<?= base_url('home') ?>">
+                            <i class="ni ni-spaceship"></i>
+                            <span class="nav-link-text">Kembali ke Frontend?</span>
+                        </a>
+                    </li>
+                </ul>
+                <!-- Divider -->
+                <hr class="my-3">
+                <!-- Heading -->
+                <h6 class="navbar-heading p-0 text-muted">
+                    <span class="docs-normal">Kontrol Data</span>
+                </h6>
                 <!-- Nav items -->
                 <ul class="navbar-nav">
                     <li class="nav-item">
@@ -38,27 +59,6 @@
                         <a class="nav-link" href="<?= base_url('backend/home') ?>">
                             <i class="ni ni-books text-default"></i>
                             <span class="nav-link-text">Artikel</span>
-                        </a>
-                    </li>
-                </ul>
-                <!-- Divider -->
-                <hr class="my-3">
-                <!-- Heading -->
-                <h6 class="navbar-heading p-0 text-muted">
-                    <span class="docs-normal">Navigasi</span>
-                </h6>
-                <!-- Navigation -->
-                <ul class="navbar-nav mb-md-3">
-                    <li class="nav-item">
-                        <a class="nav-link" href="<?= base_url('home') ?>">
-                            <i class="ni ni-spaceship"></i>
-                            <span class="nav-link-text">Kembali ke Frontend?</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="<?= base_url('backend/home') ?>">
-                            <i class="ni ni-tv-2 text-primary"></i>
-                            <span class="nav-link-text">Dashboard</span>
                         </a>
                     </li>
                 </ul>

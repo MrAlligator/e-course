@@ -33,4 +33,9 @@ class Buyers_model extends CI_Model
             return 0;
         }
     }
+
+    public function delete($id)
+    {
+        return $this->db->delete($this->_table, array("id_importir" => $id));
+    }
 }
