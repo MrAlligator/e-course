@@ -174,7 +174,7 @@ class Importir extends CI_Controller
             'website' => $website,
             'produk' => $produk,
             'contact_person' => $cp,
-            'tgl_input' => $date
+            'tgl_edit' => $date
         ];
         $this->db->where('id_importir', $_POST['id']);
         $this->db->update('tb_importir', $data);

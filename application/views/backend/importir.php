@@ -192,7 +192,15 @@
                             <div class="modal-body p-0">
                                 <div class="card border-0 mb-0">
                                     <div class="card-body px-lg-5 py-lg-5">
-                                        <div class="row">
+                                        <div class="row align-items-center">
+                                            <div class="col-lg-6 col-7">
+                                                <h6 class="h4 text-black d-inline-block mb-0">Data Diinput pada <?= $buyer['tgl_input'] ?></h6>
+                                            </div>
+                                            <div class="col-lg-6 col-5 text-right">
+                                                <h6 class="h4 text-black d-inline-block mb-0">Data Diupdate pada <?= $buyer['tgl_edit'] ?></h6>
+                                            </div>
+                                        </div>
+                                        <div class="row py-2">
                                             <div class="col">
                                                 <div class="form-group mb-3">
                                                     <div class="input-group input-group-merge input-group-alternative">

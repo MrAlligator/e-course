@@ -8,12 +8,12 @@
                             <h6 class="h2 text-white d-inline-block mb-0"><?= $title ?></h6>
                         </div>
                         <div class="col-lg-6 col-5 text-right">
-                            <a href="" class="btn btn-neutral">Konfirmasi Membership</a>
+                            <a href="<?= base_url('backend/konfirmasi') ?>" class="btn btn-neutral">Konfirmasi Membership</a>
                         </div>
                     </div>
                     <!-- Card stats -->
                     <div class="row">
-                        <div class="col-xl-3 col-md-6">
+                        <div class="col-xl-4 col-md-6">
                             <div class="card card-stats">
                                 <!-- Card body -->
                                 <div class="card-body">
@@ -35,7 +35,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-xl-3 col-md-6">
+                        <div class="col-xl-4 col-md-6">
                             <div class="card card-stats">
                                 <!-- Card body -->
                                 <div class="card-body">
@@ -57,7 +57,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-xl-3 col-md-6">
+                        <div class="col-xl-4 col-md-6">
                             <div class="card card-stats">
                                 <!-- Card body -->
                                 <div class="card-body">
@@ -79,28 +79,6 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-xl-3 col-md-6">
-                            <div class="card card-stats">
-                                <!-- Card body -->
-                                <div class="card-body">
-                                    <div class="row">
-                                        <div class="col">
-                                            <h5 class="card-title text-uppercase text-muted mb-0">Performance</h5>
-                                            <span class="h2 font-weight-bold mb-0">49,65%</span>
-                                        </div>
-                                        <div class="col-auto">
-                                            <div class="icon icon-shape bg-gradient-info text-white rounded-circle shadow">
-                                                <i class="ni ni-chart-bar-32"></i>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <p class="mt-3 mb-0 text-sm">
-                                        <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> 3.48%</span>
-                                        <span class="text-nowrap">Since last month</span>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -111,6 +89,7 @@
                 <div class="col">
                     <div class="card">
                         <div class="card-header border-0">
+                            <?php echo $this->session->flashdata('message'); ?>
                             <div class="row align-items-center">
                                 <div class="col">
                                     <h3 class="mb-0">Pengguna</h3>
@@ -178,25 +157,27 @@
                             <div class="modal-body p-0">
                                 <div class="card border-0 mb-0">
                                     <div class="card-body px-lg-5 py-lg-5">
-                                        <div class="row">
-                                            <div class="col">
-                                                <div class="form-group mb-3">
-                                                    <div class="input-group input-group-merge input-group-alternative">
-                                                        <div class="input-group-prepend">
-                                                            <span class="input-group-text"><i class="ni ni-building"></i></span>
-                                                        </div>
-                                                        <input class="form-control-plaintext" disabled type="text" value="<?= $pengguna['nama'] ?>">
-                                                    </div>
-                                                </div>
+                                        <div class="row g-0">
+                                            <div class="col-md-4">
+                                                <img id="foto" src="<?= base_url('/assets/img/userimage/') . $pengguna['foto_user']; ?>" class="img-fluid rounded-start img-thumbnail" alt="...">
                                             </div>
-                                            <div class="col">
-                                                <div class="form-group mb-3">
-                                                    <div class="input-group input-group-merge input-group-alternative">
-                                                        <div class="input-group-prepend">
-                                                            <span class="input-group-text"><i class="ni ni-building"></i></span>
-                                                        </div>
-                                                        <input class="form-control-plaintext" disabled type="text" value="<?= $pengguna['email'] ?>">
-                                                    </div>
+                                            <div class="col-md-8">
+                                                <div class="card-body">
+                                                    <h5 class="card-title"><?= $pengguna['nama'] ?></h5>
+                                                    <h5 class="card-text"><?= $pengguna['nomor_hp'] ?></h5>
+                                                    <h5 class="card-text"><?= $pengguna['email'] ?></h5>
+                                                    <h5 class="card-text">
+                                                        <small class="text-muted">
+                                                            <?php if ($pengguna['role_id'] == 2 && $pengguna['is_member'] == 1) {
+                                                                echo "Anggota Premium";
+                                                            } else if ($pengguna['role_id'] == 2 && $pengguna['is_member'] == 0) {
+                                                                echo "Anggota";
+                                                            } else if ($pengguna['role_id'] == 1 && $pengguna['is_member'] == 1) {
+                                                                echo "Administrator";
+                                                            } ?>
+                                                        </small>
+                                                        <small class="text-muted">Sejak <?= date('d F Y', $pengguna['date_created']); ?></small>
+                                                    </h5>
                                                 </div>
                                             </div>
                                         </div>
@@ -205,6 +186,33 @@
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <?php endforeach ?>
+
+            <!-- Modal Delete -->
+            <?php foreach ($user as $pengguna) : ?>
+                <div class="modal fade" id="deleteModal<?= $pengguna['id_user'] ?>" tabindex="-1" role="dialog" aria-labelledby="deleteModal" aria-hidden="true">
+                    <div class="modal-dialog modal-danger modal-dialog-centered modal-" role="document">
+                        <div class="modal-content bg-gradient-danger">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Apa anda yakin?</h5>
+                                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">×</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="py-3 text-center">
+                                    <i class="ni ni-bell-55 ni-3x"></i>
+                                    <h4 class="heading mt-4">Perhatikan dengan Seksama..!!</h4>
+                                    <p>Data yang dihapus tidak akan bisa dikembalikan..!!</p>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button class="btn btn-secondary" type="button" data-dismiss="modal">Batal</button>
+                                <a id="btn-delete" class="btn btn-danger" href="<?= base_url('backend/pengguna/delete/' . $pengguna['id_user']) ?>" data-target="modal">Hapus</a>
                             </div>
                         </div>
                     </div>
