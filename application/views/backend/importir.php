@@ -332,6 +332,7 @@
                                                             <div class="input-group-prepend">
                                                                 <span class="input-group-text"><i class="ni ni-building"></i></span>
                                                             </div>
+                                                            <input type="text" class="form-control" name="id" id="id" value="<?= $buyer['id_importir'] ?>" hidden>
                                                             <input class="form-control" type="text" value="<?= $buyer['nama_perusahaan'] ?>">
                                                         </div>
                                                     </div>
