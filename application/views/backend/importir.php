@@ -34,15 +34,14 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <?php $i = 1;
-                                foreach ($buyers as $buyer) : ?>
+                                <?php foreach ($buyers as $buyer) : ?>
                                     <td width="50px"><?= ++$start; ?></td>
                                     <td width="150px"><?= $buyer['nama_perusahaan'] ?></a></td>
                                     <td><?= $buyer['negara'] ?></td>
                                     <td width="100px">
                                         <a class="badge badge-success" href="" data-toggle="modal" data-target="#infoModal<?= $buyer['id_importir'] ?>"><i class="fas fa-info-circle"></i></a>
                                         <a class="badge badge-warning" href="" data-toggle="modal" data-target="#editModal<?= $buyer['id_importir'] ?>"><i class="fas fa-edit"></i></a>
-                                        <a onclick="deleteConfirm(<?= base_url('backend/importir/delete/') . $buyer['id_importir'] ?>)" class="badge badge-danger" href=""><i class="fas fa-trash"></i></a>
+                                        <a class="badge badge-danger" href="" data-toggle="modal" data-target="#deleteModal<?= $buyer['id_importir'] ?>"><i class="fas fa-trash"></i></a>
                                     </td>
                             </tr>
                         <?php endforeach ?>
@@ -52,13 +51,6 @@
             </div>
 
             <?= $this->pagination->create_links() ?>
-
-            <script>
-                function deleteConfirm(url) {
-                    $('#btn-delete').attr('href', url);
-                    $('#deleteModal').modal();
-                }
-            </script>
 
             <!-- Modal Tambah -->
             <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="addModalLabel" aria-hidden="true">
@@ -334,7 +326,7 @@
                                                                 <span class="input-group-text"><i class="ni ni-building"></i></span>
                                                             </div>
                                                             <input type="text" class="form-control" name="id" id="id" value="<?= $buyer['id_importir'] ?>" hidden>
-                                                            <input class="form-control" type="text" value="<?= $buyer['nama_perusahaan'] ?>">
+                                                            <input class="form-control" type="text" name="perusahaan" id="perusahaan" value="<?= $buyer['nama_perusahaan'] ?>">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -346,7 +338,7 @@
                                                             <div class="input-group-prepend">
                                                                 <span class="input-group-text"><i class="ni ni-single-02"></i></span>
                                                             </div>
-                                                            <input class="form-control" type="text" value="<?= $buyer['contact_person'] ?>">
+                                                            <input class="form-control" type="text" name="cp" id="cp" value="<?= $buyer['contact_person'] ?>">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -358,7 +350,7 @@
                                                             <div class="input-group-prepend">
                                                                 <span class="input-group-text"><i class="ni ni-square-pin"></i></span>
                                                             </div>
-                                                            <input class="form-control" type="text" value="<?= $buyer['alamat'] ?>">
+                                                            <input class="form-control" type="text" name="alamat" id="alamat" value="<?= $buyer['alamat'] ?>">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -368,7 +360,7 @@
                                                             <div class="input-group-prepend">
                                                                 <span class="input-group-text"><i class="ni ni-map-big"></i></span>
                                                             </div>
-                                                            <input class="form-control" type="text" value="<?= $buyer['negara'] ?>">
+                                                            <input class="form-control" type="text" name="negara" id="negara" value="<?= $buyer['negara'] ?>">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -378,7 +370,7 @@
                                                             <div class="input-group-prepend">
                                                                 <span class="input-group-text"><i class="ni ni-world-2"></i></span>
                                                             </div>
-                                                            <input class="form-control" type="text" value="<?= $buyer['website'] ?>">
+                                                            <input class="form-control" type="text" name="website" id="website" value="<?= $buyer['website'] ?>">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -390,7 +382,7 @@
                                                             <div class="input-group-prepend">
                                                                 <span class="input-group-text"><i class="fas fa-phone-square"></i></span>
                                                             </div>
-                                                            <input class="form-control" type="text" value="<?= $buyer['telepon'] ?>">
+                                                            <input class="form-control" type="text" name="telepon" id="telepon" value="<?= $buyer['telepon'] ?>">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -400,7 +392,7 @@
                                                             <div class="input-group-prepend">
                                                                 <span class="input-group-text"><i class="fas fa-fax"></i></span>
                                                             </div>
-                                                            <input class="form-control" type="text" value="<?= $buyer['fax'] ?>">
+                                                            <input class="form-control" type="text" name="fax" id="fax" value="<?= $buyer['fax'] ?>">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -410,7 +402,7 @@
                                                             <div class="input-group-prepend">
                                                                 <span class="input-group-text"><i class="ni ni-email-83"></i></span>
                                                             </div>
-                                                            <input class="form-control" type="text" value="<?= $buyer['email'] ?>">
+                                                            <input class="form-control" type="text" name="email" id="email" value="<?= $buyer['email'] ?>">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -422,7 +414,7 @@
                                                             <div class="input-group-prepend">
                                                                 <span class="input-group-text"><i class="ni ni-shop"></i></span>
                                                             </div>
-                                                            <input class="form-control" type="text" value="<?= $buyer['produk'] ?>">
+                                                            <input class="form-control" type="text" name="produk" id="produk" value="<?= $buyer['produk'] ?>">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -441,26 +433,28 @@
             <?php endforeach ?>
 
             <!-- Modal Delete -->
-            <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModal" aria-hidden="true">
-                <div class="modal-dialog modal-danger modal-dialog-centered modal-" role="document">
-                    <div class="modal-content bg-gradient-danger">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Apa anda yakin?</h5>
-                            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">×</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <div class="py-3 text-center">
-                                <i class="ni ni-bell-55 ni-3x"></i>
-                                <h4 class="heading mt-4">Perhatikan dengan Seksama..!!</h4>
-                                <p>Data yang dihapus tidak akan bisa dikembalikan..!!</p>
+            <?php foreach ($buyers as $buyer) : ?>
+                <div class="modal fade" id="deleteModal<?= $buyer['id_importir'] ?>" tabindex="-1" role="dialog" aria-labelledby="deleteModal" aria-hidden="true">
+                    <div class="modal-dialog modal-danger modal-dialog-centered modal-" role="document">
+                        <div class="modal-content bg-gradient-danger">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Apa anda yakin?</h5>
+                                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">×</span>
+                                </button>
                             </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button class="btn btn-secondary" type="button" data-dismiss="modal">Batal</button>
-                            <a id="btn-delete" class="btn btn-danger" href="#">Hapus</a>
+                            <div class="modal-body">
+                                <div class="py-3 text-center">
+                                    <i class="ni ni-bell-55 ni-3x"></i>
+                                    <h4 class="heading mt-4">Perhatikan dengan Seksama..!!</h4>
+                                    <p>Data yang dihapus tidak akan bisa dikembalikan..!!</p>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button class="btn btn-secondary" type="button" data-dismiss="modal">Batal</button>
+                                <a id="btn-delete" class="btn btn-danger" href="<?= base_url('backend/importir/delete/' . $buyer['id_importir']) ?>" data-target="modal">Hapus</a>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            <?php endforeach ?>
