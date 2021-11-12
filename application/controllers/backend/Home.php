@@ -17,7 +17,6 @@ class Home extends CI_Controller
         $this->load->view('_partadm/sidebar', $data);
         $this->load->view('_partadm/topbar', $data);
         $this->load->view('backend/dashboard', $data);
-        $this->load->view('_partadm/footer', $data);
         $this->load->view('_partadm/js', $data);
     }
 }

@@ -40,17 +40,32 @@ class User_model extends CI_Model
 
     public function getSome($limit, $start)
     {
-        return $this->db->where('is_member', 0)->get($this->_table, $limit, $start)->result_array();
-    }
-
-    public function getPremium($limit, $start)
-    {
-        return $this->db->where('is_member', 1)->get($this->_table, $limit, $start)->result_array();
+        return $this->db->get($this->_table, $limit, $start)->result_array();
     }
 
     public function hitung_jumlah_user()
     {
         $query = $this->db->get($this->_table);
+        if ($query->num_rows() > 0) {
+            return $query->num_rows();
+        } else {
+            return 0;
+        }
+    }
+
+    public function hitung_jumlah_free()
+    {
+        $query = $this->db->where('is_member', 0)->get($this->_table);
+        if ($query->num_rows() > 0) {
+            return $query->num_rows();
+        } else {
+            return 0;
+        }
+    }
+
+    public function hitung_jumlah_premium()
+    {
+        $query = $this->db->where('is_member', 1)->get($this->_table);
         if ($query->num_rows() > 0) {
             return $query->num_rows();
         } else {

@@ -15,7 +15,7 @@ class Pengguna extends CI_Controller
         //Config
         $config['base_url'] = 'http://' . $_SERVER['HTTP_HOST'] . str_replace(basename($_SERVER['SCRIPT_NAME']), "", $_SERVER['SCRIPT_NAME']) . 'backend/pengguna/index';
         $config['total_rows'] = $this->User_model->hitung_jumlah_user();
-        $config['per_page'] = '25';
+        $config['per_page'] = '10';
 
         //Styling
         $config['full_tag_open'] = '<nav><ul class="pagination pagination-sm justify-content-center">';
@@ -50,13 +50,14 @@ class Pengguna extends CI_Controller
         $data['start'] = $this->uri->segment(4);
         $data['title'] = "Pengguna";
         $data['user'] = $this->User_model->getSome($config['per_page'], $data['start']);
-        $data['premium'] = $this->User_model->getPremium($config['per_page'], $data['start']);
+        $data['jumuser'] = $this->User_model->hitung_jumlah_user();
+        $data['jumfree'] = $this->User_model->hitung_jumlah_free();
+        $data['jumprem'] = $this->User_model->hitung_jumlah_premium();
 
         $this->load->view('_partadm/head', $data);
         $this->load->view('_partadm/sidebar', $data);
         $this->load->view('_partadm/topbar', $data);
         $this->load->view('backend/pengguna', $data);
-        $this->load->view('_partadm/footer', $data);
         $this->load->view('_partadm/js', $data);
     }
 }
