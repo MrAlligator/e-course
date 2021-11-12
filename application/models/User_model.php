@@ -56,5 +56,14 @@ class User_model extends CI_Model
         } else {
             return 0;
         }
+    }    
+
+    public function hitung_jumlah_user_premium()
+    {
+        return $this->db->where('role_id',3)->get($this->_table)->num_rows();
+    }
+    public function hitung_jumlah_user_gratis()
+    {
+        return $this->db->where('role_id',2)->get($this->_table)->num_rows();    
     }
 }
