@@ -42,9 +42,6 @@
                     <li class="dropdown"><a href="#"><img class="img-profile rounded-circle img-thumbnail" width="40" src="<?= base_url('assets/img/userimage/') . $user['foto_user']; ?>"><i class="bi bi-chevron-down"></i></a>
                         <ul>
                             <li><a href="<?= base_url('profile') ?>">Profil Pengguna</a></li>
-                            <?php if ($user['role_id'] == 1) : ?>
-                                <li><a href="<?= base_url('backend/home') ?>">Administrator</a></li>
-                            <?php endif; ?>
                             <li><a href="<?= base_url('auth/logout') ?>">Keluar</a></li>
                         </ul>
                     </li>

@@ -33,7 +33,7 @@ class Auth extends CI_Controller
             //cek aktif
             if ($user['is_active'] == 1) {
                 //cek role
-                if ($user['role_id'] == 1 or $user['role_id'] == 2) {
+                if ($user['role_id'] == 2) {
                     //cek pass
                     if (password_verify($password, $user['password'])) {
                         $data = [
@@ -94,7 +94,7 @@ class Auth extends CI_Controller
                 'password' => password_hash($this->input->post('password'), PASSWORD_DEFAULT),
                 'view_password' => htmlspecialchars($this->input->post('password', true)),
                 'role_id' => 2,
-                'is_member' => 1,
+                'is_member' => 0,
                 'is_active' => 0,
                 'date_created' => time()
             ];

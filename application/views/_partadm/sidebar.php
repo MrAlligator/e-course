@@ -22,12 +22,6 @@
                             <span class="nav-link-text">Dashboard</span>
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="<?= base_url('home') ?>">
-                            <i class="ni ni-spaceship"></i>
-                            <span class="nav-link-text">Kembali ke Frontend?</span>
-                        </a>
-                    </li>
                 </ul>
                 <!-- Divider -->
                 <hr class="my-3">
