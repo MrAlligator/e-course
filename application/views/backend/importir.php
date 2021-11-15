@@ -7,7 +7,6 @@
                         <div class="col-lg-6 col-7">
                             <h6 class="h2 text-white d-inline-block mb-0"><?= $title ?></h6>
                         </div>
-                        <?php echo $this->session->flashdata('message'); ?>
                     </div>
                 </div>
             </div>
@@ -16,6 +15,7 @@
         <div class="container-fluid mt--6">
             <div class="card">
                 <div class="card-header border-0">
+                    <?php echo $this->session->flashdata('message'); ?>
                     <div class="row align-items-center">
                         <div class="col text-right">
                             <a href="#!" data-toggle="modal" data-target="#addModal" class=" btn btn-sm btn-primary"> <i class="ni ni-fat-add"></i> Tambah Importir</a>
