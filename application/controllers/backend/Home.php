@@ -9,6 +9,7 @@ class Home extends CI_Controller
         $this->load->model('Buyers_model');
         $this->load->model('Inquiry_model');
         $this->load->model('User_model');
+        is_admin();
     }
 
     public function index()

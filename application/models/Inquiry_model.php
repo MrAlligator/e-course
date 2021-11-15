@@ -12,7 +12,6 @@ class Inquiry_model extends CI_Model
     public function getSome($limit, $start)
     {
         return $this->db->get($this->_table, $limit, $start)->result_array();
-
     }
 
     public function getRandom()
@@ -32,7 +31,11 @@ class Inquiry_model extends CI_Model
 
     public function getById($id)
     {
-        return $this->db->where('id_inquiry',$id)->get($this->_table)->result();
+        return $this->db->where('id_inquiry', $id)->get($this->_table)->result();
     }
-    
+
+    public function delete($id)
+    {
+        return $this->db->delete($this->_table, array("id_inquiry" => $id));
+    }
 }

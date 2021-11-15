@@ -7,6 +7,7 @@ class Importir extends CI_Controller
     {
         parent::__construct();
         $this->load->model('Buyers_model');
+        is_admin();
     }
 
     public function index()
