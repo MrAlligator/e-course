@@ -54,7 +54,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="<?= base_url('backend/home') ?>">
+                        <a class="nav-link" href="<?= base_url('backend/artikel') ?>">
                             <i class="ni ni-books text-default"></i>
                             <span class="nav-link-text">Artikel</span>
                         </a>
