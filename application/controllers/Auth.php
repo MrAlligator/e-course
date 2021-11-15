@@ -6,8 +6,13 @@ class Auth extends CI_Controller
     public function index()
     {
         $data['title'] = "Masuk";
-        $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email');
-        $this->form_validation->set_rules('password', 'Password', 'required|trim');
+        $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email', [
+            'valid_email' => 'Email Tidak Valid',
+            'required' => 'Email Tidak Boleh Kosong!'
+        ]);
+        $this->form_validation->set_rules('password', 'Password', 'required|trim', [
+            'required' => 'Kata Sandi Tidak Boleh Kosong!'
+        ]);
 
         if ($this->form_validation->run() == false) {
             $this->load->view('_partials/header', $data);
@@ -75,9 +80,20 @@ class Auth extends CI_Controller
         $this->form_validation->set_rules('nama', 'Nama', 'required|trim', [
             'required' => 'Nama Tidak Boleh Kosong!'
         ]);
-        $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email|is_unique[tb_user.email]');
-        $this->form_validation->set_rules('password', 'Password', 'required|trim|min_length[8]|matches[konf-password]');
-        $this->form_validation->set_rules('konf-password', 'Password', 'required|trim|matches[password]');
+        $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email|is_unique[tb_user.email]', [
+            'valid_email' => 'Email Tidak Valid',
+            'required' => 'Email Tidak Boleh Kosong!',
+            'in_unique' => 'Email sudah terdaftar'
+        ]);
+        $this->form_validation->set_rules('password', 'Password', 'required|trim|min_length[8]|matches[konf-password]', [
+            'required' => 'Password tidak boleh Kosong',
+            'min_length' => 'Panjang Password harus lebih dari 8',
+            'matches' => 'Password tidak sama'
+        ]);
+        $this->form_validation->set_rules('konf-password', 'Password', 'required|trim|matches[password]', [
+            'required' => 'Password tidak boleh Kosong',
+            'matches' => 'Password tidak sama'
+        ]);
         if ($this->form_validation->run() == false) {
             $this->load->view('_partials/header', $data);
             $this->load->view('_partials/topbar');
