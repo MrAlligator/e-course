@@ -48,6 +48,7 @@ class Home extends CI_Controller
         $data['user'] = $this->db->get_where('tb_user', ['email' => $this->session->userdata('email')])->row_array();
         $need = $this->db->get_where('tb_user', ['email' => $this->session->userdata('email')])->row_array();
         $data['post'] = $this->Forum_model->getAll();
+        $data['kategori'] = $this->Forum_model->getKategori();
         $data['title'] = "Forum";
 
         $this->load->view('_partials/header', $data);
@@ -85,6 +86,7 @@ class Home extends CI_Controller
     {
         $data = [
             'id_user' => $this->input->post('id_user'),
+            'id_kategori' => $this->input->post('id_kategori'),
             'postingan' => $this->input->post('postingan'),
             'like' => $this->input->post('like'),
             'dislike' => $this->input->post('dislike'),

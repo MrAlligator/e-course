@@ -18,7 +18,8 @@
         <p>Data Permintaan menampilkan daftar permintaan yang diperlukan oleh perusahaan importir dari seluruh dunia</p><br>
             <?php if (isset($user['email'])&& $semua!=1) : ?>
             <a href="<?= base_url('frontend/inquiry/getAll') ?>" class="btn btn-success">Lihat Seluruh Data Permintaan</a><br>
-            <?php endif ?>
+            <?php endif ?><br>
+            <a href="<?= base_url('frontend/inquiry/getAll') ?>" class="btn btn-primary">Unduh Dokumen</a><br>
         </div>
 
 <div class="table-responsive">
@@ -37,9 +38,9 @@
           <td><?=$inquiry->produk?></td>
           <td><?=$inquiry->negara?></td>
         <?php if (isset($_SESSION['email'])) { ?>
-          <td><a href="<?=base_url('frontend/Inquiry/detail/'.$inquiry->id_inquiry)?>">Selengkapnya</a></td>
+          <td><?=$inquiry->detail?></td>
         <?php }else{ ?>
-          <td><a href="<?=base_url('home/membership'); ?>">Selengkapnya</a></td>
+          <td><?=$inquiry->negara?></a></td>
         <?php } ?>
           </tr>
         <?php endforeach?>

@@ -58,7 +58,7 @@ class Buyers extends CI_Controller
         $need = $this->db->get_where('tb_user', ['email' => $this->session->userdata('email')])->row_array();
         $data['buyers'] = $this->Buyers_model->getById($id);
 
-        $raw = $this->db->where('id_buyers', $id)->get('tb_buyers')->row_array();;
+        $raw = $this->db->where('id_importir', $id)->get('tb_importir')->row_array();;
         $data['title'] = $raw['nama_perusahaan'];
 
         $this->load->view('_partials/header', $data);
@@ -78,5 +78,20 @@ class Buyers extends CI_Controller
     public function get_buyers()
     {
         echo json_encode($this->Buyers_model->getAll()->result());
+    }
+
+    public function cetak($id)
+    {
+        $this->load->library('dompdf_gen');
+        $data['importir'] = $this->Buyers_model->getById($id);
+        $this->load->view('frontend/print_buyer',$data);
+        $paper_size = 'A4';
+        $orientataion = 'potrait';
+        $html = $this->output->get_output();
+        $this->dompdf->set_paper($paper_size, $orientataion);
+        $this->dompdf->load_html($html);
+        $this->dompdf->render();
+        $this->dompdf->stream("OMNIOXIM_".$id.".pdf", array('Attachment'=>0));
+
     }
 }
