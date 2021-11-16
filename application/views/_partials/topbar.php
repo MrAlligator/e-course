@@ -19,6 +19,8 @@
                     <li><a href="<?= base_url('home/membership') ?>">Keanggotaan</a></li>
                 <?php elseif (isset($user['email']) && $user['is_member'] == 0) : ?>
                     <li><a href="<?= base_url('home/membership') ?>">Keanggotaan</a></li>
+                <?php elseif (isset($user['email']) && $user['is_member'] == 1) : ?>
+                    <li><a href="<?= base_url('home/kalkulator') ?>">Kalkulator Impor</a></li>
                 <?php endif ?>
                 <li><a href="<?= base_url('home/forum') ?>">Forum</a></li>
                 <!-- <li><a href="#about">About</a></li>  

@@ -16,18 +16,28 @@
 <div class="col-lg-9 mt-5 mt-lg-0 d-flex align-items-stretch">
     <div class="php-email-form">
         <div class="row"><?php date_default_timezone_set("Asia/Jakarta");?>
-            <div class="form-group col-md">
-                <h5>Posting pertanyaanmu atau informasi yang kalian ketahui</h5>
-                <textarea class="form-control" rows=8 required name="postingan"></textarea>
-                <input hidden type="text" value="<?=$user['id_user']?>" name="id_user">
-                <input hidden type="number" value=0 name="like">
-                <input hidden type="number" value=0 name="dislike">
-                <input hidden type="text" value="<?=date('Y-m-d')?>" name="tanggal">
-                <input hidden type="text" value="<?=date('H:i')?>" name="jam">
-            </div>
+        <div class="form-group col-md">
+            <h5>Posting pertanyaanmu atau informasi yang kalian ketahui</h5>
         </div>
+        <div class="form-group col-md-3">
+            <select class="form-control" required name="id_kategori">
+                <option disabled selected>Pilih Kategori . . . </option>
+                <?php $i=1;foreach($kategori as $kat):?>
+                    <option value="<?=$i++?>"><?=$kat->nama_kategori?></option>
+                <?php endforeach ?>
+            </select>
+        </div>
+        </div>
+        <div class="form-group row">
+            <textarea class="form-control" rows=8 required name="postingan" placeholder="Masukkan Pertanyaanmu disini . . ."></textarea>
+            <input hidden type="text" value="<?=$user['id_user']?>" name="id_user">
+            <input hidden type="number" value=0 name="like">
+            <input hidden type="number" value=0 name="dislike">
+            <input hidden type="text" value="<?=date('Y-m-d')?>" name="tanggal">
+            <input hidden type="text" value="<?=date('H:i')?>" name="jam">
         <div class="text-center">
-            <button type="submit">Post</button>
+            <br><button type="submit">Post</button>
+        </div>
         </div>
     </div>
 </div>
@@ -47,7 +57,15 @@
 
 <div class="col-lg-12 mt-5 mt-lg-0 d-flex align-items-stretch">
     <div class="php-email-form">
-    <?php foreach($post as $postingan):?>
+        <div class="row">
+        <div class="col-9"></div>
+        <div class="col">
+        <select class="form-control" name="id_kagetori">
+                <option selected>Semua Kategori . . . </option>
+                <option>impor</option>
+                <option>ekspor</option>
+        </select><br></div></div>
+        <?php foreach($post as $postingan):?>
         diposting tanggal <?=date('d F Y', strtotime($postingan->tanggal))?> pukul <?=$postingan->jam?>
         <?php $poster = $this->db->where('id_user', $postingan->id_user)->get('tb_user')->row_array()?>
         <div class="card-header">
@@ -67,11 +85,13 @@
             </div>
             </div>
         </div>
-            <h6>
-                <!-- <i class="bx bx-like"></i><?=$postingan->like?>
-                <i class="bx bx-dislike"></i><?=$postingan->dislike?> -->
+        <h6>
+            <div class="phone">
+                <i class="bi bi-hand-thumbs-up"></i> <?=$postingan->like?>
+                <i class="bi bi-hand-thumbs-down"></i> <?=$postingan->dislike?>
                 <!-- <a class="tombol-simpan" value="simpan">Simpan</a></i> 0 -->
-            </h6><br>
+            </div>
+        </h6><br>
     <?php endforeach; ?>
     </div>
 </div>
