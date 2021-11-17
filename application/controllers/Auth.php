@@ -145,7 +145,7 @@ class Auth extends CI_Controller
         $this->load->library('email', $config);
         $this->email->initialize($config);
 
-        $this->email->from('redshop0990@gmail.com', 'Redshop Jember');
+        $this->email->from('resest003@gmail.com', 'EXIM Community');
         $this->email->to($this->input->post('email'));
         if ($type == 'verify') {
             $this->email->subject('Verifikasi Akun');
@@ -291,7 +291,7 @@ class Auth extends CI_Controller
                                             <td bgcolor="#ffffff" align="center" style="padding: 20px 30px 60px 30px;">
                                                 <table border="0" cellspacing="0" cellpadding="0">
                                                     <tr>
-                                                        <td align="center" style="border-radius: 3px;" bgcolor="#DC143CB"><a href="' . base_url() . 'user/auth/verify?email=' . $this->input->post('email') . '&token=' . urlencode($token) . '" target="_blank" style="font-size: 20px; font-family: Helvetica, Arial, sans-serif; color: #ffffff; text-decoration: none; color: #ffffff; text-decoration: none; padding: 15px 25px; border-radius: 2px; border: 1px solid #FFA73B; display: inline-block;">Konfirmasi Akun</a></td>
+                                                        <td align="center" style="border-radius: 3px;" bgcolor="#DC143CB"><a href="' . base_url() . 'auth/verify?email=' . $this->input->post('email') . '&token=' . urlencode($token) . '" target="_blank" style="font-size: 20px; font-family: Helvetica, Arial, sans-serif; color: #ffffff; text-decoration: none; color: #ffffff; text-decoration: none; padding: 15px 25px; border-radius: 2px; border: 1px solid #FFA73B; display: inline-block;">Konfirmasi Akun</a></td>
                                                     </tr>
                                                 </table>
                                             </td>
@@ -306,7 +306,7 @@ class Auth extends CI_Controller
                             </tr>
                             <tr>
                                 <td bgcolor="#ffffff" align="left" style="padding: 0px 30px 40px 30px; border-radius: 0px 0px 4px 4px; color: #666666; font-family: "Lato", Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 400; line-height: 25px;">
-                                    <p style="margin: 0;">Cheers,<br>RedShop Dev Team</p>
+                                    <p style="margin: 0;">Cheers,<br>EXIM Community Dev Team</p>
                                 </td>
                             </tr>
                         </table>
@@ -497,7 +497,7 @@ class Auth extends CI_Controller
                             </tr>
                             <tr>
                                 <td bgcolor="#ffffff" align="left" style="padding: 0px 30px 40px 30px; border-radius: 0px 0px 4px 4px; color: #666666; font-family: "Lato", Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 400; line-height: 25px;">
-                                    <p style="margin: 0;">Cheers,<br>RedShop Dev Team</p>
+                                    <p style="margin: 0;">Cheers,<br>EXIM Community Dev Team</p>
                                 </td>
                             </tr>
                         </table>
