@@ -18,7 +18,8 @@
             <p>Data Importir menampilkan perusahaan importir dari seluruh dunia</p><br>
             <?php if (isset($user['email']) && $semua != 1) : ?>
                 <a href="<?= base_url('frontend/buyers/getAll') ?>" class="btn btn-success">Lihat Seluruh Data Importir</a><br>
-            <?php endif ?>
+                <?php endif ?>
+                <br><button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#download">Unduh Data</button><br>
         </div>
 
         <div class="table-responsive">
@@ -41,10 +42,9 @@
                             <td><?= $buyer->produk ?></td>
                             <td><?= $buyer->negara ?></td>
                             <?php if (isset($_SESSION['email'])) { ?>
-                            <td><a href="<?= base_url('frontend/buyers/detail/') . $buyer->id_importir ?>">Detail<a><br>
-                            <a href="<?= base_url('frontend/buyers/cetak/') . $buyer->id_importir ?>">Cetak<a></td>
+                            <td><a href="<?= base_url('frontend/buyers/detail/') . $buyer->id_importir ?>">Detail<a><br></td>
                             <?php } else { ?>
-                            <td><a href="<?= base_url('home/membership') ?>">Selengkapnya<a></td>
+                            <td><a href="<?= base_url('home/membership') ?>">Detail<a></td>
                             <?php } ?>
                     </tr>
                 <?php endforeach ?>
@@ -54,3 +54,23 @@
 
     </div>
 </section>
+
+<div class="modal" id="download" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Unduh data</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div>
+        <button>Unduh semua data</button></div>
+        <button>Unduh berdasarkan pencarian</button>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>

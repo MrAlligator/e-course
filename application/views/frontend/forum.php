@@ -1,4 +1,11 @@
 <!-- ======= Contact Section ======= -->
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script>
+    $("#like").on("click", function(){
+        $(this).find($(".bi-hand-thumbs-up")).toggleClass('bi-hand-thumbs-up bi-hand-thumbs-up-fill');
+    })
+</script>
+
 <section id="contact" class="contact">
     <div class="container" data-aos="fade-up">
 
@@ -62,8 +69,9 @@
         <div class="col">
         <select class="form-control" name="id_kagetori">
                 <option selected>Semua Kategori . . . </option>
-                <option>impor</option>
-                <option>ekspor</option>
+                <?php $i=1;foreach($kategori as $kat):?>
+                    <option value="<?=$i++?>"><?=$kat->nama_kategori?></option>
+                <?php endforeach ?>
         </select><br></div></div>
         <?php foreach($post as $postingan):?>
         diposting tanggal <?=date('d F Y', strtotime($postingan->tanggal))?> pukul <?=$postingan->jam?>
@@ -75,22 +83,19 @@
             </div>
             <div class="col">
                 <?=$poster['nama']." ";
-                if($poster['role_id']==1){?><i class="bx bx-badge-check bx-solid"></i><?php }?>
+                if($poster['role_id']==1){?><i class="bx bx-badge-check"></i><?php }?>
                     <h4><?=$postingan->postingan?></h4>
             </div>
             <div class="col-sm-1">
                 <?php if(isset($_SESSION['email'])&&$poster['email']===$_SESSION['email']):?>
                     <a href="<?=base_url('home/del_post/').$postingan->id_post?>"><i class="bx bx-trash"></i></a>
                 <?php endif ?>
-            </div>
+            </div><br>
             </div>
         </div>
         <h6>
-            <div class="phone">
-                <i class="bi bi-hand-thumbs-up"></i> <?=$postingan->like?>
-                <i class="bi bi-hand-thumbs-down"></i> <?=$postingan->dislike?>
-                <!-- <a class="tombol-simpan" value="simpan">Simpan</a></i> 0 -->
-            </div>
+            <!-- <a id="like"><i class="bi bi-hand-thumbs-up"></i></a> <?=$postingan->like?>
+            <a id="dislke"><i class="bi bi-hand-thumbs-down"></i></a> <?=$postingan->dislike?> -->
         </h6><br>
     <?php endforeach; ?>
     </div>

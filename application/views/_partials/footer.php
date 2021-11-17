@@ -34,10 +34,10 @@
 
                 <!-- -->
                 <div class="col-lg-3 col-md-6 footer-links">
-                    <h4>Useful Links</h4>
+                    <h4>Data Kami</h4>
                     <ul>
-                        <li><i class="bx bx-chevron-right"></i> <a href="<?= base_url() ?>">Beranda</a></li>
-                        <li><i class="bx bx-chevron-right"></i> <a href="<?= base_url() ?>">Tentang Kami</a></li>
+                        <li><i class="bx bx-chevron-right"></i> <a href="<?= base_url('frontend/buyers') ?>">Data Importir</a></li>
+                        <li><i class="bx bx-chevron-right"></i> <a href="<?= base_url('frontend/inquiry') ?>">Data Produk</a></li>
                         <!-- <li><i class="bx bx-chevron-right"></i> <a href="#">Services</a></li>
                         <li><i class="bx bx-chevron-right"></i> <a href="#">Terms of service</a></li>
                         <li><i class="bx bx-chevron-right"></i> <a href="#">Privacy policy</a></li> -->
@@ -47,17 +47,17 @@
                 <div class="col-lg-3 col-md-6 footer-links">
                     <h4>Our Services</h4>
                     <ul>
-                        <li><i class="bx bx-chevron-right"></i> <a href="#">Web Design</a></li>
-                        <li><i class="bx bx-chevron-right"></i> <a href="#">Web Development</a></li>
-                        <li><i class="bx bx-chevron-right"></i> <a href="#">Product Management</a></li>
-                        <li><i class="bx bx-chevron-right"></i> <a href="#">Marketing</a></li>
-                        <li><i class="bx bx-chevron-right"></i> <a href="#">Graphic Design</a></li>
+                        <li><i class="bx bx-chevron-right"></i> <a href="<?= base_url('home') ?>">Beranda</a></li>
+                        <li><i class="bx bx-chevron-right"></i> <a href="<?= base_url('profile') ?>">Profil Pengguna</a></li>
+                        <li><i class="bx bx-chevron-right"></i> <a href="<?= base_url('home/articles') ?>">Artikel</a></li>
+                        <li><i class="bx bx-chevron-right"></i> <a href="<?= base_url('home/membership') ?>">Keanggotaan</a></li>
+                        <li><i class="bx bx-chevron-right"></i> <a href="<?= base_url('home/forum') ?>">Forum EXIM</a></li>
                     </ul>
                 </div>
 
                 <div class="col-lg-3 col-md-6 footer-links">
-                    <h4>Our Social Networks</h4>
-                    <p>Cras fermentum odio eu feugiat lide par naso tierra videa magna derita valies</p>
+                    <h4>Sosial Media Kami</h4>
+                    <p>Sosial Media dari Komunitas OMNI-EXIM</p>
                     <div class="social-links mt-3">
                         <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
                         <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
