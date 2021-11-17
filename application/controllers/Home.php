@@ -42,6 +42,20 @@ class Home extends CI_Controller
         $this->load->view('_partials/footer', $data);
         $this->load->view('_partials/js', $data);
     }
+    
+    public function kalkulator()
+    {
+        $data['user'] = $this->db->get_where('tb_user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['title'] = "calculator";
+
+        $this->load->view('_partials/header', $data);
+        $this->load->view('_partials/topbar', $data);
+        $this->load->view('_partials/hero', $data);
+        $this->load->view('_partials/clients', $data);
+        $this->load->view('frontend/calculator', $data);
+        $this->load->view('_partials/footer', $data);
+        $this->load->view('_partials/js', $data);
+    }
 
     public function forum()
     {
