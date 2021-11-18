@@ -46,7 +46,7 @@
                             </div>
                         </div>
                         <br>
-                        <?php if ($user['role_id'] == 2) { ?>
+                        <?php if ($user['is_member'] == 0) { ?>
                         <a href="<?= base_url('frontend/membership') ?>" class="btn btn-primary">Menjadi Anggota Premium</a>
                         <?php } ?>
                         <br>

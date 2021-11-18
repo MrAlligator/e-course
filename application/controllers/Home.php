@@ -61,7 +61,6 @@ class Home extends CI_Controller
     {
         $data['user'] = $this->db->get_where('tb_user', ['email' => $this->session->userdata('email')])->row_array();
         $need = $this->db->get_where('tb_user', ['email' => $this->session->userdata('email')])->row_array();
-        $data['post'] = $this->Forum_model->getAll();
         $data['kategori'] = $this->Forum_model->getKategori();
         $data['title'] = "Forum";
 
@@ -70,6 +69,29 @@ class Home extends CI_Controller
         $this->load->view('_partials/hero', $data);
         $this->load->view('_partials/clients', $data);
         $this->load->view('frontend/forum', $data);
+        $this->load->view('frontend/articles', $data);
+        if (!isset($_SESSION['email']) || isset($_SESSION['email']) && $need['is_member'] == 0) {
+            $this->load->view('frontend/membership', $data);
+        }
+        $this->load->view('_partials/footer', $data);
+        $this->load->view('_partials/js', $data);
+    }
+
+    public function kategori($id_kategori)
+    {
+        $data['user'] = $this->db->get_where('tb_user', ['email' => $this->session->userdata('email')])->row_array();
+        $need = $this->db->get_where('tb_user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['post'] = $this->Forum_model->getByKategori($id_kategori);
+        $data['kategori'] = $this->Forum_model->getKategori();
+        
+        $raw = $this->db->where('id_kategori', $id_kategori)->get('tb_kategori')->row_array();;
+        $data['title'] = $raw['nama_kategori'];
+
+        $this->load->view('_partials/header', $data);
+        $this->load->view('_partials/topbar', $data);
+        $this->load->view('_partials/hero', $data);
+        $this->load->view('_partials/clients', $data);
+        $this->load->view('frontend/kategori', $data);
         $this->load->view('frontend/articles', $data);
         if (!isset($_SESSION['email']) || isset($_SESSION['email']) && $need['is_member'] == 0) {
             $this->load->view('frontend/membership', $data);
