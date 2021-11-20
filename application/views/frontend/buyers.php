@@ -19,7 +19,7 @@
             <?php if (isset($user['email']) && $semua != 1) : ?>
                 <a href="<?= base_url('frontend/buyers/getAll') ?>" class="btn btn-success">Lihat Seluruh Data Importir</a><br>
                 <?php endif ?>
-                <br><button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#download">Unduh Data</button><br>
+                <br><button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#download">Unduh Dokumen</button><br>
         </div>
 
         <div class="table-responsive">
@@ -63,9 +63,9 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <div>
-        <button>Unduh semua data</button></div>
-        <button>Unduh berdasarkan pencarian</button>
+        <div class="text-center">
+        <button class="btn btn-primary">Unduh semua data</button></div>
+        <button class="btn btn-primary">Unduh berdasarkan pencarian</button>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

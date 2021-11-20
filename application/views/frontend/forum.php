@@ -22,7 +22,7 @@
         <div class="card-header">
             <a href="<?=base_url('home/kategori/'.$kat->id_kategori)?>"><h4><?=$kat->nama_kategori?></h4></a>
             <a href="<?=base_url('home/kategori/'.$kat->id_kategori)?>"><p><?=$kat->deskripsi?></p></a>
-        </div>
+        </div><br>
         <?php endforeach ?>
     </div>
 </div>

@@ -83,6 +83,7 @@ class Home extends CI_Controller
         $need = $this->db->get_where('tb_user', ['email' => $this->session->userdata('email')])->row_array();
         $data['post'] = $this->Forum_model->getByKategori($id_kategori);
         $data['kategori'] = $this->Forum_model->getKategori();
+        $data['id_kategori'] = $id_kategori;
         
         $raw = $this->db->where('id_kategori', $id_kategori)->get('tb_kategori')->row_array();;
         $data['title'] = $raw['nama_kategori'];
@@ -131,7 +132,7 @@ class Home extends CI_Controller
         ];
 
         $this->Forum_model->create($data);
-        redirect('home/forum');
+        redirect('home/kategori/'.$this->input->post('id_kategori'));
     }
 
     public function del_post($id)

@@ -32,9 +32,9 @@
                                             <p class="card-text"><?= $user['email']; ?></p>
                                             <p class="card-text"><small class="text-muted">Bergabung Sejak <?= date('d F Y', $user['date_created']); ?> </small></p>
                                             <p class="card-text">
-                                                <?php if ($user['role_id'] == 3) {
+                                                <?php if ($user['is_member'] == 1) {
                                                     echo "Anggota Premium";
-                                                } else if ($user['role_id'] == 2) {
+                                                } else if ($user['is_member'] == 0) {
                                                     echo "Keanggotaan Gratis";
                                                 } else if ($user['role_id'] == 1) {
                                                     echo "Administrator";

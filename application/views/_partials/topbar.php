@@ -12,7 +12,7 @@
                 <li class="dropdown"><a href="#"><span>Data Kami</span> <i class="bi bi-chevron-down"></i></a>
                     <ul>
                         <li><a href="<?= base_url('frontend/buyers') ?>"> Data Importir</a></li>
-                        <li><a href="<?= base_url('frontend/Inquiry') ?>">Data Produk</a></li>
+                        <li><a href="<?= base_url('frontend/inquiry') ?>">Data Produk</a></li>
                     </ul>
                 <li><a href="<?= base_url('home/articles') ?>">Artikel</a></li>
                 <?php if (!isset($user['email'])) : ?>

@@ -30,6 +30,7 @@
         <div class="form-group row">
             <textarea class="form-control" rows=8 required name="postingan" placeholder="Masukkan Pertanyaanmu disini . . ."></textarea>
             <input hidden type="text" value="<?=$user['id_user']?>" name="id_user">
+            <input hidden type="text" value="<?=$id_kategori?>" name="id_kategori">
             <input hidden type="number" value=0 name="like">
             <input hidden type="number" value=0 name="dislike">
             <input hidden type="text" value="<?=date('Y-m-d')?>" name="tanggal">
