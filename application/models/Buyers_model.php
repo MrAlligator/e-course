@@ -14,6 +14,14 @@ class Buyers_model extends CI_Model
         return $this->db->order_by('rand()')->limit(50)->get($this->_table)->result();
     }
 
+    public function import($data)
+    {
+        $import = $this->db->insert_batch($this->_table, $data);
+        if ($import) {
+            return true;
+        }
+    }
+
     public function getById($id)
     {
         return $this->db->where('id_importir', $id)->get($this->_table)->result();

@@ -19,6 +19,18 @@
                     <div class="row align-items-center">
                         <div class="col text-right">
                             <a href="#!" data-toggle="modal" data-target="#addModal" class=" btn btn-sm btn-primary"> <i class="ni ni-fat-add"></i> Tambah Importir</a>
+                            <form action="" method="post" enctype="multipart/form-data">
+                                <div class="form-group">
+                                    <label>Pilih File Excel</label>
+                                    <input type="file" name="fileExcel">
+                                </div>
+                                <div>
+                                    <button class='btn btn-success' type="submit">
+                                        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                                        Import
+                                    </button>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>

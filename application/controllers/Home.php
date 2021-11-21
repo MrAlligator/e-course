@@ -42,7 +42,7 @@ class Home extends CI_Controller
         $this->load->view('_partials/footer', $data);
         $this->load->view('_partials/js', $data);
     }
-    
+
     public function kalkulator()
     {
         $data['user'] = $this->db->get_where('tb_user', ['email' => $this->session->userdata('email')])->row_array();
@@ -84,7 +84,7 @@ class Home extends CI_Controller
         $data['post'] = $this->Forum_model->getByKategori($id_kategori);
         $data['kategori'] = $this->Forum_model->getKategori();
         $data['id_kategori'] = $id_kategori;
-        
+
         $raw = $this->db->where('id_kategori', $id_kategori)->get('tb_kategori')->row_array();;
         $data['title'] = $raw['nama_kategori'];
 
@@ -132,7 +132,7 @@ class Home extends CI_Controller
         ];
 
         $this->Forum_model->create($data);
-        redirect('home/kategori/'.$this->input->post('id_kategori'));
+        redirect('home/kategori/' . $this->input->post('id_kategori'));
     }
 
     public function del_post($id)
