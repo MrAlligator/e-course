@@ -18,19 +18,7 @@
                     <?php echo $this->session->flashdata('message'); ?>
                     <div class="row align-items-center">
                         <div class="col text-right">
-                            <a href="#!" data-toggle="modal" data-target="#addModal" class=" btn btn-sm btn-primary"> <i class="ni ni-fat-add"></i> Tambah Importir</a>
-                            <form action="" method="post" enctype="multipart/form-data">
-                                <div class="form-group">
-                                    <label>Pilih File Excel</label>
-                                    <input type="file" name="fileExcel">
-                                </div>
-                                <div>
-                                    <button class='btn btn-success' type="submit">
-                                        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-                                        Import
-                                    </button>
-                                </div>
-                            </form>
+                            <a href="#!" data-toggle="modal" data-target="#tanyaModal" class=" btn btn-sm btn-primary"> <i class="ni ni-fat-add"></i> Tambah Importir</a>
                         </div>
                     </div>
                 </div>
@@ -478,3 +466,61 @@
                     </div>
                 </div>
             <?php endforeach ?>
+
+            <!-- Modal Tanya -->
+            <div class="modal fade" id="tanyaModal" tabindex="-1" role="dialog" aria-labelledby="tanyaModal" aria-hidden="true">
+                <div class="modal-dialog modal-danger modal-dialog-centered modal-" role="document">
+                    <div class="modal-content bg-gradient-danger">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Pilih Metode Menambahkan Data</h5>
+                            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">×</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="py-3 text-center">
+                                <i class="ni ni-folder-17 ni-3x"></i>
+                            </div>
+                            <div class="row">
+                                <div class="col text-center">
+                                    <a href="#!" data-toggle="modal" data-dismiss="modal" data-target="#addModal" class="btn btn-success">Manual</a>
+                                </div>
+                                <div class="col text-center">
+                                    <a href="#!" data-toggle="modal" data-dismiss="modal" data-target="#importModal" class="btn btn-success">Import</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modal Import -->
+            <div class="modal fade" id="importModal" tabindex="-1" role="dialog" aria-labelledby="importModal" aria-hidden="true">
+                <div class="modal-dialog modal- modal-dialog-centered modal-" role="document">
+                    <div class="modal-content bg-gradient">
+                        <form action="" method="post" enctype="multipart/form-data">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Import Data Importir</h5>
+                                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">×</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="py-3 text-center">
+                                    <i class="ni ni-folder-17 ni-3x"></i>
+                                    <p>Belum Mengetahui Format excel yang dipakai? Download format berikut!</p>
+                                    <a href="<?= base_url('backend/importir/download') ?>" class="badge badge-primary"><i class="fas fa-file-download"></i> Download</a>
+                                </div>
+                                <div class="form-group py-3 text-center">
+                                    <label>Pilih File Excel</label><br>
+                                    <input type="file" name="fileExcel">
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button class="btn btn-secondary" type="button" data-dismiss="modal">Batal</button>
+                                <button class="btn btn-success" type="submit">Import</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>

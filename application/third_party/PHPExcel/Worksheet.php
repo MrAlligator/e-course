@@ -1477,11 +1477,11 @@ class PHPExcel_Worksheet implements PHPExcel_IComparable
      * @param $pValue PHPExcel_Style_Conditional[]
      * @return PHPExcel_Worksheet
      */
-    public function setConditionalStyles($pCoordinate = 'A1', $pValue)
-    {
-        $this->conditionalStylesCollection[strtoupper($pCoordinate)] = $pValue;
-        return $this;
-    }
+    // public function setConditionalStyles($pCoordinate = 'A1', $pValue)
+    // {
+    //     $this->conditionalStylesCollection[strtoupper($pCoordinate)] = $pValue;
+    //     return $this;
+    // }
 
     /**
      * Get style for cell by using numeric cell coordinates

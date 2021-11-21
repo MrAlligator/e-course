@@ -1,6 +1,5 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
-require_once('PHPExcel.php');
 class Importir extends CI_Controller
 {
     public function __construct()
@@ -123,6 +122,11 @@ class Importir extends CI_Controller
         }
     }
 
+    public function download()
+    {
+        force_download('assets/format_import/Format Import Data Importir.xlsx', NULL);
+    }
+
     public function import()
     {
         if (isset($_FILES["fileExcel"]["name"])) {
@@ -132,18 +136,31 @@ class Importir extends CI_Controller
                 $highestRow = $worksheet->getHighestRow();
                 $highestColumn = $worksheet->getHighestColumn();
                 for ($row = 2; $row <= $highestRow; $row++) {
-                    $nama = $worksheet->getCellByColumnAndRow(1, $row)->getValue();
-                    $jurusan = $worksheet->getCellByColumnAndRow(2, $row)->getValue();
-                    $angkatan = $worksheet->getCellByColumnAndRow(3, $row)->getValue();
+                    $date = time();
+                    $perusahaan = $worksheet->getCellByColumnAndRow(1, $row)->getValue();
+                    $alamat = $worksheet->getCellByColumnAndRow(2, $row)->getValue();
+                    $negara = $worksheet->getCellByColumnAndRow(3, $row)->getValue();
+                    $telepon = $worksheet->getCellByColumnAndRow(4, $row)->getValue();
+                    $fax = $worksheet->getCellByColumnAndRow(5, $row)->getValue();
+                    $email = $worksheet->getCellByColumnAndRow(6, $row)->getValue();
+                    $website = $worksheet->getCellByColumnAndRow(7, $row)->getValue();
+                    $produk = $worksheet->getCellByColumnAndRow(8, $row)->getValue();
+                    $cp = $worksheet->getCellByColumnAndRow(9, $row)->getValue();
                     $temp_data[] = array(
-                        'nama'    => $nama,
-                        'jurusan'    => $jurusan,
-                        'angkatan'    => $angkatan
+                        'nama_perusahaan' => $perusahaan,
+                        'alamat' => $alamat,
+                        'negara' => $negara,
+                        'telepon' => $telepon,
+                        'fax' => $fax,
+                        'email' => $email,
+                        'website' => $website,
+                        'produk' => $produk,
+                        'contact_person' => $cp,
+                        'tgl_input' => $date
                     );
                 }
             }
-            $this->load->model('ImportModel');
-            $insert = $this->ImportModel->insert($temp_data);
+            $insert = $this->Buyers_model->import($temp_data);
             if ($insert) {
                 $this->session->set_flashdata('status', '<span class="glyphicon glyphicon-ok"></span> Data Berhasil di Import ke Database');
                 redirect($_SERVER['HTTP_REFERER']);
