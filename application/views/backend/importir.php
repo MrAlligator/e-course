@@ -498,7 +498,7 @@
             <div class="modal fade" id="importModal" tabindex="-1" role="dialog" aria-labelledby="importModal" aria-hidden="true">
                 <div class="modal-dialog modal- modal-dialog-centered modal-" role="document">
                     <div class="modal-content bg-gradient">
-                        <form action="" method="post" enctype="multipart/form-data">
+                        <form action="<?= base_url('backend/importir/import') ?>" method="post" enctype="multipart/form-data">
                             <div class="modal-header">
                                 <h5 class="modal-title" id="exampleModalLabel">Import Data Importir</h5>
                                 <button class="close" type="button" data-dismiss="modal" aria-label="Close">
