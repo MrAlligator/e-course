@@ -10,6 +10,23 @@
 <script src="<?= base_url() ?>/adminast/vendor/chart.js/dist/Chart.extension.js"></script>
 <!-- Argon JS -->
 <script src="<?= base_url() ?>/adminast/js/argon.js?v=1.2.0"></script>
+<script>
+    let dropdown = $('#locality-dropdown');
+
+    dropdown.empty();
+
+    dropdown.append('<option selected="true" disabled>Choose State/Province</option>');
+    dropdown.prop('selectedIndex', 0);
+
+    const url = '<?= base_url('adminast/json/countries.json') ?>';
+
+    // Populate dropdown with list of provinces
+    $.getJSON(url, function(data) {
+        $.each(data, function(key, entry) {
+            dropdown.append($('<option></option>').attr('value', entry.code).text(entry.name));
+        })
+    });
+</script>
 </body>
 
 </html>

@@ -107,7 +107,8 @@
                                                         <div class="input-group-prepend">
                                                             <span class="input-group-text"><i class="ni ni-map-big"></i></span>
                                                         </div>
-                                                        <input class="form-control" type="text" name="negara" id="negara" placeholder="Negara Asal Importir">
+                                                        <select id="locality-dropdown" name="locality" class="form-control">
+                                                        </select>
                                                     </div>
                                                 </div>
                                             </div>
