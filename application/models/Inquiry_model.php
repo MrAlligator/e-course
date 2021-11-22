@@ -9,6 +9,14 @@ class Inquiry_model extends CI_Model
         return $this->db->get($this->_table)->result();
     }
 
+    public function import($data)
+    {
+        $import = $this->db->insert_batch($this->_table, $data);
+        if ($import) {
+            return true;
+        }
+    }
+
     public function getSome($limit, $start)
     {
         return $this->db->get($this->_table, $limit, $start)->result_array();

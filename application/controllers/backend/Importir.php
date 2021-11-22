@@ -124,7 +124,7 @@ class Importir extends CI_Controller
 
     public function download()
     {
-        force_download('assets/format_import/Format Import Data Importir.xlsx', NULL);
+        force_download('adminast/format_import/Format Import Data Importir.xlsx', NULL);
     }
 
     public function import()
