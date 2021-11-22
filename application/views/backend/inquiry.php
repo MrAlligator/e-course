@@ -18,7 +18,7 @@
                     <?php echo $this->session->flashdata('message'); ?>
                     <div class="row align-items-center">
                         <div class="col">
-                            <form method="POST" action="<?= base_url('backend/importir/search') ?>" class="navbar-search navbar-search-light form-inline mr-sm-3">
+                            <form method="POST" action="<?= base_url('backend/inquiry/search') ?>" class="navbar-search navbar-search-light form-inline mr-sm-3">
                                 <div class="form-group mb-0">
                                     <div class="input-group input-group-alternative input-group-merge">
                                         <input class="form-control" placeholder="Search" type="text" id="key" name="key">
