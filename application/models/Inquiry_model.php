@@ -17,8 +17,11 @@ class Inquiry_model extends CI_Model
         }
     }
 
-    public function getSome($limit, $start)
+    public function getSome($limit, $start, $like = '')
     {
+        if ($like) {
+            $this->db->where($like);
+        }
         return $this->db->get($this->_table, $limit, $start)->result_array();
     }
 
@@ -27,8 +30,11 @@ class Inquiry_model extends CI_Model
         return $this->db->order_by('rand()')->limit(10)->get($this->_table)->result();
     }
 
-    public function hitung_jumlah_inquiries()
+    public function hitung_jumlah_inquiries($like = '')
     {
+        if ($like) {
+            $this->db->where($like);
+        }
         $query = $this->db->get($this->_table);
         if ($query->num_rows() > 0) {
             return $query->num_rows();
