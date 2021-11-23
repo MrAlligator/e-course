@@ -1,11 +1,12 @@
-        <!-- ======= Contact Section ======= -->
-        <section id="contact" class="contact">
-            <div class="container" data-aos="fade-up">
+<!-- ======= Contact Section ======= -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<section id="contact" class="contact">
+    <div class="container" data-aos="fade-up">
 
-                <div class="section-title">
-                    <h2>Kalkulator Impor</h2>
-                    <p>Melakukan Perhitungan</p>
-                </div>
+    <div class="section-title">
+        <h2>Kalkulator Impor</h2>
+        <p>Melakukan Perhitungan</p>
+    </div>
 
 <div class="row">
     <div class="col-lg-6 d-flex align-items-stretch">
@@ -18,46 +19,41 @@
             <div class="row">
                 <div class="form-group col-md-6">
                     <label for="name">Harga Beli Pabrik</label>
-                    <input type="number" name="harga_beli" class="form-control" id="name" required>
+                    <input type="number" name="harga_beli" class="form-control" value=0 id="harga_beli" min=0 required>
                 </div>
                 <div class="form-group col-md-6">
                     <label for="name">Keuntungan</label>
-                    <select type="number" class="form-control" name="keuntungan" id="keuntungan" required>
-                        <option>5 %</option>
-                        <option>10 %</option>
-                        <option>15 %</option>
-                        <option>20 %</option>
-                        <option>25 %</option>
-                        <option>30 %</option>
-                        <option>35 %</option>
-                        <option>40 %</option>
-                        <option>45 %</option>
-                        <option>50 %</option>
-                        <option>55 %</option>
-                        <option>60 %</option>
-                        <option>65 %</option>
-                        <option>70 %</option>
-                        <option>75 %</option>
-                        <option>80 %</option>
-                        <option>85 %</option>
-                        <option>90 %</option>
-                        <option>95 %</option>
-                        <option>100 %</option>
-                    </select>
+                    <input type="number" class="form-control" name="keuntungan" value=0 id="keuntungan" min=0 max=100 required>
                 </div>
             </div><br>
             <div class="form-group">
                 <label for="name">Kurs Dollar</label>
-                <input type="number" class="form-control" name="subject" id="subject" required>
+                <input type="number" class="form-control" name="kurs" id="kurs" value="14266" required>
             </div><br>
             <div class="row form-group">
                 <label for="name">EXW [ Ex Works ] Price :</label>
-                <input type="number" class="form-control" name="subject" id="subject" required disabled>
+                <input type="number" class="form-control" name="exw" id="exw" required disabled>
+                <input type="number" class="form-control" name="biaya_kirim" id="biaya_kirim" required hidden>
             </div><br>
-            <button class="btn btn-primary">Hitung</button>
+            <button id="hitung_exw" class="btn btn-primary">Hitung</button>
         </div>
     </div>
-    
+
+<script type="text/javascript">
+$(document).ready(function($){
+$('#hitung_exw').on('click',function(){
+ var harga_beli = parseInt($('#harga_beli').val());
+ var keuntungan = parseInt($('#keuntungan').val());
+ var kurs = parseInt($('#kurs').val());
+ untung = harga_beli*keuntungan/100;
+ biaya = harga_beli+untung;
+ total = biaya/kurs;
+ $("#exw").val(total);
+ $("#biaya_kirim").val(biaya);
+});
+});
+</script>
+
     <div class="col-lg-6 d-flex align-items-stretch">
         <div class="info">
             <div class="address">
@@ -68,85 +64,130 @@
             <div class="row">
                 <div class="form-group col-md-6">
                     <label for="name">Container 40"</label>
-                    <input type="number" name="container" class="form-control" id="container" required>
+                    <input id="container" type="number" value=0 min=0 name="container" class="form-control" value=0 required>
                 </div>
                 <div class="form-group col-md-6">
                     <label for="name">Wrapping Cost</label>
-                    <input type="number" class="form-control" name="wrapping_cost" id="wrapping_cost" required>
+                    <input id="wrapping_cost" type="number" value=0 min=0 class="form-control" name="wrapping_cost" required>
                 </div>
             </div><br>
             <div class="row">
                 <div class="form-group col-md-6">
                     <label for="name">Loading Fees</label>
-                    <input type="number" name="loading_fees" class="form-control" id="loading_fees" required>
+                    <input id="loading_fees" type="number" value=0 min=0 name="loading_fees" class="form-control" required>
                 </div>
                 <div class="form-group col-md-6">
                     <label for="name">Document Shipping Cost</label>
-                    <input type="number" class="form-control" name="document_ship" id="document_ship" required>
+                    <input id="document_ship" type="number" value=0 min=0 class="form-control" name="document_ship" required>
                 </div>
             </div><br>
             <div class="row">
                 <div class="form-group col-md-6">
                     <label for="name">Bank Draft Fees</label>
-                    <input type="number" name="bank_draft" class="form-control" id="bank_draft" required>
+                    <input id="bank_draft" type="number" value=0 min=0 name="bank_draft" class="form-control" required>
                 </div>
                 <div class="form-group col-md-6">
                     <label for="name">Certificate Of Origin (COO)</label>
-                    <input type="number" class="form-control" name="certificate" id="certificate" required>
+                    <input id="certificate" type="number" value=0 min=0 class="form-control" name="certificate" required>
                 </div>
             </div><br>
             <div class="row">
                 <div class="form-group col-md-6">
                     <label for="name">Phytosanitary License Fees</label>
-                    <input type="number" name="phytosanitary" class="form-control" id="phytosanitary" required>
+                    <input id="phytosanitary" type="number" value=0 min=0 name="phytosanitary" class="form-control" required>
                 </div>
                 <div class="form-group col-md-6">
                     <label for="name">Fumigation</label>
-                    <input type="number" class="form-control" name="fumigation" id="fumigation" required>
+                    <input id="fumigation" type="number" value=0 min=0 class="form-control" name="fumigation" required>
                 </div>
             </div><br>
             <div class="row">
                 <div class="form-group col-md-6">
                     <label for="name">Domestic Shipping Cost</label>
-                    <input type="number" name="domestic_shipping" class="form-control" id="domestic_shipping" required>
+                    <input id="domestic_shipping" type="number" value=0 min=0 name="domestic_shipping" class="form-control" required>
                 </div>
                 <div class="form-group col-md-6">
                     <label for="name">Undername</label>
-                    <input type="number" class="form-control" name="undername" id="undername" required>
+                    <input id="undername" type="number" value=0 min=0 class="form-control" name="undername" required>
                 </div>
             </div><br>
             <div class="row">
                 <div class="form-group col-md-6">
                     <label for="name">Freight Forwarder Fees</label>
-                    <input type="number" name="freight_forwarder" class="form-control" id="freight_forwarder" required>
+                    <input id="freight_forwarder" type="number" value=0 min=0 name="freight_forwarder" class="form-control" required>
                 </div>
                 <div class="form-group col-md-6">
                     <label for="name">Unloading (Heavy Lift) Charges</label>
-                    <input type="number" class="form-control" name="unloading" id="unloading" required>
+                    <input id="unloading" type="number" value=0 min=0 class="form-control" name="unloading" required>
                 </div>
             </div><br>
             <div class="row">
                 <div class="form-group col-md-6">
                     <label for="name">Terminal Services Fees</label>
-                    <input type="number" name="terminal_services" class="form-control" id="terminal_services" required>
+                    <input id="terminal_services" type="number" value=0 min=0 name="terminal_services" class="form-control" required>
                 </div>
                 <div class="form-group col-md-6">
                     <label for="name">Surveyor Fees</label>
-                    <input type="number" class="form-control" name="surveyor" id="surveyor" required>
+                    <input id="surveyor" type="number" value=0 min=0 class="form-control" name="surveyor" required>
                 </div>
             </div><br>
             <div class="form-group">
+                <label for="name">Kapasitas</label>
+                <input id="kapasitas" type="number" value=0 min=0 class="form-control" name="kapasitas" required>
+            </div><br>
+            <div class="form-group">
                 <label for="name">Door To POL per Unit</label>
-                <input type="number" class="form-control" name="door_to_pol" id="door_to_pol" required disabled>
+                <input id="door_to_pol" type="number" value=0 min=0 class="form-control" name="door_to_pol" required disabled>
             </div><br>
             <div class="form-group">
                 <label for="name">FOB [Free On Board] Price</label>
-                <input type="number" class="form-control" name="fob" id="fob" required disabled>
+                <input id="fob" type="number" value=0 min=0 class="form-control" name="fob" required disabled>
             </div><br>
-            <button class="btn btn-primary">Hitung</button>
+            <button id="hitung_fob" class="btn btn-primary">Hitung</button>
         </div>
     </div>
 </div>
+
+<script type="text/javascript">
+$(document).ready(function($){
+$('#hitung_fob').on('click',function(){
+ var container = parseInt($('#container').val());                           var wrapping_cost = parseInt($('#wrapping_cost').val());
+ var loading_fees = parseInt($('#loading_fees').val());             var document_ship = parseInt($('#document_ship').val());
+ var bank_draft = parseInt($('#bank_draft').val());                 var certificate = parseInt($('#certificate').val());
+ var phytosanitary = parseInt($('#phytosanitary').val());           var fumigation = parseInt($('#fumigation').val());
+ var domestic_shipping = parseInt($('#domestic_shipping').val());   var undername = parseInt($('#undername').val());
+ var freight_forwarder = parseInt($('#freight_forwarder').val());   var unloading = parseInt($('#unloading').val());
+ var terminal_services = parseInt($('#terminal_services').val());   var surveyor = parseInt($('#surveyor').val());
+ var kapasitas = parseInt($('#kapasitas').val()*1000);              var biaya_kirim = parseInt($('#biaya_kirim').val());
+ biaya = container+wrapping_cost+loading_fees+document_ship
+        +bank_draft+certificate+phytosanitary+fumigation
+        +domestic_shipping+undername+freight_forwarder
+        +unloading+terminal_services+surveyor;
+total = biaya/kapasitas;
+fob = total+biaya_kirim;
+ $("#door_to_pol").val(total);
+ $("#fob").val(fob);
+});
+
+$('#kapasitas').on('change',function(){
+ var container = parseInt($('#container').val());                   var wrapping_cost = parseInt($('#wrapping_cost').val());
+ var loading_fees = parseInt($('#loading_fees').val());             var document_ship = parseInt($('#document_ship').val());
+ var bank_draft = parseInt($('#bank_draft').val());                 var certificate = parseInt($('#certificate').val());
+ var phytosanitary = parseInt($('#phytosanitary').val());           var fumigation = parseInt($('#fumigation').val());
+ var domestic_shipping = parseInt($('#domestic_shipping').val());   var undername = parseInt($('#undername').val());
+ var freight_forwarder = parseInt($('#freight_forwarder').val());   var unloading = parseInt($('#unloading').val());
+ var terminal_services = parseInt($('#terminal_services').val());   var surveyor = parseInt($('#surveyor').val());
+ var kapasitas = parseInt($(this).val())*1000;
+ biaya = container+wrapping_cost+loading_fees+document_ship
+        +bank_draft+certificate+phytosanitary+fumigation
+        +domestic_shipping+undername+freight_forwarder
+        +unloading+terminal_services+surveyor;
+total = biaya/kapasitas;
+ $("#door_to_pol").val(total);
+});
+
+});
+</script>
 
     </div>
 </section><!-- End Contact Section -->
