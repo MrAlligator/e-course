@@ -13,31 +13,54 @@
         <div class="info">
             <div class="address">
                 <i class="bi bi-calculator"></i>
-                <h4>Harga Beli ke Pabrik</h4>
-                <p>Harga beli</p>
+                <h4>EXW Price</h4>
+                <p>EX Works Price</p>
             </div>
-            <div class="row">
-                <div class="form-group col-md-6">
-                    <label for="name">Harga Beli Pabrik</label>
-                    <input type="number" name="harga_beli" class="form-control" value=0 id="harga_beli" min=0 required>
-                </div>
-                <div class="form-group col-md-6">
-                    <label for="name">Keuntungan</label>
-                    <input type="number" class="form-control" name="keuntungan" value=0 id="keuntungan" min=0 max=100 required>
-                </div>
-            </div><br>
-            <div class="form-group">
-                <label for="name">Kurs Dollar</label>
-                <input type="number" class="form-control" name="kurs" id="kurs" value="14266" required>
-            </div><br>
-            <div class="row form-group">
-                <label for="name">EXW [ Ex Works ] Price :</label>
-                <input type="number" class="form-control" name="exw" id="exw" required disabled>
-                <input type="number" class="form-control" name="biaya_kirim" id="biaya_kirim" required hidden>
-            </div><br>
-            <button id="hitung_exw" class="btn btn-primary">Hitung</button>
+
+<div class="row">
+    <div class="form-group col-md-8">
+        <label for="name">Factory Cost</label>
+        <div class="input-group">
+            <span class="input-group-text">Rp</span>
+            <input type="number" name="harga_beli" class="form-control" value=0 id="harga_beli" min=0 required>
         </div>
     </div>
+    <div class="form-group col-md-4">
+        <label for="name">Margin</label>
+        <div class="input-group">
+            <input type="number" class="form-control" name="keuntungan" value=0 id="keuntungan" min=0 max=100 required>
+            <span class="input-group-text">%</span>
+        </div>
+    </div>
+</div><br>
+<div class="form-group">
+    <label for="name">Unit</label>
+    <select type="number" name="harga_beli" class="form-control" required>
+        <option>Kilograms</option>
+        <option>TNE (TON)</option>
+        <option>PCS</option>
+        <option>Pack</option>
+    </select>
+</div><br>
+<div class="form-group">
+    <label for="name">Kurs Dollar</label>
+    <div class="input-group">
+        <span class="input-group-text">Rp</span>
+        <input type="number" class="form-control" name="kurs" id="kurs" value="14266" required>
+    </div><br>
+</div>
+<div class="row form-group">
+    <label for="name">EXW [ Ex Works ] Price :</label>
+        <div class="input-group">
+            <span class="input-group-text">USD</span>
+            <input type="number" class="form-control" name="exw" id="exw" required disabled>
+        </div>
+    </div><br>
+    <button id="hitung_exw" class="btn btn-primary">Calculate</button>
+
+        </div>
+    </div>
+<input type="number" class="form-control" name="biaya_kirim" id="biaya_kirim" required hidden>
 
 <script type="text/javascript">
 $(document).ready(function($){
@@ -58,7 +81,7 @@ $('#hitung_exw').on('click',function(){
         <div class="info">
             <div class="address">
                 <i class="bi bi-calculator"></i>
-                    <h4>Financing and Inland Fees</h4>
+                    <h4>Inland Trucking and Port Charges</h4>
                     <p>Door to POL</p>
             </div>
             <div class="row">
@@ -77,7 +100,7 @@ $('#hitung_exw').on('click',function(){
                     <input id="loading_fees" type="number" value=0 min=0 name="loading_fees" class="form-control" required>
                 </div>
                 <div class="form-group col-md-6">
-                    <label for="name">Document Shipping Cost</label>
+                    <label for="name">Shipping Document Fees</label>
                     <input id="document_ship" type="number" value=0 min=0 class="form-control" name="document_ship" required>
                 </div>
             </div><br>
@@ -132,18 +155,18 @@ $('#hitung_exw').on('click',function(){
                 </div>
             </div><br>
             <div class="form-group">
-                <label for="name">Kapasitas</label>
+                <label for="name">Container Capacity</label>
                 <input id="kapasitas" type="number" value=0 min=0 class="form-control" name="kapasitas" required>
             </div><br>
             <div class="form-group">
-                <label for="name">Door To POL per Unit</label>
+                <label for="name">Cost per Unit for Door To POL</label>
                 <input id="door_to_pol" type="number" value=0 min=0 class="form-control" name="door_to_pol" required disabled>
             </div><br>
             <div class="form-group">
-                <label for="name">FOB [Free On Board] Price</label>
+                <label for="name">FOB [Free On Board] Price per Unit</label>
                 <input id="fob" type="number" value=0 min=0 class="form-control" name="fob" required disabled>
             </div><br>
-            <button id="hitung_fob" class="btn btn-primary">Hitung</button>
+            <button id="hitung_fob" class="btn btn-primary">Calculate</button>
         </div>
     </div>
 </div>
