@@ -63,13 +63,21 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <div class="text-center">
-        <button class="btn btn-primary">Unduh semua data</button></div>
-        <button class="btn btn-primary">Unduh berdasarkan pencarian</button>
+        <form action="<?=base_url('frontend/buyers/cetak')?>" method="post">
+          <div class="text-center row">
+            <label>Kata kunci :</label>
+            <div class="form-group col-6">
+              <input type="text" name="cari" class="form-control" id="cari" placeholder="Cari . . ."></div>
+              <div class="form-group col-6">
+            <button class="btn btn-primary">Unduh dengan filter</button></div>
+          </form>
+          <div class="text-center">
+            <label>Atau</label></div>
+          <div class="text-center form-group">
+            <a href="<?=base_url('frontend/buyers/cetak_semua')?>" class="btn btn-primary">Unduh semua data</a></div>
+        </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
       </div>
     </div>
   </div>

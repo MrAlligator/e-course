@@ -48,6 +48,14 @@ class Buyers_model extends CI_Model
         }
     }
 
+    public function get_buyers_keyword($keyword){
+        $this->db->select('*');
+        $this->db->from($this->_table);
+        $this->db->like('produk', $keyword);
+        $this->db->or_like('negara', $keyword);
+        return $this->db->get()->result();
+    }
+
     public function delete($id)
     {
         return $this->db->delete($this->_table, array("id_importir" => $id));

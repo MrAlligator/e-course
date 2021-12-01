@@ -404,6 +404,8 @@ class Cellmap {
     $node = $frame->get_node();
     
     // Determine where this cell is going
+    if (get_class($node) != 'DOMText') {
+
     $colspan = $node->getAttribute("colspan");
     $rowspan = $node->getAttribute("rowspan");
 
@@ -416,6 +418,8 @@ class Cellmap {
       $rowspan = 1;
       $node->setAttribute("rowspan",1);
     }
+  }
+
     $key = $frame->get_id();
 
     $bp = $style->get_border_properties();

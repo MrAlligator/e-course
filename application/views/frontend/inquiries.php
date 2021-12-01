@@ -14,13 +14,13 @@
 <section id="contact" class="contact">
   <div class="container" data-aos="fade-up">
     <div class="section-title">
-        <h2>Data Permintaan</h2>
-        <p>Data Permintaan menampilkan daftar permintaan yang diperlukan oleh perusahaan importir dari seluruh dunia</p><br>
+        <h2>Data Produk</h2>
+        <p>Data Produk menampilkan daftar permintaan produk yang diperlukan oleh perusahaan importir dari seluruh dunia</p><br>
             <?php if (isset($user['email'])&& $semua!=1) : ?>
             <a href="<?= base_url('frontend/inquiry/getAll') ?>" class="btn btn-success">Lihat Seluruh Data Permintaan</a><br>
-            <?php endif ?><br>
-            <a href="<?= base_url('frontend/inquiry/getAll') ?>" class="btn btn-primary">Unduh Dokumen</a><br>
-        </div>
+            <br><button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#download">Unduh Dokumen</button><br>
+            <?php endif ?>
+          </div>
 
 <div class="table-responsive">
   <table id="tabel_inquiry" class="table table-bordered table-striped" width="100%" cellspacing="0">
@@ -50,6 +50,34 @@
 
   </div>
 </section>
+
+<div class="modal" id="download" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Unduh data</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form action="<?=base_url('frontend/inquiry/cetak')?>" method="post">
+          <div class="text-center row">
+            <label>Kata kunci :</label>
+            <div class="form-group col-6">
+              <input type="text" name="cari" class="form-control" id="cari" placeholder="Cari . . ."></div>
+              <div class="form-group col-6">
+            <button class="btn btn-primary">Unduh dengan filter</button></div>
+          </form>
+          <div class="text-center">
+            <label>Atau</label></div>
+          <div class="text-center form-group">
+            <a href="<?=base_url('frontend/inquiry/cetak_semua')?>" class="btn btn-primary">Unduh semua data</a></div>
+        </div>
+      </div>
+      <div class="modal-footer">
+      </div>
+    </div>
+  </div>
+</div>
 
 
 

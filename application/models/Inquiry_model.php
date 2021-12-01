@@ -43,6 +43,14 @@ class Inquiry_model extends CI_Model
         }
     }
 
+    public function get_inquiry_keyword($keyword){
+        $this->db->select('*');
+        $this->db->from($this->_table);
+        $this->db->like('produk', $keyword);
+        $this->db->or_like('negara', $keyword);
+        return $this->db->get()->result();
+    }
+
     public function getById($id)
     {
         return $this->db->where('id_inquiry', $id)->get($this->_table)->result();
