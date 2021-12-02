@@ -4154,7 +4154,7 @@ EOT;
    * @param bool $is_mask true if the image is a mask
    * @param bool $mask true if the image is masked
    */
-  function addImagePng($file, $x, $y, $w =  0, $h =  0, &$img, $is_mask = false, $mask = null) {
+  function addImagePng($file, $x, $y, $w =  0, $h =  0, $img=NULL, $is_mask = false, $mask = null) {
     //if already cached, need not to read again
     if ( isset($this->imagelist[$file]) ) {
       $data = null;

@@ -7,7 +7,7 @@
                         <th scope="col">Nama Perusahaan</th>
                         <th scope="col">Produk</th>
                         <th scope="col">Negara</th>
-                        <th scope="col">Pilihan</th>
+                        <th scope="col">Detail</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -21,7 +21,6 @@
                             <td>Telp :<?= $buyer->telepon ?><br>
                                 Fax : <?= $buyer->fax ?><br>
                                 Email : <?= $buyer->email ?><br>
-                                Produk : <?= $buyer->produk ?><br>
                                 Website : <a href="https://<?= $buyer->website ?>"><?= $buyer->website ?></a><br>
                                 Contact Person : <?= $buyer->contact_person ?><br></td>
                             </tr>
