@@ -58,14 +58,16 @@ class Inquiry extends CI_Controller
     {
         $this->load->library('dompdf_gen');
         $data['inquiries'] = $this->Inquiry_model->getAll();
+        $this->load->view('_partials/header', $data);
         $this->load->view('frontend/print_inquiry',$data);
+        $this->load->view('_partials/js', $data);
         $paper_size = 'A4';
         $orientataion = 'potrait';
         $html = $this->output->get_output();
         $this->dompdf->set_paper($paper_size, $orientataion);
         $this->dompdf->load_html($html);
         $this->dompdf->render();
-        $this->dompdf->stream("OMNIOXIM_Inquiry.pdf", array('Attachment'=>0));
+        $this->dompdf->stream("OMNIEXIM_Inquiry.pdf", array('Attachment'=>0));
 
     }
 
@@ -74,14 +76,16 @@ class Inquiry extends CI_Controller
         $this->load->library('dompdf_gen');
         $keyword=$this->input->post('cari');
         $data['inquiries'] = $this->Inquiry_model->get_inquiry_keyword($keyword);
+        $this->load->view('_partials/header', $data);
         $this->load->view('frontend/print_inquiry',$data);
+        $this->load->view('_partials/js', $data);      
         $paper_size = 'A4';
         $orientataion = 'potrait';
         $html = $this->output->get_output();
         $this->dompdf->set_paper($paper_size, $orientataion);
         $this->dompdf->load_html($html);
         $this->dompdf->render();
-        $this->dompdf->stream("OMNIOXIM_Inquiry_keyword=".$keyword.".pdf", array('Attachment'=>0));
+        $this->dompdf->stream("OMNIEXIM_Inquiry_keyword=".$keyword.".pdf", array('Attachment'=>0));
 
     }
 }

@@ -84,14 +84,17 @@ class Buyers extends CI_Controller
     {
         $this->load->library('dompdf_gen');
         $data['importir'] = $this->Buyers_model->getAll();
+        $this->load->view('_partials/header', $data);
         $this->load->view('frontend/print_buyer',$data);
+        $this->load->view('_partials/js', $data);
         $paper_size = 'A4';
         $orientataion = 'potrait';
         $html = $this->output->get_output();
         $this->dompdf->set_paper($paper_size, $orientataion);
         $this->dompdf->load_html($html);
+        set_time_limit(600);
         $this->dompdf->render();
-        $this->dompdf->stream("OMNIOXIM_Buyers.pdf", array('Attachment'=>0));
+        $this->dompdf->stream("OMNIEXIM_Buyers.pdf", array('Attachment'=>0));
 
     }
 
@@ -100,14 +103,17 @@ class Buyers extends CI_Controller
         $this->load->library('dompdf_gen');
         $keyword=$this->input->post('cari');
         $data['importir'] = $this->Buyers_model->get_buyers_keyword($keyword);
+        $this->load->view('_partials/header', $data);
         $this->load->view('frontend/print_buyer',$data);
+        $this->load->view('_partials/js', $data);
         $paper_size = 'A4';
         $orientataion = 'potrait';
         $html = $this->output->get_output();
+        set_time_limit(600);
         $this->dompdf->set_paper($paper_size, $orientataion);
         $this->dompdf->load_html($html);
         $this->dompdf->render();
-        $this->dompdf->stream("OMNIOXIM_".$keyword.".pdf", array('Attachment'=>0));
+        $this->dompdf->stream("OMNIEXIM_buyers_keyword=".$keyword.".pdf", array('Attachment'=>0));
 
     }
 }

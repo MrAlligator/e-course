@@ -1,7 +1,6 @@
-<!DOCTYPE html>
-<html><head></head><body>
 <div class="table-responsive">
-            <table id="tabel_importir" class="table table-bordered table-striped" width="100%" cellspacing="0">
+    <h3>Data Importir</h3>
+            <table border="0.5" class="table table-bordered table-striped" width="100%" cellspacing="0">
                 <thead class="thead-dark text-primary">
                     <tr>
                         <th scope="col">No</th>
@@ -12,21 +11,21 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <?php $i = 1;
+                    <?php $i = 1;
                         foreach ($importir as $buyer) : ?>
+                            <tr>
                             <td><?= $i++ ?></td>
                             <td><?= $buyer->nama_perusahaan ?></a></td>
                             <td><?= $buyer->produk ?></td>
                             <td><?= $buyer->negara ?></td>
-                            <?php if (isset($_SESSION['email'])) { ?>
-                            <td><a href="<?= base_url('frontend/buyers/detail/') . $buyer->id_importir ?>">Detail<a><br></td>
-                            <?php } else { ?>
-                            <td><a href="<?= base_url('home/membership') ?>">Detail<a></td>
-                            <?php } ?>
-                    </tr>
-                <?php endforeach ?>
+                            <td>Telp :<?= $buyer->telepon ?><br>
+                                Fax : <?= $buyer->fax ?><br>
+                                Email : <?= $buyer->email ?><br>
+                                Produk : <?= $buyer->produk ?><br>
+                                Website : <a href="https://<?= $buyer->website ?>"><?= $buyer->website ?></a><br>
+                                Contact Person : <?= $buyer->contact_person ?><br></td>
+                            </tr>
+                        <?php endforeach;?>
                 </tbody>
             </table>
         </div>
-</body></html>
