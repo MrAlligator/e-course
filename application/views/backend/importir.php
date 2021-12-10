@@ -86,7 +86,7 @@
                                                         <div class="input-group-prepend">
                                                             <span class="input-group-text"><i class="ni ni-building"></i></span>
                                                         </div>
-                                                        <input class="form-control" type="text" name="perusahaan" id="perusahaan" placeholder="Nama Pelaku Importir">
+                                                        <input class="form-control" type="text" name="perusahaan" id="perusahaan" placeholder="Nama Pelaku Importir" required><?= form_error('perusahaan', '<small class="text-danger pl-3">', '</small>') ?>
                                                     </div>
                                                 </div>
                                             </div>
@@ -98,7 +98,7 @@
                                                         <div class="input-group-prepend">
                                                             <span class="input-group-text"><i class="ni ni-single-02"></i></span>
                                                         </div>
-                                                        <input class="form-control" type="text" name="cp" id="cp" placeholder="Contact Person">
+                                                        <input class="form-control" type="text" name="cp" id="cp" placeholder="Contact Person" required><?= form_error('cp', '<small class="text-danger pl-3">', '</small>') ?>
                                                     </div>
                                                 </div>
                                             </div>
@@ -110,7 +110,7 @@
                                                         <div class="input-group-prepend">
                                                             <span class="input-group-text"><i class="ni ni-square-pin"></i></span>
                                                         </div>
-                                                        <input class="form-control" type="text" name="alamat" id="alamat" placeholder="Alamat Importir">
+                                                        <input class="form-control" type="text" name="alamat" id="alamat" placeholder="Alamat Importir" required><?= form_error('alamat', '<small class="text-danger pl-3">', '</small>') ?>
                                                     </div>
                                                 </div>
                                             </div>
@@ -120,8 +120,12 @@
                                                         <div class="input-group-prepend">
                                                             <span class="input-group-text"><i class="ni ni-map-big"></i></span>
                                                         </div>
-                                                        <select id="locality-dropdown" name="locality" class="form-control">
-                                                        </select>
+                                                        <select id="negara" name="negara" class="form-control" required>
+                                                            <option value="" disabled >Pilih Negara</option>
+                                                            <?php foreach ($negara as $ngr) : ?>
+                                                                <option value="<?= $ngr['negara']; ?>"><?= $ngr['negara']; ?></option>
+                                                            <?php endforeach; ?>
+                                                        </select><?= form_error('negara', '<small class="text-danger pl-3">', '</small>') ?>
                                                     </div>
                                                 </div>
                                             </div>
@@ -143,7 +147,7 @@
                                                         <div class="input-group-prepend">
                                                             <span class="input-group-text"><i class="fas fa-phone-square"></i></span>
                                                         </div>
-                                                        <input class="form-control" type="text" name="telepon" id="telepon" placeholder="No Telepon Importir">
+                                                        <input class="form-control" type="text" name="telepon" id="telepon" placeholder="No Telepon Importir" onkeypress="return hanyaAngka(event)" required><?= form_error('telepon', '<small class="text-danger pl-3">', '</small>') ?>
                                                     </div>
                                                 </div>
                                             </div>
@@ -153,7 +157,7 @@
                                                         <div class="input-group-prepend">
                                                             <span class="input-group-text"><i class="fas fa-fax"></i></span>
                                                         </div>
-                                                        <input class="form-control" type="text" name="fax" id="fax" placeholder="No Fax Importir">
+                                                        <input class="form-control" type="text" name="fax" id="fax" placeholder="No Fax Importir" onkeypress="return hanyaAngka(event)" required><?= form_error('fax', '<small class="text-danger pl-3">', '</small>') ?>
                                                     </div>
                                                 </div>
                                             </div>
@@ -163,7 +167,7 @@
                                                         <div class="input-group-prepend">
                                                             <span class="input-group-text"><i class="ni ni-email-83"></i></span>
                                                         </div>
-                                                        <input class="form-control" type="text" name="email" id="email" placeholder="Email Importir">
+                                                        <input class="form-control" type="text" name="email" id="email" placeholder="Email Importir" required><?= form_error('email', '<small class="text-danger pl-3">', '</small>') ?>
                                                     </div>
                                                 </div>
                                             </div>
@@ -175,7 +179,7 @@
                                                         <div class="input-group-prepend">
                                                             <span class="input-group-text"><i class="ni ni-shop"></i></span>
                                                         </div>
-                                                        <input class="form-control" type="text" name="produk" id="produk" placeholder="Produk Importir">
+                                                        <input class="form-control" type="text" name="produk" id="produk" placeholder="Produk Importir" required><?= form_error('produk', '<small class="text-danger pl-3">', '</small>') ?>
                                                     </div>
                                                 </div>
                                             </div>
@@ -348,7 +352,7 @@
                                                                 <span class="input-group-text"><i class="ni ni-building"></i></span>
                                                             </div>
                                                             <input type="text" class="form-control" name="id" id="id" value="<?= $buyer['id_importir'] ?>" hidden>
-                                                            <input class="form-control" type="text" name="perusahaan" id="perusahaan" value="<?= $buyer['nama_perusahaan'] ?>">
+                                                            <input class="form-control" type="text" name="perusahaan" id="perusahaan" value="<?= $buyer['nama_perusahaan'] ?>" required><?= form_error('perusahaan', '<small class="text-danger pl-3">', '</small>') ?>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -360,7 +364,7 @@
                                                             <div class="input-group-prepend">
                                                                 <span class="input-group-text"><i class="ni ni-single-02"></i></span>
                                                             </div>
-                                                            <input class="form-control" type="text" name="cp" id="cp" value="<?= $buyer['contact_person'] ?>">
+                                                            <input class="form-control" type="text" name="cp" id="cp" value="<?= $buyer['contact_person'] ?>" required><?= form_error('cp', '<small class="text-danger pl-3">', '</small>') ?>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -372,7 +376,7 @@
                                                             <div class="input-group-prepend">
                                                                 <span class="input-group-text"><i class="ni ni-square-pin"></i></span>
                                                             </div>
-                                                            <input class="form-control" type="text" name="alamat" id="alamat" value="<?= $buyer['alamat'] ?>">
+                                                            <input class="form-control" type="text" name="alamat" id="alamat" value="<?= $buyer['alamat'] ?>" required><?= form_error('alamat', '<small class="text-danger pl-3">', '</small>') ?>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -382,7 +386,12 @@
                                                             <div class="input-group-prepend">
                                                                 <span class="input-group-text"><i class="ni ni-map-big"></i></span>
                                                             </div>
-                                                            <input class="form-control" type="text" name="negara" id="negara" value="<?= $buyer['negara'] ?>">
+                                                            <select id="negara" name="negara" class="form-control" required>
+                                                                <option value="<?= $buyer['negara'] ?>" selected><?= $buyer['negara'] ?></option>
+                                                                <?php foreach ($negara as $ngr) : ?>
+                                                                    <option value="<?= $ngr['negara']; ?>"><?= $ngr['negara']; ?></option>
+                                                                <?php endforeach; ?>
+                                                            </select><?= form_error('email', '<small class="text-danger pl-3">', '</small>') ?>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -404,17 +413,17 @@
                                                             <div class="input-group-prepend">
                                                                 <span class="input-group-text"><i class="fas fa-phone-square"></i></span>
                                                             </div>
-                                                            <input class="form-control" type="text" name="telepon" id="telepon" value="<?= $buyer['telepon'] ?>">
+                                                            <input class="form-control" type="text" name="telepon" id="telepon" value="<?= $buyer['telepon'] ?>" onkeypress="return hanyaAngka(event)" required><?= form_error('telepon', '<small class="text-danger pl-3">', '</small>') ?>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-lg-2">
+                                                <div class=" col-lg-2">
                                                     <div class="form-group">
                                                         <div class="input-group input-group-merge input-group-alternative">
                                                             <div class="input-group-prepend">
                                                                 <span class="input-group-text"><i class="fas fa-fax"></i></span>
                                                             </div>
-                                                            <input class="form-control" type="text" name="fax" id="fax" value="<?= $buyer['fax'] ?>">
+                                                            <input class="form-control" type="text" name="fax" id="fax" value="<?= $buyer['fax'] ?>" onkeypress="return hanyaAngka(event)" required><?= form_error('fax', '<small class="text-danger pl-3">', '</small>') ?>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -424,7 +433,7 @@
                                                             <div class="input-group-prepend">
                                                                 <span class="input-group-text"><i class="ni ni-email-83"></i></span>
                                                             </div>
-                                                            <input class="form-control" type="text" name="email" id="email" value="<?= $buyer['email'] ?>">
+                                                            <input class="form-control" type="text" name="email" id="email" value="<?= $buyer['email'] ?>" required><?= form_error('email', '<small class="text-danger pl-3">', '</small>') ?>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -436,7 +445,7 @@
                                                             <div class="input-group-prepend">
                                                                 <span class="input-group-text"><i class="ni ni-shop"></i></span>
                                                             </div>
-                                                            <input class="form-control" type="text" name="produk" id="produk" value="<?= $buyer['produk'] ?>">
+                                                            <input class="form-control" type="text" name="produk" id="produk" value="<?= $buyer['produk'] ?>" required><?= form_error('produk', '<small class="text-danger pl-3">', '</small>') ?>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -538,3 +547,13 @@
                     </div>
                 </div>
             </div>
+
+            <!-- JS Hanya Angka -->
+            <script>
+                function hanyaAngka(event) {
+                    var angka = (event.which) ? event.which : event.keyCode
+                    if (angka != 46 && angka > 31 && (angka < 48 || angka > 57))
+                        return false;
+                    return true;
+                }
+            </script>

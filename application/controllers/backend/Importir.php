@@ -51,6 +51,7 @@ class Importir extends CI_Controller
         $data['title'] = "Importir";
         $like = '';
         $data['buyers'] = $this->Buyers_model->getSome($config['per_page'], $data['start'], $like);
+        $data['negara'] = $this->db->get('tb_negara')->result_array();
 
         $this->load->view('_partadm/head', $data);
         $this->load->view('_partadm/sidebar', $data);
@@ -106,6 +107,7 @@ class Importir extends CI_Controller
         $data['start'] = $this->uri->segment(5);
         $data['title'] = "Importir";
         $data['buyers'] = $this->Buyers_model->getSome($config['per_page'], $data['start'], $like);
+        $data['negara'] = $this->db->get('tb_negara')->result_array();
 
         $this->load->view('_partadm/head', $data);
         $this->load->view('_partadm/sidebar', $data);
@@ -128,16 +130,14 @@ class Importir extends CI_Controller
         $this->form_validation->set_rules('negara', 'Negara', 'required|trim', [
             'required' => 'Negara tidak boleh kosong!'
         ]);
-        $this->form_validation->set_rules('website', 'Website', 'required|trim', [
-            'required' => 'Website tidak boleh kosong!'
-        ]);
         $this->form_validation->set_rules('telepon', 'Telepon', 'required|trim', [
             'required' => 'Telepon tidak boleh kosong!'
         ]);
         $this->form_validation->set_rules('fax', 'Faximile', 'required|trim', [
             'required' => 'Faximile tidak boleh kosong!'
         ]);
-        $this->form_validation->set_rules('email', 'Email', 'required|trim', [
+        $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email', [
+            'valid_email' => 'Email Tidak Valid',
             'required' => 'Email tidak boleh kosong!'
         ]);
         $this->form_validation->set_rules('produk', 'Produk', 'required|trim', [
@@ -252,7 +252,8 @@ class Importir extends CI_Controller
         $this->form_validation->set_rules('fax', 'Faximile', 'required|trim', [
             'required' => 'Faximile tidak boleh kosong!'
         ]);
-        $this->form_validation->set_rules('email', 'Email', 'required|trim', [
+        $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email', [
+            'valid_email' => 'Email Tidak Valid',
             'required' => 'Email tidak boleh kosong!'
         ]);
         $this->form_validation->set_rules('produk', 'Produk', 'required|trim', [

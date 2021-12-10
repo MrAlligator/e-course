@@ -87,7 +87,7 @@
                                                         <div class="input-group-prepend">
                                                             <span class="input-group-text"><i class="ni ni-single-02"></i></span>
                                                         </div>
-                                                        <input class="form-control" name="produk" id="produk" type="text" placeholder="Masukkan Produk">
+                                                        <input class="form-control" name="produk" id="produk" type="text" placeholder="Masukkan Produk" required><?= form_error('produk', '<small class="text-danger pl-3">', '</small>') ?>
                                                     </div>
                                                 </div>
                                             </div>
@@ -97,7 +97,12 @@
                                                         <div class="input-group-prepend">
                                                             <span class="input-group-text"><i class="ni ni-square-pin"></i></span>
                                                         </div>
-                                                        <input class="form-control" name="negara" id="negara" type="text" placeholder="Pilih Negara">
+                                                        <select id="negara" name="negara" class="form-control" required>
+                                                            <option value="" disabled>Pilih Negara</option>
+                                                            <?php foreach ($negara as $ngr) : ?>
+                                                                <option value="<?= $ngr['negara']; ?>"><?= $ngr['negara']; ?></option>
+                                                            <?php endforeach; ?>
+                                                        </select><?= form_error('negara', '<small class="text-danger pl-3">', '</small>') ?>
                                                     </div>
                                                 </div>
                                             </div>
@@ -109,7 +114,7 @@
                                                         <div class="input-group-prepend">
                                                             <span class="input-group-text"><i class="ni ni-map-big"></i> Detail</span>
                                                         </div>
-                                                        <textarea name="detail" id="detail" cols="130" rows="10"></textarea>
+                                                        <textarea name="detail" id="detail" cols="130" rows="10" required></textarea><?= form_error('detail', '<small class="text-danger pl-3">', '</small>') ?>
                                                     </div>
                                                 </div>
                                             </div>
@@ -179,7 +184,6 @@
                                                         <div class="input-group-prepend">
                                                             <span class="input-group-text"><i class="ni ni-map-big"></i></span>
                                                         </div>
-                                                        <!-- <input class="form-control-plaintext" disabled type="text" value="<?= $buyer['detail'] ?>"> -->
                                                         <textarea name="def" id="def" cols="130" rows="10"><?= $buyer['detail'] ?></textarea>
                                                     </div>
                                                 </div>
@@ -229,7 +233,7 @@
                                                             <div class="input-group-prepend">
                                                                 <span class="input-group-text"><i class="ni ni-single-02"></i></span>
                                                             </div>
-                                                            <input class="form-control" name="produk" id="produk" type="text" value="<?= $buyer['produk'] ?>">
+                                                            <input class="form-control" name="produk" id="produk" type="text" value="<?= $buyer['produk'] ?>" required><?= form_error('produk', '<small class="text-danger pl-3">', '</small>') ?>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -239,7 +243,12 @@
                                                             <div class="input-group-prepend">
                                                                 <span class="input-group-text"><i class="ni ni-square-pin"></i></span>
                                                             </div>
-                                                            <input class="form-control" name="negara" id="negara" type="text" value="<?= $buyer['negara'] ?>">
+                                                            <select id="negara" name="negara" class="form-control" required>
+                                                                <option value="<?= $buyer['negara'] ?>" selected><?= $buyer['negara'] ?></option>
+                                                                <?php foreach ($negara as $ngr) : ?>
+                                                                    <option value="<?= $ngr['negara']; ?>"><?= $ngr['negara']; ?></option>
+                                                                <?php endforeach; ?>
+                                                            </select><?= form_error('negara', '<small class="text-danger pl-3">', '</small>') ?>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -251,7 +260,7 @@
                                                             <div class="input-group-prepend">
                                                                 <span class="input-group-text"><i class="ni ni-map-big"></i></span>
                                                             </div>
-                                                            <textarea name="detail" id="detail" cols="130" rows="10"><?= $buyer['detail'] ?></textarea>
+                                                            <textarea name="detail" id="detail" cols="130" rows="10" required><?= $buyer['detail'] ?></textarea><?= form_error('detail', '<small class="text-danger pl-3">', '</small>') ?>
                                                         </div>
                                                     </div>
                                                 </div>
