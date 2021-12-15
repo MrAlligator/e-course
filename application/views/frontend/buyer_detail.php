@@ -1,10 +1,33 @@
+<section id="hero" class="d-flex align-items-center">
+        <div class="container">
+            <div class="row">
+              <div class="col-lg-6 d-flex flex-column justify-content-center pt-4 pt-lg-0 order-2 order-lg-1" data-aos="fade-up" data-aos-delay="200">
+                      <div class="section-title">
+                      <h1><?= $title ?></h1>
+                      <h2>Detail data importir <?=$title?></h2><br>
+                    </div>
+                      <?php if (isset($user['email']) && $user['is_member'] == 0) : ?>
+                            <a href="<?= base_url('frontend/membership') ?>" class="btn-get-started scrollto">Menjadi Anggota</a>
+                        <?php elseif (!isset($user['email'])) : ?>
+                            <a href="<?= base_url('home/membership') ?>" class="btn-get-started scrollto">Menjadi Anggota</a>
+                        <?php endif; ?>
+                    </div>
+                <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="zoom-in" data-aos-delay="200">
+                  <img src="<?= base_url() ?>/assets/img/hero-img.png" class="img-fluid animated" alt="">
+                </div>
+            </div>
+      </div>
+
+    </section>
+    <!-- End Hero -->
+
 <section id="contact" class="contact">
     <div class="container" data-aos="fade-up">
 
-<div class="section-title">
+<!-- <div class="section-title">
     <h2>Detail Importir</h2>
     <p>Detail Importir menampilkan informasi secara detail dari sebuah perusahaan importir</p>
-</div>
+</div> -->
 
 <?php foreach($buyers as $buyer):?>
 <div class="row">

@@ -11,13 +11,13 @@
 
 <div class="section-title">
     <h2>Selamat Datang di forum komunitas</h2>
-    <p>Forum Komunitas Ekspor dan Impor, harap mengikuti panduan komunitas</p>
+    <p>Forum Komunitas Ekspor Indonesia, harap mengikuti panduan komunitas</p>
 </div>
 
 <div class="row">
 <div class="col-lg-9 d-flex align-items-stretch">
     <div class="info">
-        <i class="bi bi-chat-left-quote"></i><h4>Kategori Forum</h4><br>    
+        <i class="bi bi-chat-left-quote"></i><h4>Daftar Pertanyaan</h4><br>    
             <?php $i=1;foreach($kategori as $kat):?>
         <div class="card-header">
             <a href="<?=base_url('home/kategori/'.$kat->id_kategori)?>"><h4><?=$kat->nama_kategori?></h4></a>

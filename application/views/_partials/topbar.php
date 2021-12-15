@@ -2,7 +2,7 @@
 <header id="header" class="fixed-top ">
     <div class="container d-flex align-items-center">
 
-        <h1 class="logo me-auto"><a href="<?= base_url() ?>">Komunitas Omni-Exim</a></h1>
+        <h2 class="logo me-auto"><a href="<?= base_url() ?>">Logo</a></h2>
         <!-- Uncomment below if you prefer to use an image logo -->
         <!-- <a href="index.html" class="logo me-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
 
@@ -11,16 +11,14 @@
                 <li><a href="<?= base_url('home') ?>">Beranda</a></li>
                 <li class="dropdown"><a href="#"><span>Data Kami</span> <i class="bi bi-chevron-down"></i></a>
                     <ul>
-                        <li><a href="<?= base_url('frontend/buyers') ?>"> Data Importir</a></li>
-                        <li><a href="<?= base_url('frontend/inquiry') ?>">Data Produk</a></li>
+                        <li><a href="<?= base_url('frontend/buyers') ?>"> Data Importir (Buyer)</a></li>
+                        <li><a href="<?= base_url('frontend/inquiry') ?>">Data Permintaan (Inquiry)</a></li>
                     </ul>
                 <li><a href="<?= base_url('home/articles') ?>">Artikel</a></li>
                 <?php if (!isset($user['email'])) : ?>
                     <li><a href="<?= base_url('home/membership') ?>">Keanggotaan</a></li>
-                <?php elseif (isset($user['email']) && $user['is_member'] == 0) : ?>
-                    <li><a href="<?= base_url('home/membership') ?>">Keanggotaan</a></li>
-                <?php elseif (isset($user['email']) && $user['is_member'] == 1) : ?>
-                    <li><a href="<?= base_url('home/kalkulator') ?>">Kalkulator Impor</a></li>
+                <?php else: ?>  
+                   <li><a href="<?= base_url('home/kalkulator') ?>">Kalkulator Harga Ekspor</a></li>
                 <?php endif ?>
                 <li><a href="<?= base_url('home/forum') ?>">Forum</a></li>
                 <!-- <li><a href="#about">About</a></li>  

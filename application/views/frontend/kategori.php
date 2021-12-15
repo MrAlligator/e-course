@@ -10,8 +10,8 @@
     <div class="container" data-aos="fade-up">
 
 <div class="section-title">
-    <h2>Forum komunitas kategori <?=$title?></h2>
-    <p>Forum Komunitas Ekspor dan Impor, harap mengikuti panduan komunitas</p>
+    <h2><?=$title?></h2>
+    <p></p>
 </div>
 
 <?php if(isset($_SESSION['email'])){?>
@@ -44,7 +44,7 @@
 
 <div class="col-lg-3 d-flex align-items-stretch">
     <div class="info">              
-        <i class="bi bi-chat-left-quote-fill"></i><h4>Kategori Lainnya</h4><br><ul>
+        <i class="bi bi-chat-left-quote-fill"></i><h4>Pertanyaan Lainnya</h4><br><ul>
         <?php $i=1;foreach($kategori as $kat):?><li>
                 <h6><a href="<?=base_url('home/kategori/'.$kat->id_kategori)?>"><?=$kat->nama_kategori?></a></h6>
             </li>

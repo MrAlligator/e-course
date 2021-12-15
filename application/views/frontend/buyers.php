@@ -11,15 +11,35 @@
     });
 </script>
 
-<section id="contact" class="contact">
+    <!-- ======= Hero Section ======= -->
+    <section id="hero" class="d-flex align-items-center">
+        <div class="container">
+            <div class="row">
+              <div class="col-lg-6 d-flex flex-column justify-content-center pt-4 pt-lg-0 order-2 order-lg-1" data-aos="fade-up" data-aos-delay="200">
+                      <div class="section-title">
+                      <h1>Data Importir (Buyers)</h1>
+                      <h2>Data Importir menampilkan perusahaan importir dari seluruh dunia</h2><br>
+                    </div>
+                      <?php if (isset($user['email']) && $user['is_member'] == 0) : ?>
+                            <a href="<?= base_url('frontend/membership') ?>" class="btn-get-started scrollto">Menjadi Anggota</a>
+                        <?php elseif (!isset($user['email'])) : ?>
+                            <a href="<?= base_url('home/membership') ?>" class="btn-get-started scrollto">Menjadi Anggota</a>
+                        <?php endif; ?>
+                    </div>
+                <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="zoom-in" data-aos-delay="200">
+                  <img src="<?= base_url() ?>/assets/img/hero-img.png" class="img-fluid animated" alt="">
+                </div>
+            </div>
+      </div>
+    </section><!-- End Hero -->
+    
+    <section id="contact" class="contact">
     <div class="container" data-aos="fade-up">
         <div class="section-title">
-            <h2>Data Importir</h2>
-            <p>Data Importir menampilkan perusahaan importir dari seluruh dunia</p><br>
-            <?php if (isset($user['email']) && $semua != 1) : ?>
+            <!-- <?php if (isset($user['email']) && $semua != 1) : ?>
                 <a href="<?= base_url('frontend/buyers/getAll') ?>" class="btn btn-success">Lihat Seluruh Data Importir</a><br>
                 <?php endif ?>
-                <br><button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#download">Unduh Dokumen</button><br>
+                <br><button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#download">Unduh Dokumen</button><br> -->
         </div>
 
         <div class="table-responsive">

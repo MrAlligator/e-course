@@ -28,7 +28,7 @@
                                             <input type="password" class="form-control" name="konf-password" id="konf-password" placeholder="Konfirmasi Password"> <?= form_error('konf-password', '<small class="text-danger pl-3">', '</small>') ?>
                                         </div>
                                     </div>
-                                    <button type="submit" class="btn-get-started">Register</button>
+                                    <button type="submit" class="btn-get-started">Daftar</button>
                                 </div>
                                 <br>
                                 <div class="text-center">
