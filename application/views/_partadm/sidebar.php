@@ -59,6 +59,24 @@
                             <span class="nav-link-text">Artikel</span>
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="<?= base_url('backend/postingan') ?>">
+                            <i class="ni ni-collection text-lime"></i>
+                            <span class="nav-link-text">Postingan</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="<?= base_url('backend/komentar') ?>">
+                            <i class="ni ni-chat-round text-cyan"></i>
+                            <span class="nav-link-text">Komentar</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="<?= base_url('backend/pertanyaan') ?>">
+                            <i class="ni ni-tag text-green"></i>
+                            <span class="nav-link-text">Pertanyaan</span>
+                        </a>
+                    </li>
                 </ul>
             </div>
         </div>

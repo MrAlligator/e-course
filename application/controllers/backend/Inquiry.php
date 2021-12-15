@@ -49,7 +49,7 @@ class Inquiry extends CI_Controller
         //Initialize
         $this->pagination->initialize($config);
         $data['start'] = $this->uri->segment(4);
-        $data['title'] = "Permintaan";
+        $data['title'] = "Data Permintaan";
         $data['buyers'] = $this->Inquiry_model->getSome($config['per_page'], $data['start']);
         $data['negara'] = $this->db->get('tb_negara')->result_array();
 
@@ -105,7 +105,7 @@ class Inquiry extends CI_Controller
         //Initialize
         $this->pagination->initialize($config);
         $data['start'] = $this->uri->segment(5);
-        $data['title'] = "Permintaan";
+        $data['title'] = "Data Permintaan";
         $data['buyers'] = $this->Inquiry_model->getSome($config['per_page'], $data['start'], $like);
         $data['negara'] = $this->db->get('tb_negara')->result_array();
 

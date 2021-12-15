@@ -7,6 +7,7 @@ class Pengguna extends CI_Controller
     {
         parent::__construct();
         $this->load->model('User_model');
+        $this->load->model('Konfirmasi_model');
         is_admin();
     }
 
@@ -49,11 +50,12 @@ class Pengguna extends CI_Controller
         //Initialize
         $this->pagination->initialize($config);
         $data['start'] = $this->uri->segment(4);
-        $data['title'] = "Pengguna";
+        $data['title'] = "Data Pengguna";
         $data['user'] = $this->User_model->getSome($config['per_page'], $data['start']);
         $data['jumuser'] = $this->User_model->hitung_jumlah_user();
         $data['jumfree'] = $this->User_model->hitung_jumlah_free();
         $data['jumprem'] = $this->User_model->hitung_jumlah_premium();
+        $data['notif'] = json_decode($this->Konfirmasi_model->hitung_jumlah_belum_konfirmasi());
 
         $this->load->view('_partadm/head', $data);
         $this->load->view('_partadm/sidebar', $data);

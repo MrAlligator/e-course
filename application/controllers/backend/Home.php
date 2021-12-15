@@ -9,6 +9,7 @@ class Home extends CI_Controller
         $this->load->model('Buyers_model');
         $this->load->model('Inquiry_model');
         $this->load->model('User_model');
+        $this->load->model('Konfirmasi_model');
         is_admin();
     }
 
@@ -16,9 +17,9 @@ class Home extends CI_Controller
     {
         $data['title'] = "Dashboard";
         $data['jumlah_user_gratis'] = $this->User_model->hitung_jumlah_user_gratis();
-        $data['jumlah_user_premium'] = $this->User_model->hitung_jumlah_user_premium();
-        $data['jumlah_importir'] = $this->Buyers_model->hitung_jumlah_buyers();;
-        $data['jumlah_permintaan'] = $this->Inquiry_model->hitung_jumlah_inquiries();;
+        $data['jumlah_belum_konfirmasi'] = $this->Konfirmasi_model->hitung_jumlah_belum_konfirmasi();
+        $data['jumlah_importir'] = $this->Buyers_model->hitung_jumlah_buyers();
+        $data['jumlah_permintaan'] = $this->Inquiry_model->hitung_jumlah_inquiries();
 
         $this->load->view('_partadm/head', $data);
         $this->load->view('_partadm/sidebar', $data);

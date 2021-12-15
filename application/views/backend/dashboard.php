@@ -16,8 +16,8 @@
                                 <div class="card-body">
                                     <div class="row">
                                         <div class="col">
-                                            <h5 class="card-title text-uppercase text-muted mb-0">Total Importir</h5>
-                                            <span class="h2 font-weight-bold mb-0"><?=$jumlah_importir?></span>
+                                            <h5 class="card-title text-uppercase text-muted mb-0">Jumlah Total Data Importir</h5>
+                                            <span class="h2 font-weight-bold mb-0"><?= $jumlah_importir ?></span>
                                         </div>
                                         <div class="col-auto">
                                             <div class="icon icon-shape bg-gradient-red text-white rounded-circle shadow">
@@ -38,8 +38,8 @@
                                 <div class="card-body">
                                     <div class="row">
                                         <div class="col">
-                                            <h5 class="card-title text-uppercase text-muted mb-0">Total Inquiry</h5>
-                                            <span class="h2 font-weight-bold mb-0"><?=$jumlah_permintaan?></span>
+                                            <h5 class="card-title text-uppercase text-muted mb-0">Jumlah Total Data Inquiry</h5>
+                                            <span class="h2 font-weight-bold mb-0"><?= $jumlah_permintaan ?></span>
                                         </div>
                                         <div class="col-auto">
                                             <div class="icon icon-shape bg-gradient-orange text-white rounded-circle shadow">
@@ -60,8 +60,8 @@
                                 <div class="card-body">
                                     <div class="row">
                                         <div class="col">
-                                            <h5 class="card-title text-uppercase text-muted mb-0">Premium Member</h5>
-                                            <span class="h2 font-weight-bold mb-0"><?=$jumlah_user_premium?></span>
+                                            <h5 class="card-title text-uppercase text-muted mb-0">Pembayaran Belum Konfirmasi</h5>
+                                            <span class="h2 font-weight-bold mb-0"><?= $jumlah_belum_konfirmasi ?></span>
                                         </div>
                                         <div class="col-auto">
                                             <div class="icon icon-shape bg-gradient-green text-white rounded-circle shadow">
@@ -70,8 +70,8 @@
                                         </div>
                                     </div>
                                     <p class="mt-3 mb-0 text-sm">
-                                        <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> 3.48%</span>
-                                        <span class="text-nowrap">Since last month</span>
+                                        <span class="text-success mr-7"></span>
+                                        <span class="text-nowrap"><a href="<?= base_url('backend/konfirmasi') ?>" class="text-green text-decoration-none">Konfirmasi Sekarang <i class="fa fa-arrow-right"></i></a></span>
                                     </p>
                                 </div>
                             </div>
@@ -82,8 +82,8 @@
                                 <div class="card-body">
                                     <div class="row">
                                         <div class="col">
-                                            <h5 class="card-title text-uppercase text-muted mb-0">Free Member</h5>
-                                            <span class="h2 font-weight-bold mb-0"><?=$jumlah_user_gratis?></span>
+                                            <h5 class="card-title text-uppercase text-muted mb-0">Jumlah Total Data Member</h5>
+                                            <span class="h2 font-weight-bold mb-0"><?= $jumlah_user_gratis ?></span>
                                         </div>
                                         <div class="col-auto">
                                             <div class="icon icon-shape bg-gradient-info text-white rounded-circle shadow">
