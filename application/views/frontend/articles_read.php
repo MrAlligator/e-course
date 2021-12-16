@@ -14,7 +14,8 @@
                     <h3>Fungsi Nota Debit Dalam Usaha, Contoh Dan Cara Praktis Membuatnya</h3>
                     <h6>Diposting 30 September 2021</h6>
                     <img id="foto" src="<?= base_url('/assets/img/articles/1.jpg')?>" height="450px" alt="...">
-                    <p>Nota debit atau nota debet adalah nama lain dari memo debit. Dibuat oleh pembeli kepada penjual ketika meminta pengembalian dana. Misalnya, karena barang yang salah, rusak, atau pembatalan pembelian, dan keadaan tertentu lainnya. Sesuai prinsip akuntabilitas, kekeliruan pembukuan bisnis seperti ini harus segera diperbaiki.</p>
+                    <p></p>
+                    <p><strong>Malang -</strong> Nota debit atau nota debet adalah nama lain dari memo debit. Dibuat oleh pembeli kepada penjual ketika meminta pengembalian dana. Misalnya, karena barang yang salah, rusak, atau pembatalan pembelian, dan keadaan tertentu lainnya. Sesuai prinsip akuntabilitas, kekeliruan pembukuan bisnis seperti ini harus segera diperbaiki.</p>
                     <p>Sepintas, nota debit atau nota debet adalah mirip dengan nota kredit. Akan tetapi, nota debit diberikan dari pihak pembeli. Nota debit bertindak sebagai dokumen permintaan resmi dari pembeli kepada penjual untuk meminta dibuatkan nota kredit.</p>
                     <p>Dokumen nota debet berfungsi sebagai bukti kalau pembelian benar-benar terjadi dan sah, sehingga si pembeli bisa mengajukan pengembalian barang atau retur barang yang salah kirim.</p>
                     <p>Kapan Harus Membuat Nota Debit?</p>

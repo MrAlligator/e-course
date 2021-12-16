@@ -9,22 +9,15 @@
 <section id="contact" class="contact">
     <div class="container" data-aos="fade-up">
 
-<div class="section-title">
-    <h2><?=$title?></h2>
-    <p></p>
-</div>
-
+<div class="row">
 <?php if(isset($_SESSION['email'])){?>
 
 <form action="<?=base_url('home/post_forum')?>" method="post">
-
-<div class="row">
-
-<div class="col-lg-9 mt-5 mt-lg-0 d-flex align-items-stretch">
+    <div class="col-lg-9 mt-5 mt-lg-0 d-flex align-items-stretch">
     <div class="php-email-form">
         <div class="row"><?php date_default_timezone_set("Asia/Jakarta");?>
         <div class="form-group col-md">
-            <h5>Posting pertanyaanmu atau informasi yang kalian ketahui</h5>
+            <h5>Apa tanggapanmu?</h5>
         </div>
         </div>
         <div class="form-group row">
@@ -41,10 +34,22 @@
         </div>
     </div>
 </div>
+<?php }else{ ?>
+    <div class="col-lg-9 mt-5 mt-lg-0 d-flex align-items-stretch">
+        <div class="php-email-form">
+            <div class="text-center">
+            <h5><p>Agar dapat dapat memberikan tanggapan harap login terlebih dahulu
+            <a href="<?=base_url('auth')?>">Login disini</a></p>
+            <p>Jika belum memiliki aku silahkan mendaftar terlebih dahulu
+            <a href="<?=base_url('home/membership')?>">Daftar Sekarang</a></p></h5>
+        </div>
+    </div>
+</div>
+<?php } ?>
 
 <div class="col-lg-3 d-flex align-items-stretch">
     <div class="info">              
-        <i class="bi bi-chat-left-quote-fill"></i><h4>Pertanyaan Lainnya</h4><br><ul>
+        <i class="bi bi-chat-left-quote-fill"></i><h4>Pertanyaan / Topik Lainnya</h4><br><ul>
         <?php $i=1;foreach($kategori as $kat):?><li>
                 <h6><a href="<?=base_url('home/kategori/'.$kat->id_kategori)?>"><?=$kat->nama_kategori?></a></h6>
             </li>
@@ -55,7 +60,6 @@
 
 </div>
 <br>
-<?php } ?>
 
 <div class="col-lg-12 mt-5 mt-lg-0 d-flex align-items-stretch">
     <div class="php-email-form">

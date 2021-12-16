@@ -32,12 +32,11 @@ class Home extends CI_Controller
     public function membership()
     {
         $data['user'] = $this->db->get_where('tb_user', ['email' => $this->session->userdata('email')])->row_array();
-        $data['title'] = "Membership";
+        $data['title'] = "KEANGGOTAAN";
+        $data['subtitle'] = "Lakukan pendaftaran sekarang untuk mendapat berbagai keuntungan";
 
         $this->load->view('_partials/header', $data);
         $this->load->view('_partials/topbar', $data);
-        $this->load->view('_partials/hero', $data);
-        $this->load->view('_partials/clients', $data);
         $this->load->view('frontend/membership', $data);
         $this->load->view('_partials/footer', $data);
         $this->load->view('_partials/js', $data);
@@ -46,7 +45,8 @@ class Home extends CI_Controller
     public function kalkulator()
     {
         $data['user'] = $this->db->get_where('tb_user', ['email' => $this->session->userdata('email')])->row_array();
-        $data['title'] = "calculator";
+        $data['title'] = "Kalkulator ";
+        $data['subtitle'] = "Kalkulator perhitungan harga dalam melakukan transaksi ekspor ";
 
         $this->load->view('_partials/header', $data);
         $this->load->view('_partials/topbar', $data);
@@ -94,9 +94,6 @@ class Home extends CI_Controller
         $this->load->view('_partials/clients', $data);
         $this->load->view('frontend/kategori', $data);
         $this->load->view('frontend/articles', $data);
-        if (!isset($_SESSION['email']) || isset($_SESSION['email']) && $need['is_member'] == 0) {
-            $this->load->view('frontend/membership', $data);
-        }
         $this->load->view('_partials/footer', $data);
         $this->load->view('_partials/js', $data);
     }
@@ -112,9 +109,6 @@ class Home extends CI_Controller
         $this->load->view('_partials/hero', $data);
         $this->load->view('_partials/clients', $data);
         $this->load->view('frontend/articles_all', $data);
-        if (!isset($_SESSION['email']) || isset($_SESSION['email']) && $need['is_member'] == 0) {
-            $this->load->view('frontend/membership', $data);
-        }
         $this->load->view('_partials/footer', $data);
         $this->load->view('_partials/js', $data);
     }
@@ -152,9 +146,6 @@ class Home extends CI_Controller
         $this->load->view('_partials/hero', $data);
         $this->load->view('_partials/clients', $data);
         $this->load->view('frontend/articles_read', $data);
-        if (!isset($_SESSION['email']) || isset($_SESSION['email']) && $need['is_member'] == 0) {
-            $this->load->view('frontend/membership', $data);
-        }
         $this->load->view('_partials/footer', $data);
         $this->load->view('_partials/js', $data);
     }

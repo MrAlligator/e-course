@@ -2,12 +2,23 @@
 <header id="header" class="fixed-top ">
     <div class="container d-flex align-items-center">
 
-        <h2 class="logo me-auto"><a href="<?= base_url() ?>">Logo</a></h2>
+        <!-- <a href="<?= base_url() ?>" class="logo me-auto"><img src="<?= base_url() ?>/assets/img/logo-putih.png" class="img-fluid animated" width="100px" alt=""></a> -->
+        <!-- <h2 class="logo me-auto"><a href="<?= base_url() ?>">Logo</a></h2> -->
         <!-- Uncomment below if you prefer to use an image logo -->
-        <!-- <a href="index.html" class="logo me-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+        <!-- <a href="<?= base_url() ?>" class="logo me-auto"><img src="<?= base_url() ?>assets/img/logo-putih.png"></a> -->
 
         <nav id="navbar" class="navbar">
             <ul>
+            <?php if (isset($user['email'])) : ?>
+                    <li class="dropdown"><a href="#"><img class="img-profile rounded-circle img-thumbnail" width="40" src="<?= base_url('assets/img/userimage/') . $user['foto_user']; ?>"><i class="bi bi-chevron-down"></i></a>
+                        <ul>
+                            <li><a href="<?= base_url('profile') ?>">Profil Pengguna</a></li>
+                            <li><a href="<?= base_url('auth/logout') ?>">Keluar</a></li>
+                        </ul>
+                    </li>
+                <?php else : ?>
+                    <li><a class="getstarted scrollto" href="<?= base_url('auth') ?>">Login</a></li>
+                <?php endif; ?>
                 <li><a href="<?= base_url('home') ?>">Beranda</a></li>
                 <li class="dropdown"><a href="#"><span>Data Kami</span> <i class="bi bi-chevron-down"></i></a>
                     <ul>
@@ -38,16 +49,7 @@
                 <!-- </li> -->
                 </li>
                 <!-- <li><a href="#contact">Contact</a></li> -->
-                <?php if (isset($user['email'])) : ?>
-                    <li class="dropdown"><a href="#"><img class="img-profile rounded-circle img-thumbnail" width="40" src="<?= base_url('assets/img/userimage/') . $user['foto_user']; ?>"><i class="bi bi-chevron-down"></i></a>
-                        <ul>
-                            <li><a href="<?= base_url('profile') ?>">Profil Pengguna</a></li>
-                            <li><a href="<?= base_url('auth/logout') ?>">Keluar</a></li>
-                        </ul>
-                    </li>
-                <?php else : ?>
-                    <li><a class="getstarted scrollto" href="<?= base_url('auth') ?>">Login</a></li>
-                <?php endif; ?>
+                
             </ul>
             <i class="bi bi-list mobile-nav-toggle"></i>
         </nav><!-- .navbar -->

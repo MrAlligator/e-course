@@ -17,7 +17,7 @@
 <div class="row">
 <div class="col-lg-9 d-flex align-items-stretch">
     <div class="info">
-        <i class="bi bi-chat-left-quote"></i><h4>Daftar Pertanyaan</h4><br>    
+        <i class="bi bi-chat-left-quote"></i><h4>Daftar Pertanyaan atau Topik</h4><br>    
             <?php $i=1;foreach($kategori as $kat):?>
         <div class="card-header">
             <a href="<?=base_url('home/kategori/'.$kat->id_kategori)?>"><h4><?=$kat->nama_kategori?></h4></a>

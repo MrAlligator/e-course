@@ -58,7 +58,6 @@
         </div>
         <!-- <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3965.821187735656!2d107.13284081434126!3d-6.287220063288694!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e698534cc40bb31%3A0x5b6907054b200e5b!2sPT%20Samsung%20Electronics%20Indonesia!5e0!3m2!1sid!2sid!4v1635399972987!5m2!1sid!2sid" frameborder="0" style="border:0; width: 100%; height: 290px;" allowfullscreen></iframe> -->
         </div>
-
 </div>
 
 <div class="col-lg-7 mt-5 mt-lg-0 d-flex align-items-stretch">

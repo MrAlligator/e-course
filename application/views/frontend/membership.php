@@ -1,70 +1,111 @@
-         <!-- ======= Pricing Section ======= -->
-         <section id="membership" class="pricing">
-             <div class="container" data-aos="fade-up">
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<section id="hero" class="d-flex align-items-center">
+    <div class="container">
+            <div class="row">
+            <div class="col-lg-6 d-flex flex-column justify-content-center pt-4 pt-lg-0 order-2 order-lg-1" data-aos="fade-up" data-aos-delay="200">
+                <div class="section-title">
+                    <h1><?=$title?></h1>
+                    <h2><?=$subtitle?></h2>
+                </div>
+            </div>
+ 
+                <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="zoom-in" data-aos-delay="200">
+                    <a href="<?= base_url()?>"><img src="<?= base_url() ?>/assets/img/logo-putih.png" class="img-fluid animated" alt=""></a>
+                </div>
+            </div>
+        </div>
+    </section>
 
-                 <div class="section-title">
-                     <h2>Keanggotaan</h2>
-                     <p>Bergabunglah Dengan Keanggotaan Kami Untuk Membuka Fitur</p>
-                 </div>
+<section id="membership" class="pricing">
+    <div class="container" data-aos="fade-up">
 
-                 <div class="row">
-                     <?php if (!isset($user['email'])) : ?>
-                         <div class="col-lg-6 mt-4 mt-lg-0" data-aos="fade-up" data-aos-delay="100">
-                             <div class="box">
-                                 <h3>Free Member</h3>
-                                 <h4><sup>Rp</sup>0<span>per bulan</span><br><span>Keuntungan</span></h4>
-                                 <ul>
-                                     <li><i class="bx bx-check"></i> Konten Bisnis</li>
-                                     <li><i class="bx bx-check"></i> Data Pembeli Dari Seluruh Dunia</li>
-                                     <li><i class="bx bx-check"></i> Data Inquiry</li>
-                                     <li><i class="bx bx-check"></i> Komunitas Forum</li>
-                                     <li><i class="bx bx-check"></i> Informasi Export Dan Import</li>
-                                     <!-- <li class="na"><i class="bx bx-x"></i> <span>Pharetra massa massa ultricies</span></li>
-                                <li class="na"><i class="bx bx-x"></i> <span>Massa ultricies mi quis hendrerit</span></li> -->
-                                 </ul>
-                                 <a href="<?= base_url('auth/register') ?>" class="buy-btn">Bergabung</a>
-                             </div>
-                         </div>
-                     <?php elseif (isset($user['email']) && $user['is_member'] == 0) : ?>
-                     <?php endif; ?>
-
-                     <div class="col-lg-6 mt-4 mt-lg-0" data-aos="fade-up" data-aos-delay="200">
-                         <div class="box">
-                             <h3>Keanggotaan Premium </h3>
-                             <h4><sup>Rp</sup>150.000<span>per Bulan</span><br><span>Keuntungan</span></h4>
-                             <ul>
-                                 <li><i class="bx bx-check"></i> Konten Bisnis</li>
-                                 <li><i class="bx bx-check"></i> <strong>Detail</strong> Data Buyers Dari Seluruh Dunia</li>
-                                 <li><i class="bx bx-check"></i> <strong>Detail</strong> Informasi Data Inquiry</li>
-                                 <li><i class="bx bx-check"></i> <strong>Hanya Member</strong> Komunitas Forum</li>
-                                 <li><i class="bx bx-check"></i> Informasi Export dan Import</li>
-                                 <li><i class="bx bx-check"></i> Pelatihan Ekspor Impor Eksklusif</li>
-                             </ul>
-                             <?php if (isset($user['email']) && $user['is_member'] == 0) : ?>
-                                 <a href="<?= base_url('frontend/membership') ?>" class="buy-btn">Bergabung</a>
-                                 <a href="<?= base_url('home') ?>" class="buy-btn">Lain Kali</a>
-                             <?php else : ?>
-                                 <a href="<?= base_url('auth/register') ?>" class="buy-btn">Bergabung</a>
-                             <?php endif; ?>
-                         </div>
-                     </div>
-
-                     <!-- <div class="col-lg-4 mt-4 mt-lg-0" data-aos="fade-up" data-aos-delay="300">
-                        <div class="box">
-                            <h3>Gold Member</h3>
-                            <h4><sup>Rp</sup>150000<span>per month</span><br><span>benefits</span></h4>
-                            <ul>
-                                <li><i class="bx bx-check"></i> Quam adipiscing vitae proin</li>
-                                <li><i class="bx bx-check"></i> Nec feugiat nisl pretium</li>
-                                <li><i class="bx bx-check"></i> Nulla at volutpat diam uteera</li>
-                                <li><i class="bx bx-check"></i> Pharetra massa massa ultricies</li>
-                                <li><i class="bx bx-check"></i> Massa ultricies mi quis hendrerit</li>
-                            </ul>
-                            <a href="#" class="buy-btn">Get Started</a>
+<div class="row">
+    <div class="col-lg-4 mt-4 mt-lg-0" data-aos="fade-up" data-aos-delay="100">
+        <div class="box">
+            <h3>Keuntungan Menjadi Anggota</h3>
+                <!-- <h4><sup>Rp</sup>0<span>per bulan</span><br><span>Keuntungan</span></h4> -->
+            <ul>
+                <li><i class="bx bx-check"></i><h6>Dapat Data Buyers</h6></li> 
+                <li><i class="bx bx-check"></i><h6>Dapat Data Inquiries</h6></li>
+                <li><i class="bx bx-check"></i><h6>Kalkulator Ekspor</h6></li>
+                <li><i class="bx bx-check"></i><h6>Konten Edukasi</h6></li> 
+                <li><i class="bx bx-check"></i><h6>Tergabung Dalam Group Telegram</h6></li>
+                <li><i class="bx bx-check"></i><h6>Sharing Sesama Member</h6></li>
+            </ul>
+        </div>
+    </div>
+                     
+    <div class="col-lg-8 mt-4 mt-lg-0" data-aos="fade-up" data-aos-delay="200">
+        <div class="box">
+            <h3>Formulir Pendaftaran</h3>
+                <form action="<?= base_url('auth/register') ?>" method="post">
+                    <div class="row">
+                        <div class="form-group">
+                            <?php echo $this->session->flashdata('message'); ?>
+                            <label for="nama">Nama Lengkap</label>
+                                <input type="text" class="form-control" name="nama" id="nama"> <?= form_error('nama', '<small class="text-danger pl-3">', '</small>') ?>
+                            <div class="row">
+                                <div class="col">
+                                <label for="email">Email</label>
+                                    <input type="email" name="email" class="form-control" id="email" > <?= form_error('email', '<small class="text-danger pl-3">', '</small>') ?>
+                                </div>
+                                <div class="col">
+                                <label>Nomor Handphone</label>
+                                    <input type="text" onkeypress="return hanyaAngka(event)" name="nomor" class="form-control" id="nomor"> <?= form_error('nomor', '<small class="text-danger pl-3">', '</small>') ?>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                <label>Password</label>
+                                    <div class="input-group">
+                                    <input type="password" class="form-control" name="password" id="password"><?= form_error('password', '<small class="text-danger pl-3">', '</small>') ?>
+                                    <span id="show_pass" class="input-group-text"><i id="pass_icon" class="bi bi-eye-fill"></i></span>               
+                                </div>
+                                </div>
+                                <div class="col">
+                                <label>Konfirmasi Password</label>
+                                    <div class="input-group">
+                                    <input type="password" class="form-control" name="konf-password" id="konf-password"> <?= form_error('konf-password', '<small class="text-danger pl-3">', '</small>') ?>
+                                    <span id="show_pass_konf" class="input-group-text"><i id="pass_konf_icon" class="bi bi-eye-fill"></i></span>
+                                    </div>
+                                </div>
+                            </div><br>
+                        <div class="text-center">
+                            <button type="submit" class="buy-btn">Daftar</button>
                         </div>
-                    </div> -->
+                        <div class="text-center">
+                            <p></p>Sudah Memiliki Akun?<a href="<?= base_url('auth') ?>"><strong> Masuk</strong></a>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 
-                 </div>
+    </div>
+</section>
 
-             </div>
-         </section><!-- End Pricing Section -->
+<script>
+    $(document).ready(function(){
+        $('#show_pass').click(function(){
+            if('password' == $('#password').attr('type')){
+                $('#pass_icon').attr("class", "bi bi-eye-slash-fill");
+                $('#password').attr('type', 'text');
+            }else{
+                $('#pass_icon').attr("class", "bi bi-eye-fill");
+                $('#password').attr('type', 'password');
+            }
+        });
+
+        $('#show_pass_konf').click(function(){
+            if('password' == $('#konf-password').attr('type')){
+                $('#pass_konf_icon').attr("class", "bi bi-eye-slash-fill");
+                $('#konf-password').attr('type', 'text');
+            }else{
+                $('#pass_konf_icon').attr("class", "bi bi-eye-fill");
+                $('#konf-password').attr('type', 'password');
+            }
+        });
+    });
+</script>
