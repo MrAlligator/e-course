@@ -21,7 +21,7 @@
             <div class="row">
 
                 <div class="col-lg-3 col-md-6 footer-contact">
-                    <h3>Komunitas</h3><h3>Omni-Exim</h3>
+                    <h3>Komunitas Ekspor Indonesia</h3>
                     <p>
                         Jalan Danau Bratan Timur Raya H5 A5,<br>
                         Madyopuro, Kec. Kedungkandang,<br>

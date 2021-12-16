@@ -21,9 +21,6 @@ class Home extends CI_Controller
         $this->load->view('_partials/clients', $data);
         $this->load->view('frontend/about', $data);
         $this->load->view('frontend/articles', $data);
-        if (!isset($_SESSION['email']) || isset($_SESSION['email']) && $need['is_member'] == 0) {
-            $this->load->view('frontend/membership', $data);
-        }
         $this->load->view('frontend/team', $data);
         $this->load->view('_partials/footer', $data);
         $this->load->view('_partials/js', $data);
@@ -70,9 +67,6 @@ class Home extends CI_Controller
         $this->load->view('_partials/clients', $data);
         $this->load->view('frontend/forum', $data);
         $this->load->view('frontend/articles', $data);
-        if (!isset($_SESSION['email']) || isset($_SESSION['email']) && $need['is_member'] == 0) {
-            $this->load->view('frontend/membership', $data);
-        }
         $this->load->view('_partials/footer', $data);
         $this->load->view('_partials/js', $data);
     }
