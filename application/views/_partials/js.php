@@ -32,4 +32,15 @@
 <script src="<?= base_url() ?>/assets/js/plugins/jquery/jquery.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
-</body></html>
+<!-- Tambahan -->
+<script>
+    window.setTimeout(function() {
+        $(".alert").fadeTo(500, 0).slideUp(500, function() {
+            $(this).remove();
+        });
+    }, 3000);
+</script>
+
+</body>
+
+</html>
