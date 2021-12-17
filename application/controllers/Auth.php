@@ -552,6 +552,7 @@ class Auth extends CI_Controller
     public function blocked()
     {
         $data['user'] = $this->db->get_where('tb_user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['title'] = "Akses Terlarang";
         $this->load->view('blocked', $data);
     }
 }
