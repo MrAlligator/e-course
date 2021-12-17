@@ -15,7 +15,7 @@
 <div class="container-fluid mt--6">
     <div class="card">
         <div class="card-header border-0">
-            <?php echo $this->session->flashdata('message'); ?>
+            <?= $this->session->flashdata('message'); ?>
             <div class="row align-items-center">
                 <div class="col">
                     <form method="POST" action="<?= base_url('backend/importir/search') ?>" class="navbar-search navbar-search-light form-inline mr-sm-3">
@@ -58,3 +58,4 @@
             </table>
         </div>
     </div>
+    <?= $this->pagination->create_links() ?>

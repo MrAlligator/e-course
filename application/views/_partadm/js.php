@@ -10,6 +10,14 @@
 <script src="<?= base_url() ?>/adminast/vendor/chart.js/dist/Chart.extension.js"></script>
 <!-- Argon JS -->
 <script src="<?= base_url() ?>/adminast/js/argon.js?v=1.2.0"></script>
+<!-- Tambahan -->
+<script>
+    window.setTimeout(function() {
+        $(".alert").fadeTo(500, 0).slideUp(500, function() {
+            $(this).remove();
+        });
+    }, 1000);
+</script>
 
 </body>
 

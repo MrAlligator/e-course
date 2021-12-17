@@ -66,7 +66,7 @@ class Inquiry extends CI_Controller
         $search = (trim($this->input->post('key', true))) ? trim($this->input->post('key', true)) : '';
         $search = ($this->uri->segment(4)) ? $this->uri->segment(4) : $search;
         $like = '';
-        if ($search) $like = "(produk LIKE '%$search%')";
+        if ($search) $like = "(produk LIKE '%$search%' OR negara LIKE '%$search%')";
 
         //PAGINATION
         //Config

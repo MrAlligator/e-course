@@ -62,7 +62,7 @@
                     <li class="nav-item">
                         <a class="nav-link" href="<?= base_url('backend/postingan') ?>">
                             <i class="ni ni-collection text-lime"></i>
-                            <span class="nav-link-text">Postingan</span>
+                            <span class="nav-link-text">Tanggapan</span>
                         </a>
                     </li>
                     <li class="nav-item">
