@@ -172,7 +172,7 @@ class Importir extends CI_Controller
                 'contact_person' => $cp,
                 'tgl_input' => $date
             ];
-            $this->db->insert('tb_importir', $data);
+            $this->Buyers_model->create($data);
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data berhasil ditambahkan</div>');
             redirect("backend/importir");
         }
