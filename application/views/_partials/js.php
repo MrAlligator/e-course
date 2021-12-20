@@ -1,21 +1,38 @@
-<!-- Delete Modal-->
-<!-- <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
+<!-- Buyer Modal-->
+<div class="modal" id="buyerKonf" tabindex="-1">
+    <div class="modal-dialog modal-danger modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Apa anda yakin?</h5>
-                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">×</span>
-                </button>
             </div>
-            <div class="modal-body">Data yang dihapus tidak akan bisa dikembalikan.</div>
-            <div class="modal-footer">
-                <button class="btn btn-secondary" type="button" data-dismiss="modal">Batal</button>
-                <a id="btn-delete" class="btn btn-danger" href="#">Hapus</a>
+            <div class="modal-body">
+                <h3 class="text-center">Ingin Mengakses Data Pada Importir / Buyer?</h3>
+                <div class="text-center form-group">
+                    <a href="<?= base_url('home/membership') ?>" class="btn btn-primary">Daftar Terlebih dahulu</a>
+                </div>
             </div>
         </div>
+        <div class="modal-footer">
+        </div>
     </div>
-</div> -->
+</div>
+
+<!-- Inquiri Modal-->
+<div class="modal" id="inquiKonf" tabindex="-1">
+    <div class="modal-dialog modal-danger modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+            </div>
+            <div class="modal-body">
+                <h3 class="text-center">Ingin Mengakses Data Pada Permintaan / Inquiry?</h3>
+                <div class="text-center form-group">
+                    <a href="<?= base_url('home/membership') ?>" class="btn btn-primary">Daftar Terlebih dahulu</a>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+        </div>
+    </div>
+</div>
 
 <!-- Vendor JS Files -->
 <script src="<?= base_url() ?>/assets/vendor/aos/aos.js"></script>
