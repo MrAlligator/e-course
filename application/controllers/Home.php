@@ -7,6 +7,7 @@ class Home extends CI_Controller
     {
         parent::__construct();
         $this->load->model('Forum_model');
+        $this->load->model('Artikel_model');
     }
 
     public function index()
@@ -14,6 +15,7 @@ class Home extends CI_Controller
         $data['user'] = $this->db->get_where('tb_user', ['email' => $this->session->userdata('email')])->row_array();
         $need = $this->db->get_where('tb_user', ['email' => $this->session->userdata('email')])->row_array();
         $data['title'] = "Beranda";
+        $data['artikel'] = $this->Artikel_model->getRandom();
 
         $this->load->view('_partials/header', $data);
         $this->load->view('_partials/topbar', $data);
@@ -30,7 +32,8 @@ class Home extends CI_Controller
     {
         $data['user'] = $this->db->get_where('tb_user', ['email' => $this->session->userdata('email')])->row_array();
         $data['title'] = "KEANGGOTAAN";
-        $data['subtitle'] = "Lakukan pendaftaran sekarang untuk mendapat berbagai keuntungan";
+        $data['artikel'] = $this->Artikel_model->getRandom();
+
 
         $this->load->view('_partials/header', $data);
         $this->load->view('_partials/topbar', $data);
@@ -44,6 +47,8 @@ class Home extends CI_Controller
         $data['user'] = $this->db->get_where('tb_user', ['email' => $this->session->userdata('email')])->row_array();
         $data['title'] = "Kalkulator ";
         $data['subtitle'] = "Kalkulator perhitungan harga dalam melakukan transaksi ekspor ";
+        $data['artikel'] = $this->Artikel_model->getRandom();
+
 
         $this->load->view('_partials/header', $data);
         $this->load->view('_partials/topbar', $data);
@@ -60,10 +65,13 @@ class Home extends CI_Controller
         $need = $this->db->get_where('tb_user', ['email' => $this->session->userdata('email')])->row_array();
         $data['kategori'] = $this->Forum_model->getKategori();
         $data['title'] = "Forum";
+        $data['artikel'] = $this->Artikel_model->getRandom();
 
         $this->load->view('_partials/header', $data);
         $this->load->view('_partials/topbar', $data);
-        $this->load->view('_partials/hero', $data);
+        if (!isset($_SESSION['email'])) {
+            $this->load->view('_partials/hero', $data);
+        }
         $this->load->view('_partials/clients', $data);
         $this->load->view('frontend/forum', $data);
         $this->load->view('frontend/articles', $data);
@@ -76,15 +84,20 @@ class Home extends CI_Controller
         $data['user'] = $this->db->get_where('tb_user', ['email' => $this->session->userdata('email')])->row_array();
         $need = $this->db->get_where('tb_user', ['email' => $this->session->userdata('email')])->row_array();
         $data['post'] = $this->Forum_model->getByKategori($id_kategori);
-        $data['kategori'] = $this->Forum_model->getKategori();
+        $data['pertanyaan'] = $this->Forum_model->getById($id_kategori);
         $data['id_kategori'] = $id_kategori;
+        $data['kategori'] = $this->Forum_model->getKategori();
+        $data['artikel'] = $this->Artikel_model->getRandom();
 
-        $raw = $this->db->where('id_kategori', $id_kategori)->get('tb_kategori')->row_array();;
+
+        $raw = $this->db->where('id_kategori', $id_kategori)->get('tb_pertanyaan')->row_array();;
         $data['title'] = $raw['nama_kategori'];
 
         $this->load->view('_partials/header', $data);
         $this->load->view('_partials/topbar', $data);
-        $this->load->view('_partials/hero', $data);
+        if (!isset($_SESSION['email'])) {
+            $this->load->view('_partials/hero', $data);
+        }
         $this->load->view('_partials/clients', $data);
         $this->load->view('frontend/kategori', $data);
         $this->load->view('frontend/articles', $data);
@@ -96,11 +109,13 @@ class Home extends CI_Controller
     {
         $data['user'] = $this->db->get_where('tb_user', ['email' => $this->session->userdata('email')])->row_array();
         $need = $this->db->get_where('tb_user', ['email' => $this->session->userdata('email')])->row_array();
-        $data['title'] = "EXIM-Community | Semua Artikel";
-
+        $data['title'] = "Semua Artikel";
+        $data['artikel'] = $this->Artikel_model->getAll();
         $this->load->view('_partials/header', $data);
         $this->load->view('_partials/topbar', $data);
-        $this->load->view('_partials/hero', $data);
+        if (!isset($_SESSION['email'])) {
+            $this->load->view('_partials/hero', $data);
+        }
         $this->load->view('_partials/clients', $data);
         $this->load->view('frontend/articles_all', $data);
         $this->load->view('_partials/footer', $data);
@@ -129,15 +144,19 @@ class Home extends CI_Controller
         redirect('home/forum');
     }
 
-    public function article_read()
+    public function article_read($id)
     {
         $data['user'] = $this->db->get_where('tb_user', ['email' => $this->session->userdata('email')])->row_array();
         $need = $this->db->get_where('tb_user', ['email' => $this->session->userdata('email')])->row_array();
-        $data['title'] = "EXIM-Community | Baca Artikel";
+        $data['title'] = "Baca Artikel";
+        $data['artikel'] = $this->Artikel_model->getById($id);
+        $data['artikel_lainnya'] = $this->Artikel_model->getRandom();
 
         $this->load->view('_partials/header', $data);
         $this->load->view('_partials/topbar', $data);
-        $this->load->view('_partials/hero', $data);
+        if (!isset($_SESSION['email'])) {
+            $this->load->view('_partials/hero', $data);
+        }
         $this->load->view('_partials/clients', $data);
         $this->load->view('frontend/articles_read', $data);
         $this->load->view('_partials/footer', $data);

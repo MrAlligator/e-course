@@ -4,44 +4,43 @@
     <div class="container" data-aos="fade-up">
 
     <div class="section-title">
-        <h2>Kalkulator Impor</h2>
+        <h2>Kalkulator Harga Ekspor</h2>
         <p>Melakukan Perhitungan</p>
     </div>
 
 <div class="row">
     <div class="col-lg-6 d-flex align-items-stretch">
-        <div class="info">
-            <div class="address">
-                <i class="bi bi-calculator"></i>
-                <h4>EXW Price</h4>
-                <p>EX Works Price</p>
+        <div class="php-email-form">
+            <div class="section-title">
+                <h4>Exworks Price</h4>
+                <h6>Syarat penyerahan barang dimana supplier menyerahkan barang ke pembeli di tempat penjual</h6>
             </div>
-
+                
 <div class="row">
     <div class="form-group col-md-8">
-        <label for="name">Factory Cost</label>
+        <label for="name">Factory Cost</label><a href="home/articles"> <i class="bx bx-help-circle"></i></a>
         <div class="input-group">
             <span class="input-group-text">Rp</span>
             <input type="number" name="harga_beli" class="form-control" value=0 id="harga_beli" min=0 required>
         </div>
     </div>
     <div class="form-group col-md-4">
-        <label for="name">Margin</label>
+        <label for="name">Margin</label><a href="home/articles"> <i class="bx bx-help-circle"></i></a>
         <div class="input-group">
             <input type="number" class="form-control" name="keuntungan" value=0 id="keuntungan" min=0 max=100 required>
             <span class="input-group-text">%</span>
         </div>
     </div>
-</div><br>
+</div>
 <div class="form-group">
-    <label for="name">Unit</label>
+    <label for="name">Unit</label><a href="home/articles"> <i class="bx bx-help-circle"></i></a>
     <select type="number" name="harga_beli" class="form-control" required>
         <option>Kilograms</option>
         <option>TNE (TON)</option>
         <option>PCS</option>
         <option>Pack</option>
     </select>
-</div><br>
+</div>
 <div class="form-group">
     <label for="name">Kurs Dollar</label>
     <div class="input-group">
@@ -61,7 +60,7 @@
 
         </div>
     </div>
-<input type="number" class="form-control" name="biaya_kirim" id="biaya_kirim" required hidden>
+    <input type="number" class="form-control" name="biaya_kirim" id="biaya_kirim" required hidden>
 
 <script>
 $(document).ready(function($){

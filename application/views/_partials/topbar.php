@@ -10,14 +10,14 @@
         <nav id="navbar" class="navbar">
             <ul>
                 <?php if (isset($user['email'])) : ?>
-                    <li class="dropdown"><a href="#"><img class="img-profile rounded-circle img-thumbnail" width="40" src="<?= base_url('assets/img/userimage/') . $user['foto_user']; ?>"><i class="bi bi-chevron-down"></i></a>
+                    <li class="dropdown"><a href="#"><img class="img-profile rounded-circle img-thumbnail" width="40" src="<?= base_url('assets/img/userimage/') . $user['foto_user']; ?>"></a>
                         <ul>
                             <li><a href="<?= base_url('profile') ?>">Profil Pengguna</a></li>
                             <li><a href="<?= base_url('auth/logout') ?>">Keluar</a></li>
                         </ul>
                     </li>
                 <?php else : ?>
-                    <li><a class="getstarted scrollto" href="<?= base_url('auth') ?>">Login</a></li>
+                    <li><a class="getstarted scrollto" href="<?= base_url('auth') ?>">Masuk</a></li>
                 <?php endif; ?>
                 <li><a href="<?= base_url('home') ?>">Beranda</a></li>
                 <?php if (isset($user['email'])) : ?>

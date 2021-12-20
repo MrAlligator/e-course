@@ -1,11 +1,16 @@
 <?php defined('BASEPATH') or exit('No direct script access allowed');
-class Articles_model extends CI_Model
+class Artikel_model extends CI_Model
 {
     private $_table = "tb_artikel";
 
     public function getAll()
     {
         return $this->db->get($this->_table)->result();
+    }
+
+    public function getRandom()
+    {
+        return $this->db->order_by('rand()')->limit(3)->get($this->_table)->result();
     }
 
     public function getById($id)

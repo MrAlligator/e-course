@@ -51,11 +51,11 @@ class Auth extends CI_Controller
                         $this->session->set_userdata($data);
                         // var_dump($data);
                         // die;
-                        if ($user['is_member'] == 1) {
+                        // if ($user['is_member'] == 1) {
                             redirect('home');
-                        } else {
-                            redirect('home/membership');
-                        }
+                        // } else {
+                        //     redirect('home/membership');
+                        // }
                     } else {
                         $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Password Salah!</div>');
                         redirect('auth');
@@ -125,7 +125,7 @@ class Auth extends CI_Controller
             $this->db->insert('tb_token', $user_token);
             $this->_sendEmail($token, 'verify');
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Selamat! Akun berhasil dibuat.</div>');
-            redirect('auth/register');
+            redirect('home/membership');
         }
     }
 
@@ -145,7 +145,7 @@ class Auth extends CI_Controller
         $this->load->library('email', $config);
         $this->email->initialize($config);
 
-        $this->email->from('resest003@gmail.com', 'EXIM Community');
+        $this->email->from('resest003@gmail.com', 'Komunitas Ekspor Indonesia');
         $this->email->to($this->input->post('email'));
         if ($type == 'verify') {
             $this->email->subject('Verifikasi Akun');
@@ -535,6 +535,7 @@ class Auth extends CI_Controller
             return true;
         } else {
             echo $this->email->print_debugger();
+            redirect('auth');
         }
     }
 

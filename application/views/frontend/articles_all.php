@@ -1,40 +1,23 @@
 <!-- ======= About Us Section ======= -->
 <section id="articles" class="contact">
     <div class="container" data-aos="fade-up">
-
+    <br>
+    <br>
 <div class="section-title">
-    <h2>Semua Artikel</h2>
+<h2>Semua Artikel</h2>
 </div>
-
-<div class="row">
-    
-    <div class="col-lg-12 mt-5 mt-lg-0 d-flex align-items-stretch">
         <div class="row">
+            <?php foreach($artikel as $artikel):?>
             <div class="col-lg-4">
                 <div class="php-email-form">
-                    <img id="foto" src="<?= base_url('/assets/img/articles/1.jpg')?>" width="300px" alt="...">
-                    <h4>Fungsi Nota Debit Dalam Usaha, Contoh Dan Cara Praktis Membuatnya</h4>
-                    <a href="<?=base_url('home/article_read')?>">Read More . . . </a>
+                    <a href="<?=base_url('home/article_read/'.$artikel->id_artikel)?>"><img id="foto" src="<?= base_url('/assets/img/articles/'.$artikel->gambar)?>" width="300px" alt="..."></a><br>
+                    <a href="<?=base_url('home/article_read/'.$artikel->id_artikel)?>"><h4><?=$artikel->judul?></h4></a>
+                    <a href="<?=base_url('home/article_read/'.$artikel->id_artikel)?>">Read More . . . </a>
                 </div>
             </div>
-            <div class="col-lg-4">
-                <div class="php-email-form">
-                    <img id="foto" src="<?= base_url('/assets/img/articles/2.jpg')?>" width="300px" alt="...">
-                    <h4>Apa Itu Mark Up Dan Mark Down Dalam Menentukan Harga Pokok?</h4>
-                    <a href="#">Read More . . . </a>
-                </div>
-            </div>
-            <div class="col-lg-4">
-                <div class="php-email-form">
-                    <img id="foto" src="<?= base_url('/assets/img/articles/3.png')?>" height="200px" alt="...">
-                    <h4>Seperti Apa Biaya Periode Dan Bedanya Dengan Biaya Produk?</h4>
-                <a href="#">Read More . . . </a>
-                </div>
-                </div>
-            </div>
+            <?php endforeach?>
         </div>
     </div>
-</div>
 
     </div>
 </section><!-- End About Us Section -->

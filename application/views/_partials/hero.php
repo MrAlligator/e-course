@@ -6,11 +6,11 @@
                 <div class="col-lg-6 d-flex flex-column justify-content-center pt-4 pt-lg-0 order-2 order-lg-1" data-aos="fade-up" data-aos-delay="200">
                     <div class="section-title">
                         <?php if (!isset($user['email'])) : ?>
-                            <h1>Komunitas Ekspor Indonesia (KOIN)</h1>
+                            <h1>Selamat Datang di Komunitas Ekspor Indonesia</h1>
                             <h2>Let's Go International With Us !!</h2>
                             <a href="<?= base_url('home/membership') ?>" class="btn-get-started scrollto">Daftar Sekarang</a>
                         <?php else : ?>
-                            <h1><?= $title ?></h1>
+                            <h1>Selamat Datang Member Komunitas Ekspor Indonesia</h1>
                             <h2>Let's Go International With Us !!</h2>
                         <?php endif; ?>
                     </div>

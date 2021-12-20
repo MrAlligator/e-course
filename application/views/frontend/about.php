@@ -23,7 +23,7 @@
                 <p>
                    Membantu seseorang atau sebuah perusahaan yang kesulitan dalam mengekspor produk yang dimiliki sampai bisa (pengawalan ekspor produk).
                 </p>
-                <a href="#" class="btn-learn-more">Pelajari Lebih Lanjut</a>
+                <!-- <a href="#" class="btn-learn-more">Pelajari Lebih Lanjut</a> -->
             </div>
         </div>
 

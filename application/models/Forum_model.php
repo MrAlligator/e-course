@@ -2,7 +2,7 @@
 
 class Forum_model extends CI_Model
 {
-    private $_table = "tb_tanggapan";
+    private $_table = "tb_pertanyaan";
 
     public function getAll()
     {
@@ -10,6 +10,11 @@ class Forum_model extends CI_Model
     }
 
     public function getByKategori($id)
+    {
+        return $this->db->where('id_kategori', $id)->get('tb_tanggapan')->result();
+    }
+
+    public function getById($id)
     {
         return $this->db->where('id_kategori', $id)->get($this->_table)->result();
     }
@@ -22,11 +27,6 @@ class Forum_model extends CI_Model
     public function getRandom()
     {
         return $this->db->order_by('rand()')->limit(10)->get($this->_table)->result();
-    }
-
-    public function getById($id)
-    {
-        return $this->db->where('id_buyers', $id)->get($this->_table)->result();
     }
 
     public function delete($id)
