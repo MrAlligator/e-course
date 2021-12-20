@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html lang="en"><head>
+<html lang="en">
+
+<head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
@@ -24,7 +26,7 @@
   <link href="<?= base_url() ?>/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
   <!-- Template Main CSS File -->
-  <link href="<?= base_url() ?>/assets/css/style.css" rel="stylesheet">
+  <link href="<?= base_url() ?>/assets/css/style.css?v=1.0" rel="stylesheet">
 
   <!-- =======================================================
   * Template Name: Arsha - v4.6.0
@@ -32,4 +34,6 @@
   * Author: BootstrapMade.com
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
-</head><body>
+</head>
+
+<body>
