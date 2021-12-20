@@ -1,5 +1,5 @@
 <!-- ======= Header ======= -->
-<header id="header" class="fixed-top ">
+<header id="header" class="fixed-top">
     <div class="container d-flex align-items-center">
 
         <!-- <a href="<?= base_url() ?>" class="logo me-auto"><img src="<?= base_url() ?>/assets/img/logo-putih.png" class="img-fluid animated" width="100px" alt=""></a> -->
@@ -9,7 +9,7 @@
 
         <nav id="navbar" class="navbar">
             <ul>
-            <?php if (isset($user['email'])) : ?>
+                <?php if (isset($user['email'])) : ?>
                     <li class="dropdown"><a href="#"><img class="img-profile rounded-circle img-thumbnail" width="40" src="<?= base_url('assets/img/userimage/') . $user['foto_user']; ?>"><i class="bi bi-chevron-down"></i></a>
                         <ul>
                             <li><a href="<?= base_url('profile') ?>">Profil Pengguna</a></li>
@@ -28,8 +28,8 @@
                 <li><a href="<?= base_url('home/articles') ?>">Artikel</a></li>
                 <?php if (!isset($user['email'])) : ?>
                     <li><a href="<?= base_url('home/membership') ?>">Keanggotaan</a></li>
-                <?php else: ?>  
-                   <li><a href="<?= base_url('home/kalkulator') ?>">Kalkulator Harga Ekspor</a></li>
+                <?php else : ?>
+                    <li><a href="<?= base_url('home/kalkulator') ?>">Kalkulator Harga Ekspor</a></li>
                 <?php endif ?>
                 <li><a href="<?= base_url('home/forum') ?>">Forum</a></li>
                 <!-- <li><a href="#about">About</a></li>  
@@ -49,7 +49,7 @@
                 <!-- </li> -->
                 </li>
                 <!-- <li><a href="#contact">Contact</a></li> -->
-                
+
             </ul>
             <i class="bi bi-list mobile-nav-toggle"></i>
         </nav><!-- .navbar -->
