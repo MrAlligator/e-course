@@ -92,10 +92,11 @@
                                                 <div class="form-group">
                                                     <div class="input-group input-group-merge input-group-alternative">
                                                         <div class="input-group-prepend">
-                                                            <span class="input-group-text"><i class="ni ni-map-big"></i> Detail</span>
+                                                            <span class="input-group-text">Artikel</span>
                                                         </div>
-                                                        <textarea name="detail" id="detail" cols="130" rows="10"></textarea><?= form_error('detail', '<small class="text-danger pl-3">', '</small>') ?>
+                                                        <!-- <input type="text" class="form-control text-decoration-none" readonly placeholder="Artikel"> -->
                                                     </div>
+                                                    <textarea name="detail" id="detail" cols="130" rows="10"></textarea><?= form_error('detail', '<small class="text-danger pl-3">', '</small>') ?>
                                                 </div>
                                             </div>
                                         </div>

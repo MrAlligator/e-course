@@ -10,6 +10,13 @@
 <script src="<?= base_url() ?>/adminast/vendor/chart.js/dist/Chart.extension.js"></script>
 <!-- Argon JS -->
 <script src="<?= base_url() ?>/adminast/js/argon.js?v=1.2.0"></script>
+<!-- TinyMCE JS -->
+<script src="<?= base_url() ?>/adminast/js/tinymce/tinymce.min.js"></script>
+<script>
+    tinymce.init({
+        selector: '#detail'
+    });
+</script>
 <!-- Tambahan -->
 <script>
     window.setTimeout(function() {
