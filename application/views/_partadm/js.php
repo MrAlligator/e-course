@@ -17,6 +17,11 @@
         selector: '#detail'
     });
 </script>
+<script>
+    tinymce.init({
+        selector: '#editdetail'
+    });
+</script>
 <!-- Tambahan -->
 <script>
     window.setTimeout(function() {

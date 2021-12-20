@@ -145,7 +145,7 @@ class Artikel extends CI_Controller
             ];
 
             $this->db->where('id_artikel', $_POST['id']);
-            $this->db->insert('tb_artikel', $data);
+            $this->db->update('tb_artikel', $data);
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data berhasil ditambahkan</div>');
             redirect("backend/artikel");
         }

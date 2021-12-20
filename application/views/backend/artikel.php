@@ -169,11 +169,11 @@
                                                         <div class="input-group-prepend">
                                                             <span class="input-group-text"><i class="ni ni-map-big"></i></span>
                                                         </div>
-                                                        <textarea name="def" id="def" cols="130" rows="10"><?= $art['isi'] ?></textarea>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
+                                        <?= $art['isi'] ?>
                                     </div>
                                 </div>
                             </div>
@@ -246,8 +246,8 @@
                                                             <div class="input-group-prepend">
                                                                 <span class="input-group-text"><i class="ni ni-map-big"></i></span>
                                                             </div>
-                                                            <textarea name="detail" id="detail" cols="130" rows="10"><?= $art['isi'] ?></textarea>
                                                         </div>
+                                                        <textarea name="detail" id="detail" cols="130" rows="10"></textarea>
                                                     </div>
                                                 </div>
                                             </div>
