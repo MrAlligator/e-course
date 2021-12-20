@@ -12,6 +12,9 @@
 <script src="<?= base_url() ?>/adminast/js/argon.js?v=1.2.0"></script>
 <!-- TinyMCE JS -->
 <script src="<?= base_url() ?>/adminast/js/tinymce/tinymce.min.js"></script>
+<script src="<?= base_url() ?>/adminast/js/tinymce/plugins/table/plugin.min.js"></script>
+<script src="<?= base_url() ?>/adminast/js/tinymce/plugins/paste/plugin.min.js"></script>
+<script src="<?= base_url() ?>/adminast/js/tinymce/plugins/spellchecker/plugin.min.js"></script>
 <script>
     tinymce.init({
         selector: '#detail'

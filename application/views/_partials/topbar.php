@@ -20,21 +20,12 @@
                     <li><a class="getstarted scrollto" href="<?= base_url('auth') ?>">Masuk</a></li>
                 <?php endif; ?>
                 <li><a href="<?= base_url('home') ?>">Beranda</a></li>
-                <?php if (isset($user['email'])) : ?>
-                    <li class="dropdown"><a href="#"><span>Data Kami</span> <i class="bi bi-chevron-down"></i></a>
-                        <ul>
-                            <li><a href="<?= base_url('frontend/buyers') ?>"> Data Importir (Buyer)</a></li>
-                            <li><a href="<?= base_url('frontend/inquiry') ?>">Data Permintaan (Inquiry)</a></li>
-                        </ul>
-                    </li>
-                <?php else : ?>
-                    <li class="dropdown"><a href="#"><span>Data Kami</span> <i class="bi bi-chevron-down"></i></a>
-                        <ul>
-                            <li><a href="#" data-bs-toggle="modal" data-bs-target="#buyerKonf"> Data Importir (Buyer)</a></li>
-                            <li><a href="#" data-bs-toggle="modal" data-bs-target="#inquiKonf">Data Permintaan (Inquiry)</a></li>
-                        </ul>
-                    </li>
-                <?php endif; ?>
+                <li class="dropdown"><a href="#"><span>Data Kami</span> <i class="bi bi-chevron-down"></i></a>
+                    <ul>
+                        <li><a href="<?= base_url('frontend/buyers') ?>"> Data Importir (Buyer)</a></li>
+                        <li><a href="<?= base_url('frontend/inquiry') ?>">Data Permintaan (Inquiry)</a></li>
+                    </ul>
+                </li>
                 <li><a href="<?= base_url('home/articles') ?>">Artikel</a></li>
                 <?php if (!isset($user['email'])) : ?>
                     <li><a href="<?= base_url('home/membership') ?>">Keanggotaan</a></li>
