@@ -39,7 +39,7 @@
                                     <td width="150px"><?= $art['judul'] ?></a></td>
                                     <td width="100px">
                                         <a class="badge badge-success" href="" data-toggle="modal" data-target="#infoModal<?= $art['id_artikel'] ?>"><i class="fas fa-info-circle"></i></a>
-                                        <a class="badge badge-warning" href="" data-toggle="modal" data-target="#editModal<?= $art['id_artikel'] ?>"><i class="fas fa-edit"></i></a>
+                                        <a class="badge badge-warning" href="<?= site_url('backend/artikel/edit/' . $art['id_artikel']) ?>"><i class="fas fa-edit"></i></a>
                                         <a class="badge badge-danger" href="" data-toggle="modal" data-target="#deleteModal<?= $art['id_artikel'] ?>"><i class="fas fa-trash"></i></a>
                                     </td>
                             </tr>
@@ -247,7 +247,7 @@
                                                                 <span class="input-group-text"><i class="ni ni-map-big"></i></span>
                                                             </div>
                                                         </div>
-                                                        <textarea name="detail" id="detail" cols="130" rows="10"></textarea>
+                                                        <textarea name="detail" id="detail" cols="130" rows="10"><?= $art['isi'] ?></textarea>
                                                     </div>
                                                 </div>
                                             </div>

@@ -101,53 +101,31 @@ class Artikel extends CI_Controller
         }
     }
 
-    public function edit()
+    public function edit($id = null)
     {
-        $data['user'] = $this->db->get_where('tb_user', ['email' => $this->session->userdata('email')])->row_array();
+        if (!isset($id)) redirect('backend/artikel');
+        $artikel = $this->Articles_model;
+        $validation = $this->form_validation;
+        $validation->set_rules($artikel->rules());
 
-        $this->form_validation->set_rules('judul', 'Judul', 'required|trim', [
-            'required' => 'Judul tidak boleh kosong!'
-        ]);
-        $this->form_validation->set_rules('gambar', 'Gambar', 'required', [
-            'required' => 'Pilih file gambar terlebih dahulu!'
-        ]);
-        $this->form_validation->set_rules('detail', 'Detail', 'required|trim', [
-            'required' => 'Detail tidak boleh kosong!'
-        ]);
+        $data['title'] = 'Edit Artikel';
+        $data['artikel'] = $artikel->getById($id);
+        if (!$data['artikel']) show_404();
 
-        $config['allowed_types']        = 'gif|jpg|png|jpeg|PNG|JPG';
-        $config['max_size']             = 20480;
-        $config['upload_path']         = './assets/img/articles/';
-
-        $this->load->library('upload', $config);
-
-        if (!$this->upload->do_upload('gambar')) //sesuai dengan name pada form 
-        {
-            $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Perhatikan file yang diupload</div>');
-            redirect("backend/artikel");
+        if ($validation->run() == false) {
+            $this->load->view('_partadm/head', $data);
+            $this->load->view('_partadm/sidebar', $data);
+            $this->load->view('_partadm/topbar', $data);
+            $this->load->view('backend/view_edit', $data);
+            $this->load->view('_partadm/js', $data);
         } else {
-            if ($this->upload->data('file_name') != null) {
-                //hapus gambar lama
-                $old_image = $data['tb_user']['foto_user'];
-                unlink(FCPATH . 'assets/img/articles/' . $old_image);
+            if ($artikel->update() == true) {
+                $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data berhasil diubah</div>');
+                redirect("backend/artikel");
+            } else {
+                $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Data gagal diubah</div>');
+                redirect("backend/artikel");
             }
-            //tampung data dari form
-            $title = $this->input->post('judul');
-            $file = $this->upload->data();
-            $gambar = $file['file_name'];
-            $context = $this->input->post('detail');
-
-            $data = [
-                'judul' => $title,
-                'isi' => $context,
-                'gambar' => $gambar,
-                'tanggal_input' => time()
-            ];
-
-            $this->db->where('id_artikel', $_POST['id']);
-            $this->db->update('tb_artikel', $data);
-            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data berhasil ditambahkan</div>');
-            redirect("backend/artikel");
         }
     }
 
