@@ -21,7 +21,17 @@ class Forum_model extends CI_Model
 
     public function getKategori()
     {
-        return $this->db->get('tb_pertanyaan')->result();
+        return $this->db->get($this->_table)->result();
+    }
+
+    public function getKategoriTerbaru()
+    {
+        return $this->db->order_by('id_kategori', 'DESC')->get($this->_table)->result();
+    }
+    
+    public function getKategoriTerpopuler()
+    {
+        return $this->db->order_by('tanggapan', 'DESC')->get($this->_table)->result();
     }
 
     public function getRandom()
@@ -29,15 +39,21 @@ class Forum_model extends CI_Model
         return $this->db->order_by('rand()')->limit(10)->get($this->_table)->result();
     }
 
-    public function delete($id)
+    public function delete_post($id)
     {
-        $this->db->delete($this->_table, ['id_post' => $id]);
-        return $this->db->get($this->_table)->result();
+        $this->db->delete('tb_tanggapan', ['id_post' => $id]);
+        return $this->db->get('tb_tanggapan')->result();
     }
 
     public function create($data)
     {
         $this->db->insert($this->_table, $data);
         return $this->db->get($this->_table)->result();
+    }
+
+    public function create_post($data)
+    {
+        $this->db->insert('tb_tanggapan', $data);
+        return $this->db->get('tb_tanggapan')->result();
     }
 }

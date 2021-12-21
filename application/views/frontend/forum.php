@@ -10,33 +10,64 @@
     <div class="container" data-aos="fade-up">
 <br><br><br>
 <div class="section-title">
-    <h2>Selamat Datang di forum komunitas</h2>
+    <h2>Selamat Datang di Forum Komunitas</h2>
     <p>Forum Komunitas Ekspor Indonesia, harap mengikuti panduan komunitas</p>
 </div>
 <br><br>
 
 <div class="row">
-    <div class="col-lg-9 d-flex align-items-stretch">
-        <div class="info">
+    <div class="col-lg-8 d-flex align-items-stretch">
+        <div class="php-email-form">
             <div class="row">
                 <div class="col-9">
-                    <i class="bi bi-chat-left-quote"></i><h4>Daftar Pertanyaan atau Topik</h4> 
+                    <h4>Daftar Pertanyaan atau Topik</h4> 
                 </div>
                 <div class="col">
                     <a href="#" data-bs-toggle="modal" data-bs-target="#tambahPertanyaan">Buat pertanyaan baru</a>    
                 </div>
             </div><br>
-            <?php $i=1;foreach($kategori as $kat):?>
-        <div class="card-header">
-            <a href="<?=base_url('home/kategori/'.$kat->id_kategori)?>"><h4><?=$kat->nama_kategori?></h4></a>
-            <a href="<?=base_url('home/kategori/'.$kat->id_kategori)?>"><p><?=$kat->deskripsi?></p></a>
-        </div><br>
+
+<ul class="nav nav-tabs" id="myTab" role="tablist">
+    <li class="nav-item">
+        <a class="nav-link active" id="terbaru" data-bs-toggle="tab" href="#pertanyaan-terbaru" role="tab" aria-controls="home" aria-selected="true">Terbaru</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" id="terpopuler" data-bs-toggle="tab" href="#pertanyaan-terpopuler" role="tab" aria-controls="profile" aria-selected="true">Terpopuler</a>
+    </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane active" id="pertanyaan-terbaru" role="tabpanel" aria-labelledby="home-tab"><p></p>
+    <ul class="list-group list-group-flush">
+        <?php $i=1;foreach($kategori_terbaru as $kate):?>
+            <li class="list-group-item">
+                <h5><a href="<?=base_url('home/kategori/'.$kate->id_kategori)?>">
+                <?=$i++.". ".$kate->nama_kategori?></a></h5>
+                <p><figcaption class="blockquote-footer">
+                <?=$kate->tanggapan?> Tanggapan
+                </figcaption></p>
+            </li>
         <?php endforeach ?>
     </div>
-</div>
-<div class="col-lg-3 d-flex align-items-stretch">
-    <div class="info">
-        <i class="bi bi-geo-alt"></i><h4>Peraturan dalam forum</h4><br>
+    <div class="tab-pane" id="pertanyaan-terpopuler" role="tabpanel" aria-labelledby="profile-tab"><p></p>
+    <ul class="list-group list-group-flush">
+            <?php $i=1;foreach($kategori_terpopuler as $kat):?>
+                <li class="list-group-item">
+                    <h5><a href="<?=base_url('home/kategori/'.$kat->id_kategori)?>">
+                    <?=$i++.". ".$kat->nama_kategori?></a></h5>
+                    <p><figcaption class="blockquote-footer">
+                    <?=$kat->tanggapan?> Tanggapan
+                    </figcaption></p>
+                </li>
+            <?php endforeach ?>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<div class="col-lg-4 d-flex align-items-stretch">
+    <div class="php-email-form">
+        <div class="section-title"><h4>Peraturan dalam forum</h4><p></p></div>
         1. Dilarang menggunakan kata yang mengandung unsur SARA
         <br><br>
         2. Dilarang menggunakan kata kasar dan seksual
@@ -54,24 +85,35 @@
 </section>
 
 <div class="modal fade" id="tambahPertanyaan" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="staticBackdropLabel">Tambah Pertanyaan</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <!-- <form action="<?=base_url('')?>" -->
-      <div class="modal-body">
-            <label for="name">Masukkan Pertanyaan</label>
-            <input type="text" name="harga_beli" class="form-control" id="harga_beli" min=0 required><br>
-            <label for="name">Deskripsi Pertanyaan</label>
-            <textarea class="form-control" rows=8 required name="postingan" placeholder="Masukkan Deskripsi Pertanyaanmu disini . . ."></textarea>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Tambah</button>
-      </div>
-    </div>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Tambah Pertanyaan</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+        <form action="<?=base_url('home/tambah_pertanyaan')?>" method="post">
+            <div class="modal-body">
+                <label for="name">Masukkan Pertanyaan</label>
+                <input type="text" name="pertanyaan" class="form-control" id="pertanyaan" required><br>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary">Tambah</button>
+            </div>
+        </form>
+        </div>
   </div>
 </div>
 <!-- End Contact Section -->
+<script>
+    $(document).ready(function(){
+        $('#terpopuler').click(function(){
+            $('#terbaru').attr("class", "nav-link");
+            $('#terpopuler').attr("class", "nav-link active");
+        });
+        $('#terbaru').click(function(){
+            $('#terpopuler').attr("class", "nav-link");
+            $('#terbaru').attr("class", "nav-link active");
+        });
+    });
+</script>

@@ -53,9 +53,13 @@ class Home extends CI_Controller
 
         $this->load->view('_partials/header', $data);
         $this->load->view('_partials/topbar', $data);
+        if(!isset($_SESSION['email'])){
         $this->load->view('_partials/hero', $data);
+        }
         $this->load->view('_partials/clients', $data);
         $this->load->view('frontend/calculator', $data);
+        $this->load->view('frontend/calc', $data);
+        $this->load->view('frontend/articles', $data);
         $this->load->view('_partials/footer', $data);
         $this->load->view('_partials/js', $data);
     }
@@ -64,7 +68,8 @@ class Home extends CI_Controller
     {
         $data['user'] = $this->db->get_where('tb_user', ['email' => $this->session->userdata('email')])->row_array();
         $need = $this->db->get_where('tb_user', ['email' => $this->session->userdata('email')])->row_array();
-        $data['kategori'] = $this->Forum_model->getKategori();
+        $data['kategori_terbaru'] = $this->Forum_model->getKategoriTerbaru();
+        $data['kategori_terpopuler'] = $this->Forum_model->getKategoriTerpopuler();
         $data['title'] = "Forum";
         $data['artikel'] = $this->Artikel_model->getRandom();
 
@@ -129,20 +134,40 @@ class Home extends CI_Controller
             'id_user' => $this->input->post('id_user'),
             'id_kategori' => $this->input->post('id_kategori'),
             'postingan' => $this->input->post('postingan'),
-            'like' => $this->input->post('like'),
-            'dislike' => $this->input->post('dislike'),
+            'komentar' => 0,
             'tanggal' => $this->input->post('tanggal'),
             'jam' => $this->input->post('jam')
         ];
 
-        $this->Forum_model->create($data);
+        $raw = $this->db->where('id_kategori', $this->input->post('id_kategori'))->get('tb_pertanyaan')->row_array();;
+        $tanggapan = $raw['tanggapan'];
+        $tanggapan = intval($tanggapan)+1;
+
+        $this->Forum_model->create_post($data);
+        $this->db->where('id_kategori', $this->input->post('id_kategori'))->update('tb_pertanyaan', ['tanggapan'=>$tanggapan]);
         redirect('home/kategori/' . $this->input->post('id_kategori'));
+    }
+
+    public function tambah_pertanyaan()
+    {
+        $data = [
+            'nama_kategori' => $this->input->post('pertanyaan'),
+        ];
+
+        $this->Forum_model->create($data);
+        redirect('home/forum');
     }
 
     public function del_post($id)
     {
-        $this->Forum_model->delete($id);
-        redirect('home/forum');
+        $raw = $this->db->where('id_post', $id)->get('tb_tanggapan')->row_array();;
+        $id_kategori = $raw['id_kategori'];
+        $raws = $this->db->where('id_kategori', $id_kategori)->get('tb_pertanyaan')->row_array();;
+        $tanggapan = $raws['tanggapan'];
+        $tanggapan = intval($tanggapan)-1;
+        $this->db->where('id_kategori', $id_kategori)->update('tb_pertanyaan', ['tanggapan'=>$tanggapan]);
+        $this->Forum_model->delete_post($id);
+        redirect('home/kategori/'.$id_kategori);
     }
 
     public function article_read($id)

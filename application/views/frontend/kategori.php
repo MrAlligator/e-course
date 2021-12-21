@@ -22,7 +22,7 @@
 <?php if(isset($_SESSION['email'])){?>
 
     <div class="col-lg-9 mt-5 mt-lg-0 d-flex align-items-stretch">
-        <div class="php-email-form">
+        <div class="info">
             <div class="row"><?php date_default_timezone_set("Asia/Jakarta");?>
                 <div class="form-group col-md">
                 <h5>Apa tanggapanmu?</h5>
@@ -32,13 +32,11 @@
             <div class="form-group">
                 <textarea class="form-control" rows=8 required name="postingan" placeholder="Masukkan Pertanyaanmu disini . . ."></textarea>
                 <input hidden type="text" value="<?=$user['id_user']?>" name="id_user">
-                <input hidden type="text" value="<?=$id_kategori?>" name="id_kategori">
-                <input hidden type="number" value=0 name="like">
-                <input hidden type="number" value=0 name="dislike">
+                <input hidden type="text" value="<?=$id_kategori?>" name="id_kategori">>
                 <input hidden type="text" value="<?=date('Y-m-d')?>" name="tanggal">
                 <input hidden type="text" value="<?=date('H:i')?>" name="jam">
             <div class="text-center">
-                <br><button type="submit">Post</button>
+                <br><button class="btn btn-primary" type="submit">Kirim</button>
             </div>
             </div>
             </form>

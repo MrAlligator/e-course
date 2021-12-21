@@ -27,10 +27,15 @@ class Artikel_model extends CI_Model
 
     public function getRandom()
     {
-        return $this->db->order_by('rand()')->limit(3)->get($this->_table)->result();
+        return $this->db->order_by('id_artikel','DESC')->limit(3)->get($this->_table)->result();
     }
 
     public function getById($id)
+    {
+        return $this->db->where('id_artikel', $id)->get($this->_table)->result();
+    }
+
+    public function getByIds($id)
     {
         return $this->db->where('id_artikel', $id)->get($this->_table)->row_array();
     }

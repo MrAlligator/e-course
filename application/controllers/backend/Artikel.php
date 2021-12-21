@@ -104,12 +104,12 @@ class Artikel extends CI_Controller
     public function edit($id = null)
     {
         if (!isset($id)) redirect('backend/artikel');
-        $artikel = $this->Articles_model;
+        $artikel = $this->Artikel_model;
         $validation = $this->form_validation;
         $validation->set_rules($artikel->rules());
 
         $data['title'] = 'Edit Artikel';
-        $data['artikel'] = $artikel->getById($id);
+        $data['artikel'] = $artikel->getByIds($id);
         if (!$data['artikel']) show_404();
 
         if ($validation->run() == false) {
@@ -133,7 +133,7 @@ class Artikel extends CI_Controller
     {
         if (!isset($id)) show_404();
 
-        if ($this->Articles_model->delete($id)) {
+        if ($this->Artikel_model->delete($id)) {
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data berhasil dihapus</div>');
             redirect(site_url('backend/artikel'));
         }

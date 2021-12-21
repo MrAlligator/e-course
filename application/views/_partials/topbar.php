@@ -12,26 +12,26 @@
                 <?php if (isset($user['email'])) : ?>
                     <li class="dropdown"><a href="#"><img class="img-profile rounded-circle img-thumbnail" width="40" src="<?= base_url('assets/img/userimage/') . $user['foto_user']; ?>"></a>
                         <ul>
-                            <li><a href="<?= base_url('profile') ?>">Profil Pengguna</a></li>
-                            <li><a href="<?= base_url('auth/logout') ?>">Keluar</a></li>
+                            <li><a href="<?= base_url('profile') ?>"><h6>Profil Pengguna</h6></a></li>
+                            <li><a href="<?= base_url('auth/logout') ?>"><h6>Keluar</h6></a></li>
                         </ul>
                     </li>
                 <?php else : ?>
-                    <li><a class="getstarted scrollto" href="<?= base_url('auth') ?>">Masuk</a></li>
+                    <li><a class="getstarted scrollto" href="<?= base_url('auth') ?>"><h6>Masuk</h6></a></li>
                 <?php endif; ?>
-                <li><a href="<?= base_url('home') ?>">Beranda</a></li>
-                <li class="dropdown"><a href="#"><span>Data Kami</span> <i class="bi bi-chevron-down"></i></a>
+                <li><a href="<?= base_url('home') ?>"><h6>Beranda</h6></a></li>
+                <li class="dropdown"><a href="#"><span><h6>Data Kami</h6></span> <i class="bi bi-chevron-down"></i></a>
                     <ul>
-                        <li><a href="<?= base_url('frontend/buyers') ?>"> Data Importir (Buyer)</a></li>
-                        <li><a href="<?= base_url('frontend/inquiry') ?>">Data Permintaan (Inquiry)</a></li>
+                        <li><a href="<?= base_url('frontend/buyers') ?>"><h6>Data Importir (Buyer)</h6></a></li>
+                        <li><a href="<?= base_url('frontend/inquiry') ?>"><h6>Data Permintaan (Inquiry)</h6></a></li>
                     </ul>
                 </li>
-                <li><a href="<?= base_url('home/articles') ?>">Artikel</a></li>
-                <li><a href="<?= base_url('home/kalkulator') ?>">Kalkulator Harga Ekspor</a></li>
+                <li><a href="<?= base_url('home/articles') ?>"><h6>Artikel</h6></a></li>
+                <li><a href="<?= base_url('home/kalkulator') ?>"><h6>Kalkulator Harga Ekspor</h6></a></li>
                 <?php if (!isset($user['email'])) : ?>
-                    <li><a href="<?= base_url('home/membership') ?>">Keanggotaan</a></li>
+                    <li><a href="<?= base_url('home/membership') ?>"><h6>Keanggotaan</h6></a></li>
                 <?php endif ?>
-                <li><a href="<?= base_url('home/forum') ?>">Forum</a></li>
+                <li><a href="<?= base_url('home/forum') ?>"><h6>Forum</h6></a></li>
                 <!-- <li><a href="#about">About</a></li>  
                 <li><a href="#services">Services</a></li>
                 <li><a href="#portfolio">Portfolio</a></li>

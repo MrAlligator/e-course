@@ -4,8 +4,8 @@
 
 <br><br><br>
 <div class="section-title">
-    <h2>Membership</h2>
-    <p>Membership</p>
+    <h2>Keanggotaan</h2>
+    <p>Halaman Keanggotaan digunakan pengguna baru untuk mendaftar menjadi member</p>
 </div>
 
         <div class="row">
@@ -44,28 +44,28 @@
                             <h3>Data Pribadi</h3>
                             <div class="form-group">
                                 <?php echo $this->session->flashdata('message'); ?>
-                                <label for="nama">Nama Lengkap</label>
+                                <label for="nama"><h6>Nama Lengkap</h6></label>
                                 <input type="text" class="form-control" name="nama" id="nama"> <?= form_error('nama', '<small class="text-danger pl-3">', '</small>') ?>
                                 <div class="row">
                                     <div class="col">
-                                        <label for="email">Email</label>
+                                        <label for="email"><h6>Email</h6></label>
                                         <input type="email" name="email" class="form-control" id="email"> <?= form_error('email', '<small class="text-danger pl-3">', '</small>') ?>
                                     </div>
                                     <div class="col">
-                                        <label>Nomor Handphone</label>
+                                        <label><h6>Nomor Handphone</h6></label>
                                         <input type="text" onkeypress="return hanyaAngka(event)" name="nomor" class="form-control" id="nomor"> <?= form_error('nomor', '<small class="text-danger pl-3">', '</small>') ?>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col">
-                                        <label>Password</label>
+                                        <label><h6>Password</h6></label>
                                         <div class="input-group">
                                             <input type="password" class="form-control" name="password" id="password"><?= form_error('password', '<small class="text-danger pl-3">', '</small>') ?>
                                             <span id="show_pass" class="input-group-text"><i id="pass_icon" class="bi bi-eye-fill"></i></span>
                                         </div>
                                     </div>
                                     <div class="col">
-                                        <label>Konfirmasi Password</label>
+                                        <label><h6>Konfirmasi Password</h6></label>
                                         <div class="input-group">
                                             <input type="password" class="form-control" name="konf-password" id="konf-password"> <?= form_error('konf-password', '<small class="text-danger pl-3">', '</small>') ?>
                                             <span id="show_pass_konf" class="input-group-text"><i id="pass_konf_icon" class="bi bi-eye-fill"></i></span>
@@ -74,14 +74,14 @@
                                 </div><br>
                                 <div class="row">
                                     <div class="col">
-                                        <label>Password</label>
+                                        <label><h6>Password</h6></label>
                                         <div class="input-group">
                                             <input type="password" class="form-control" name="password" id="password"><?= form_error('password', '<small class="text-danger pl-3">', '</small>') ?>
                                             <span id="show_pass" class="input-group-text"><i id="pass_icon" class="bi bi-eye-fill"></i></span>
                                         </div>
                                     </div>
                                     <div class="col">
-                                        <label>Konfirmasi Password</label>
+                                        <label><h6>Konfirmasi Password</h6></label>
                                         <div class="input-group">
                                             <input type="password" class="form-control" name="konf-password" id="konf-password"> <?= form_error('konf-password', '<small class="text-danger pl-3">', '</small>') ?>
                                             <span id="show_pass_konf" class="input-group-text"><i id="pass_konf_icon" class="bi bi-eye-fill"></i></span>
