@@ -60,6 +60,7 @@
         <h5 class="modal-title" id="staticBackdropLabel">Tambah Pertanyaan</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
+      <!-- <form action="<?=base_url('')?>" -->
       <div class="modal-body">
             <label for="name">Masukkan Pertanyaan</label>
             <input type="text" name="harga_beli" class="form-control" id="harga_beli" min=0 required><br>

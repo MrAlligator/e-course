@@ -6,7 +6,7 @@ class Artikel extends CI_Controller
     public function __construct()
     {
         parent::__construct();
-        $this->load->model('Articles_model');
+        $this->load->model('Artikel_model');
         is_admin();
     }
 
@@ -15,7 +15,7 @@ class Artikel extends CI_Controller
         //PAGINATION
         //Config
         $config['base_url'] = 'http://' . $_SERVER['HTTP_HOST'] . str_replace(basename($_SERVER['SCRIPT_NAME']), "", $_SERVER['SCRIPT_NAME']) . 'backend/artikel/index';
-        $config['total_rows'] = $this->Articles_model->hitung_jumlah_artikel();
+        $config['total_rows'] = $this->Artikel_model->hitung_jumlah_artikel();
         $config['per_page'] = '10';
 
         //Styling
@@ -50,7 +50,7 @@ class Artikel extends CI_Controller
         $this->pagination->initialize($config);
         $data['start'] = $this->uri->segment(4);
         $data['title'] = "Artikel";
-        $data['artikel'] = $this->Articles_model->getSome($config['per_page'], $data['start']);
+        $data['artikel'] = $this->Artikel_model->getSome($config['per_page'], $data['start']);
 
         $this->load->view('_partadm/head', $data);
         $this->load->view('_partadm/sidebar', $data);

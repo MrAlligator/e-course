@@ -27,10 +27,9 @@
                     </ul>
                 </li>
                 <li><a href="<?= base_url('home/articles') ?>">Artikel</a></li>
+                <li><a href="<?= base_url('home/kalkulator') ?>">Kalkulator Harga Ekspor</a></li>
                 <?php if (!isset($user['email'])) : ?>
                     <li><a href="<?= base_url('home/membership') ?>">Keanggotaan</a></li>
-                <?php else : ?>
-                    <li><a href="<?= base_url('home/kalkulator') ?>">Kalkulator Harga Ekspor</a></li>
                 <?php endif ?>
                 <li><a href="<?= base_url('home/forum') ?>">Forum</a></li>
                 <!-- <li><a href="#about">About</a></li>  

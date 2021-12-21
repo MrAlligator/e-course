@@ -17,13 +17,11 @@ function is_logged_in()
 function is_admin()
 {
     $adm = get_instance();
-    if (!$adm->session->userdata('email')) {
-        redirect('home');
-    } else {
         $role = $adm->session->userdata('role_id');
 
         if ($role != 1) {
             redirect('auth/blocked');
         }
-    }
+
+
 }

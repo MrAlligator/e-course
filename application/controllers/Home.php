@@ -8,6 +8,7 @@ class Home extends CI_Controller
         parent::__construct();
         $this->load->model('Forum_model');
         $this->load->model('Artikel_model');
+        is_user();
     }
 
     public function index()
@@ -44,11 +45,11 @@ class Home extends CI_Controller
 
     public function kalkulator()
     {
+        is_logged_in();
         $data['user'] = $this->db->get_where('tb_user', ['email' => $this->session->userdata('email')])->row_array();
         $data['title'] = "Kalkulator ";
         $data['subtitle'] = "Kalkulator perhitungan harga dalam melakukan transaksi ekspor ";
         $data['artikel'] = $this->Artikel_model->getRandom();
-
 
         $this->load->view('_partials/header', $data);
         $this->load->view('_partials/topbar', $data);
