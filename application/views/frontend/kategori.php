@@ -71,34 +71,47 @@
 
 <div class="col-lg-12 mt-5 mt-lg-0 d-flex align-items-stretch">
     <div class="php-email-form">
-        <?php if($post):foreach($post as $postingan):?>
-        diposting tanggal <?=date('d F Y', strtotime($postingan->tanggal))?> pukul <?=$postingan->jam?>
-        <?php $poster = $this->db->where('id_user', $postingan->id_user)->get('tb_user')->row_array()?>
-        <div class="card-header">
-            <div class="row">
-            <div class="col-sm-1">
-                <img width="50" src="<?= base_url('/assets/img/userimage/').$poster['foto_user'];?>" class="img-profile rounded-circle img-thumbnail">
-            </div>
-            <div class="col">
-                <?=$poster['nama']." ";
-                if($poster['role_id']==1){?><i class="bx bx-badge-check"></i><?php }?>
-                    <h4><?=$postingan->postingan?></h4>
-            </div>
-            <div class="col-sm-1">
-                <?php if(isset($_SESSION['email'])&&$poster['email']===$_SESSION['email']):?>
-                    <a href="<?=base_url('home/del_post/').$postingan->id_post?>"><i class="bx bx-trash"></i></a>
+        <?php
+        if($post):
+            foreach($post as $postingan):
+            $poster = $this->db->where('id_user', $postingan->id_user)->get('tb_user')->row_array()
+        ?><br>
+        
+<div class="list-group">
+    <li class="list-group-item" aria-current="true">
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item" aria-current="true">
+                <div class="d-flex w-100 justify-content-between">
+                    <h6 class="mb-1">
+                        <img width="40px" src="<?= base_url('/assets/img/userimage/').$poster['foto_user'];?>" class="rounded-circle img-thumbnail">
+                        <?=$poster['nama']?>
+                    <h6>
+                        <?=date('d F Y', strtotime($postingan->tanggal))?>, <?=$postingan->jam?>
+                    </h6>
+                    </h6>
+                </div>
+            </li>
+            <li class="list-group-item" aria-current="true">
+                <p><h4 class="mb-1"><?=$postingan->postingan?></h4></p>
+            </li>
+            <li class="list-group-item" aria-current="true">
+                <?php if(isset($_SESSION['email'])&&$poster['email']===$_SESSION['email']):?>  
+                    <a href="<?=base_url('home/del_post/').$postingan->id_post?>"><small>Hapus | </small></a>
                 <?php endif ?>
-            </div><br>
-            </div>
-        </div>
-        <h6>
-            <!-- <a id="like"><i class="bi bi-hand-thumbs-up"></i></a> <?=$postingan->like?>
-            <a id="dislke"><i class="bi bi-hand-thumbs-down"></i></a> <?=$postingan->dislike?> -->
-        </h6><br>
-    <?php endforeach;else:?>
-        <div class="text-center"><h3>Belum ada postingan</h3></div>
-    <?php endif?>
+                    <a data-bs-toggle="collapse" href="#komentar<?=$postingan->id_post?>" role="button" aria-expanded="false" aria-controls="collapseExample">
+                    <small>Komentar (<?=$postingan->komentar?>)</small></a>
+                    
+<div class="collapse" id="komentar<?=$postingan->id_post?>">
+    <div class="card card-body">
+        Belum ada komentar
     </div>
+</div>
+        <ul>
+    </li>
+</div>
+    <?php endforeach;else:?>
+        <div class="text-center"><h3>Belum ada tanggapan</h3></div>
+    <?php endif?>
 </div>
 
 </div>

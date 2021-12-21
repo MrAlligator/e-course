@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 16, 2021 at 10:45 AM
+-- Generation Time: Dec 21, 2021 at 06:05 PM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 7.3.28
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `db_komu`
+-- Database: `db_komunitas`
 --
 
 -- --------------------------------------------------------
@@ -28,12 +28,19 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `tb_artikel` (
-  `id_artikel` varchar(11) NOT NULL,
+  `id_artikel` int(11) NOT NULL,
   `judul` varchar(125) NOT NULL,
   `isi` mediumtext NOT NULL,
   `gambar` varchar(100) NOT NULL,
   `tanggal_input` varchar(14) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `tb_artikel`
+--
+
+INSERT INTO `tb_artikel` (`id_artikel`, `judul`, `isi`, `gambar`, `tanggal_input`) VALUES
+(3, 'Arduino', '<p>Penulis Artikel adalah orang atau individu yang bertindak dalam pengarangan sebuah tulisan, penggabungan beberapa kata menjadi kalimat yang menarik dan enak dibaca sehingga membuat pembaca dapat mengetahui apa yang tidak mereka ketahui sebelumnya. Sebuah artikel berasal dari pengalaman seseorang, imajinasi, pengetahuan umum atau penelitian ilmiah.</p>', '135_2.jpeg', '1640081066');
 
 -- --------------------------------------------------------
 
@@ -15764,6 +15771,7 @@ INSERT INTO `tb_inquiry` (`id_inquiry`, `tanggal_input`, `produk`, `negara`, `de
 
 CREATE TABLE `tb_komentar` (
   `id_komentar` int(11) NOT NULL,
+  `id_user` int(11) NOT NULL,
   `id_post` int(11) NOT NULL,
   `komentar` text NOT NULL,
   `tanggal` varchar(30) NOT NULL,
@@ -16061,16 +16069,17 @@ CREATE TABLE `tb_pembayaran` (
 CREATE TABLE `tb_pertanyaan` (
   `id_kategori` int(11) NOT NULL,
   `nama_kategori` varchar(255) NOT NULL,
-  `deskripsi` text NOT NULL
+  `tanggapan` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `tb_pertanyaan`
 --
 
-INSERT INTO `tb_pertanyaan` (`id_kategori`, `nama_kategori`, `deskripsi`) VALUES
-(1, 'Impor', 'Impor adalah proses transportasi barang atau komoditas dari suatu negara ke negara lain secara legal, umumnya dalam proses perdagangan. Proses impor umumnya adalah tindakan memasukan barang atau komoditas dari negara lain ke dalam negeri.'),
-(2, 'Ekspor', 'Ekspor adalah proses transportasi barang atau komoditas dari suatu negara ke negara lain. Proses ini sering kali digunakan oleh perusahaan dengan skala bisnis kecil sampai menengah sebagai strategi utama untuk bersaing di tingkat internasional.');
+INSERT INTO `tb_pertanyaan` (`id_kategori`, `nama_kategori`, `tanggapan`) VALUES
+(1, 'Mengapa kita harus melakukan ekspor?', 2),
+(2, 'Apa itu ekspor?', 1),
+(3, 'Bagaimana perubahan incoterm 2020?', 0);
 
 -- --------------------------------------------------------
 
@@ -16083,8 +16092,7 @@ CREATE TABLE `tb_tanggapan` (
   `id_user` int(11) NOT NULL,
   `id_kategori` int(11) NOT NULL,
   `postingan` text NOT NULL,
-  `like` int(11) NOT NULL,
-  `dislike` int(11) NOT NULL,
+  `komentar` int(11) NOT NULL,
   `tanggal` varchar(30) NOT NULL,
   `jam` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -16093,10 +16101,10 @@ CREATE TABLE `tb_tanggapan` (
 -- Dumping data for table `tb_tanggapan`
 --
 
-INSERT INTO `tb_tanggapan` (`id_post`, `id_user`, `id_kategori`, `postingan`, `like`, `dislike`, `tanggal`, `jam`) VALUES
-(1, 1, 1, 'Assalamu\'alaikum, Ijin bertanya, bagaimana cara melakukan transaksi impor dan ekspor yang benar?', 0, 0, '2021-10-30', '20:42'),
-(8, 1, 1, 'Ralat Untuk Aksi Bersama dalam penggalangan dana di undur 2 hari kedepan, dari pihak kepolisian masih belum memberikan izin karena masih dalam masa pilkades', 0, 0, '2021-11-16', '11:50'),
-(9, 6, 2, 'bagaimana cara menghitung harga etika barang sudah berada di atas kapal di pelabuhan muat?', 0, 0, '2021-11-20', '11:41');
+INSERT INTO `tb_tanggapan` (`id_post`, `id_user`, `id_kategori`, `postingan`, `komentar`, `tanggal`, `jam`) VALUES
+(1, 4, 1, 'bagaimana cara menghitung harga etika barang sudah berada di atas kapal di pelabuhan muat?', 0, '2021-10-30', '20:42'),
+(8, 4, 1, 'Ralat Untuk Aksi Bersama dalam penggalangan dana di undur 2 hari kedepan, dari pihak kepolisian masih belum memberikan izin karena masih dalam masa pilkades', 0, '2021-11-16', '11:50'),
+(9, 6, 2, 'bagaimana cara menghitung harga etika barang sudah berada di atas kapal di pelabuhan muat?', 0, '2021-11-20', '11:41');
 
 -- --------------------------------------------------------
 
@@ -16147,9 +16155,31 @@ CREATE TABLE `tb_user` (
 INSERT INTO `tb_user` (`id_user`, `nama`, `email`, `nomor_hp`, `foto_user`, `password`, `view_password`, `role_id`, `is_member`, `is_active`, `date_created`) VALUES
 (1, 'Denny Trias Utomo', 'rizkiw8778@gmail.com', '', 'denny_trias.png', '$2y$10$oh78.L2MF51tTCIl3.OgLOvxX6v0qz/Sico.d8pMtx3OaX35YVMs6', 'AxenNet123', 2, 1, 1, 1635156187),
 (2, 'Admin', 'admin@gmail.com', '', 'WhatsApp_Image_2021-11-05_at_11_15_38_AM.jpeg', '$2y$10$7g1YRDy55vdnlW99nXXffOIKHH3A840Azz1MwcsUtWUSYgmLNe9ie', 'admin', 1, 1, 1, 1635501808),
-(4, 'Rizki Widya Pratama', 'owner@gmail.com', '087832165981', 'default.png', '$2y$10$HnXSS6hRkZ7Ez7G8gAU48udAyNGaaEEPHsW.vpbLvJZfmrqI9t2eu', '12345678', 1, 1, 1, 1636099670),
+(4, 'Rizki Widya Pratama', 'owner@gmail.com', '087832165981', 'default.png', '$2y$10$HnXSS6hRkZ7Ez7G8gAU48udAyNGaaEEPHsW.vpbLvJZfmrqI9t2eu', '12345678', 2, 1, 1, 1636099670),
 (6, 'Fabryzal Adam Pramudya', 'ryzaldm@gmail.com', '087832165981', 'IMG_20201010_085551_230.jpg', '$2y$10$DFqA4VVg//LpFt/IQfqdDO6DINZnWSZgSExSRBDQae/NuC8rcHPQ.', 'Adam240899', 2, 1, 1, 1636292988),
 (8, 'Fabryzal Adam Pramudya', 'fabryzal@gmail.com', '087832165981', 'default.png', '$2y$10$UxueRuBBFA2iDkwsVrcBW.vM.fSRpBns./C.3e3FBq7joz4EhPpPi', 'fabryzal', 2, 1, 1, 1636778809);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tb_user_detail`
+--
+
+CREATE TABLE `tb_user_detail` (
+  `id_user` int(11) NOT NULL,
+  `nama` varchar(100) NOT NULL,
+  `tanggal_lahir` varchar(100) NOT NULL,
+  `jenis_kelamin` varchar(100) NOT NULL,
+  `kota_tempat_tinggal` varchar(200) NOT NULL,
+  `nama_usaha` varchar(200) NOT NULL,
+  `alamat_usaha` text NOT NULL,
+  `kota_lokasi_usaha` text NOT NULL,
+  `tahun_berdiri_usaha` varchar(4) NOT NULL,
+  `no_telepon` varchar(50) NOT NULL,
+  `produk_ekspor` text NOT NULL,
+  `jumlah_karyawan` int(11) NOT NULL,
+  `omset_pertahun` int(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -16237,6 +16267,12 @@ ALTER TABLE `user_role`
 --
 
 --
+-- AUTO_INCREMENT for table `tb_artikel`
+--
+ALTER TABLE `tb_artikel`
+  MODIFY `id_artikel` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- AUTO_INCREMENT for table `tb_importir`
 --
 ALTER TABLE `tb_importir`
@@ -16264,13 +16300,13 @@ ALTER TABLE `tb_pembayaran`
 -- AUTO_INCREMENT for table `tb_pertanyaan`
 --
 ALTER TABLE `tb_pertanyaan`
-  MODIFY `id_kategori` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_kategori` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `tb_tanggapan`
 --
 ALTER TABLE `tb_tanggapan`
-  MODIFY `id_post` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id_post` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `tb_token`

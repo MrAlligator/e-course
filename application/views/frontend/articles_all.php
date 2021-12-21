@@ -10,9 +10,10 @@
             <?php foreach($artikel as $artikel):?>
             <div class="col-lg-4">
                 <div class="php-email-form">
-                    <a href="<?=base_url('home/article_read/'.$artikel->id_artikel)?>"><img id="foto" src="<?= base_url('/assets/img/articles/'.$artikel->gambar)?>" width="300px" alt="..."></a><br>
-                    <a href="<?=base_url('home/article_read/'.$artikel->id_artikel)?>"><h4><?=$artikel->judul?></h4></a>
-                    <a href="<?=base_url('home/article_read/'.$artikel->id_artikel)?>">Read More . . . </a>
+                    <a href="<?=base_url('home/article_read/'.$artikel->id_artikel)?>">
+                    <img id="foto" src="<?= base_url('/assets/img/articles/'.$artikel->gambar)?>" width="350px" alt="..."><p></p>
+                    <h4><?=$artikel->judul?></h4><p></p>
+                    Read More . . . </a>
                 </div>
             </div>
             <?php endforeach?>

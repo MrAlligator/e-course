@@ -35,7 +35,9 @@ class Profile extends CI_Controller
         if ($this->form_validation->run() == FALSE) {
             $this->load->view('_partials/header', $data);
             $this->load->view('_partials/topbar', $data);
+            if(!isset($_SESSION['email'])){
             $this->load->view('_partials/hero', $data);
+            }
             $this->load->view('frontend/profile', $data);
             $this->load->view('_partials/footer', $data);
             $this->load->view('_partials/js', $data);

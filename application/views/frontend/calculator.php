@@ -13,7 +13,8 @@
         <div class="php-email-form">
             <div class="section-title">
             <div class="card-header">
-                <h4>Exworks Price<a href="#" data-bs-toggle="modal" data-bs-target="#exworks"> <i class="bx bx-help-circle"></i></a></h4>
+                <h4>Exworks Price<a href="#" data-bs-toggle="modal" data-bs-target="#exworks">
+                    <i class="bx bx-help-circle"></i></a></h4>
                 </div>
             </div>
                 
