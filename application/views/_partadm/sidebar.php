@@ -3,8 +3,7 @@
     <div class="scrollbar-inner">
         <!-- Brand -->
         <div class="sidenav-header  align-items-center">
-            <a class="navbar-brand" href="javascript:void(0)">
-                <img src="<?= base_url() ?>/adminast/img/brand/logoexim.png" class="navbar-brand-img" alt="...">
+                <img width="75px" src="<?= base_url() ?>/assets/img/logo.jpeg" alt="...">
             </a>
         </div>
         <div class="navbar-inner">
