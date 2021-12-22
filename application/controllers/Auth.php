@@ -110,10 +110,23 @@ class Auth extends CI_Controller
                 'password' => password_hash($this->input->post('password'), PASSWORD_DEFAULT),
                 'view_password' => htmlspecialchars($this->input->post('password', true)),
                 'role_id' => 2,
-                'is_member' => 0,
+                'is_member' => 1,
                 'is_active' => 0,
                 'date_created' => time()
             ];
+
+            // $data = [
+            //     'nama' => htmlspecialchars($this->input->post('nama', true)),
+            //     'email' => htmlspecialchars($this->input->post('email', true)),
+            //     'nomor_hp' => htmlspecialchars($this->input->post('nomor', true)),
+            //     'foto_user' => 'default.png',
+            //     'password' => password_hash($this->input->post('password'), PASSWORD_DEFAULT),
+            //     'view_password' => htmlspecialchars($this->input->post('password', true)),
+            //     'role_id' => 2,
+            //     'is_member' => 1,
+            //     'is_active' => 0,
+            //     'date_created' => time()
+            // ];
             $token = base64_encode(random_bytes(32));
             $user_token = [
                 'email' => $email,
@@ -133,10 +146,10 @@ class Auth extends CI_Controller
     {
         $config = [
             'protocol' => 'smtp',
-            'smtp_host' => 'ssl://smtp.googlemail.com',
-            'smtp_user' => 'redshop0990@gmail.com',
+            'smtp_host' => 'smtp.googlemail.com',
+            'smtp_user' => 'redshop0990',
             'smtp_pass' => 'Qweewq123',
-            'smtp_port' => 465,
+            'smtp_port' => 587,
             'mailtype' => 'html',
             'charset' => 'utf-8',
             'newline' => "\r\n"
