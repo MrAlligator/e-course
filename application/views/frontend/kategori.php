@@ -70,45 +70,83 @@
 <br>
 
 <div class="col-lg-12 mt-5 mt-lg-0 d-flex align-items-stretch">
-    <div class="php-email-form">
+    <div class="info">
         <?php
         if($post):
             foreach($post as $postingan):
             $poster = $this->db->where('id_user', $postingan->id_user)->get('tb_user')->row_array()
-        ?><br>
+        ?>
         
-<div class="list-group">
-    <li class="list-group-item" aria-current="true">
-        <ul class="list-group list-group-flush">
-            <li class="list-group-item" aria-current="true">
-                <div class="d-flex w-100 justify-content-between">
-                    <h6 class="mb-1">
-                        <img width="40px" src="<?= base_url('/assets/img/userimage/').$poster['foto_user'];?>" class="rounded-circle img-thumbnail">
-                        <?=$poster['nama']?>
-                    <h6>
-                        <?=date('d F Y', strtotime($postingan->tanggal))?>, <?=$postingan->jam?>
-                    </h6>
-                    </h6>
-                </div>
-            </li>
-            <li class="list-group-item" aria-current="true">
-                <p><h4 class="mb-1"><?=$postingan->postingan?></h4></p>
-            </li>
-            <li class="list-group-item" aria-current="true">
-                <?php if(isset($_SESSION['email'])&&$poster['email']===$_SESSION['email']):?>  
-                    <a href="<?=base_url('home/del_post/').$postingan->id_post?>"><small>Hapus | </small></a>
+<div class="card card-body">
+    <ul class="list-group list-group-flush">
+        <li class="list-group-item" aria-current="true">
+            <img width="50px" src="<?= base_url('/assets/img/userimage/').$poster['foto_user'];?>"
+                class="rounded-circle img-thumbnail" style="float:left;vertical-align:middle;margin:0px 15px">
+            <h6>
+                <?=$poster['nama']?>
+            </h6>
+            <h6>
+                <?=date('d F Y', strtotime($postingan->tanggal))?>, <?=$postingan->jam?>
+            </h6>
+        </li>
+        <li class="list-group-item" aria-current="true">
+            <h4 class="mb-1"><?=$postingan->postingan?></h4>
+        </li>
+        <li class="list-group-item" aria-current="true">
+            <?php if(isset($_SESSION['email'])&&$poster['email']===$_SESSION['email']):?>  
+                <a href="<?=base_url('home/del_post/').$postingan->id_post?>"><small>Hapus | </small></a>
                 <?php endif ?>
                     <a data-bs-toggle="collapse" href="#komentar<?=$postingan->id_post?>" role="button" aria-expanded="false" aria-controls="collapseExample">
                     <small>Komentar (<?=$postingan->komentar?>)</small></a>
                     
 <div class="collapse" id="komentar<?=$postingan->id_post?>">
     <div class="card card-body">
-        Belum ada komentar
+        
+<?php
+    $comment = $this->db->where('id_post', $postingan->id_post)->get('tb_komentar')->result();
+    foreach($comment as $comment):
+?>
+
+    <ul class="list-group list-group-flush">
+        <li class="list-group-item" aria-current="true">
+            <div class="d-flex w-100 justify-content-between">
+            <small>
+                <img width="25px" src="<?= base_url('/assets/img/userimage/').$poster['foto_user'];?>"
+                class="rounded-circle img-thumbnail">
+                <?=$poster['nama']?>
+            </small>
+            <small>
+                <?=date('d F Y', strtotime($comment->tanggal))?>, <?=$comment->jam?>
+            </small>
+        </div>
+        </li>
+        <li class="list-group-item" aria-current="true">
+            <h5 class="mb-1"><?=$comment->komentar?></h5>
+        </li>
+        <?php if(isset($_SESSION['email'])&&$poster['email']===$_SESSION['email']):?>  
+            <li class="list-group-item" aria-current="true">
+            <a href="<?=base_url('home/del_post/').$komentar->id_komentar?>"><small>Hapus</small></a>
+        <?php endif ?>
+        <?php endforeach ?>
+    <ul>
+</div>
+
+<form action="<?=base_url('home/post_komen')?>" method="post">
+    <br><div class="input-group">
+        <textarea class="form-control" name="komen" id="komen" placeholder="Masukkan komentarmu"></textarea>
+        <input hidden name="id_post" id="id_post" value="<?=$postingan->id_post?>">
+        <input hidden name="id_user" id="id_user" value="<?=$postingan->id_user?>">
+        <input hidden name="id_kategori" id="id_kategori" value="<?=$id_kategori?>">
+        <input hidden type="text" value="<?=date('Y-m-d')?>" name="tanggal">
+        <input hidden type="text" value="<?=date('H:i')?>" name="jam">
+        <button type="submit" class="input-group-text" data-bs-toggle="tooltip" data-bs-placement="right" title="Kirim komentar"><i class="bx bxs-send"></i></button>
     </div>
-</div>
-        <ul>
-    </li>
-</div>
+</form>
+
+    <ul>
+
+    </div>
+</div><br>
     <?php endforeach;else:?>
         <div class="text-center"><h3>Belum ada tanggapan</h3></div>
     <?php endif?>

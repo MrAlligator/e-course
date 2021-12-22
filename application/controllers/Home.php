@@ -148,6 +148,25 @@ class Home extends CI_Controller
         redirect('home/kategori/' . $this->input->post('id_kategori'));
     }
 
+    public function post_komen()
+    {
+        $data = [
+            'id_user' => $this->input->post('id_user'),
+            'id_post' => $this->input->post('id_post'),
+            'komentar' => $this->input->post('komen'),
+            'tanggal' => $this->input->post('tanggal'),
+            'jam' => $this->input->post('jam')
+        ];
+
+        $raw = $this->db->where('id_post', $this->input->post('id_post'))->get('tb_tanggapan')->row_array();;
+        $komentar = $raw['komentar'];
+        $komentar = intval($komentar)+1;
+
+        $this->Forum_model->create_komen($data);
+        $this->db->where('id_post', $this->input->post('id_post'))->update('tb_tanggapan', ['komentar'=>$komentar]);
+        redirect('home/kategori/' . $this->input->post('id_kategori'));
+    }
+
     public function tambah_pertanyaan()
     {
         $data = [

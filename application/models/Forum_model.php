@@ -56,4 +56,10 @@ class Forum_model extends CI_Model
         $this->db->insert('tb_tanggapan', $data);
         return $this->db->get('tb_tanggapan')->result();
     }
+
+    public function create_komen($data)
+    {
+        $this->db->insert('tb_komentar', $data);
+        return $this->db->get('tb_komentar')->result();
+    }
 }
