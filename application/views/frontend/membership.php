@@ -42,7 +42,7 @@
     <div class="card card-header text-center">
     <h3>Formulir Pendaftaran</h3></div>
         <div class="card card-body">
-            <form action="<?= base_url('auth/register') ?>" method="post">
+            <form action="<?= base_url('auth/daftar') ?>" method="post">
             <div class="text-center">
                 <h5>Data Pribadi</h5><p></p>
             </div>
@@ -138,7 +138,10 @@
                 <div class="row">
                     <div class="col-6">
                         <label><h6>Omset Usaha per Tahun</h6></label>
-                        <input type="email" class="form-control" name="email_usaha" id="email_usaha">
+                        <div class="input-group">
+                            <span class="input-group-text"><h6>Rp</h6></span>
+                                <input type="number" class="form-control" name="omset" id="omset">
+                        </div>
                     </div>
                     <div class="col-6">
                         <div class="g-recaptcha" data-sitekey="6Lfqp74dAAAAANRqXosCWSVeEBaxM1F4KV6C32Jf"></div>

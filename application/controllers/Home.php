@@ -257,7 +257,7 @@ class Home extends CI_Controller
                         $this->Forum_model->create_post($data);
                         $this->db->where('id_kategori', $this->input->post('id_kategori'))->update('tb_pertanyaan', ['tanggapan'=>$tanggapan]);
                         redirect('home/kategori/' . $this->input->post('id_kategori'));
-            }else{
+            }else{ 
                 $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Coba lagi</div>');
             }
         }else{

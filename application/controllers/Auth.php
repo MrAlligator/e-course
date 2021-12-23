@@ -1,6 +1,10 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
+
 class Auth extends CI_Controller
 {
     public function index()
@@ -73,7 +77,35 @@ class Auth extends CI_Controller
             redirect('auth');
         }
     }
+    
+    public function daftar()
+    {
+        $captcha_response=trim($this->input->post('g-recaptcha-response'));
+        if ($captcha_response!="") {
+            $keySecret='6Lfqp74dAAAAAADLyTIFK5tVJCRoPjBb4OD5PEFi';
+            $check=array(
+                'secret'=>$keySecret,
+                'response'=>$this->input->post('g-recaptcha-response')
+            );
+            $startProcess=curl_init();
+            curl_setopt($startProcess,CURLOPT_URL,"https://www.google.com/recaptcha/api/siteverify");
+            curl_setopt($startProcess,CURLOPT_POST,true);
+            curl_setopt($startProcess,CURLOPT_POSTFIELDS,http_build_query($check));
+            curl_setopt($startProcess,CURLOPT_SSL_VERIFYPEER,false);
 
+            $receiveData = curl_exec($startProcess);
+            $finalResponse = json_decode($receiveData, true);
+            if ($finalResponse) {
+                $this->register();
+            }else{ 
+                $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Coba lagi</div>');
+                redirect('home/membership');
+            }
+        }else{
+            $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Harap isi captcha</div>');
+            redirect('home/membership');
+        }
+    }
     public function register()
     {
         $data['title'] = "Daftar";
@@ -97,7 +129,7 @@ class Auth extends CI_Controller
         if ($this->form_validation->run() == false) {
             $this->load->view('_partials/header', $data);
             $this->load->view('_partials/topbar');
-            $this->load->view('frontend/register');
+            $this->load->view('frontend/membership');
             $this->load->view('_partials/clients');
             $this->load->view('_partials/js');
         } else {
@@ -115,18 +147,23 @@ class Auth extends CI_Controller
                 'date_created' => time()
             ];
 
-            // $data = [
-            //     'nama' => htmlspecialchars($this->input->post('nama', true)),
-            //     'email' => htmlspecialchars($this->input->post('email', true)),
-            //     'nomor_hp' => htmlspecialchars($this->input->post('nomor', true)),
-            //     'foto_user' => 'default.png',
-            //     'password' => password_hash($this->input->post('password'), PASSWORD_DEFAULT),
-            //     'view_password' => htmlspecialchars($this->input->post('password', true)),
-            //     'role_id' => 2,
-            //     'is_member' => 1,
-            //     'is_active' => 0,
-            //     'date_created' => time()
-            // ];
+            $data1 = [
+                'email' => $this->input->post('email'),
+                'nama' => $this->input->post('nama'),
+                'tanggal_lahir' => $this->input->post('tanggal_lahir'),
+                'jenis_kelamin' => $this->input->post('jenis_kelamin'),
+                'kota_tempat_tinggal' => $this->input->post('kota_tinggal'),
+                'nama_usaha' => $this->input->post('nama_usaha'),
+                'alamat_usaha' => $this->input->post('alamat_usaha'),
+                'kota_lokasi_usaha' => $this->input->post('kota_usaha'),
+                'tahun_berdiri_usaha' => $this->input->post('tahun_berdiri'),
+                'no_telepon' => $this->input->post('telp_usaha'),
+                'email_usaha' => $this->input->post('email_usaha'),
+                'produk_ekspor' => $this->input->post('produk_ekspor'),
+                'jumlah_karyawan' => $this->input->post('jumlah_karyawan'),
+                'omset_pertahun' => $this->input->post('omset'),
+            ];
+
             $token = base64_encode(random_bytes(32));
             $user_token = [
                 'email' => $email,
@@ -135,30 +172,32 @@ class Auth extends CI_Controller
             ];
 
             $this->db->insert('tb_user', $data);
+            $this->db->insert('tb_user_detail', $data1);
             $this->db->insert('tb_token', $user_token);
             $this->_sendEmail($token, 'verify');
-            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Selamat! Akun berhasil dibuat.</div>');
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Akun berhasil dibuat. Silakan verifikasi akun email anda</div>');
             redirect('home/membership');
         }
     }
+
 
     private function _sendEmail($token, $type)
     {
         $config = [
             'protocol' => 'smtp',
-            'smtp_host' => 'smtp.googlemail.com',
-            'smtp_user' => 'redshop0990',
-            'smtp_pass' => 'Qweewq123',
-            'smtp_port' => 587,
+            'smtp_host' => 'smtp.gmail.com',
+            'smtp_user' => 'komunitas.ekspor.indonesia',
+            'smtp_pass' => 'Koin1234',
+            'smtp_port' => 465, 
+            'smtp_crypto' => 'ssl', 
             'mailtype' => 'html',
             'charset' => 'utf-8',
             'newline' => "\r\n"
         ];
 
-        $this->load->library('email', $config);
         $this->email->initialize($config);
 
-        $this->email->from('resest003@gmail.com', 'Komunitas Ekspor Indonesia');
+        $this->email->from('komunitas.ekspor.indonesia@gmail.com', 'Komunitas Ekspor Indonesia');
         $this->email->to($this->input->post('email'));
         if ($type == 'verify') {
             $this->email->subject('Verifikasi Akun');
