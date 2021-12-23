@@ -1,4 +1,5 @@
 <!-- ======= Contact Section ======= -->
+<script src="https://google.com/recaptcha/api.js"></script>
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script>
     $("#like").on("click", function(){
@@ -74,6 +75,8 @@
             <li class="list-group-item">Dilarang menggunakan kalimat yang dapat menyebarkan kebencian</li>
             <li class="list-group-item">Dilarang menyebarkan informasi palsu (hoax)</li>
             <li class="list-group-item">Dilarang menyebarkan kalimat yang menyesatkan atau spam</li>
+            <div class="g-recaptcha" data-sitekey="6Lfqp74dAAAAANRqXosCWSVeEBaxM1F4KV6C32Jf"></div>
+
         </ul>
     </div>
 </div>
@@ -92,7 +95,8 @@
         <form action="<?=base_url('home/tambah_pertanyaan')?>" method="post">
             <div class="modal-body">
                 <label for="name">Masukkan Pertanyaan</label>
-                <input type="text" name="pertanyaan" class="form-control" id="pertanyaan" required><br>
+                <input type="text" name="pertanyaan" class="form-control" id="pertanyaan" required>
+                <div class="g-recaptcha" data-sitekey="6Lfqp74dAAAAANRqXosCWSVeEBaxM1F4KV6C32Jf"></div>
             </div>
             <div class="modal-footer">
                 <button type="submit" class="btn btn-primary">Tambah</button>
