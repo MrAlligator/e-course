@@ -24,7 +24,7 @@
                     <h4>Daftar Pertanyaan atau Topik</h4> 
                 </div>
                 <div class="col">
-                    <a href="#" data-bs-toggle="modal" data-bs-target="#tambahPertanyaan">Buat pertanyaan baru</a>    
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#tambahPertanyaan"><h6>Buat pertanyaan baru</h6></a>    
                 </div>
             </div><br>
 
@@ -69,13 +69,12 @@
 <div class="col-lg-4 d-flex align-items-stretch">
     <div class="php-email-form">
         <div class="section-title"><h4>Peraturan dalam forum</h4><p></p></div>
-        <ul class="list-group list-group-flush list-group-numbered">
-            <li class="list-group-item">Dilarang menggunakan kata yang mengandung unsur SARA</li>
-            <li class="list-group-item">Dilarang menggunakan kata kasar dan seksual</li>
-            <li class="list-group-item">Dilarang menggunakan kalimat yang dapat menyebarkan kebencian</li>
-            <li class="list-group-item">Dilarang menyebarkan informasi palsu (hoax)</li>
-            <li class="list-group-item">Dilarang menyebarkan kalimat yang menyesatkan atau spam</li>
-            <div class="g-recaptcha" data-sitekey="6Lfqp74dAAAAANRqXosCWSVeEBaxM1F4KV6C32Jf"></div>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item"><h6>1. Dilarang menggunakan kata yang mengandung unsur SARA</h6></li>
+            <li class="list-group-item"><h6>2. Dilarang menggunakan kata kasar dan seksual</h6></li>
+            <li class="list-group-item"><h6>3. Dilarang menggunakan kalimat yang dapat menyebarkan kebencian</h6></li>
+            <li class="list-group-item"><h6>4. Dilarang menyebarkan informasi palsu (hoax)</h6></li>
+            <li class="list-group-item"><h6>5. Dilarang menyebarkan kalimat yang menyesatkan atau spam</h6></li>
 
         </ul>
     </div>
@@ -94,12 +93,12 @@
             </div>
         <form action="<?=base_url('home/tambah_pertanyaan')?>" method="post">
             <div class="modal-body">
-                <label for="name">Masukkan Pertanyaan</label>
+                <label for="name"><h6>Masukkan Pertanyaan</h6></label>
                 <input type="text" name="pertanyaan" class="form-control" id="pertanyaan" required>
                 <div class="g-recaptcha" data-sitekey="6Lfqp74dAAAAANRqXosCWSVeEBaxM1F4KV6C32Jf"></div>
             </div>
             <div class="modal-footer">
-                <button type="submit" class="btn btn-primary">Tambah</button>
+                <button type="submit" class="btn btn-primary"><h6>Tambah</h6></button>
             </div>
         </form>
         </div>
@@ -116,8 +115,8 @@
             <div class="modal-body">
                 <div class="section-title">
                     <h3>Silakan masuk terlebih dahulu</h3>
-                    <a href="<?=base_url('auth')?>" class="btn btn-primary">Masuk</a>
-                    <a href="<?=base_url('home/membership')?>" class="btn btn-success">Daftar</a>
+                    <a href="<?=base_url('auth')?>" class="btn btn-primary"><h6>Masuk</h6></a>
+                    <a href="<?=base_url('home/membership')?>" class="btn btn-success"><h6>Daftar</h6></a>
                 </div>
             </div>
         </div>
