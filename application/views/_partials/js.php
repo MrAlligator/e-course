@@ -3,7 +3,7 @@
     <div class="modal-dialog modal-danger modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <h3 class="text-center">Ingin Mengakses Data Pada Importir / Buyer?</h3>
@@ -11,8 +11,9 @@
                     <a href="<?= base_url('home/membership') ?>" class="btn btn-primary">Daftar Terlebih dahulu</a>
                 </div>
             </div>
-        </div>
-        <div class="modal-footer">
+            <div class="modal-footer">
+                <p></p>
+            </div>
         </div>
     </div>
 </div>
@@ -22,7 +23,7 @@
     <div class="modal-dialog modal-danger modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <h3 class="text-center">Ingin Mengakses Data Pada Permintaan / Inquiry?</h3>
@@ -30,8 +31,9 @@
                     <a href="<?= base_url('home/membership') ?>" class="btn btn-primary">Daftar Terlebih dahulu</a>
                 </div>
             </div>
-        </div>
-        <div class="modal-footer">
+            <div class="modal-footer">
+                <p></p>
+            </div>
         </div>
     </div>
 </div>
