@@ -182,10 +182,11 @@
                                                 <div class="form-group">
                                                     <div class="input-group input-group-merge input-group-alternative">
                                                         <div class="input-group-prepend">
-                                                            <span class="input-group-text"><i class="ni ni-map-big"></i></span>
+                                                            <span class="input-group-text">Detail</span>
                                                         </div>
-                                                        <textarea name="def" id="def" cols="130" rows="10"><?= $buyer['detail'] ?></textarea>
                                                     </div>
+                                                    <p></p>
+                                                    <?= $buyer['detail'] ?>
                                                 </div>
                                             </div>
                                         </div>
@@ -260,8 +261,8 @@
                                                             <div class="input-group-prepend">
                                                                 <span class="input-group-text"><i class="ni ni-map-big"></i></span>
                                                             </div>
-                                                            <textarea name="detail" id="detail" cols="130" rows="10" required><?= $buyer['detail'] ?></textarea><?= form_error('detail', '<small class="text-danger pl-3">', '</small>') ?>
                                                         </div>
+                                                        <textarea name="detail" id="editdetail" cols="130" rows="10" required><?= $buyer['detail'] ?></textarea><?= form_error('detail', '<small class="text-danger pl-3">', '</small>') ?>
                                                     </div>
                                                 </div>
                                             </div>

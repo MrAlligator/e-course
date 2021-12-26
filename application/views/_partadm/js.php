@@ -17,7 +17,7 @@
 <script src="<?= base_url() ?>/adminast/js/tinymce/plugins/spellchecker/plugin.min.js"></script>
 <script>
     tinymce.init({
-        selector: '#detail'
+        selector: '#detail, #def, #editdetail'
     });
 </script>
 <!-- Tambahan -->

@@ -39,7 +39,7 @@
                                     <td width="150px"><?= $art['judul'] ?></a></td>
                                     <td width="100px">
                                         <a class="badge badge-success" href="" data-toggle="modal" data-target="#infoModal<?= $art['id_artikel'] ?>"><i class="fas fa-info-circle"></i></a>
-                                        <a class="badge badge-warning" href="<?= site_url('backend/artikel/edit/' . $art['id_artikel']) ?>"><i class="fas fa-edit"></i></a>
+                                        <a class="badge badge-warning" href="" data-toggle="modal" data-target="#editModal<?= $art['id_artikel'] ?>"><i class="fas fa-edit"></i></a>
                                         <a class="badge badge-danger" href="" data-toggle="modal" data-target="#deleteModal<?= $art['id_artikel'] ?>"><i class="fas fa-trash"></i></a>
                                     </td>
                             </tr>
@@ -167,7 +167,7 @@
                                                 <div class="form-group">
                                                     <div class="input-group input-group-merge input-group-alternative">
                                                         <div class="input-group-prepend">
-                                                            <span class="input-group-text"><i class="ni ni-map-big"></i></span>
+                                                            <span class="input-group-text">Detail</span>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -235,6 +235,7 @@
                                                             <img src="<?= base_url('assets/img/articles/' . $art['gambar']) ?>" height="300" width="600" alt="">
                                                         </div>
                                                         <br>
+                                                        <input type="hidden" name="old_image" value="<?= $art['gambar'] ?>">
                                                         <input type="file" name="gambar" id="gambar" class="form-control">
                                                     </div>
                                                 </div>
@@ -244,10 +245,10 @@
                                                     <div class="form-group">
                                                         <div class="input-group input-group-merge input-group-alternative">
                                                             <div class="input-group-prepend">
-                                                                <span class="input-group-text"><i class="ni ni-map-big"></i></span>
+                                                                <span class="input-group-text">Detail</span>
                                                             </div>
                                                         </div>
-                                                        <textarea name="detail" id="detail" cols="130" rows="10"><?= $art['isi'] ?></textarea>
+                                                        <textarea name="detail" id="editdetail" cols="130" rows="10"><?= $art['isi'] ?></textarea>
                                                     </div>
                                                 </div>
                                             </div>
