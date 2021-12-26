@@ -27,17 +27,12 @@ class Artikel_model extends CI_Model
 
     public function getRandom()
     {
-        return $this->db->order_by('id_artikel','DESC')->limit(3)->get($this->_table)->result();
+        return $this->db->order_by('id_artikel', 'DESC')->limit(3)->get($this->_table)->result();
     }
 
     public function getById($id)
     {
         return $this->db->where('id_artikel', $id)->get($this->_table)->result();
-    }
-
-    public function getByIds($id)
-    {
-        return $this->db->where('id_artikel', $id)->get($this->_table)->row_array();
     }
 
     public function getSome($limit, $start)
@@ -55,20 +50,6 @@ class Artikel_model extends CI_Model
         }
     }
 
-    public function update()
-    {
-        $post = $this->input->post();
-        $this->id_artikel = $post["id"];
-        $this->judul = $post["judul"];
-        $this->isi = $post["detail"];
-        if (!empty($_FILES["gambar"]["name"])) {
-            $this->foto_produk = $this->_uploadImage();
-        } else {
-            $this->foto_produk = $post["old_image"];
-        }
-        return $this->db->update($this->_table, $this, array('id_artikel' => $post['id']));
-    }
-
     public function delete($id)
     {
         $row = $this->db->where('id_artikel', $id)->get('tb_artikel')->row_array();
@@ -77,20 +58,5 @@ class Artikel_model extends CI_Model
         $this->db->where('id_artikel', $id);
         $this->db->delete($this->_table);
         return true;
-    }
-
-    private function _uploadImage()
-    {
-        $config['upload_path']          = './assets/img/articles/';
-        $config['allowed_types']        = 'jpg|png';
-        $config['overwrite']            = true;
-        $config['max_size']             = 20480;
-
-        $this->load->library('upload', $config);
-
-        if ($this->upload->do_upload('gambar')) {
-            return $this->upload->data("file_name");
-        }
-        return "default.jpg";
     }
 }

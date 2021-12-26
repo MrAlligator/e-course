@@ -133,7 +133,7 @@ class Inquiry extends CI_Controller
             redirect("backend/inquiry");
         } else {
             //tampung data dari form
-            $date = time();
+            $date = $this->input->post('tanggal_input');
             $produk = $this->input->post('produk');
             $detail = $this->input->post('detail');
             $negara = $this->input->post('negara');

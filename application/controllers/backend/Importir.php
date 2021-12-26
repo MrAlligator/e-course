@@ -158,7 +158,7 @@ class Importir extends CI_Controller
             $fax = $this->input->post('fax');
             $email = $this->input->post('email');
             $produk = $this->input->post('produk');
-            $date = time();
+            $date = $this->input->post('tgl_input');
 
             $data = [
                 'nama_perusahaan' => $perusahaan,
@@ -192,7 +192,7 @@ class Importir extends CI_Controller
                 $highestRow = $worksheet->getHighestRow();
                 $highestColumn = $worksheet->getHighestColumn();
                 for ($row = 2; $row <= $highestRow; $row++) {
-                    $date = time();
+                    $date = date('Y-m-d');
                     $perusahaan = $worksheet->getCellByColumnAndRow(1, $row)->getValue();
                     $alamat = $worksheet->getCellByColumnAndRow(2, $row)->getValue();
                     $negara = $worksheet->getCellByColumnAndRow(3, $row)->getValue();
@@ -270,7 +270,7 @@ class Importir extends CI_Controller
         $fax = $this->input->post('fax');
         $email = $this->input->post('email');
         $produk = $this->input->post('produk');
-        $date = time();
+        $date = $this->input->post('tgl_edit');
 
         $data = [
             'nama_perusahaan' => $perusahaan,

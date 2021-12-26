@@ -87,6 +87,7 @@
                                                         <div class="input-group-prepend">
                                                             <span class="input-group-text"><i class="ni ni-single-02"></i></span>
                                                         </div>
+                                                        <input type="hidden" name="tanggal_input" value="<?= date('Y-m-d') ?>">
                                                         <input class="form-control" name="produk" id="produk" type="text" placeholder="Masukkan Produk" required><?= form_error('produk', '<small class="text-danger pl-3">', '</small>') ?>
                                                     </div>
                                                 </div>
