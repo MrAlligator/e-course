@@ -67,7 +67,6 @@ class Pertanyaan extends CI_Controller
 
         $data = [
             'nama_kategori' => $topik,
-            'deskripsi' => $deskripsi
         ];
         $this->db->insert('tb_pertanyaan', $data);
         $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data berhasil ditambahkan</div>');

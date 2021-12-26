@@ -85,18 +85,6 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row">
-                                    <div class="col">
-                                        <div class="form-group mb-3">
-                                            <div class="input-group input-group-merge input-group-alternative">
-                                                <div class="input-group-prepend">
-                                                    <span class="input-group-text"><i class="ni ni-single-02"></i></span>
-                                                </div>
-                                                <input class="form-control" name="deskripsi" id="deskripsi" type="text" placeholder="Masukkan Deskripsi Topik" required>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -131,18 +119,6 @@
                                                     <span class="input-group-text"><i class="ni ni-single-02"></i></span>
                                                 </div>
                                                 <input class="form-control-plaintext" disabled type="text" value="<?= $question['nama_kategori'] ?>">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col">
-                                        <div class="form-group mb-3">
-                                            <div class="input-group input-group-merge input-group-alternative">
-                                                <div class="input-group-prepend">
-                                                    <span class="input-group-text"><i class="ni ni-single-02"></i></span>
-                                                </div>
-                                                <textarea cols="125" rows="5"><?= $question['deskripsi'] ?></textarea>
                                             </div>
                                         </div>
                                     </div>

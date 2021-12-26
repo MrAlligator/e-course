@@ -3,7 +3,7 @@ class Postingan_model extends CI_Model
 {
     public function getAll()
     {
-        $this->db->select('a.id_post, a.id_user, a.id_kategori, a.postingan, a.like, a.dislike, a.tanggal, a.jam,
+        $this->db->select('a.id_post, a.id_user, a.id_kategori, a.postingan, a.tanggal, a.jam,
                             b.id_user, b.nama, b.email, c.id_kategori, c.nama_kategori');
         $this->db->from('tb_tanggapan a');
         $this->db->join('tb_user b', 'a.id_user = b.id_user');
@@ -14,7 +14,7 @@ class Postingan_model extends CI_Model
 
     public function getSome($limit, $start, $like = '')
     {
-        $this->db->select('a.id_post, a.id_user, a.id_kategori, a.postingan AS postingan, a.like, a.dislike, a.tanggal, a.jam, b.id_user, b.nama, b.email, c.id_kategori, c.nama_kategori');
+        $this->db->select('a.id_post, a.id_user, a.id_kategori, a.postingan AS postingan, a.tanggal, a.jam, b.id_user, b.nama, b.email, c.id_kategori, c.nama_kategori');
         if ($like) {
             $this->db->where('a.postingan LIKE ' . $like);
         }

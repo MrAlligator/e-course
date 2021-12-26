@@ -114,8 +114,8 @@
                                                         <div class="input-group-prepend">
                                                             <span class="input-group-text"><i class="ni ni-map-big"></i> Detail</span>
                                                         </div>
-                                                        <textarea name="detail" id="detail" cols="130" rows="10" required></textarea><?= form_error('detail', '<small class="text-danger pl-3">', '</small>') ?>
                                                     </div>
+                                                    <textarea name="detail" id="detail" cols="130" rows="10"></textarea><?= form_error('detail', '<small class="text-danger pl-3">', '</small>') ?>
                                                 </div>
                                             </div>
                                         </div>
