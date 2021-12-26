@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.0
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 21, 2021 at 06:05 PM
--- Server version: 10.4.19-MariaDB
--- PHP Version: 7.3.28
+-- Waktu pembuatan: 26 Des 2021 pada 13.14
+-- Versi server: 10.4.21-MariaDB
+-- Versi PHP: 8.0.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,7 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tb_artikel`
+-- Struktur dari tabel `tb_artikel`
 --
 
 CREATE TABLE `tb_artikel` (
@@ -32,20 +32,20 @@ CREATE TABLE `tb_artikel` (
   `judul` varchar(125) NOT NULL,
   `isi` mediumtext NOT NULL,
   `gambar` varchar(100) NOT NULL,
-  `tanggal_input` varchar(14) NOT NULL
+  `tanggal_input` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `tb_artikel`
+-- Dumping data untuk tabel `tb_artikel`
 --
 
 INSERT INTO `tb_artikel` (`id_artikel`, `judul`, `isi`, `gambar`, `tanggal_input`) VALUES
-(3, 'Arduino', '<p>Penulis Artikel adalah orang atau individu yang bertindak dalam pengarangan sebuah tulisan, penggabungan beberapa kata menjadi kalimat yang menarik dan enak dibaca sehingga membuat pembaca dapat mengetahui apa yang tidak mereka ketahui sebelumnya. Sebuah artikel berasal dari pengalaman seseorang, imajinasi, pengetahuan umum atau penelitian ilmiah.</p>', '135_2.jpeg', '1640081066');
+(3, 'Arduino', '<p>Penulis Artikel adalah orang atau individu yang bertindak dalam pengarangan sebuah tulisan, penggabungan beberapa kata menjadi kalimat yang menarik dan enak dibaca sehingga membuat pembaca dapat mengetahui apa yang tidak mereka ketahui sebelumnya. Sebuah artikel berasal dari pengalaman seseorang, imajinasi, pengetahuan umum atau penelitian ilmiah. SA</p>', '135_2.jpeg', 1640081066);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tb_importir`
+-- Struktur dari tabel `tb_importir`
 --
 
 CREATE TABLE `tb_importir` (
@@ -64,7 +64,7 @@ CREATE TABLE `tb_importir` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `tb_importir`
+-- Dumping data untuk tabel `tb_importir`
 --
 
 INSERT INTO `tb_importir` (`id_importir`, `nama_perusahaan`, `alamat`, `negara`, `telepon`, `fax`, `email`, `website`, `produk`, `contact_person`, `tgl_input`, `tgl_edit`) VALUES
@@ -15676,7 +15676,7 @@ INSERT INTO `tb_importir` (`id_importir`, `nama_perusahaan`, `alamat`, `negara`,
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tb_inquiry`
+-- Struktur dari tabel `tb_inquiry`
 --
 
 CREATE TABLE `tb_inquiry` (
@@ -15688,7 +15688,7 @@ CREATE TABLE `tb_inquiry` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `tb_inquiry`
+-- Dumping data untuk tabel `tb_inquiry`
 --
 
 INSERT INTO `tb_inquiry` (`id_inquiry`, `tanggal_input`, `produk`, `negara`, `detail`) VALUES
@@ -15766,7 +15766,7 @@ INSERT INTO `tb_inquiry` (`id_inquiry`, `tanggal_input`, `produk`, `negara`, `de
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tb_komentar`
+-- Struktur dari tabel `tb_komentar`
 --
 
 CREATE TABLE `tb_komentar` (
@@ -15781,7 +15781,7 @@ CREATE TABLE `tb_komentar` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tb_negara`
+-- Struktur dari tabel `tb_negara`
 --
 
 CREATE TABLE `tb_negara` (
@@ -15792,7 +15792,7 @@ CREATE TABLE `tb_negara` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `tb_negara`
+-- Dumping data untuk tabel `tb_negara`
 --
 
 INSERT INTO `tb_negara` (`id_negara`, `negara`, `kode`, `dial`) VALUES
@@ -16049,7 +16049,7 @@ INSERT INTO `tb_negara` (`id_negara`, `negara`, `kode`, `dial`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tb_pembayaran`
+-- Struktur dari tabel `tb_pembayaran`
 --
 
 CREATE TABLE `tb_pembayaran` (
@@ -16063,7 +16063,7 @@ CREATE TABLE `tb_pembayaran` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tb_pertanyaan`
+-- Struktur dari tabel `tb_pertanyaan`
 --
 
 CREATE TABLE `tb_pertanyaan` (
@@ -16073,7 +16073,7 @@ CREATE TABLE `tb_pertanyaan` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `tb_pertanyaan`
+-- Dumping data untuk tabel `tb_pertanyaan`
 --
 
 INSERT INTO `tb_pertanyaan` (`id_kategori`, `nama_kategori`, `tanggapan`) VALUES
@@ -16084,7 +16084,7 @@ INSERT INTO `tb_pertanyaan` (`id_kategori`, `nama_kategori`, `tanggapan`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tb_tanggapan`
+-- Struktur dari tabel `tb_tanggapan`
 --
 
 CREATE TABLE `tb_tanggapan` (
@@ -16098,7 +16098,7 @@ CREATE TABLE `tb_tanggapan` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `tb_tanggapan`
+-- Dumping data untuk tabel `tb_tanggapan`
 --
 
 INSERT INTO `tb_tanggapan` (`id_post`, `id_user`, `id_kategori`, `postingan`, `komentar`, `tanggal`, `jam`) VALUES
@@ -16109,7 +16109,7 @@ INSERT INTO `tb_tanggapan` (`id_post`, `id_user`, `id_kategori`, `postingan`, `k
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tb_token`
+-- Struktur dari tabel `tb_token`
 --
 
 CREATE TABLE `tb_token` (
@@ -16120,7 +16120,7 @@ CREATE TABLE `tb_token` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `tb_token`
+-- Dumping data untuk tabel `tb_token`
 --
 
 INSERT INTO `tb_token` (`id_token`, `email`, `token`, `date_created`) VALUES
@@ -16131,7 +16131,7 @@ INSERT INTO `tb_token` (`id_token`, `email`, `token`, `date_created`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tb_user`
+-- Struktur dari tabel `tb_user`
 --
 
 CREATE TABLE `tb_user` (
@@ -16149,7 +16149,7 @@ CREATE TABLE `tb_user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `tb_user`
+-- Dumping data untuk tabel `tb_user`
 --
 
 INSERT INTO `tb_user` (`id_user`, `nama`, `email`, `nomor_hp`, `foto_user`, `password`, `view_password`, `role_id`, `is_member`, `is_active`, `date_created`) VALUES
@@ -16162,7 +16162,7 @@ INSERT INTO `tb_user` (`id_user`, `nama`, `email`, `nomor_hp`, `foto_user`, `pas
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tb_user_detail`
+-- Struktur dari tabel `tb_user_detail`
 --
 
 CREATE TABLE `tb_user_detail` (
@@ -16184,7 +16184,7 @@ CREATE TABLE `tb_user_detail` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `user_role`
+-- Struktur dari tabel `user_role`
 --
 
 CREATE TABLE `user_role` (
@@ -16197,131 +16197,131 @@ CREATE TABLE `user_role` (
 --
 
 --
--- Indexes for table `tb_artikel`
+-- Indeks untuk tabel `tb_artikel`
 --
 ALTER TABLE `tb_artikel`
   ADD PRIMARY KEY (`id_artikel`);
 
 --
--- Indexes for table `tb_importir`
+-- Indeks untuk tabel `tb_importir`
 --
 ALTER TABLE `tb_importir`
   ADD PRIMARY KEY (`id_importir`);
 
 --
--- Indexes for table `tb_inquiry`
+-- Indeks untuk tabel `tb_inquiry`
 --
 ALTER TABLE `tb_inquiry`
   ADD PRIMARY KEY (`id_inquiry`);
 
 --
--- Indexes for table `tb_komentar`
+-- Indeks untuk tabel `tb_komentar`
 --
 ALTER TABLE `tb_komentar`
   ADD PRIMARY KEY (`id_komentar`);
 
 --
--- Indexes for table `tb_negara`
+-- Indeks untuk tabel `tb_negara`
 --
 ALTER TABLE `tb_negara`
   ADD PRIMARY KEY (`id_negara`);
 
 --
--- Indexes for table `tb_pembayaran`
+-- Indeks untuk tabel `tb_pembayaran`
 --
 ALTER TABLE `tb_pembayaran`
   ADD PRIMARY KEY (`id_pembayaran`);
 
 --
--- Indexes for table `tb_pertanyaan`
+-- Indeks untuk tabel `tb_pertanyaan`
 --
 ALTER TABLE `tb_pertanyaan`
   ADD PRIMARY KEY (`id_kategori`);
 
 --
--- Indexes for table `tb_tanggapan`
+-- Indeks untuk tabel `tb_tanggapan`
 --
 ALTER TABLE `tb_tanggapan`
   ADD PRIMARY KEY (`id_post`);
 
 --
--- Indexes for table `tb_token`
+-- Indeks untuk tabel `tb_token`
 --
 ALTER TABLE `tb_token`
   ADD PRIMARY KEY (`id_token`);
 
 --
--- Indexes for table `tb_user`
+-- Indeks untuk tabel `tb_user`
 --
 ALTER TABLE `tb_user`
   ADD PRIMARY KEY (`id_user`);
 
 --
--- Indexes for table `user_role`
+-- Indeks untuk tabel `user_role`
 --
 ALTER TABLE `user_role`
   ADD PRIMARY KEY (`role_id`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT untuk tabel yang dibuang
 --
 
 --
--- AUTO_INCREMENT for table `tb_artikel`
+-- AUTO_INCREMENT untuk tabel `tb_artikel`
 --
 ALTER TABLE `tb_artikel`
-  MODIFY `id_artikel` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_artikel` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT for table `tb_importir`
+-- AUTO_INCREMENT untuk tabel `tb_importir`
 --
 ALTER TABLE `tb_importir`
   MODIFY `id_importir` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16386;
 
 --
--- AUTO_INCREMENT for table `tb_komentar`
+-- AUTO_INCREMENT untuk tabel `tb_komentar`
 --
 ALTER TABLE `tb_komentar`
   MODIFY `id_komentar` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `tb_negara`
+-- AUTO_INCREMENT untuk tabel `tb_negara`
 --
 ALTER TABLE `tb_negara`
   MODIFY `id_negara` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=256;
 
 --
--- AUTO_INCREMENT for table `tb_pembayaran`
+-- AUTO_INCREMENT untuk tabel `tb_pembayaran`
 --
 ALTER TABLE `tb_pembayaran`
   MODIFY `id_pembayaran` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `tb_pertanyaan`
+-- AUTO_INCREMENT untuk tabel `tb_pertanyaan`
 --
 ALTER TABLE `tb_pertanyaan`
-  MODIFY `id_kategori` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_kategori` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT for table `tb_tanggapan`
+-- AUTO_INCREMENT untuk tabel `tb_tanggapan`
 --
 ALTER TABLE `tb_tanggapan`
   MODIFY `id_post` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
--- AUTO_INCREMENT for table `tb_token`
+-- AUTO_INCREMENT untuk tabel `tb_token`
 --
 ALTER TABLE `tb_token`
   MODIFY `id_token` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT for table `tb_user`
+-- AUTO_INCREMENT untuk tabel `tb_user`
 --
 ALTER TABLE `tb_user`
   MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
--- AUTO_INCREMENT for table `user_role`
+-- AUTO_INCREMENT untuk tabel `user_role`
 --
 ALTER TABLE `user_role`
   MODIFY `role_id` int(11) NOT NULL AUTO_INCREMENT;
