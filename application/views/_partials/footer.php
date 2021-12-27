@@ -36,8 +36,13 @@
                 <div class="col-lg-3 col-md-6 footer-links">
                     <h4>Data Kami</h4>
                     <ul>
-                        <li><i class="bx bx-chevron-right"></i> <a href="<?= base_url('frontend/buyers') ?>">Data Importir</a></li>
-                        <li><i class="bx bx-chevron-right"></i> <a href="<?= base_url('frontend/inquiry') ?>">Data Produk</a></li>
+                    <?php if (isset($user['email'])) : ?>
+                        <li><i class="bx bx-chevron-right"></i> <a href="<?= base_url('frontend/buyers') ?>">Data Importir (Buyer)</a></li>
+                        <li><i class="bx bx-chevron-right"></i> <a href="<?= base_url('frontend/inquiry') ?>">Data Permintaan (Inquiry)</a></li>
+                    <?php else : ?>
+                        <li><i class="bx bx-chevron-right"></i><a href="#" data-bs-toggle="modal" data-bs-target="#buyerKonf">Data Importir (Buyer)</a></li>
+                        <li><i class="bx bx-chevron-right"></i><a href="#" data-bs-toggle="modal" data-bs-target="#inquiKonf">Data Permintaan (Inquiry)</a></li>
+                    <?php endif; ?>
                         <!-- <li><i class="bx bx-chevron-right"></i> <a href="#">Services</a></li>
                         <li><i class="bx bx-chevron-right"></i> <a href="#">Terms of service</a></li>
                         <li><i class="bx bx-chevron-right"></i> <a href="#">Privacy policy</a></li> -->
@@ -50,14 +55,19 @@
                         <li><i class="bx bx-chevron-right"></i> <a href="<?= base_url('home') ?>">Beranda</a></li>
                         <li><i class="bx bx-chevron-right"></i> <a href="<?= base_url('profile') ?>">Profil Pengguna</a></li>
                         <li><i class="bx bx-chevron-right"></i> <a href="<?= base_url('home/articles') ?>">Artikel</a></li>
-                        <li><i class="bx bx-chevron-right"></i> <a href="<?= base_url('home/membership') ?>">Keanggotaan</a></li>
-                        <li><i class="bx bx-chevron-right"></i> <a href="<?= base_url('home/forum') ?>">Forum EXIM</a></li>
+                        <?php if (isset($user['email'])): ?>
+                            <li><i class="bx bx-chevron-right"></i> <a href="<?= base_url('home/kalkulator') ?>">Kalkulator Harga Ekspor</a></li>
+                        <?php else :?>
+                            <li><i class="bx bx-chevron-right"></i> <a href="#" data-bs-toggle="modal" data-bs-target="#kalkuKonf">Kalkulator Harga Ekspor</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="<?= base_url('home/membership') ?>">Keanggotaan</a></li>
+                        <?php endif?>
+                                <li><i class="bx bx-chevron-right"></i> <a href="<?= base_url('home/forum') ?>">Forum Komunitas</a></li>
                     </ul>
                 </div>
 
                 <div class="col-lg-3 col-md-6 footer-links">
                     <h4>Sosial Media Kami</h4>
-                    <p>Sosial Media dari Komunitas OMNI-EXIM</p>
+                    <p>Sosial Media dari Komunitas Ekspor Indonesia</p>
                     <div class="social-links mt-3">
                         <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
                         <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>

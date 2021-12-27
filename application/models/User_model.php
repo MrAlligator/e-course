@@ -38,6 +38,11 @@ class User_model extends CI_Model
         return $this->db->where('id_user', $id)->update($this->_table, $data);
     }
 
+    public function gantiPassword($email, $data)
+    {
+        return $this->db->where('email', $email)->update($this->_table, $data);
+    }
+
     public function getSome($limit, $start)
     {
         return $this->db->where('role_id', 2)->get($this->_table, $limit, $start)->result_array();

@@ -31,7 +31,7 @@ class Buyers extends CI_Controller
         $data['user'] = $this->db->get_where('tb_user', ['email' => $this->session->userdata('email')])->row_array();
         $need = $this->db->get_where('tb_user', ['email' => $this->session->userdata('email')])->row_array();
         $data['buyers'] = $this->Buyers_model->getAll();
-        $data['title'] = "Data Importir";
+        $data['title'] = "Data Importir (Buyers)";
         $data['semua'] = 1;
 
         $this->load->view('_partials/header', $data);
@@ -55,7 +55,6 @@ class Buyers extends CI_Controller
         $this->load->view('_partials/topbar', $data);
         // $this->load->view('_partials/hero', $data);
         $this->load->view('frontend/buyer_detail', $data);
-        $this->load->view('frontend/articles', $data);
         $this->load->view('_partials/footer', $data);
         $this->load->view('_partials/js', $data);
     }

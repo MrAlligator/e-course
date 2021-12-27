@@ -29,7 +29,7 @@ class Inquiry extends CI_Controller
     {
         $data['user'] = $this->db->get_where('tb_user', ['email' => $this->session->userdata('email')])->row_array();
         $data['inquiries'] = $this->Inquiry_model->getAll();
-        $data['title'] = "Data Permintaan";
+        $data['title'] = "Data Permintaan (Inquiry)";
         $data['semua'] = 1;
 
         $this->load->view('_partials/header', $data);

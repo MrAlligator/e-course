@@ -40,9 +40,11 @@
  
 <div class="col-lg-8 mt-4 mt-lg-0" data-aos="fade-up" data-aos-delay="200">
     <div class="card card-header text-center">
-    <h3>Formulir Pendaftaran</h3></div>
-        <div class="card card-body">
-            <form action="<?= base_url('auth/daftar') ?>" method="post">
+        <h3>Formulir Pendaftaran</h3>
+    </div>
+        
+<form action="<?= base_url('auth/daftar') ?>" method="post">
+    <div class="card card-body">
             <div class="text-center">
                 <h5>Data Pribadi</h5><p></p>
             </div>
@@ -76,11 +78,11 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-4">
+                    <div class="col">
                         <label><h6>Tanggal Lahir</h6></label>
                         <input type="date" class="form-control" name="tanggal_lahir" id="tanggal_lahir"><?= form_error('password', '<small class="text-danger pl-3">', '</small>') ?>
                     </div>
-                    <div class="col-3">
+                    <div class="col">
                         <label><h6>Jenis Kelamin</h6></label>
                         <select class="form-control" name="jenis_kelamin">
                             <option disabled selected>Pilih</option>
@@ -88,12 +90,10 @@
                             <option value="Perempuan">Perempuan</option>
                         </select>
                     </div>
-                    <div class="col">
-                        <label><h6>Kota Tempat Tinggal</h6></label>
-                        <input type="text" class="form-control" name="kota_tinggal" id="kota_tinggal"> <?= form_error('konf-password', '<small class="text-danger pl-3">', '</small>') ?>
-                    </div>
-                </div>
-            </div>
+                </div><br>
+                <label><h6>Kota Tempat Tinggal</h6></label>
+                <input type="text" class="form-control" name="kota_tinggal" id="kota_tinggal"> <?= form_error('konf-password', '<small class="text-danger pl-3">', '</small>') ?>
+            <br></div>
             
             <div class="card card-body">
                 <div class="text-center">
@@ -104,20 +104,22 @@
                     <input type="text" class="form-control" name="nama_usaha" id="nama_usaha"><br>
                     
                     <label for="nama"><h6>Alamat Usaha</h6></label>
-                    <input type="text" name="alamat_usaha" class="form-control" id="alamat_usaha">
+                    <input type="text" name="alamat_usaha" class="form-control" id="alamat_usaha"><br>
+                    
+                    <label><h6>Kota Lokasi Usaha</h6></label>
+                    <input type="text" class="form-control" name="kota_usaha" id="kota_usaha">
                     
                 <div class="row">
-                    <div class="col-6">
-                        <label><h6>Kota Lokasi Usaha</h6></label>
-                        <input type="text" class="form-control" name="kota_usaha" id="kota_usaha">
-                    </div>
-                    <div class="col-3">
+                    <div class="col">
                         <label><h6>Tahun Berdiri</h6></label>
-                        <input type="number" class="form-control" name="tahun_berdiri" id="tahun_berdiri" maxlength=4>
+                        <input type="number" class="form-control" name="tahun_berdiri" id="tahun_berdiri" min="1700" max="2025" maxlength=4>
                     </div>
                     <div class="col">
                         <label><h6>Jumlah Karyawan</h6></label>
+                        <div class="input-group">
                         <input type="number" class="form-control" name="jumlah_karyawan" id="jumlah_karyawan">
+                        <span class="input-group-text"><h6>orang</h6></span>
+                        </div>
                     </div>
                 </div>
 
@@ -144,7 +146,7 @@
                         </div>
                     </div>
                     <div class="col-6">
-                        <div class="g-recaptcha" data-sitekey="6Lfqp74dAAAAANRqXosCWSVeEBaxM1F4KV6C32Jf"></div>
+                    <div class="g-recaptcha" data-sitekey="6Lfqp74dAAAAANRqXosCWSVeEBaxM1F4KV6C32Jf"></div>
                     </div>
                 </div><br>
                 
@@ -153,8 +155,8 @@
                     <p></p>Sudah Memiliki Akun?<a href="<?= base_url('auth') ?>"><strong> Masuk</strong></a>
                 </div>
                         </div>
-                    </form>
-                </div>
+    </form>
+</div>
             </div>
         </div>
 
