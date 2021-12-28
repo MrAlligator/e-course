@@ -86,6 +86,8 @@
                                                         <div class="input-group-prepend">
                                                             <span class="input-group-text"><i class="ni ni-building"></i></span>
                                                         </div>
+
+                                                        <input type="hidden" name="<?= $this->security->get_csrf_token_name() ?>" value="<?= $this->security->get_csrf_hash() ?>" style="display: none;">
                                                         <input type="hidden" name="tgl_input" value="<?= date('Y-m-d') ?>">
                                                         <input class="form-control" type="text" name="perusahaan" id="perusahaan" placeholder="Nama Pelaku Importir" required><?= form_error('perusahaan', '<small class="text-danger pl-3">', '</small>') ?>
                                                     </div>
@@ -352,6 +354,8 @@
                                                             <div class="input-group-prepend">
                                                                 <span class="input-group-text"><i class="ni ni-building"></i></span>
                                                             </div>
+
+                                                            <input type="hidden" name="<?= $this->security->get_csrf_token_name() ?>" value="<?= $this->security->get_csrf_hash() ?>" style="display: none;">
                                                             <input type="text" class="form-control" name="id" id="id" value="<?= $buyer['id_importir'] ?>" hidden>
                                                             <input type="hidden" name="tgl_edit" value="<?= date('Y-m-d') ?>">
                                                             <input class="form-control" type="text" name="perusahaan" id="perusahaan" value="<?= $buyer['nama_perusahaan'] ?>" required><?= form_error('perusahaan', '<small class="text-danger pl-3">', '</small>') ?>

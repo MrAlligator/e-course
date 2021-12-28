@@ -3,7 +3,7 @@
     <div class="scrollbar-inner">
         <!-- Brand -->
         <div class="sidenav-header  align-items-center">
-                <img width="75px" src="<?= base_url() ?>/assets/img/logo.jpeg" alt="...">
+            <img width="75px" src="<?= base_url() ?>/assets/img/logo.jpeg" alt="...">
             </a>
         </div>
         <div class="navbar-inner">
@@ -58,6 +58,15 @@
                             <span class="nav-link-text">Artikel</span>
                         </a>
                     </li>
+                </ul>
+                <!-- Divider -->
+                <hr class="my-3">
+                <!-- Heading -->
+                <h6 class="navbar-heading p-0 text-muted">
+                    <span class="docs-normal">Kontrol Forum</span>
+                </h6>
+                <!-- Nav items -->
+                <ul class="navbar-nav">
                     <li class="nav-item">
                         <a class="nav-link" href="<?= base_url('backend/postingan') ?>">
                             <i class="ni ni-collection text-lime"></i>

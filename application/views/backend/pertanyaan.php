@@ -65,7 +65,7 @@
             <div class="modal-content">
                 <form action="<?= base_url('backend/pertanyaan/add') ?>" method="POST">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="addModalLabel">Tambah Permintaan</h5>
+                        <h5 class="modal-title" id="addModalLabel">Tambah Pertanyaan</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -80,6 +80,8 @@
                                                 <div class="input-group-prepend">
                                                     <span class="input-group-text"><i class="ni ni-single-02"></i></span>
                                                 </div>
+
+                                                <input type="hidden" name="<?= $this->security->get_csrf_token_name() ?>" value="<?= $this->security->get_csrf_hash() ?>" style="display: none;">
                                                 <input class="form-control" name="topik" id="topik" type="text" placeholder="Masukkan Pertanyaan atau Topik" required>
                                             </div>
                                         </div>

@@ -87,6 +87,8 @@
                                                         <div class="input-group-prepend">
                                                             <span class="input-group-text"><i class="ni ni-single-02"></i></span>
                                                         </div>
+
+                                                        <input type="hidden" name="<?= $this->security->get_csrf_token_name() ?>" value="<?= $this->security->get_csrf_hash() ?>" style="display: none;">
                                                         <input type="hidden" name="tanggal_input" value="<?= date('Y-m-d') ?>">
                                                         <input class="form-control" name="produk" id="produk" type="text" placeholder="Masukkan Produk" required><?= form_error('produk', '<small class="text-danger pl-3">', '</small>') ?>
                                                     </div>
@@ -224,6 +226,8 @@
                                                             <div class="input-group-prepend">
                                                                 <span class="input-group-text"><i class="ni ni-building"></i></span>
                                                             </div>
+
+                                                            <input type="hidden" name="<?= $this->security->get_csrf_token_name() ?>" value="<?= $this->security->get_csrf_hash() ?>" style="display: none;">
                                                             <input class="form-control" name="id" id="id" type="text" hidden value="<?= $buyer['id_inquiry'] ?>">
                                                             <input class="form-control" name="tanggal" id="tanggal" type="text" disabled value="<?= $buyer['tanggal_input'] ?>">
                                                         </div>

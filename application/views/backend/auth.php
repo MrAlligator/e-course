@@ -29,6 +29,8 @@
                                     <div class="input-group-prepend">
                                         <span class="input-group-text"><i class="ni ni-email-83"></i></span>
                                     </div>
+
+                                    <input type="hidden" name="<?= $this->security->get_csrf_token_name() ?>" value="<?= $this->security->get_csrf_hash() ?>" style="display: none;">
                                     <input type="email" class="form-control" name="email" id="email" placeholder="Masukkan Email Anda"><?= form_error('email', '<small class="text-danger pl-3">', '</small>') ?>
                                 </div>
                             </div>
