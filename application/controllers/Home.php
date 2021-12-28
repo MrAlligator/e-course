@@ -17,7 +17,7 @@ class Home extends CI_Controller
         $need = $this->db->get_where('tb_user', ['email' => $this->session->userdata('email')])->row_array();
         $data['title'] = "Beranda";
         $data['artikel'] = $this->Artikel_model->getRandom();
-
+        
         $this->load->view('_partials/header', $data);
         $this->load->view('_partials/topbar', $data);
         $this->load->view('_partials/hero', $data);

@@ -16,10 +16,10 @@
     <div class="section-title">
         <h2>Data Produk</h2>
         <p>Data Produk menampilkan daftar permintaan produk yang diperlukan oleh perusahaan importir dari seluruh dunia</p><br>
-            <?php if (isset($user['email'])&& $semua!=1) : ?>
+            <!-- <?php if (isset($user['email'])&& $semua!=1) : ?>
             <a href="<?= base_url('frontend/inquiry/getAll') ?>" class="btn btn-success">Lihat Seluruh Data Permintaan</a><br>
             <br><button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#download">Unduh Dokumen</button><br>
-            <?php endif ?>
+            <?php endif ?> -->
           </div>
 
 <div class="table-responsive">

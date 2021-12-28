@@ -18,6 +18,7 @@
                     <input type="password" class="form-control" name="password" id="password" placeholder="Input Your Password Here"><?= form_error('password', '<small class="text-danger pl-3">', '</small>') ?>  
                     <span id="show_pass" class="input-group-text"><i id="pass_icon" class="bi bi-eye-fill"></i></span>
                 </div>
+                <input type="hidden" name="<?=$this->security->get_csrf_token_name();?>" value="<?=$this->security->get_csrf_hash();?>" style="display: none">
                 <button type="submit" class="btn-get-started">Masuk</button>
             </div><br>
             <div class="text-center">
