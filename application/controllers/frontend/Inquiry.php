@@ -13,7 +13,7 @@ class Inquiry extends CI_Controller
     public function index()
     {
         $data['user'] = $this->db->get_where('tb_user', ['email' => $this->session->userdata('email')])->row_array();
-        $data['inquiries'] = $this->Inquiry_model->getRandom();
+        $data['inquiries'] = $this->Inquiry_model->getAll();
         $data['title'] = "Data Permintaan";
         $data['semua'] = 0;
 

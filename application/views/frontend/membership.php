@@ -49,6 +49,7 @@
                 <h5>Data Pribadi</h5><p></p>
             </div>
             <?php echo $this->session->flashdata('message'); ?>
+            <input type="hidden" name="<?=$this->security->get_csrf_token_name();?>" value="<?=$this->security->get_csrf_hash();?>" style="display: none">
             <label for="nama"><h6>Nama Lengkap</h6></label>
             <input type="text" class="form-control" name="nama" id="nama"> <?= form_error('nama', '<small class="text-danger pl-3">', '</small>') ?>
                 <div class="row">

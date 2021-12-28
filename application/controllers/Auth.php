@@ -87,8 +87,6 @@ class Auth extends CI_Controller
         $password = $this->input->post('password');
 
         $user = $this->db->get_where('tb_user', ['email' => $email])->row_array();
-        // var_dump($user);
-        // die;
         //jika user ada
         if ($user) {
             //cek aktif
@@ -105,9 +103,7 @@ class Auth extends CI_Controller
                             'is_member' => $user['is_member']
                         ];
                         $this->session->set_userdata($data);
-                        // var_dump($data);
-                        // die;
-                        // if ($user['is_member'] == 1) {
+                        // if ($user['is_member'] == 1) { 
                             redirect('home');
                         // } else {
                         //     redirect('home/membership');
@@ -154,9 +150,8 @@ class Auth extends CI_Controller
                 redirect('home/membership');
             }
         }else{
-            var_dump( $captcha_response=trim($this->input->post('g-recaptcha-response')));
-            // $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Harap isi captcha</div>');
-            // redirect('home/membership');
+            $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Harap isi captcha</div>');
+            redirect('home/membership');
         }
     }
 
@@ -232,18 +227,6 @@ class Auth extends CI_Controller
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Akun berhasil dibuat. Silakan verifikasi akun email anda</div>');
             redirect('auth');
         }
-    }
-    
-    public function kirim()
-    {
-        $email = "ryzaldm@gmail.com";
-        $token = base64_encode(random_bytes(32));
-        $user_token = [
-                'email' => $email,
-                'token' => $token,
-                'date_created' => time()
-            ];
-        $this->_sendEmail($token, 'verify');
     }
         
     private function _sendEmail($token, $type)

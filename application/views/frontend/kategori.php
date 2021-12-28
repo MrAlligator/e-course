@@ -39,6 +39,7 @@
             <input hidden type="text" value="<?=$id_kategori?>" name="id_kategori">
             <input hidden type="text" value="<?=date('Y-m-d')?>" name="tanggal">
             <input hidden type="text" value="<?=date('H:i')?>" name="jam"><p></p>
+            <input type="hidden" name="<?=$this->security->get_csrf_token_name();?>" value="<?=$this->security->get_csrf_hash();?>" style="display: none">
             <div class="g-recaptcha" data-sitekey="6Lfqp74dAAAAANRqXosCWSVeEBaxM1F4KV6C32Jf"></div>
             <div class="text-center">
                 <br><button class="btn btn-primary" type="submit">Kirim</button>
@@ -113,8 +114,7 @@
 <br>
 
 <div class="col-lg-12 mt-5 mt-lg-0 d-flex align-items-stretch">
-<form action="<?=base_url('home/post_komen')?>" method="post">
-    <div class="php-email-form">
+    <div class="info">
         <?php
         if($post):
             foreach($post as $postingan):
@@ -151,6 +151,9 @@
     $comment = $this->db->where('id_post', $postingan->id_post)->get('tb_komentar')->result();
     if($comment){
     foreach($comment as $comment):
+
+    $who = $this->db->get_where('tb_user',['id_user'=> $comment->id_user])->row_array();
+    
 ?>
 
 <div class="card card-body">
@@ -158,9 +161,9 @@
         <li class="list-group-item" aria-current="true">
             <div class="d-flex w-100 justify-content-between">
             <small>
-                <img width="25px" src="<?= base_url('/assets/img/userimage/').$poster['foto_user'];?>"
+                <img width="25px" src="<?= base_url('/assets/img/userimage/').$who['foto_user'];?>"
                 class="rounded-circle img-thumbnail">
-                <?=$poster['nama']?>
+                <?=$who['nama']?>
             </small>
             <small>
                 <?=date('d F Y', strtotime($comment->tanggal))?>, <?=$comment->jam?>
@@ -170,9 +173,9 @@
         <li class="list-group-item" aria-current="true">
             <h5 class="mb-1"><?=$comment->komentar?></h5>
         </li>
-        <?php if(isset($_SESSION['email'])&&$poster['email']===$_SESSION['email']):?>  
+        <?php if(isset($_SESSION['email'])&&$who['email']===$_SESSION['email']):?>  
             <li class="list-group-item" aria-current="true">
-            <a href="<?=base_url('home/del_post/').$komentar->id_komentar?>"><small>Hapus</small></a>
+            <a href="<?=base_url('home/del_post/').$comment->id_komentar?>"><small>Hapus</small></a>
         <?php endif ?>
     </div><br>
     <?php endforeach ?>
@@ -182,13 +185,14 @@
 <h5>Belum ada komentar</h5>
 </div><br>
 <?php } ?>
-
+<form action="<?=base_url('home/post_komen')?>" method="post">
     <div class="input-group">
         <input hidden name="id_post" id="id_post" value="<?=$postingan->id_post?>">
-        <input hidden name="id_user" id="id_user" value="<?=$postingan->id_user?>">
+        <input hidden name="id_user" id="id_user" value="<?=$_SESSION['id_user']?>">
         <input hidden name="id_kategori" id="id_kategori" value="<?=$id_kategori?>">
         <input hidden type="text" value="<?=date('Y-m-d')?>" name="tanggal">
         <input hidden type="text" value="<?=date('H:i')?>" name="jam">
+        <input type="hidden" name="<?=$this->security->get_csrf_token_name();?>" value="<?=$this->security->get_csrf_hash();?>" style="display: none">
         <?php if(!isset($_SESSION['email'])){?>
             <textarea class="form-control" disabled name="komen" id="komen" placeholder="Untuk berkomentar silakan masuk terlebih dahulu"></textarea>
             <button type="submit" disabled class="input-group-text" data-bs-toggle="tooltip" data-bs-placement="right" title="Kirim komentar"><i class="bx bxs-send"></i></button>
@@ -197,12 +201,13 @@
             <button type="submit" class="input-group-text" data-bs-toggle="tooltip" data-bs-placement="right" title="Kirim komentar"><i class="bx bxs-send"></i></button>
         <?php }?>    
     </div>
+</form>
+
     <ul>
     
     <ul>
         
         </div>
-    </form>
 
 </div><br>
     <?php endforeach;else:?>

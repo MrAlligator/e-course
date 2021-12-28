@@ -95,7 +95,8 @@
             <div class="modal-body">
                 <label for="name"><h6>Masukkan Pertanyaan</h6></label>
                 <input type="text" name="pertanyaan" class="form-control" id="pertanyaan" required>
-                <div class="g-recaptcha" data-sitekey="6Lfqp74dAAAAANRqXosCWSVeEBaxM1F4KV6C32Jf"></div>
+                <input type="hidden" name="<?=$this->security->get_csrf_token_name();?>" value="<?=$this->security->get_csrf_hash();?>" style="display: none">
+                <br><div class="g-recaptcha" data-sitekey="6Lfqp74dAAAAANRqXosCWSVeEBaxM1F4KV6C32Jf"></div>
             </div>
             <div class="modal-footer">
                 <button type="submit" class="btn btn-primary"><h6>Tambah</h6></button>
