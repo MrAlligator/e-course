@@ -42,4 +42,9 @@ class Log_model extends CI_Model
     {
         return $this->db->truncate($this->_table);
     }
+
+    public function newer_log()
+    {
+        return $this->db->order_by('log_time', 'DESC')->limit(15)->get($this->_table)->result_array();
+    }
 }

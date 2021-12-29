@@ -105,7 +105,7 @@
         <!-- Page content -->
         <div class="container-fluid mt--6">
             <div class="row">
-                <div class="col-xl-7">
+                <div class="col-lg-6">
                     <div class="card">
                         <div class="card-header bg-transparent">
                             <div class="row align-items-center">
@@ -201,4 +201,82 @@
                         </div>
                     </div>
                 </div>
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-header bg-transparent">
+                            <div class="row align-items-center">
+                                <div class="col">
+                                    <h5 class="h3 mb-0">Log Kunjungan Terbaru</h5>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table id="tabel_importir" class="table table-bordered table-striped" width="100%" cellspacing="0">
+                                    <thead class="thead-dark text-primary">
+                                        <tr>
+                                            <th>Waktu Akses</th>
+                                            <th>User</th>
+                                            <th>Deskripsi</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php foreach ($newestlogs as $log) : ?>
+                                            <tr>
+                                                <th width="100px"><?= $log['log_time'] ?></th>
+                                                <th width="100px"><?= $log['log_user'] ?></th>
+                                                <th width="100px"><?= $log['log_desc'] ?></th>
+                                            </tr>
+                                        <?php endforeach; ?>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <div class="text-right">
+                                <a href="<?= base_url('backend/logger') ?>" class="badge badge-primary text-decoration-none">Lihat Seluruh Log Kunjungan</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
+            <!-- <div class="row">
+                <div class="col-md-8">
+                    <div class="card">
+                        <div class="card-header bg-transparent">
+                            <div class="row align-items-center">
+                                <div class="col">
+                                    <h5 class="h3 mb-0">Log Kunjungan Terbaru</h5>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table id="tabel_importir" class="table table-bordered table-striped" width="100%" cellspacing="0">
+                                    <thead class="thead-dark text-primary">
+                                        <tr>
+                                            <th>Waktu Akses</th>
+                                            <th>User</th>
+                                            <th>Deskripsi</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php foreach ($newestlogs as $log) : ?>
+                                            <tr>
+                                                <th width="100px"><?= $log['log_time'] ?></th>
+                                                <th width="100px"><?= $log['log_user'] ?></th>
+                                                <th width="100px"><?= $log['log_desc'] ?></th>
+                                            </tr>
+                                        <?php endforeach; ?>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <div class="text-right">
+                                <a href="<?= base_url('backend/logger') ?>" class="badge badge-primary text-decoration-none">Lihat Seluruh Log Kunjungan</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> -->

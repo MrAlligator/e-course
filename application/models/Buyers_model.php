@@ -32,7 +32,7 @@ class Buyers_model extends CI_Model
         if ($like) {
             $this->db->where($like);
         }
-        return $this->db->get($this->_table, $limit, $start)->result_array();
+        return $this->db->order_by('id_importir', 'DESC')->get($this->_table, $limit, $start)->result_array();
     }
 
     public function hitung_jumlah_buyers($like = '')

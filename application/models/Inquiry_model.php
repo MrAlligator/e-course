@@ -22,7 +22,7 @@ class Inquiry_model extends CI_Model
         if ($like) {
             $this->db->where($like);
         }
-        return $this->db->get($this->_table, $limit, $start)->result_array();
+        return $this->db->order_by('id_inquiry', 'DESC')->get($this->_table, $limit, $start)->result_array();
     }
 
     public function getRandom()
@@ -43,7 +43,8 @@ class Inquiry_model extends CI_Model
         }
     }
 
-    public function get_inquiry_keyword($keyword){
+    public function get_inquiry_keyword($keyword)
+    {
         $this->db->select('*');
         $this->db->from($this->_table);
         $this->db->like('produk', $keyword);

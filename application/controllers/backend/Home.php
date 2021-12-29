@@ -10,6 +10,7 @@ class Home extends CI_Controller
         $this->load->model('Inquiry_model');
         $this->load->model('User_model');
         $this->load->model('Konfirmasi_model');
+        $this->load->model('Log_model');
         is_admin();
     }
 
@@ -21,6 +22,7 @@ class Home extends CI_Controller
         $data['jumlah_importir'] = $this->Buyers_model->hitung_jumlah_buyers();
         $data['jumlah_permintaan'] = $this->Inquiry_model->hitung_jumlah_inquiries();
         $data['perbulan'] = $this->User_model->jumlah_perbulan();
+        $data['newestlogs'] = $this->Log_model->newer_log();
 
         $this->load->view('_partadm/head', $data);
         $this->load->view('_partadm/sidebar', $data);
