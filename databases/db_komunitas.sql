@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 26 Des 2021 pada 13.14
+-- Waktu pembuatan: 29 Des 2021 pada 11.01
 -- Versi server: 10.4.21-MariaDB
 -- Versi PHP: 8.0.12
 
@@ -16104,7 +16104,7 @@ CREATE TABLE `tb_tanggapan` (
 INSERT INTO `tb_tanggapan` (`id_post`, `id_user`, `id_kategori`, `postingan`, `komentar`, `tanggal`, `jam`) VALUES
 (1, 4, 1, 'bagaimana cara menghitung harga etika barang sudah berada di atas kapal di pelabuhan muat?', 0, '2021-10-30', '20:42'),
 (8, 4, 1, 'Ralat Untuk Aksi Bersama dalam penggalangan dana di undur 2 hari kedepan, dari pihak kepolisian masih belum memberikan izin karena masih dalam masa pilkades', 0, '2021-11-16', '11:50'),
-(9, 6, 2, 'bagaimana cara menghitung harga etika barang sudah berada di atas kapal di pelabuhan muat?', 0, '2021-11-20', '11:41');
+(9, 6, 2, 'bagaimana cara menghitung harga etika barang sudah berada di atas kapal di pelabuhan muat?', 1, '2021-11-20', '11:41');
 
 -- --------------------------------------------------------
 
@@ -16145,19 +16145,21 @@ CREATE TABLE `tb_user` (
   `role_id` int(11) NOT NULL,
   `is_member` int(1) NOT NULL,
   `is_active` int(1) NOT NULL,
-  `date_created` int(11) NOT NULL
+  `date_created` int(11) NOT NULL,
+  `month_created` int(11) NOT NULL,
+  `year_created` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data untuk tabel `tb_user`
 --
 
-INSERT INTO `tb_user` (`id_user`, `nama`, `email`, `nomor_hp`, `foto_user`, `password`, `view_password`, `role_id`, `is_member`, `is_active`, `date_created`) VALUES
-(1, 'Denny Trias Utomo', 'rizkiw8778@gmail.com', '', 'denny_trias.png', '$2y$10$oh78.L2MF51tTCIl3.OgLOvxX6v0qz/Sico.d8pMtx3OaX35YVMs6', 'AxenNet123', 2, 1, 1, 1635156187),
-(2, 'Admin', 'admin@gmail.com', '', 'WhatsApp_Image_2021-11-05_at_11_15_38_AM.jpeg', '$2y$10$7g1YRDy55vdnlW99nXXffOIKHH3A840Azz1MwcsUtWUSYgmLNe9ie', 'admin', 1, 1, 1, 1635501808),
-(4, 'Rizki Widya Pratama', 'owner@gmail.com', '087832165981', 'default.png', '$2y$10$HnXSS6hRkZ7Ez7G8gAU48udAyNGaaEEPHsW.vpbLvJZfmrqI9t2eu', '12345678', 2, 1, 1, 1636099670),
-(6, 'Fabryzal Adam Pramudya', 'ryzaldm@gmail.com', '087832165981', 'IMG_20201010_085551_230.jpg', '$2y$10$DFqA4VVg//LpFt/IQfqdDO6DINZnWSZgSExSRBDQae/NuC8rcHPQ.', 'Adam240899', 2, 1, 1, 1636292988),
-(8, 'Fabryzal Adam Pramudya', 'fabryzal@gmail.com', '087832165981', 'default.png', '$2y$10$UxueRuBBFA2iDkwsVrcBW.vM.fSRpBns./C.3e3FBq7joz4EhPpPi', 'fabryzal', 2, 1, 1, 1636778809);
+INSERT INTO `tb_user` (`id_user`, `nama`, `email`, `nomor_hp`, `foto_user`, `password`, `view_password`, `role_id`, `is_member`, `is_active`, `date_created`, `month_created`, `year_created`) VALUES
+(1, 'Denny Trias Utomo', 'rizkiw8778@gmail.com', '', 'denny_trias.png', '$2y$10$oh78.L2MF51tTCIl3.OgLOvxX6v0qz/Sico.d8pMtx3OaX35YVMs6', 'AxenNet123', 2, 1, 1, 1635156187, 10, 2021),
+(2, 'Admin', 'admin@gmail.com', '', 'WhatsApp_Image_2021-11-05_at_11_15_38_AM.jpeg', '$2y$10$7g1YRDy55vdnlW99nXXffOIKHH3A840Azz1MwcsUtWUSYgmLNe9ie', 'admin', 1, 1, 1, 1635501808, 10, 2021),
+(4, 'Rizki Widya Pratama', 'owner@gmail.com', '087832165981', 'default.png', '$2y$10$HnXSS6hRkZ7Ez7G8gAU48udAyNGaaEEPHsW.vpbLvJZfmrqI9t2eu', '12345678', 2, 1, 1, 1636099670, 11, 2021),
+(6, 'Fabryzal Adam Pramudya', 'ryzaldm@gmail.com', '087832165981', 'IMG_20201010_085551_230.jpg', '$2y$10$DFqA4VVg//LpFt/IQfqdDO6DINZnWSZgSExSRBDQae/NuC8rcHPQ.', 'Adam240899', 2, 1, 1, 1636292988, 11, 2021),
+(8, 'Fabryzal Adam Pramudya', 'fabryzal@gmail.com', '087832165981', 'default.png', '$2y$10$UxueRuBBFA2iDkwsVrcBW.vM.fSRpBns./C.3e3FBq7joz4EhPpPi', 'fabryzal', 2, 1, 1, 1636778809, 12, 2021);
 
 -- --------------------------------------------------------
 
@@ -16270,7 +16272,7 @@ ALTER TABLE `user_role`
 -- AUTO_INCREMENT untuk tabel `tb_artikel`
 --
 ALTER TABLE `tb_artikel`
-  MODIFY `id_artikel` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_artikel` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_importir`
@@ -16282,7 +16284,7 @@ ALTER TABLE `tb_importir`
 -- AUTO_INCREMENT untuk tabel `tb_komentar`
 --
 ALTER TABLE `tb_komentar`
-  MODIFY `id_komentar` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_komentar` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_negara`
