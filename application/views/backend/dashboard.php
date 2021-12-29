@@ -105,130 +105,98 @@
         <!-- Page content -->
         <div class="container-fluid mt--6">
             <div class="row">
-                <div class="col-xl-8">
-                    <div class="card">
-                        <div class="card-header border-0">
-                            <div class="row align-items-center">
-                                <div class="col">
-                                    <h3 class="mb-0">Page visits</h3>
-                                </div>
-                                <div class="col text-right">
-                                    <a href="#!" class="btn btn-sm btn-primary">See all</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="table-responsive">
-                            <!-- Projects table -->
-                            <table class="table align-items-center table-flush">
-                                <thead class="thead-light">
-                                    <tr>
-                                        <th scope="col">Page name</th>
-                                        <th scope="col">Visitors</th>
-                                        <th scope="col">Unique users</th>
-                                        <th scope="col">Bounce rate</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <th scope="row">
-                                            /argon/
-                                        </th>
-                                        <td>
-                                            4,569
-                                        </td>
-                                        <td>
-                                            340
-                                        </td>
-                                        <td>
-                                            <i class="fas fa-arrow-up text-success mr-3"></i> 46,53%
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">
-                                            /argon/index.html
-                                        </th>
-                                        <td>
-                                            3,985
-                                        </td>
-                                        <td>
-                                            319
-                                        </td>
-                                        <td>
-                                            <i class="fas fa-arrow-down text-warning mr-3"></i> 46,53%
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">
-                                            /argon/charts.html
-                                        </th>
-                                        <td>
-                                            3,513
-                                        </td>
-                                        <td>
-                                            294
-                                        </td>
-                                        <td>
-                                            <i class="fas fa-arrow-down text-warning mr-3"></i> 36,49%
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">
-                                            /argon/tables.html
-                                        </th>
-                                        <td>
-                                            2,050
-                                        </td>
-                                        <td>
-                                            147
-                                        </td>
-                                        <td>
-                                            <i class="fas fa-arrow-up text-success mr-3"></i> 50,87%
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">
-                                            /argon/profile.html
-                                        </th>
-                                        <td>
-                                            1,795
-                                        </td>
-                                        <td>
-                                            190
-                                        </td>
-                                        <td>
-                                            <i class="fas fa-arrow-down text-danger mr-3"></i> 46,53%
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-4">
+                <div class="col-xl-7">
                     <div class="card">
                         <div class="card-header bg-transparent">
                             <div class="row align-items-center">
                                 <div class="col">
-                                    <h6 class="text-uppercase text-muted ls-1 mb-1">Performance</h6>
-                                    <h5 class="h3 mb-0">Total orders</h5>
+                                    <h5 class="h3 mb-0">Jumlah Pendaftar Tiap Bulannya</h5>
                                 </div>
                             </div>
                         </div>
                         <div class="card-body">
                             <!-- Chart -->
                             <div class="chart">
-                                <canvas id="myChart"></canvas>
-                                <?php
-                                //Inisialisasi nilai variabel awal
-                                $bulan = "";
-                                $jumlah = null;
-                                foreach ($perbulan as $pbl) {
-                                    $bln = $pbl->month_created;
-                                    $bulan .= "'$bln'" . ", ";
-                                    $jum = $pbl->total;
-                                    $jumlah .= "$jum" . ", ";
-                                }
-                                ?>
+                                <canvas id="myChart" class="chart-canvas"></canvas>
+                                <script src="<?= base_url() ?>adminast/js/Chart.js"></script>
+                                <script type="text/javascript">
+                                    var ctx = document.getElementById('myChart').getContext('2d');
+                                    var chart = new Chart(ctx, {
+                                        type: 'line',
+                                        options: {
+                                            scales: {
+                                                yAxes: [{
+                                                    scaleLabel: {
+                                                        display: true,
+                                                        labelString: 'Jumlah Pendaftar'
+                                                    },
+                                                    ticks: {
+                                                        beginAtZero: true,
+                                                        max: 20
+                                                    }
+                                                }],
+                                                xAxes: [{
+                                                    scaleLabel: {
+                                                        display: true,
+                                                        labelString: 'Bulan dan Tahun'
+                                                    }
+                                                }]
+                                            }
+                                        },
+                                        data: {
+                                            labels: [
+                                                <?php
+                                                if (count($perbulan) > 0) {
+                                                    foreach ($perbulan as $data) {
+                                                        if ($data->month_created == 1) {
+                                                            echo "'Januari " . $data->year_created . "',";
+                                                        } else if ($data->month_created == 2) {
+                                                            echo "'Februari " . $data->year_created . "',";
+                                                        } else if ($data->month_created == 3) {
+                                                            echo "'Maret " . $data->year_created . "',";
+                                                        } else if ($data->month_created == 4) {
+                                                            echo "'April " . $data->year_created . "',";
+                                                        } else if ($data->month_created == 5) {
+                                                            echo "'Mei " . $data->year_created . "',";
+                                                        } else if ($data->month_created == 6) {
+                                                            echo "'Juni " . $data->year_created . "',";
+                                                        } else if ($data->month_created == 7) {
+                                                            echo "'Juli " . $data->year_created . "',";
+                                                        } else if ($data->month_created == 8) {
+                                                            echo "'Agustus " . $data->year_created . "',";
+                                                        } else if ($data->month_created == 9) {
+                                                            echo "'September " . $data->year_created . "',";
+                                                        } else if ($data->month_created == 10) {
+                                                            echo "'Oktober " . $data->year_created . "',";
+                                                        } else if ($data->month_created == 11) {
+                                                            echo "'November " . $data->year_created . "',";
+                                                        } else if ($data->month_created == 12) {
+                                                            echo "'Desember " . $data->year_created . "',";
+                                                        }
+                                                    }
+                                                }
+                                                ?>
+                                            ],
+                                            datasets: [{
+                                                label: 'Jumlah User yang Mendaftar',
+                                                backgroundColor: 'transparent',
+                                                fill: true,
+                                                borderColor: 'blue',
+                                                pointBorderColor: 'blue',
+                                                pointBackgroundColor: 'blue',
+                                                data: [
+                                                    <?php
+                                                    if (count($perbulan) > 0) {
+                                                        foreach ($perbulan as $data) {
+                                                            echo $data->total . ", ";
+                                                        }
+                                                    }
+                                                    ?>
+                                                ]
+                                            }]
+                                        },
+                                    });
+                                </script>
                             </div>
                         </div>
                     </div>

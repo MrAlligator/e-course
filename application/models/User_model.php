@@ -92,6 +92,7 @@ class User_model extends CI_Model
     {
         $this->db->group_by('month_created');
         $this->db->select('month_created');
+        $this->db->select('year_created');
         $this->db->select("count(*) as total");
 
         return $this->db->get($this->_table)->result();

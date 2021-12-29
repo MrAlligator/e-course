@@ -27,7 +27,7 @@ var BarsChart = (function() {
 					label: 'Sales',
 					data: [25, 20, 30, 22, 17, 29]
 				}]
-			}
+			},
 		});
 
 		// Save to jQuery object
