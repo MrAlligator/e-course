@@ -15,7 +15,7 @@ class Importir extends CI_Controller
         //Config
         $config['base_url'] = 'http://' . $_SERVER['HTTP_HOST'] . str_replace(basename($_SERVER['SCRIPT_NAME']), "", $_SERVER['SCRIPT_NAME']) . 'backend/importir/index';
         $config['total_rows'] = $this->Buyers_model->hitung_jumlah_buyers();
-        $config['per_page'] = '100';
+        $config['per_page'] = '50';
 
         //Styling
         $config['full_tag_open'] = '<nav><ul class="pagination pagination-sm justify-content-center">';
@@ -72,7 +72,7 @@ class Importir extends CI_Controller
         //Config
         $config['base_url'] = 'http://' . $_SERVER['HTTP_HOST'] . str_replace(basename($_SERVER['SCRIPT_NAME']), "", $_SERVER['SCRIPT_NAME']) . 'backend/importir/index/cari/' . $search;
         $config['total_rows'] = $this->Buyers_model->hitung_jumlah_buyers($like);
-        $config['per_page'] = '100';
+        $config['per_page'] = '50';
 
         //Styling
         $config['full_tag_open'] = '<nav><ul class="pagination pagination-sm justify-content-center">';

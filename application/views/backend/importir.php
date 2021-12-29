@@ -21,6 +21,7 @@
                             <form method="POST" action="<?= base_url('backend/importir/search') ?>" class="navbar-search navbar-search-light form-inline mr-sm-3">
                                 <div class="form-group mb-0">
                                     <div class="input-group input-group-alternative input-group-merge">
+                                        <input type="hidden" name="<?= $this->security->get_csrf_token_name() ?>" value="<?= $this->security->get_csrf_hash() ?>" style="display: none;">
                                         <input class="form-control" placeholder="Search" type="text" id="key" name="key">
                                         <div class="input-group-prepend">
                                             <button class="input-group-text" type="submit"><i class="fas fa-search"></i></button>
