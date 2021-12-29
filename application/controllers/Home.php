@@ -17,7 +17,7 @@ class Home extends CI_Controller
         $need = $this->db->get_where('tb_user', ['email' => $this->session->userdata('email')])->row_array();
         $data['title'] = "Beranda";
         $data['artikel'] = $this->Artikel_model->getRandom();
-        
+
         $this->load->view('_partials/header', $data);
         $this->load->view('_partials/topbar', $data);
         $this->load->view('_partials/hero', $data);
@@ -50,11 +50,12 @@ class Home extends CI_Controller
         $data['title'] = "Kalkulator ";
         $data['subtitle'] = "Kalkulator perhitungan harga dalam melakukan transaksi ekspor ";
         $data['artikel'] = $this->Artikel_model->getRandom();
+        helper_log('view', 'Mengunjungi Halaman Kalkulator');
 
         $this->load->view('_partials/header', $data);
         $this->load->view('_partials/topbar', $data);
-        if(!isset($_SESSION['email'])){
-        $this->load->view('_partials/hero', $data);
+        if (!isset($_SESSION['email'])) {
+            $this->load->view('_partials/hero', $data);
         }
         $this->load->view('_partials/clients', $data);
         $this->load->view('frontend/calculator', $data);
@@ -93,7 +94,7 @@ class Home extends CI_Controller
         $data['pertanyaan'] = $this->Forum_model->getById($id_kategori);
         $data['id_kategori'] = $id_kategori;
         $data['kategori_terbaru'] = $this->Forum_model->getKategoriTerbaru();
-        $data['kategori_terpopuler'] = $this->Forum_model->getKategoriTerpopuler(); 
+        $data['kategori_terpopuler'] = $this->Forum_model->getKategoriTerpopuler();
         $data['artikel'] = $this->Artikel_model->getRandom();
 
 
@@ -161,46 +162,46 @@ class Home extends CI_Controller
 
         $raw = $this->db->where('id_post', $this->input->post('id_post'))->get('tb_tanggapan')->row_array();;
         $komentar = $raw['komentar'];
-        $komentar = intval($komentar)+1;
+        $komentar = intval($komentar) + 1;
 
         $this->Forum_model->create_komen($data);
-        $this->db->where('id_post', $this->input->post('id_post'))->update('tb_tanggapan', ['komentar'=>$komentar]);
+        $this->db->where('id_post', $this->input->post('id_post'))->update('tb_tanggapan', ['komentar' => $komentar]);
         redirect('home/kategori/' . $this->input->post('id_kategori'));
     }
 
     public function tambah_pertanyaan()
     {
-        $captcha_response=trim($this->input->post('g-recaptcha-response'));
+        $captcha_response = trim($this->input->post('g-recaptcha-response'));
         $id_kategori = $this->input->post('id_kategori');
-        if ($captcha_response!="") {
-            $keySecret='6Lfqp74dAAAAAADLyTIFK5tVJCRoPjBb4OD5PEFi';
-            $check=array(
-                'secret'=>$keySecret,
-                'response'=>$this->input->post('g-recaptcha-response')
+        if ($captcha_response != "") {
+            $keySecret = '6Lfqp74dAAAAAADLyTIFK5tVJCRoPjBb4OD5PEFi';
+            $check = array(
+                'secret' => $keySecret,
+                'response' => $this->input->post('g-recaptcha-response')
             );
-            $startProcess=curl_init();
-            curl_setopt($startProcess,CURLOPT_URL,"https://www.google.com/recaptcha/api/siteverify");
-            curl_setopt($startProcess,CURLOPT_POST,true);
-            curl_setopt($startProcess,CURLOPT_POSTFIELDS,http_build_query($check));
-            curl_setopt($startProcess,CURLOPT_SSL_VERIFYPEER,false);
+            $startProcess = curl_init();
+            curl_setopt($startProcess, CURLOPT_URL, "https://www.google.com/recaptcha/api/siteverify");
+            curl_setopt($startProcess, CURLOPT_POST, true);
+            curl_setopt($startProcess, CURLOPT_POSTFIELDS, http_build_query($check));
+            curl_setopt($startProcess, CURLOPT_SSL_VERIFYPEER, false);
 
             $receiveData = curl_exec($startProcess);
             $finalResponse = json_decode($receiveData, true);
             if ($finalResponse) {
                 $data = [
-                'nama_kategori' => $this->input->post('pertanyaan'),
+                    'nama_kategori' => $this->input->post('pertanyaan'),
                 ];
                 $this->Forum_model->create($data);
                 redirect('home/forum');
-            }else{ 
+            } else {
                 $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Coba lagi</div>');
-                }
-            }else{
-                $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Harap isi captcha</div>');
-                redirect('home/forum');
             }
+        } else {
+            $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Harap isi captcha</div>');
+            redirect('home/forum');
+        }
     }
-    
+
 
     public function del_post($id)
     {
@@ -208,11 +209,10 @@ class Home extends CI_Controller
         $id_kategori = $raw['id_kategori'];
         $raws = $this->db->where('id_kategori', $id_kategori)->get('tb_pertanyaan')->row_array();;
         $tanggapan = $raws['tanggapan'];
-        $tanggapan = intval($tanggapan)-1;
-        $this->db->where('id_kategori', $id_kategori)->update('tb_pertanyaan', ['tanggapan'=>$tanggapan]);
+        $tanggapan = intval($tanggapan) - 1;
+        $this->db->where('id_kategori', $id_kategori)->update('tb_pertanyaan', ['tanggapan' => $tanggapan]);
         $this->Forum_model->delete_post($id);
-        redirect('home/kategori/'.$id_kategori);
-    
+        redirect('home/kategori/' . $id_kategori);
     }
     public function del_komen($id)
     {
@@ -221,10 +221,10 @@ class Home extends CI_Controller
         $raws = $this->db->where('id_post', $id_post)->get('tb_tanggapan')->row_array();;
         $id_kategori = $raws['id_kategori'];
         $komentar = $raws['komentar'];
-        $komentar = intval($komentar)-1;
-        $this->db->where('id_post', $id_post)->update('tb_tanggapan', ['komentar'=>$komentar]);
+        $komentar = intval($komentar) - 1;
+        $this->db->where('id_post', $id_post)->update('tb_tanggapan', ['komentar' => $komentar]);
         $this->Forum_model->delete_post($id);
-        redirect('home/kategori/'.$id_kategori);
+        redirect('home/kategori/' . $id_kategori);
     }
 
     public function article_read($id)
@@ -248,45 +248,45 @@ class Home extends CI_Controller
 
     public function post_forum()
     {
-        $captcha_response=trim($this->input->post('g-recaptcha-response'));
+        $captcha_response = trim($this->input->post('g-recaptcha-response'));
         $id_kategori = $this->input->post('id_kategori');
-        if ($captcha_response!="") {
-            $keySecret='6Lfqp74dAAAAAADLyTIFK5tVJCRoPjBb4OD5PEFi';
-            $check=array(
-                'secret'=>$keySecret,
-                'response'=>$this->input->post('g-recaptcha-response')
+        if ($captcha_response != "") {
+            $keySecret = '6Lfqp74dAAAAAADLyTIFK5tVJCRoPjBb4OD5PEFi';
+            $check = array(
+                'secret' => $keySecret,
+                'response' => $this->input->post('g-recaptcha-response')
             );
-            $startProcess=curl_init();
-            curl_setopt($startProcess,CURLOPT_URL,"https://www.google.com/recaptcha/api/siteverify");
-            curl_setopt($startProcess,CURLOPT_POST,true);
-            curl_setopt($startProcess,CURLOPT_POSTFIELDS,http_build_query($check));
-            curl_setopt($startProcess,CURLOPT_SSL_VERIFYPEER,false);
+            $startProcess = curl_init();
+            curl_setopt($startProcess, CURLOPT_URL, "https://www.google.com/recaptcha/api/siteverify");
+            curl_setopt($startProcess, CURLOPT_POST, true);
+            curl_setopt($startProcess, CURLOPT_POSTFIELDS, http_build_query($check));
+            curl_setopt($startProcess, CURLOPT_SSL_VERIFYPEER, false);
 
             $receiveData = curl_exec($startProcess);
             $finalResponse = json_decode($receiveData, true);
             if ($finalResponse) {
                 $data = [
-                            'id_user' => $this->input->post('id_user'),
-                            'id_kategori' => $this->input->post('id_kategori'),
-                            'postingan' => $this->input->post('postingan'),
-                            'komentar' => 0,
-                            'tanggal' => $this->input->post('tanggal'),
-                            'jam' => $this->input->post('jam')
-                        ];
-                
-                        $raw = $this->db->where('id_kategori', $this->input->post('id_kategori'))->get('tb_pertanyaan')->row_array();;
-                        $tanggapan = $raw['tanggapan'];
-                        $tanggapan = intval($tanggapan)+1;
-                
-                        $this->Forum_model->create_post($data);
-                        $this->db->where('id_kategori', $this->input->post('id_kategori'))->update('tb_pertanyaan', ['tanggapan'=>$tanggapan]);
-                        redirect('home/kategori/' . $this->input->post('id_kategori'));
-            }else{ 
+                    'id_user' => $this->input->post('id_user'),
+                    'id_kategori' => $this->input->post('id_kategori'),
+                    'postingan' => $this->input->post('postingan'),
+                    'komentar' => 0,
+                    'tanggal' => $this->input->post('tanggal'),
+                    'jam' => $this->input->post('jam')
+                ];
+
+                $raw = $this->db->where('id_kategori', $this->input->post('id_kategori'))->get('tb_pertanyaan')->row_array();;
+                $tanggapan = $raw['tanggapan'];
+                $tanggapan = intval($tanggapan) + 1;
+
+                $this->Forum_model->create_post($data);
+                $this->db->where('id_kategori', $this->input->post('id_kategori'))->update('tb_pertanyaan', ['tanggapan' => $tanggapan]);
+                redirect('home/kategori/' . $this->input->post('id_kategori'));
+            } else {
                 $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Coba lagi</div>');
             }
-        }else{
+        } else {
             $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Harap isi captcha</div>');
-            redirect('home/kategori/'.$id_kategori);
+            redirect('home/kategori/' . $id_kategori);
         }
     }
 }

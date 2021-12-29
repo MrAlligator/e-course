@@ -86,6 +86,21 @@
                         </a>
                     </li>
                 </ul>
+                <!-- Divider -->
+                <hr class="my-3">
+                <!-- Heading -->
+                <h6 class="navbar-heading p-0 text-muted">
+                    <span class="docs-normal">Log</span>
+                </h6>
+                <!-- Nav items -->
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="<?= base_url('backend/logger') ?>">
+                            <i class="ni ni-paper-diploma text-maroon"></i>
+                            <span class="nav-link-text">Log Kunjungan</span>
+                        </a>
+                    </li>
+                </ul>
             </div>
         </div>
     </div>
