@@ -543,6 +543,7 @@
                                 </div>
                                 <div class="form-group py-3 text-center">
                                     <label>Pilih File Excel</label><br>
+                                    <input type="hidden" name="<?= $this->security->get_csrf_token_name() ?>" value="<?= $this->security->get_csrf_hash() ?>" style="display: none;">
                                     <input type="file" name="fileExcel">
                                 </div>
                             </div>

@@ -20,6 +20,7 @@ class Home extends CI_Controller
         $data['jumlah_belum_konfirmasi'] = $this->Konfirmasi_model->hitung_jumlah_belum_konfirmasi();
         $data['jumlah_importir'] = $this->Buyers_model->hitung_jumlah_buyers();
         $data['jumlah_permintaan'] = $this->Inquiry_model->hitung_jumlah_inquiries();
+        $data['perbulan'] = $this->User_model->jumlah_perbulan();
 
         $this->load->view('_partadm/head', $data);
         $this->load->view('_partadm/sidebar', $data);

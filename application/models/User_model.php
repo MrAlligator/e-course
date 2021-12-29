@@ -82,8 +82,18 @@ class User_model extends CI_Model
     {
         return $this->db->where('role_id', 3)->get($this->_table)->num_rows();
     }
+
     public function hitung_jumlah_user_gratis()
     {
         return $this->db->where('role_id', 2)->get($this->_table)->num_rows();
+    }
+
+    public function jumlah_perbulan()
+    {
+        $this->db->group_by('month_created');
+        $this->db->select('month_created');
+        $this->db->select("count(*) as total");
+
+        return $this->db->get($this->_table)->result();
     }
 }
