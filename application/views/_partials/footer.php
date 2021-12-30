@@ -20,16 +20,12 @@
         <div class="container">
             <div class="row">
 
-                <div class="col-lg-3 col-md-6 footer-contact">
-                    <h3>Komunitas Ekspor Indonesia</h3>
-                    <p>
-                        Jalan Danau Bratan Timur Raya H5 A5,<br>
-                        Madyopuro, Kec. Kedungkandang,<br>
-                        Malang, Jawa Timur<br>
-                        Indonesia <br><br>
-                        <strong>Phone:</strong> 0821-3122-2331<br>
-                        <strong>Email:</strong> elecomp.sh@gmail.com<br>
-                    </p>
+                <div class="col-lg-3 col-md-6 footer-contact"><br>
+                <div>
+                    <img width="80%" src="<?= base_url() ?>/assets/img/logo-koin.png" width="200px" alt="..."><p></p>
+                </div><br>
+                    <h6><i class="bx bxs-phone"></i> 0821-3122-2331<br></h6>
+                    <h6><i class="bx bx-mail-send"></i> elecomp.sh@gmail.com<br></h6>
                 </div>
 
                 <!-- -->
@@ -50,18 +46,20 @@
                 </div>
 
                 <div class="col-lg-3 col-md-6 footer-links">
-                    <h4>Our Services</h4>
+                    <h4>Menu</h4>
                     <ul>
                         <li><i class="bx bx-chevron-right"></i> <a href="<?= base_url('home') ?>">Beranda</a></li>
-                        <li><i class="bx bx-chevron-right"></i> <a href="<?= base_url('profile') ?>">Profil Pengguna</a></li>
-                        <li><i class="bx bx-chevron-right"></i> <a href="<?= base_url('home/articles') ?>">Artikel</a></li>
                         <?php if (isset($user['email'])): ?>
+                            <li><i class="bx bx-chevron-right"></i> <a href="<?= base_url('home/articles') ?>">Artikel</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="<?= base_url('home/forum') ?>">Forum Komunitas</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="<?= base_url('profile') ?>">Profil Pengguna</a></li>
                             <li><i class="bx bx-chevron-right"></i> <a href="<?= base_url('home/kalkulator') ?>">Kalkulator Harga Ekspor</a></li>
                         <?php else :?>
-                            <li><i class="bx bx-chevron-right"></i> <a href="#" data-bs-toggle="modal" data-bs-target="#kalkuKonf">Kalkulator Harga Ekspor</a></li>
                             <li><i class="bx bx-chevron-right"></i> <a href="<?= base_url('home/membership') ?>">Keanggotaan</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="<?= base_url('home/articles') ?>">Artikel</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="<?= base_url('home/forum') ?>">Forum Komunitas</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="#" data-bs-toggle="modal" data-bs-target="#kalkuKonf">Kalkulator Harga Ekspor</a></li>
                         <?php endif?>
-                                <li><i class="bx bx-chevron-right"></i> <a href="<?= base_url('home/forum') ?>">Forum Komunitas</a></li>
                     </ul>
                 </div>
 
@@ -69,11 +67,11 @@
                     <h4>Sosial Media Kami</h4>
                     <p>Sosial Media dari Komunitas Ekspor Indonesia</p>
                     <div class="social-links mt-3">
-                        <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
-                        <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
-                        <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
-                        <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
-                        <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+                        <!-- <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
+                        <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a> -->
+                        <a href="https://instagram.com/komunitaseksporindonesia" class="instagram"data-bs-toggle="tooltip" data-bs-placement="right" title="@komunitaseksporindonesia"><i class="bx bxl-instagram"></i></a>
+                        <!-- <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
+                        <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a> -->
                     </div>
                 </div>
 
@@ -83,14 +81,14 @@
 
     <div class="container footer-bottom clearfix">
         <div class="copyright">
-            &copy; Copyright <strong><span>Elecomp Indonesia</span></strong>. All Rights Reserved
+            &copy; Copyright <strong><span>Komunitas Ekspor Indonesia</span></strong>. All Rights Reserved
         </div>
         <div class="credits">
             <!-- All the links in the footer should remain intact. -->
             <!-- You can delete the links only if you purchased the pro version. -->
             <!-- Licensing information: https://bootstrapmade.com/license/ -->
             <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/arsha-free-bootstrap-html-template-corporate/ -->
-            Didesain oleh <a href="https://elecompindonesia.com/">Elecomp Indonesia</a>
+            Dikembangkan oleh <a href="https://elecompindonesia.com/">Elecomp Indonesia</a>
         </div>
     </div>
 </footer><!-- End Footer -->

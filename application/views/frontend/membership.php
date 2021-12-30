@@ -17,16 +17,16 @@
                     <!-- <h4><sup>Rp</sup>0<span>per bulan</span><br><span>Keuntungan</span></h4> -->
                     <ul>
                         <li><i class="bx bx-check"></i>
-                            <h6>Dapat Data Buyers</h6>
+                            <h6>Dapat Melihat Data Importir(Buyers)</h6>
                         </li>
                         <li><i class="bx bx-check"></i>
-                            <h6>Dapat Data Inquiries</h6>
+                            <h6>Dapat Melihat Data Permintaan (Inquiry)</h6>
                         </li>
                         <li><i class="bx bx-check"></i>
-                            <h6>Kalkulator Ekspor</h6>
+                            <h6>Dapat Mengakses Kalkulator Perhitungan Harga Ekspor</h6>
                         </li>
                         <li><i class="bx bx-check"></i>
-                            <h6>Konten Edukasi</h6>
+                            <h6>Mendapatkan Update Artikel Seputar Ekspor</h6>
                         </li>
                         <li><i class="bx bx-check"></i>
                             <h6>Tergabung Dalam Group Telegram</h6>

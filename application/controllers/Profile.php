@@ -112,12 +112,26 @@ class Profile extends CI_Controller
         }
     }
 
-    public function delete($id = null)
+    public function delete($id)
     {
+        $id=base64_decode($id);
         if (!isset($id)) show_404();
-
-        if ($this->User_model->delete($id)) {
-            redirect(site_url('home'));
+        
+        if ($this->db->where('id_user',$id)->update('tb_user',['is_active'=>0])) {
+            redirect('auth/logout');
         }
+    }
+    public function prop()
+    {
+        $data['title'] = 'Ubah Nama ';
+
+        $this->load->view('_partials/header', $data);
+        $this->load->view('_partials/topbar', $data);
+        if(!isset($_SESSION['email'])){
+            $this->load->view('_partials/hero', $data);
+        }
+        $this->load->view('frontend/name', $data);
+        $this->load->view('_partials/footer', $data);
+        $this->load->view('_partials/js', $data);
     }
 }

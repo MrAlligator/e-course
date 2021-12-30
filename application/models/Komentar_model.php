@@ -6,7 +6,7 @@ class Komentar_model extends CI_Model
 
     public function getSome($limit, $start, $like = '')
     {
-        $this->db->select('a.id_komentar, a.id_user, a.id_post, a.komentar, a.tanggal, a.jam, b.id_user, b.nama, b.email, c.id_post, c.postingan');
+        $this->db->select('a.id_komentar, a.id_user, a.id_post, a.komentar, a.tanggal, b.id_user, b.nama, b.email, c.id_post, c.postingan');
         if ($like) {
             $this->db->where('a.komentar LIKE ' . $like);
         }

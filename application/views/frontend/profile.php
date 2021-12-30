@@ -92,10 +92,10 @@
 </form>
             </div>
         </li>
-        <li><h5>Hapus Akun</h5>
+        <li><h5>Nonaktifkan Akun</h5>
             <div id="accordion-list-2" class="collapse show" data-bs-parent=".accordion-list">
                 <div class="d-grid gap-2">
-                    <a href="<?= base_url('profile/delete/' . $user['id_user']) ?>" class="btn btn-danger">Hapus Akun</a>
+                    <a href="<?= base_url('profile/delete?id=' . base64_encode($user['id_user'])) ?>" class="btn btn-danger">Nonaktifkan Akun</a>
                 </div>
             </div>
         </li>

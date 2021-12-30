@@ -20,31 +20,32 @@
                     <li><a class="getstarted scrollto" href="<?= base_url('auth') ?>"><h6>Masuk</h6></a></li>
                 <?php endif; ?>
                 <li><a href="<?= base_url('home') ?>"><h6>Beranda</h6></a></li>
-                <?php if (isset($user['email'])) : ?>
-                    <li class="dropdown"><a href="#"><span><h6>Data Kami</h6></span></a>
-                        <!-- i class="bi bi-chevron-down"></i></a> -->
-                        <ul>
-                            <li><a href="<?= base_url('frontend/buyers') ?>"><h6>Data Importir (Buyer)</h6></a></li>
-                            <li><a href="<?= base_url('frontend/inquiry') ?>"><h6>Data Permintaan (Inquiry)</h6></a></li>
-                        </ul>
-                    </li>
-                    <li><a href="<?= base_url('home/kalkulator') ?>"><h6>Kalkulator Harga Ekspor</h6></a></li>
-                    <?php else : ?>
-                        <li class="dropdown"><a href="#"><span><h6>Data Kami</h6></span></a>
-                        <!-- <i class="bi bi-chevron-down"></i></a> -->
-                        <ul>
-                            <li><a href="#" data-bs-toggle="modal" data-bs-target="#buyerKonf"><h6>Data Importir (Buyer)</h6></a></li>
-                            <li><a href="#" data-bs-toggle="modal" data-bs-target="#inquiKonf"><h6>Data Permintaan (Inquiry)</h6></a></li>
-                        </ul>
-                    </li>
-                    <li><a href="#" data-bs-toggle="modal" data-bs-target="#kalkuKonf"><h6>Kalkulator Harga Ekspor</h6></a></li>
-                <?php endif; ?>
-                <li><a href="<?= base_url('home/articles') ?>"><h6>Artikel</h6></a></li>
                 <?php if (!isset($user['email'])) : ?>
                     <li><a href="<?= base_url('home/membership') ?>"><h6>Keanggotaan</h6></a></li>
-                <?php endif ?>
-                <li><a href="<?= base_url('home/forum') ?>"><h6>Forum</h6></a></li>
-                <!-- <li><a href="#about">About</a></li>  
+                    <?php else: ?>
+                        <?php endif ?>
+                        <li><a href="<?= base_url('home/articles') ?>"><h6>Artikel</h6></a></li>
+                        <li><a href="<?= base_url('home/forum') ?>"><h6>Forum Komunitas</h6></a></li>
+                    <?php if (isset($user['email'])) : ?>
+                        <li><a href="<?= base_url('home/kalkulator') ?>"><h6>Kalkulator Harga Ekspor</h6></a></li>
+                        <li class="dropdown"><a href="#"><span><h6>Data Kami</h6></span></a>
+                            <!-- i class="bi bi-chevron-down"></i></a> -->
+                            <ul>
+                                <li><a href="<?= base_url('frontend/buyers') ?>"><h6>Data Importir (Buyer)</h6></a></li>
+                                <li><a href="<?= base_url('frontend/inquiry') ?>"><h6>Data Permintaan (Inquiry)</h6></a></li>
+                            </ul>
+                        </li>
+                        <?php else : ?>
+                            <li><a href="#" data-bs-toggle="modal" data-bs-target="#kalkuKonf"><h6>Kalkulator Harga Ekspor</h6></a></li>
+                            <li class="dropdown"><a href="#"><span><h6>Data Kami</h6></span></a>
+                            <!-- <i class="bi bi-chevron-down"></i></a> -->
+                            <ul>
+                                <li><a href="#" data-bs-toggle="modal" data-bs-target="#buyerKonf"><h6>Data Importir (Buyer)</h6></a></li>
+                                <li><a href="#" data-bs-toggle="modal" data-bs-target="#inquiKonf"><h6>Data Permintaan (Inquiry)</h6></a></li>
+                            </ul>
+                        </li>
+                        <?php endif; ?>
+                    <!-- <li><a href="#about">About</a></li>  
                 <li><a href="#services">Services</a></li>
                 <li><a href="#portfolio">Portfolio</a></li>
                 <li><a href="#team">Team</a></li> -->

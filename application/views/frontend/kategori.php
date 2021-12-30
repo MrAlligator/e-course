@@ -37,8 +37,7 @@
             <textarea class="form-control" rows=8 required name="postingan" placeholder="Masukkan Pertanyaanmu disini . . ."></textarea>
             <input hidden type="text" value="<?=$user['id_user']?>" name="id_user">
             <input hidden type="text" value="<?=$id_kategori?>" name="id_kategori">
-            <input hidden type="text" value="<?=date('Y-m-d')?>" name="tanggal">
-            <input hidden type="text" value="<?=date('H:i')?>" name="jam"><p></p>
+            <input hidden type="text" value="<?=time()?>" name="tanggal"><p></p>
             <input type="hidden" name="<?=$this->security->get_csrf_token_name();?>" value="<?=$this->security->get_csrf_hash();?>" style="display: none">
             <div class="g-recaptcha" data-sitekey="6Lfqp74dAAAAANRqXosCWSVeEBaxM1F4KV6C32Jf"></div>
             <div class="text-center">
@@ -81,7 +80,7 @@
         <ul class="list-group list-group-flush">
             <?php $i=1;foreach($kategori_terbaru as $kate):?>
             <li class="list-group-item">
-                <h6><a href="<?=base_url('home/kategori/'.$kate->id_kategori)?>">
+                <h6><a href="<?=base_url('home/kategori?id_kategori='.base64_encode($kate->id_kategori))?>">
                 <?=$i++.". ".$kate->nama_kategori?></a></h6>
                 <p><figcaption class="blockquote-footer">
                 <?=$kate->tanggapan?> Tanggapan
@@ -95,7 +94,7 @@
         <?php $i=1;foreach($kategori_terpopuler as $kat):?>
         <li class="list-group-item">
             <h6>
-                <a href="<?=base_url('home/kategori/'.$kat->id_kategori)?>">
+                <a href="<?=base_url('home/kategori?id_kategori='.base64_encode($kat->id_kategori))?>">
                 <?=$i++.". ".$kat->nama_kategori?></a>
             </h6>
             <p><figcaption class="blockquote-footer">
@@ -124,14 +123,31 @@
 <div class="card card-body">
     <ul class="list-group list-group-flush">
         <li class="list-group-item" aria-current="true">
-            <img id="" width="50px" src="<?= base_url('/assets/img/userimage/').$poster['foto_user'];?>"
-                class="rounded-circle img-thumbnail" style="float:left;vertical-align:middle;margin:0px 15px">
-            <h6>
+            <img src="<?= base_url('/assets/img/userimage/').$poster['foto_user'];?>" width="3%"
+                class="rounded-circle" style="float:left;vertical-align:middle;margin:0px 15px">
+            <blockquote class="blockquote"><h6>
                 <?=$poster['nama']?>
-            </h6>
-            <h6>
-                <?=date('d F Y', strtotime($postingan->tanggal))?>, <?=$postingan->jam?>
-            </h6>
+                </h6></blockquote>
+            <h6><figcaption class="blockquote-footer">
+            <?php
+            $beda = time()-$postingan->tanggal;
+            if($beda<(60)):
+                echo "Baru saja";
+            elseif($beda<(60*60)):
+                echo floor($beda/60)." menit yang lalu <br>";
+            elseif($beda<(60*60*24)):
+                echo floor($beda/(60*60))." jam yang lalu";
+            elseif($beda<(60*60*24*7)):
+                echo floor($beda/(60*60*24))." hari yang lalu";
+            elseif($beda<(60*60*24*30)):
+                echo floor($beda/(60*60*24*7))." minggu yang lalu";
+            elseif($beda<(60*60*24*30*12)):
+                echo floor($beda/(60*60*24*30))." bulan yang lalu";
+            else:
+                echo floor($beda/(60*60*24*365))." tahun yang lalu <br>";
+            endif;
+            ?>
+        </figcaption></h6>
         </li>
         <li class="list-group-item" aria-current="true">
             <h4 class="mb-1"><?=$postingan->postingan?></h4>
@@ -188,18 +204,19 @@
 <form action="<?=base_url('home/post_komen')?>" method="post">
     <div class="input-group">
         <input hidden name="id_post" id="id_post" value="<?=$postingan->id_post?>">
-        <input hidden name="id_user" id="id_user" value="<?=$_SESSION['id_user']?>">
+        <?php if(isset($_SESSION['email'])):?>
+            <input hidden name="id_user" id="id_user" value="<?=$_SESSION['id_user']?>">
+        <?php endif?>
         <input hidden name="id_kategori" id="id_kategori" value="<?=$id_kategori?>">
-        <input hidden type="text" value="<?=date('Y-m-d')?>" name="tanggal">
-        <input hidden type="text" value="<?=date('H:i')?>" name="jam">
+        <input hidden type="text" value="<?=time()?>" name="tanggal">
         <input type="hidden" name="<?=$this->security->get_csrf_token_name();?>" value="<?=$this->security->get_csrf_hash();?>" style="display: none">
-        <?php if(!isset($_SESSION['email'])){?>
+        <?php if(!isset($_SESSION['email'])):?>
             <textarea class="form-control" disabled name="komen" id="komen" placeholder="Untuk berkomentar silakan masuk terlebih dahulu"></textarea>
             <button type="submit" disabled class="input-group-text" data-bs-toggle="tooltip" data-bs-placement="right" title="Kirim komentar"><i class="bx bxs-send"></i></button>
-        <?php }else{?>    
+        <?php else:?>    
             <textarea class="form-control" name="komen" id="komen" placeholder="Masukkan komentarmu"></textarea>
             <button type="submit" class="input-group-text" data-bs-toggle="tooltip" data-bs-placement="right" title="Kirim komentar"><i class="bx bxs-send"></i></button>
-        <?php }?>    
+        <?php endif?>    
     </div>
 </form>
 

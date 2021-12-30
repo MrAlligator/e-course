@@ -3,7 +3,7 @@
     <div class="scrollbar-inner">
         <!-- Brand -->
         <div class="sidenav-header  align-items-center">
-            <img width="75px" src="<?= base_url() ?>/assets/img/logo.jpeg" alt="...">
+            <img width="50%" src="<?= base_url() ?>/assets/img/logo.png" style="vertical-align:middle;margin:20px 0px">
             </a>
         </div>
         <div class="navbar-inner">

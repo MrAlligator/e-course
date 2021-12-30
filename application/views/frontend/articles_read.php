@@ -9,33 +9,60 @@
 <div class="row">
     <div class="col-lg-8 mt-5 mt-lg-0 d-flex align-items-stretch">
         <div class="php-email-form">
-        <?php foreach($artikel as $baca):?>
             <div class="section-title">
                 <div class="text-center">
-                    <h1><?=$baca->judul?></h1>
+                        <h2><?=$artikel['judul']?></h2>
+                    <h6><?= date('d F Y', $artikel['tanggal_input'])?></h6>
                 </div>
-                <h6><p>Malang, <?= date('d F Y', $baca->tanggal_input); ?><p><h6>
+
             </div>
-            <div class="text-center">
-                <!-- <h6>Diposting pada <?= date('d F Y', $baca->tanggal_input); ?></h6> -->
-                <img id="foto" src="<?= base_url('/assets/img/articles/'.$baca->gambar)?>" width="800px" alt="...">
-            </div>
+                <img class="img-fluid" src="<?= base_url('/assets/img/articles/'.$artikel['gambar'])?>">
                 <p></p>
-                <h6><?=$baca->isi?></h6>
-                <?php endforeach?>
+                <?=$artikel['isi']?>
         </div>
     </div>
-    <div class="col-lg-4 mt-5 mt-lg-0 d-flex align-items-stretch">
-        <div class="php-email-form">
-        <h2>Lebih banyak artikel</h2>
-            <h6><a href="<?=base_url('home/articles')?>">Semua Artikel</a></h6><br>
-                <?php foreach($artikel_lainnya as $lainnya):?>
-                    <div class="text-center">
-                    <p><a href="<?=base_url('home/article_read/'.$lainnya->id_artikel)?>"><img id="foto" src="<?= base_url('/assets/img/articles/'.$lainnya->gambar)?>" width="350px" alt="..."></a><br>
-                    </p></div>
-                    <a href="<?=base_url('home/article_read/'.$lainnya->id_artikel)?>"><h4><?=$lainnya->judul?></h4></a>
-                    <br>
-                <?php endforeach?>
+
+<div class="col-lg-4 mt-5 mt-lg-0 d-flex align-items-stretch">
+    <div class="php-email-form">
+    <h4>Artikel Lainnya</h4>
+        <figure class="text-end"><h6><a href="<?=base_url('home/articles')?>">Seluruh Artikel</a></h6></figure>
+            
+<ul class="list-group list-group-flush">
+<?php
+foreach($artikel_lainnya as $lainnya):
+if($artikel['id_artikel']!=$lainnya->id_artikel):?>
+    <li class="list-group-item">
+    <a href="<?=base_url('home/article_read/'.$lainnya->id_artikel)?>">
+        <img class="img-fluid" src="<?= base_url('/assets/img/articles/'.$lainnya->gambar)?>">
+    </a>
+    <a href="<?=base_url('home/article_read/'.$lainnya->id_artikel)?>">
+        <blockquote class="blockquote">
+            <h6></h6>
+            <h5><?=$lainnya->judul?></h5>
+        </blockquote></a>
+    <figcaption class="blockquote-footer">
+    <?php
+            $beda = time()-$lainnya->tanggal_input;
+            if($beda<(60)):
+                echo "Baru saja";
+            elseif($beda<(60*60)):
+                echo floor($beda/60)." menit yang lalu <br>";
+            elseif($beda<(60*60*24)):
+                echo floor($beda/(60*60))." jam yang lalu";
+            elseif($beda<(60*60*24*7)):
+                echo floor($beda/(60*60*24))." hari yang lalu";
+            elseif($beda<(60*60*24*30)):
+                echo floor($beda/(60*60*24*7))." minggu yang lalu";
+            elseif($beda<(60*60*24*30*12)):
+                echo floor($beda/(60*60*24*30))." bulan yang lalu";
+            else:
+                echo floor($beda/(60*60*24*365))." tahun yang lalu <br>";
+            endif;
+            ?>
+    </figcaption>
+    </li>
+<?php endif;endforeach?>
+</ul>
         </div>
     </div>
 </div>

@@ -8,7 +8,9 @@
     <meta name="author" content="Creative Tim">
     <title>Administrator | <?= $title ?></title>
     <!-- Favicon -->
-    <link rel="icon" href="<?= base_url() ?>/adminast/img/brand/favicon.png" type="image/png">
+    <!-- <link rel="icon" href="<?= base_url() ?>/adminast/img/brand/favicon.png" type="image/png"> -->
+    <link href="<?= base_url() ?>/assets/img/logo-o-putih.png" rel='shortcut icon'>
+
     <!-- Fonts -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">
     <!-- Icons -->

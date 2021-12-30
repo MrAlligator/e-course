@@ -42,7 +42,7 @@
     <ul class="list-group list-group-flush">
         <?php $i=1;foreach($kategori_terbaru as $kate):?>
             <li class="list-group-item">
-                <h5><a href="<?=base_url('home/kategori/'.$kate->id_kategori)?>">
+                <h5><a href="<?=base_url('home/kategori?id_kategori='.base64_encode($kate->id_kategori))?>">
                 <?=$i++.". ".$kate->nama_kategori?></a></h5>
                 <p><figcaption class="blockquote-footer">
                 <?=$kate->tanggapan?> Tanggapan
@@ -54,7 +54,7 @@
     <ul class="list-group list-group-flush">
             <?php $i=1;foreach($kategori_terpopuler as $kat):?>
                 <li class="list-group-item">
-                    <h5><a href="<?=base_url('home/kategori/'.$kat->id_kategori)?>">
+                    <h5><a href="<?=base_url('home/kategori?id_kategori='.base64_encode($kat->id_kategori))?>">
                     <?=$i++.". ".$kat->nama_kategori?></a></h5>
                     <p><figcaption class="blockquote-footer">
                     <?=$kat->tanggapan?> Tanggapan

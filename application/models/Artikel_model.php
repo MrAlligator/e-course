@@ -22,7 +22,7 @@ class Artikel_model extends CI_Model
 
     public function getAll()
     {
-        return $this->db->get($this->_table)->result();
+        return $this->db->order_by('id_artikel', 'DESC')->get($this->_table)->result();
     }
 
     public function getRandom()

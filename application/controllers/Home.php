@@ -86,8 +86,9 @@ class Home extends CI_Controller
         $this->load->view('_partials/js', $data);
     }
 
-    public function kategori($id_kategori)
+    public function kategori()
     {
+        $id_kategori = base64_decode($this->input->get('id_kategori'));
         $data['user'] = $this->db->get_where('tb_user', ['email' => $this->session->userdata('email')])->row_array();
         $need = $this->db->get_where('tb_user', ['email' => $this->session->userdata('email')])->row_array();
         $data['post'] = $this->Forum_model->getByKategori($id_kategori);
@@ -130,34 +131,13 @@ class Home extends CI_Controller
         $this->load->view('_partials/js', $data);
     }
 
-    // public function post_forum()
-    // {
-    //     $data = [
-    //         'id_user' => $this->input->post('id_user'),
-    //         'id_kategori' => $this->input->post('id_kategori'),
-    //         'postingan' => $this->input->post('postingan'),
-    //         'komentar' => 0,
-    //         'tanggal' => $this->input->post('tanggal'),
-    //         'jam' => $this->input->post('jam')
-    //     ];
-
-    //     $raw = $this->db->where('id_kategori', $this->input->post('id_kategori'))->get('tb_pertanyaan')->row_array();;
-    //     $tanggapan = $raw['tanggapan'];
-    //     $tanggapan = intval($tanggapan)+1;
-
-    //     $this->Forum_model->create_post($data);
-    //     $this->db->where('id_kategori', $this->input->post('id_kategori'))->update('tb_pertanyaan', ['tanggapan'=>$tanggapan]);
-    //     redirect('home/kategori/' . $this->input->post('id_kategori'));
-    // }
-
     public function post_komen()
     {
         $data = [
             'id_user' => $this->input->post('id_user'),
             'id_post' => $this->input->post('id_post'),
             'komentar' => $this->input->post('komen'),
-            'tanggal' => $this->input->post('tanggal'),
-            'jam' => $this->input->post('jam')
+            'tanggal' => $this->input->post('tanggal')
         ];
 
         $raw = $this->db->where('id_post', $this->input->post('id_post'))->get('tb_tanggapan')->row_array();;
@@ -190,6 +170,7 @@ class Home extends CI_Controller
             if ($finalResponse) {
                 $data = [
                     'nama_kategori' => $this->input->post('pertanyaan'),
+                    'tanggapan' => 0
                 ];
                 $this->Forum_model->create($data);
                 redirect('home/forum');
@@ -232,7 +213,7 @@ class Home extends CI_Controller
         $data['user'] = $this->db->get_where('tb_user', ['email' => $this->session->userdata('email')])->row_array();
         $need = $this->db->get_where('tb_user', ['email' => $this->session->userdata('email')])->row_array();
         $data['title'] = "Baca Artikel";
-        $data['artikel'] = $this->Artikel_model->getById($id);
+        $data['artikel'] = $this->db->where('id_artikel', $id)->get('tb_artikel')->row_array();;
         $data['artikel_lainnya'] = $this->Artikel_model->getRandom();
 
         $this->load->view('_partials/header', $data);
@@ -244,6 +225,7 @@ class Home extends CI_Controller
         $this->load->view('frontend/articles_read', $data);
         $this->load->view('_partials/footer', $data);
         $this->load->view('_partials/js', $data);
+        // $this->load->view('maintenance', $data);
     }
 
     public function post_forum()
@@ -270,8 +252,7 @@ class Home extends CI_Controller
                     'id_kategori' => $this->input->post('id_kategori'),
                     'postingan' => $this->input->post('postingan'),
                     'komentar' => 0,
-                    'tanggal' => $this->input->post('tanggal'),
-                    'jam' => $this->input->post('jam')
+                    'tanggal' => $this->input->post('tanggal')
                 ];
 
                 $raw = $this->db->where('id_kategori', $this->input->post('id_kategori'))->get('tb_pertanyaan')->row_array();;
@@ -280,13 +261,13 @@ class Home extends CI_Controller
 
                 $this->Forum_model->create_post($data);
                 $this->db->where('id_kategori', $this->input->post('id_kategori'))->update('tb_pertanyaan', ['tanggapan' => $tanggapan]);
-                redirect('home/kategori/' . $this->input->post('id_kategori'));
+                redirect('home/kategori?id_kategori=' . base64_encode($this->input->post('id_kategori')));
             } else {
                 $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Coba lagi</div>');
             }
         } else {
             $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Harap isi captcha</div>');
-            redirect('home/kategori/' . $id_kategori);
+            redirect('home/kategori?id_kategori=' . base64_encode($id_kategori));
         }
     }
 }
