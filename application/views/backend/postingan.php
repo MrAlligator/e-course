@@ -78,7 +78,7 @@
                                                 <div class="input-group-prepend">
                                                     <span class="input-group-text"><i class="ni ni-building"></i></span>
                                                 </div>
-                                                <input class="form-control-plaintext" disabled type="text" value="Diposting pada <?= date('d F Y',$post['tanggal']) ?> pukul <?= date('h:i A',$post['tanggal']) ?>">
+                                                <input class="form-control-plaintext" disabled type="text" value="Diposting pada <?= $post['tanggal'] ?> pukul <?= $post['jam'] ?>">
                                             </div>
                                         </div>
                                     </div>
