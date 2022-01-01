@@ -225,7 +225,8 @@ class Importir extends CI_Controller
                 redirect($_SERVER['HTTP_REFERER']);
             }
         } else {
-            echo "Tidak ada file yang masuk";
+            $this->session->set_flashdata('status', '<span class="glyphicon glyphicon-remove"></span> Tidak ada file yang masuk');
+            redirect($_SERVER['HTTP_REFERER']);
         }
     }
 
