@@ -70,34 +70,38 @@ class Artikel extends CI_Controller
         $this->form_validation->set_rules('detail', 'Detail', 'required|trim', [
             'required' => 'Detail tidak boleh kosong!'
         ]);
-
-        $config['allowed_types']        = 'gif|jpg|png|jpeg|PNG|JPG';
-        $config['max_size']             = 20480;
-        $config['upload_path']         = './assets/img/articles/';
-
-        $this->load->library('upload', $config);
-
-        if (!$this->upload->do_upload('gambar')) //sesuai dengan name pada form 
-        {
-            $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Perhatikan file yang diupload</div>');
+        if ($this->form_validation->run() == false) {
+            $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Data Gagal Ditambahkan</div>');
             redirect("backend/artikel");
         } else {
-            //tampung data dari form
-            $title = $this->input->post('judul');
-            $file = $this->upload->data();
-            $gambar = $file['file_name'];
-            $context = $this->input->post('detail');
+            $config['allowed_types']        = 'gif|jpg|png|jpeg|PNG|JPG';
+            $config['max_size']             = 20480;
+            $config['upload_path']         = './assets/img/articles/';
 
-            $data = [
-                'judul' => $title,
-                'isi' => $context,
-                'gambar' => $gambar,
-                'tanggal_input' => time()
-            ];
+            $this->load->library('upload', $config);
 
-            $this->db->insert('tb_artikel', $data);
-            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data berhasil ditambahkan</div>');
-            redirect("backend/artikel");
+            if (!$this->upload->do_upload('gambar')) //sesuai dengan name pada form 
+            {
+                $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Perhatikan file yang diupload</div>');
+                redirect("backend/artikel");
+            } else {
+                //tampung data dari form
+                $title = $this->input->post('judul');
+                $file = $this->upload->data();
+                $gambar = $file['file_name'];
+                $context = $this->input->post('detail');
+
+                $data = [
+                    'judul' => $title,
+                    'isi' => $context,
+                    'gambar' => $gambar,
+                    'tanggal_input' => time()
+                ];
+
+                $this->db->insert('tb_artikel', $data);
+                $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data berhasil ditambahkan</div>');
+                redirect("backend/artikel");
+            }
         }
     }
 
@@ -112,41 +116,45 @@ class Artikel extends CI_Controller
         $this->form_validation->set_rules('detail', 'Detail', 'required|trim', [
             'required' => 'Detail tidak boleh kosong!'
         ]);
-
-        $config['allowed_types']        = 'gif|jpg|png|jpeg|PNG|JPG';
-        $config['max_size']             = 20480;
-        $config['upload_path']         = './assets/img/articles/';
-
-        $this->load->library('upload', $config);
-
-        $this->upload->do_upload('gambar'); //sesuai dengan name pada form 
-        //tampung data dari form
-        $title = $this->input->post('judul');
-        $file = $this->upload->data();
-        $gambar = $file['file_name'];
-        $context = $this->input->post('detail');
-
-        if ($gambar != null) {
-            $data = [
-                'judul' => $title,
-                'isi' => $context,
-                'gambar' => $gambar
-            ];
-
-            $this->db->where('id_artikel', $_POST['id']);
-            $this->db->update('tb_artikel', $data);
-            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data berhasil diubah</div>');
+        if ($this->form_validation->run() == false) {
+            $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Data Gagal Ditambahkan</div>');
             redirect("backend/artikel");
         } else {
-            $data = [
-                'judul' => $title,
-                'isi' => $context
-            ];
+            $config['allowed_types']        = 'gif|jpg|png|jpeg|PNG|JPG';
+            $config['max_size']             = 20480;
+            $config['upload_path']         = './assets/img/articles/';
 
-            $this->db->where('id_artikel', $_POST['id']);
-            $this->db->update('tb_artikel', $data);
-            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data berhasil diubah</div>');
-            redirect("backend/artikel");
+            $this->load->library('upload', $config);
+
+            $this->upload->do_upload('gambar'); //sesuai dengan name pada form 
+            //tampung data dari form
+            $title = $this->input->post('judul');
+            $file = $this->upload->data();
+            $gambar = $file['file_name'];
+            $context = $this->input->post('detail');
+
+            if ($gambar != null) {
+                $data = [
+                    'judul' => $title,
+                    'isi' => $context,
+                    'gambar' => $gambar
+                ];
+
+                $this->db->where('id_artikel', $_POST['id']);
+                $this->db->update('tb_artikel', $data);
+                $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data berhasil diubah</div>');
+                redirect("backend/artikel");
+            } else {
+                $data = [
+                    'judul' => $title,
+                    'isi' => $context
+                ];
+
+                $this->db->where('id_artikel', $_POST['id']);
+                $this->db->update('tb_artikel', $data);
+                $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data berhasil diubah</div>');
+                redirect("backend/artikel");
+            }
         }
     }
 

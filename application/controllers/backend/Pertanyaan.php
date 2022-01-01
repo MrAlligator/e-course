@@ -63,14 +63,20 @@ class Pertanyaan extends CI_Controller
     {
         //tampung data dari form
         $topik = $this->input->post('topik');
-        $deskripsi = $this->input->post('deskripsi');
 
-        $data = [
-            'nama_kategori' => $topik,
-        ];
-        $this->db->insert('tb_pertanyaan', $data);
-        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data berhasil ditambahkan</div>');
-        redirect("backend/pertanyaan");
+        if ($topik != null) {
+            $data = [
+                'nama_kategori' => $topik,
+            ];
+            $this->db->insert('tb_pertanyaan', $data);
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data berhasil ditambahkan</div>');
+            redirect("backend/pertanyaan");
+        } else {
+
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data berhasil ditambahkan</div>');
+            redirect("backend/pertanyaan");
+        }
+
     }
 
     public function delete($id = null)
