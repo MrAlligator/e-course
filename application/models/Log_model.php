@@ -9,6 +9,24 @@ class Log_model extends CI_Model
         return $this->db->get($this->_table)->result();
     }
 
+    public function getVisitor()
+    {
+        $this->db->group_by('visitor_date');
+        $this->db->select('visitor_date');
+        $this->db->select('visitor_month');
+        $this->db->select('visitor_year');
+        $this->db->select("count(*) as total");
+        $this->db->where('visitor_year', date('Y'));
+        $this->db->where('visitor_month', date('m'));
+        
+        return $this->db->get('tb_visitor')->result();
+    }
+
+    public function save_visit($param)
+    {
+        return $this->db->insert('tb_visitor', $param);
+    }
+
     public function save_log($param)
     {
         $sql = $this->db->insert_string($this->_table, $param);

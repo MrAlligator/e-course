@@ -61,4 +61,18 @@ class Inquiry_model extends CI_Model
     {
         return $this->db->delete($this->_table, array("id_inquiry" => $id));
     }
+
+    public function jumlah_penambahan()
+    {
+        $bulan = date('m');
+        $tahun = date('Y');
+        $this->db->where('month(tanggal_input)', $bulan);
+        $this->db->where('year(tanggal_input)', $tahun);
+        $query = $this->db->get($this->_table);
+        if ($query->num_rows() > 0) {
+            return $query->num_rows();
+        } else {
+            return 0;
+        }
+    }
 }

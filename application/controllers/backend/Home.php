@@ -23,6 +23,9 @@ class Home extends CI_Controller
         $data['jumlah_permintaan'] = $this->Inquiry_model->hitung_jumlah_inquiries();
         $data['perbulan'] = $this->User_model->jumlah_perbulan();
         $data['newestlogs'] = $this->Log_model->newer_log();
+        $data['visitors'] = $this->Log_model->getVisitor();
+        $data['impenambahan'] = $this->Buyers_model->jumlah_penambahan();
+        $data['iqpenambahan'] = $this->Inquiry_model->jumlah_penambahan();
 
         $this->load->view('_partadm/head', $data);
         $this->load->view('_partadm/sidebar', $data);

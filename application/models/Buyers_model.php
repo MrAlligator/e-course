@@ -57,4 +57,19 @@ class Buyers_model extends CI_Model
     {
         return $this->db->delete($this->_table, array("id_importir" => $id));
     }
+
+
+    public function jumlah_penambahan()
+    {
+        $bulan = date('m');
+        $tahun = date('Y');
+        $this->db->where('month(tgl_input)', $bulan);
+        $this->db->where('year(tgl_input)', $tahun);
+        $query = $this->db->get($this->_table);
+        if ($query->num_rows() > 0) {
+            return $query->num_rows();
+        } else {
+            return 0;
+        }
+    }
 }

@@ -9,6 +9,7 @@ class Home extends CI_Controller
         $this->load->model('Forum_model');
         $this->load->model('Artikel_model');
         is_user();
+        log_pengunjung();
     }
 
     public function index()

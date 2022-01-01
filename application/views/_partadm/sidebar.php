@@ -16,7 +16,7 @@
                 <!-- Navigation -->
                 <ul class="navbar-nav mb-md-3">
                     <li class="nav-item">
-                        <a class="nav-link" href="<?= base_url('backend/home') ?>">
+                        <a class="nav-link" href="<?= base_url('dashboard') ?>">
                             <i class="ni ni-tv-2 text-primary"></i>
                             <span class="nav-link-text">Dashboard</span>
                         </a>

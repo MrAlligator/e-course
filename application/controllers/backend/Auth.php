@@ -48,19 +48,19 @@ class Auth extends CI_Controller
                         redirect('dashboard');
                     } else {
                         $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Password Salah!</div>');
-                        redirect('backend/auth');
+                        redirect('admin');
                     }
                 } else {
                     $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Anda Tidak Memiliki hak untuk Mengakses Halaman Ini</div>');
-                    redirect('backend/auth');
+                    redirect('admin');
                 }
             } else {
                 $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Akun anda belum diaktivasi</div>');
-                redirect('backend/auth');
+                redirect('admin');
             }
         } else {
             $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Akun Belum Terdaftar</div>');
-            redirect('backend/auth');
+            redirect('admin');
         }
     }
 
@@ -72,6 +72,6 @@ class Auth extends CI_Controller
         $this->session->unset_userdata('role_id');
 
         $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Anda Sudah Logout</div>');
-        redirect('backend/auth');
+        redirect('admin');
     }
 }
