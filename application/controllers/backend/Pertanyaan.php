@@ -72,11 +72,9 @@ class Pertanyaan extends CI_Controller
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data berhasil ditambahkan</div>');
             redirect("backend/pertanyaan");
         } else {
-
-            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data berhasil ditambahkan</div>');
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data Gagal ditambahkan</div>');
             redirect("backend/pertanyaan");
         }
-
     }
 
     public function delete($id = null)

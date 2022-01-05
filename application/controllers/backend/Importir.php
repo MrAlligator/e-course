@@ -260,40 +260,34 @@ class Importir extends CI_Controller
         $this->form_validation->set_rules('produk', 'Produk', 'required|trim', [
             'required' => 'Produk tidak boleh kosong!'
         ]);
+        //tampung data dari form
+        $perusahaan = $this->input->post('perusahaan');
+        $cp = $this->input->post('cp');
+        $alamat = $this->input->post('alamat');
+        $negara = $this->input->post('negara');
+        $website = $this->input->post('website');
+        $telepon = $this->input->post('telepon');
+        $fax = $this->input->post('fax');
+        $email = $this->input->post('email');
+        $produk = $this->input->post('produk');
+        $date = $this->input->post('tgl_edit');
 
-        if ($this->form_validation->run() == false) {
-            $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Data Gagal ditambahkan</div>');
-            redirect("backend/importir");
-        } else {
-            //tampung data dari form
-            $perusahaan = $this->input->post('perusahaan');
-            $cp = $this->input->post('cp');
-            $alamat = $this->input->post('alamat');
-            $negara = $this->input->post('negara');
-            $website = $this->input->post('website');
-            $telepon = $this->input->post('telepon');
-            $fax = $this->input->post('fax');
-            $email = $this->input->post('email');
-            $produk = $this->input->post('produk');
-            $date = $this->input->post('tgl_edit');
-
-            $data = [
-                'nama_perusahaan' => $perusahaan,
-                'alamat' => $alamat,
-                'negara' => $negara,
-                'telepon' => $telepon,
-                'fax' => $fax,
-                'email' => $email,
-                'website' => $website,
-                'produk' => $produk,
-                'contact_person' => $cp,
-                'tgl_edit' => $date
-            ];
-            $this->db->where('id_importir', $_POST['id']);
-            $this->db->update('tb_importir', $data);
-            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data berhasil diubah</div>');
-            redirect("backend/importir");
-        }
+        $data = [
+            'nama_perusahaan' => $perusahaan,
+            'alamat' => $alamat,
+            'negara' => $negara,
+            'telepon' => $telepon,
+            'fax' => $fax,
+            'email' => $email,
+            'website' => $website,
+            'produk' => $produk,
+            'contact_person' => $cp,
+            'tgl_edit' => $date
+        ];
+        $this->db->where('id_importir', $_POST['id']);
+        $this->db->update('tb_importir', $data);
+        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data berhasil diubah</div>');
+        redirect("backend/importir");
     }
 
     public function delete($id = null)
