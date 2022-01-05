@@ -18,7 +18,7 @@ class Log_model extends CI_Model
         $this->db->select("count(*) as total");
         $this->db->where('visitor_year', date('Y'));
         $this->db->where('visitor_month', date('m'));
-        
+
         return $this->db->get('tb_visitor')->result();
     }
 
@@ -40,7 +40,7 @@ class Log_model extends CI_Model
         if ($like) {
             $this->db->where($like);
         }
-        return $this->db->get($this->_table, $limit, $start)->result_array();
+        return $this->db->where('log_desc', 'Mengunjungi Halaman Kalkulator')->get($this->_table, $limit, $start)->result_array();
     }
 
     public function hitung_jumlah_log($like = '')
@@ -48,7 +48,49 @@ class Log_model extends CI_Model
         if ($like) {
             $this->db->where($like);
         }
-        $query = $this->db->get($this->_table);
+        $query = $this->db->where('log_desc', 'Mengunjungi Halaman Kalkulator')->get($this->_table);
+        if ($query->num_rows() > 0) {
+            return $query->num_rows();
+        } else {
+            return 0;
+        }
+    }
+
+    public function getSomeBuyers($limit, $start, $like = '')
+    {
+        if ($like) {
+            $this->db->where($like);
+        }
+        return $this->db->where('log_desc', 'Mengunjungi Halaman Importir')->get($this->_table, $limit, $start)->result_array();
+    }
+
+    public function hitung_jumlah_logBuyers($like = '')
+    {
+        if ($like) {
+            $this->db->where($like);
+        }
+        $query = $this->db->where('log_desc', 'Mengunjungi Halaman Importir')->get($this->_table);
+        if ($query->num_rows() > 0) {
+            return $query->num_rows();
+        } else {
+            return 0;
+        }
+    }
+
+    public function getSomeInquiry($limit, $start, $like = '')
+    {
+        if ($like) {
+            $this->db->where($like);
+        }
+        return $this->db->where('log_desc', 'Mengunjungi Halaman Inquiry')->get($this->_table, $limit, $start)->result_array();
+    }
+
+    public function hitung_jumlah_logInquiry($like = '')
+    {
+        if ($like) {
+            $this->db->where($like);
+        }
+        $query = $this->db->where('log_desc', 'Mengunjungi Halaman Inquiry')->get($this->_table);
         if ($query->num_rows() > 0) {
             return $query->num_rows();
         } else {

@@ -97,7 +97,19 @@
                     <li class="nav-item">
                         <a class="nav-link" href="<?= base_url('backend/logger') ?>">
                             <i class="ni ni-paper-diploma text-maroon"></i>
-                            <span class="nav-link-text">Log Kunjungan</span>
+                            <span class="nav-link-text">Log Kunjungan Kalkulator</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="<?= base_url('backend/logger/indexBuyers') ?>">
+                            <i class="ni ni-paper-diploma text-maroon"></i>
+                            <span class="nav-link-text">Log Kunjungan Buyers</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="<?= base_url('backend/logger/indexInquiry') ?>">
+                            <i class="ni ni-paper-diploma text-maroon"></i>
+                            <span class="nav-link-text">Log Kunjungan Inquiry</span>
                         </a>
                     </li>
                 </ul>
