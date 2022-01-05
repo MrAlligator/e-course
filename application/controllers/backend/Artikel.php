@@ -70,39 +70,34 @@ class Artikel extends CI_Controller
         $this->form_validation->set_rules('detail', 'Detail', 'required|trim', [
             'required' => 'Detail tidak boleh kosong!'
         ]);
-        if ($this->form_validation->run() == false) {
-            $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Data Gagal Ditambahkan</div>');
+        $config['allowed_types']        = 'gif|jpg|png|jpeg|PNG|JPG';
+        $config['max_size']             = 20480;
+        $config['upload_path']         = './assets/img/articles/';
+
+        $this->load->library('upload', $config);
+
+        if (!$this->upload->do_upload('gambar')) //sesuai dengan name pada form 
+        {
+            $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Perhatikan file yang diupload</div>');
             redirect("backend/artikel");
         } else {
-            $config['allowed_types']        = 'gif|jpg|png|jpeg|PNG|JPG';
-            $config['max_size']             = 20480;
-            $config['upload_path']         = './assets/img/articles/';
+            //tampung data dari form
+            $title = $this->input->post('judul');
+            $file = $this->upload->data();
+            $gambar = $file['file_name'];
+            $context = $this->input->post('detail');
 
-            $this->load->library('upload', $config);
+            $data = [
+                'judul' => $title,
+                'isi' => $context,
+                'gambar' => $gambar,
+                'tanggal_input' => time()
+            ];
 
-            if (!$this->upload->do_upload('gambar')) //sesuai dengan name pada form 
-            {
-                $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Perhatikan file yang diupload</div>');
-                redirect("backend/artikel");
-            } else {
-                //tampung data dari form
-                $title = $this->input->post('judul');
-                $file = $this->upload->data();
-                $gambar = $file['file_name'];
-                $context = $this->input->post('detail');
-
-                $data = [
-                    'judul' => $title,
-                    'isi' => $context,
-                    'gambar' => $gambar,
-                    'tanggal_input' => time()
-                ];
-
-                $this->db->insert('tb_artikel', $data);
-                $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data berhasil ditambahkan</div>');
-                redirect("backend/artikel");
-            }
-        }
+            $this->db->insert('tb_artikel', $data);
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data berhasil ditambahkan</div>');
+            redirect("backend/artikel");
+        }   
     }
 
     public function edit()

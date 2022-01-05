@@ -72,6 +72,7 @@
                                                         <div class="input-group-prepend">
                                                             <span class="input-group-text"><i class="ni ni-single-02"></i></span>
                                                         </div>
+                                                        <input type="hidden" name="<?= $this->security->get_csrf_token_name() ?>" value="<?= $this->security->get_csrf_hash() ?>" style="display: none;">
                                                         <input class="form-control" name="judul" id="judul" type="text" placeholder="Masukkan Judul"><?= form_error('judul', '<small class="text-danger pl-3">', '</small>') ?>
                                                     </div>
                                                 </div>
@@ -133,7 +134,6 @@
                                                         <div class="input-group-prepend">
                                                             <span class="input-group-text"><i class="ni ni-building"></i></span>
                                                         </div>
-                                                        <input type="hidden" name="<?= $this->security->get_csrf_token_name() ?>" value="<?= $this->security->get_csrf_hash() ?>" style="display: none;">
                                                         <input class="form-control-plaintext" disabled type="text" value="<?= date('d F Y', $art['tanggal_input']) ?>">
                                                     </div>
                                                 </div>
