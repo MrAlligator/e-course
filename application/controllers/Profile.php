@@ -11,10 +11,26 @@ class Profile extends CI_Controller
         $this->load->library('form_validation');
         is_logged_in();
     }
+    public function cek()
+    {
+        $data['user'] = $this->db->get_where('tb_user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['user_detail'] = $this->db->get_where('tb_user_detail', ['id_user' => $this->session->userdata('id_user')])->row_array();
+        $raw = $this->db->where('email', $this->session->userdata('email'))->get('tb_user')->row_array();
+        $data['title'] = $raw['nama'];
+        $this->load->view('_partials/header', $data);
+        $this->load->view('_partials/topbar', $data);
+        if(!isset($_SESSION['email'])){
+        $this->load->view('_partials/hero', $data);
+        }
+        $this->load->view('frontend/profile_edit', $data);
+        $this->load->view('_partials/footer', $data);
+        $this->load->view('_partials/js', $data);
+    }
 
     public function index()
     {
         $data['user'] = $this->db->get_where('tb_user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['user_detail'] = $this->db->get_where('tb_user_detail', ['email' => $this->session->userdata('email')])->row_array();
         $raw = $this->db->where('email', $this->session->userdata('email'))->get('tb_user')->row_array();
         $data['title'] = $raw['nama'];
 
@@ -66,24 +82,21 @@ class Profile extends CI_Controller
         }
     }
 
-    public function changeName()
+    public function changeDataDiri()
     {
-        $raw = $this->db->where('email', $this->session->userdata('email'))->get('tb_user')->row_array();
-        $data['user'] = $this->db->get_where('tb_user', ['email' => $this->session->userdata('email')])->row_array();
-        $data['title'] = 'Ubah Nama ' . $raw['nama'];
+        $data = [
+            'tanggal_lahir' => strtotime($this->input->post('tanggal_lahir')),
+            'jenis_kelamin' => $this->input->post('jenis_kelamin'),
+            'kota_tempat_tinggal' => $this->input->post('kota_tinggal')
+        ];
 
-        $name = $this->input->post('newName');
-        $email = $this->session->userdata('email');
-
-        $this->db->set('nama', $name);
-        $this->db->where('email', $email);
-        $this->db->update('tb_user');
-
-        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data berhasil diupdate</div>');
+        $this->db->where('email', $this->input->post('email'));
+        $this->db->update('tb_user_detail', $data);
+        $this->db->update('tb_user', ['nomor_hp' => $this->input->post('nomor')], ['id_user' => $_SESSION['id_user']]);
         redirect('profile');
     }
 
-    public function changeImage()
+    public function changeProfile()
     {
         $config['upload_path']          = './assets/img/userimage';
         $config['allowed_types']        = 'gif|jpg|png|jpeg|PNG|JPG';
@@ -91,19 +104,21 @@ class Profile extends CI_Controller
 
         $this->load->library('upload', $config);
 
-        if ($this->upload->do_upload('foto')) {
-            $data = $this->upload->data();
-            $file = $data['file_name'];
+        if ($_FILES['foto_user']['size']!=0) {
+            $this->upload->do_upload('foto_user');
+            $name = $this->upload->data();
+            $file = $name['file_name'];
+            unlink('./assets/img/userimage/'.$this->input->post('fotoDulu'));
             $data = array(
-                'foto_user' => $file
+                'foto_user' => $file,
+                'nama' => $this->input->post('newName')
             );
         } else {
             $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Data gagal diubah</div>');
             redirect('profile');
         }
 
-
-        if ($this->User_model->update($this->input->post('id_user'), $data)) {
+        if ($this->User_model->update($_SESSION['id_user'], $data)) {
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">' . $file . 'Data diubah</div>');
             redirect('profile');
         } else {
@@ -134,4 +149,24 @@ class Profile extends CI_Controller
         $this->load->view('_partials/footer', $data);
         $this->load->view('_partials/js', $data);
     }
+
+    public function changeDataPerusahaan()
+    {
+        $data = [
+                'nama_usaha' => $this->input->post('nama_usaha'),
+                'alamat_usaha' => $this->input->post('alamat_usaha'),
+                'kota_lokasi_usaha' => $this->input->post('kota_usaha'),
+                'tahun_berdiri_usaha' => $this->input->post('tahun_berdiri'),
+                'no_telepon' => $this->input->post('telp_usaha'),
+                'email_usaha' => $this->input->post('email_usaha'),
+                'produk_ekspor' => $this->input->post('produk_ekspor'),
+                'jumlah_karyawan' => $this->input->post('jumlah_karyawan'),
+                'omset_pertahun' => $this->input->post('omset')
+        ];
+        
+        $this->db->where('email', $_SESSION['email']);
+        $this->db->update('tb_user_detail', $data);
+        redirect('profile');
+    }
+
 }
