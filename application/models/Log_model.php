@@ -9,6 +9,47 @@ class Log_model extends CI_Model
         return $this->db->get($this->_table)->result();
     }
 
+    public function check($user, $str)
+    {
+        $this->db->where('log_user', $user);
+        $this->db->where('log_desc', $str);
+        return $this->db->get($this->_table)->num_rows();
+    }
+
+    public function update($user, $str, $param)
+    {
+        return $this->db->where('log_desc', $str)->where('log_user', $user)->update($this->_table, $param);
+    }
+
+    public function getMax()
+    {
+        $this->db->select('*');
+        $this->db->order_by('log_hits', 'desc');
+        $this->db->limit(1);
+        return $this->db->where('log_desc', 'Mengunjungi Halaman Kalkulator')->where('MONTH(log_time)', date('m'))->where('YEAR(log_time)', date('Y'))->get($this->_table)->row_array();
+    }
+
+    public function getMaxBuyers()
+    {
+        $this->db->select('*');
+        $this->db->order_by('log_hits', 'desc');
+        $this->db->limit(1);
+        return $this->db->where('log_desc', 'Mengunjungi Halaman Buyers')->where('MONTH(log_time)', date('m'))->where('YEAR(log_time)', date('Y'))->get($this->_table)->row_array();
+    }
+
+    public function getMaxInquiries()
+    {
+        $this->db->select('*');
+        $this->db->order_by('log_hits', 'desc');
+        $this->db->limit(1);
+        return $this->db->where('log_desc', 'Mengunjungi Halaman Inquiry')->where('MONTH(log_time)', date('m'))->where('YEAR(log_time)', date('Y'))->get($this->_table)->row_array();
+    }
+
+    public function getById($user)
+    {
+        return $this->db->where('log_user', $user)->get($this->_table)->row_array();
+    }
+
     public function getVisitor()
     {
         $this->db->group_by('visitor_date');
@@ -40,7 +81,7 @@ class Log_model extends CI_Model
         if ($like) {
             $this->db->where($like);
         }
-        return $this->db->where('log_desc', 'Mengunjungi Halaman Kalkulator')->get($this->_table, $limit, $start)->result_array();
+        return $this->db->where('log_desc', 'Mengunjungi Halaman Kalkulator')->where('MONTH(log_time)', date('m'))->where('YEAR(log_time)', date('Y'))->get($this->_table, $limit, $start)->result_array();
     }
 
     public function hitung_jumlah_log($like = '')
@@ -48,7 +89,7 @@ class Log_model extends CI_Model
         if ($like) {
             $this->db->where($like);
         }
-        $query = $this->db->where('log_desc', 'Mengunjungi Halaman Kalkulator')->get($this->_table);
+        $query = $this->db->where('log_desc', 'Mengunjungi Halaman Kalkulator')->where('MONTH(log_time)', date('m'))->where('YEAR(log_time)', date('Y'))->get($this->_table);
         if ($query->num_rows() > 0) {
             return $query->num_rows();
         } else {
@@ -61,7 +102,7 @@ class Log_model extends CI_Model
         if ($like) {
             $this->db->where($like);
         }
-        return $this->db->where('log_desc', 'Mengunjungi Halaman Importir')->get($this->_table, $limit, $start)->result_array();
+        return $this->db->where('log_desc', 'Mengunjungi Halaman Buyers')->where('MONTH(log_time)', date('m'))->where('YEAR(log_time)', date('Y'))->get($this->_table, $limit, $start)->result_array();
     }
 
     public function hitung_jumlah_logBuyers($like = '')
@@ -69,7 +110,7 @@ class Log_model extends CI_Model
         if ($like) {
             $this->db->where($like);
         }
-        $query = $this->db->where('log_desc', 'Mengunjungi Halaman Importir')->get($this->_table);
+        $query = $this->db->where('log_desc', 'Mengunjungi Halaman Buyers')->where('MONTH(log_time)', date('m'))->where('YEAR(log_time)', date('Y'))->get($this->_table);
         if ($query->num_rows() > 0) {
             return $query->num_rows();
         } else {
@@ -82,7 +123,7 @@ class Log_model extends CI_Model
         if ($like) {
             $this->db->where($like);
         }
-        return $this->db->where('log_desc', 'Mengunjungi Halaman Inquiry')->get($this->_table, $limit, $start)->result_array();
+        return $this->db->where('log_desc', 'Mengunjungi Halaman Inquiry')->where('MONTH(log_time)', date('m'))->where('YEAR(log_time)', date('Y'))->get($this->_table, $limit, $start)->result_array();
     }
 
     public function hitung_jumlah_logInquiry($like = '')
@@ -90,7 +131,7 @@ class Log_model extends CI_Model
         if ($like) {
             $this->db->where($like);
         }
-        $query = $this->db->where('log_desc', 'Mengunjungi Halaman Inquiry')->get($this->_table);
+        $query = $this->db->where('log_desc', 'Mengunjungi Halaman Inquiry')->where('MONTH(log_time)', date('m'))->where('YEAR(log_time)', date('Y'))->get($this->_table);
         if ($query->num_rows() > 0) {
             return $query->num_rows();
         } else {

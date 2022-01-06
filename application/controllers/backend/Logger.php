@@ -49,7 +49,13 @@ class Logger extends CI_Controller
         //Initialize
         $this->pagination->initialize($config);
         $data['start'] = $this->uri->segment(4);
-        $data['title'] = "Data Log Kunjungan";
+        $data['total_row'] = $this->Log_model->hitung_jumlah_log();
+        $data['title'] = "Data Log Kunjungan Kalkulator Ekspor Bulan Ini";
+        $data['peringatankosong'] = 'Belum ada kunjungan pada bulan ini';
+        $data['max'] = $this->Log_model->getMax();
+        $pengunjung = $this->db->query("SELECT COUNT(log_hits) as hits FROM tb_log WHERE log_desc = 'Mengunjungi Halaman Kalkulator'")->row();
+        $totalpengunjung = isset($pengunjung->hits) ? ($pengunjung->hits) : 0;
+        $data['pengunjung'] = $totalpengunjung;
         $data['loggers'] = $this->Log_model->getSome($config['per_page'], $data['start']);
 
         $this->load->view('_partadm/head', $data);
@@ -104,7 +110,13 @@ class Logger extends CI_Controller
         //Initialize
         $this->pagination->initialize($config);
         $data['start'] = $this->uri->segment(4);
-        $data['title'] = "Data Log Kunjungan";
+        $data['title'] = "Data Log Kunjungan Kalkulator Ekspor Bulan Ini";
+        $data['peringatankosong'] = 'Kunjungan yang anda cari tidak ada';
+        $data['max'] = $this->Log_model->getMax();
+        $pengunjung = $this->db->query("SELECT COUNT(log_hits) as hits FROM tb_log WHERE log_desc = 'Mengunjungi Halaman Kalkulator'")->row();
+        $totalpengunjung = isset($pengunjung->hits) ? ($pengunjung->hits) : 0;
+        $data['pengunjung'] = $totalpengunjung;
+        $config['total_rows'] = $this->Log_model->hitung_jumlah_log($like);
         $data['loggers'] = $this->Log_model->getSome($config['per_page'], $data['start'], $like);
 
         $this->load->view('_partadm/head', $data);
@@ -153,7 +165,13 @@ class Logger extends CI_Controller
         //Initialize
         $this->pagination->initialize($config);
         $data['start'] = $this->uri->segment(4);
-        $data['title'] = "Data Log Kunjungan";
+        $data['peringatankosong'] = 'Belum ada kunjungan pada bulan ini';
+        $data['title'] = "Data Log Kunjungan Buyers / Importir Bulan Ini";
+        $data['max'] = $this->Log_model->getMaxBuyers();
+        $pengunjung = $this->db->query("SELECT COUNT(log_hits) as hits FROM tb_log WHERE log_desc = 'Mengunjungi Halaman Buyers'")->row();
+        $totalpengunjung = isset($pengunjung->hits) ? ($pengunjung->hits) : 0;
+        $data['pengunjung'] = $totalpengunjung;
+        $data['total_row'] = $this->Log_model->hitung_jumlah_logBuyers();
         $data['loggers'] = $this->Log_model->getSomeBuyers($config['per_page'], $data['start']);
 
         $this->load->view('_partadm/head', $data);
@@ -208,7 +226,13 @@ class Logger extends CI_Controller
         //Initialize
         $this->pagination->initialize($config);
         $data['start'] = $this->uri->segment(4);
-        $data['title'] = "Data Log Kunjungan";
+        $data['title'] = "Data Log Kunjungan Buyers / Importir Bulan Ini";
+        $data['peringatankosong'] = 'Kunjungan yang anda cari tidak ada';
+        $data['max'] = $this->Log_model->getMaxBuyers();
+        $pengunjung = $this->db->query("SELECT COUNT(log_hits) as hits FROM tb_log WHERE log_desc = 'Mengunjungi Halaman Buyers'")->row();
+        $totalpengunjung = isset($pengunjung->hits) ? ($pengunjung->hits) : 0;
+        $data['pengunjung'] = $totalpengunjung;
+        $data['total_row'] = $this->Log_model->hitung_jumlah_logBuyers($like);
         $data['loggers'] = $this->Log_model->getSomeBuyers($config['per_page'], $data['start'], $like);
 
         $this->load->view('_partadm/head', $data);
@@ -257,7 +281,13 @@ class Logger extends CI_Controller
         //Initialize
         $this->pagination->initialize($config);
         $data['start'] = $this->uri->segment(4);
-        $data['title'] = "Data Log Kunjungan";
+        $data['total_row'] = $this->Log_model->hitung_jumlah_logInquiry();
+        $data['peringatankosong'] = 'Belum ada kunjungan pada bulan ini';
+        $data['title'] = "Data Log Kunjungan Inquiry / Permintaan Bulan Ini";
+        $data['max'] = $this->Log_model->getMaxInquiries();
+        $pengunjung = $this->db->query("SELECT COUNT(log_hits) as hits FROM tb_log WHERE log_desc = 'Mengunjungi Halaman Inquiry'")->row();
+        $totalpengunjung = isset($pengunjung->hits) ? ($pengunjung->hits) : 0;
+        $data['pengunjung'] = $totalpengunjung;
         $data['loggers'] = $this->Log_model->getSomeInquiry($config['per_page'], $data['start']);
 
         $this->load->view('_partadm/head', $data);
@@ -312,7 +342,13 @@ class Logger extends CI_Controller
         //Initialize
         $this->pagination->initialize($config);
         $data['start'] = $this->uri->segment(4);
-        $data['title'] = "Data Log Kunjungan";
+        $data['total_row'] = $this->Log_model->hitung_jumlah_logInquiry($like);
+        $data['peringatankosong'] = 'Kunjungan yang anda cari tidak ada';
+        $data['title'] = "Data Log Kunjungan Inquiry / Permintaan Bulan Ini";
+        $data['max'] = $this->Log_model->getMaxInquiries();
+        $pengunjung = $this->db->query("SELECT COUNT(log_hits) as hits FROM tb_log WHERE log_desc = 'Mengunjungi Halaman Inquiry'")->row();
+        $totalpengunjung = isset($pengunjung->hits) ? ($pengunjung->hits) : 0;
+        $data['pengunjung'] = $totalpengunjung;
         $data['loggers'] = $this->Log_model->getSomeInquiry($config['per_page'], $data['start'], $like);
 
         $this->load->view('_partadm/head', $data);

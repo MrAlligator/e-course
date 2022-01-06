@@ -10,13 +10,13 @@
                     </div>
                     <!-- Card stats -->
                     <div class="row">
-                        <div class="col-xl-4 col-md-6">
+                        <div class="col-xl-6 col-md-6">
                             <div class="card card-stats">
                                 <!-- Card body -->
                                 <div class="card-body">
                                     <div class="row">
                                         <div class="col">
-                                            <h5 class="card-title text-uppercase text-muted mb-0">Jumlah Total Data Importir</h5>
+                                            <h5 class="card-title text-uppercase text-muted mb-0">Jumlah Total Data Importir / Buyers</h5>
                                             <span class="h2 font-weight-bold mb-0"><?= $jumlah_importir ?></span>
                                         </div>
                                         <div class="col-auto">
@@ -43,13 +43,13 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-xl-4 col-md-6">
+                        <div class="col-xl-6 col-md-6">
                             <div class="card card-stats">
                                 <!-- Card body -->
                                 <div class="card-body">
                                     <div class="row">
                                         <div class="col">
-                                            <h5 class="card-title text-uppercase text-muted mb-0">Jumlah Total Data Inquiry</h5>
+                                            <h5 class="card-title text-uppercase text-muted mb-0">Jumlah Total Data Permintaan / Inquiry</h5>
                                             <span class="h2 font-weight-bold mb-0"><?= $jumlah_permintaan ?></span>
                                         </div>
                                         <div class="col-auto">
@@ -78,10 +78,10 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-xl-4 col-md-6">
-                            <div class="card card-stats">
-                                <!-- Card body -->
-                                <div class="card-body">
+                        <!-- <div class="col-xl-4 col-md-6">
+                            <div class="card card-stats"> -->
+                        <!-- Card body -->
+                        <!-- <div class="card-body">
                                     <div class="row">
                                         <div class="col">
                                             <h5 class="card-title text-uppercase text-muted mb-0">Pembayaran Belum Konfirmasi</h5>
@@ -100,7 +100,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>

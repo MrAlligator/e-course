@@ -39,26 +39,69 @@
         </div>
         <div class="table-responsive">
             <table id="tabel_importir" class="table table-bordered table-striped" width="100%" cellspacing="0">
-                <thead class="thead-dark text-primary">
-                    <tr>
-                        <th>Waktu Akses</th>
-                        <th>User</th>
-                        <th>Deskripsi</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php foreach ($loggers as $log) : ?>
+                <?php if ($total_row > 0) : ?>
+                    <thead class="thead-dark text-primary">
                         <tr>
-                            <th width="100px"><?= $log['log_time'] ?></th>
-                            <th width="100px"><?= $log['log_user'] ?></th>
-                            <th width="100px"><?= $log['log_desc'] ?></th>
+                            <th>Waktu Akses</th>
+                            <th>User</th>
+                            <th>Deskripsi</th>
+                            <th>Berapa Kali Kunjungan</th>
                         </tr>
-                    <?php endforeach; ?>
-                </tbody>
+                    </thead>
+                    <tbody>
+                        <?php foreach ($loggers as $log) : ?>
+                            <tr>
+                                <th width="100px"><?= $log['log_time'] ?></th>
+                                <th width="100px"><?= $log['log_user'] ?></th>
+                                <th width="100px"><?= $log['log_desc'] ?></th>
+                                <th width="100px"><?= $log['log_hits'] ?></th>
+                            </tr>
+                        <?php endforeach; ?>
+                    </tbody>
+                <?php else : ?>
+                    <thead class="thead-dark text-primary">
+                        <tr>
+                            <th>Waktu Akses</th>
+                            <th>User</th>
+                            <th>Deskripsi</th>
+                            <th>Berapa Kali Kunjungan</th>
+                        </tr>
+                    </thead>
+                    <h3 class="text-center"><?= $peringatankosong ?></h3>
+                <?php endif; ?>
             </table>
         </div>
     </div>
     <?= $this->pagination->create_links() ?>
+    <div class="card">
+        <div class="card-header">
+            <div class="header-body">
+                <div class="row align-items-center">
+                    <div class="col-lg-6 col-7">
+                        <h6 class="h4 text-black d-inline-block">Rekap Kunjungan Halaman Permintaan / Inquiry</h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-8">
+                    <table id="tabel_importir" class="table table-bordered table-striped" width="100%" cellspacing="0">
+                        <thead class="thead-light text-primary">
+                            <tr>
+                                <th>User yang paling sering Mengunjungi</th>
+                                <th><?= $max['log_user']; ?></th>
+                            </tr>
+                            <tr>
+                                <th>Total Kunjungan Bulan ini</th>
+                                <th><?= $pengunjung . ' Orang' ?></th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- clear log Modal -->
     <div class="modal fade" id="clearModal" tabindex="-1" role="dialog" aria-labelledby="clearModal" aria-hidden="true">
