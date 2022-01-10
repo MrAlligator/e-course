@@ -90,6 +90,27 @@
                 <hr class="my-3">
                 <!-- Heading -->
                 <h6 class="navbar-heading p-0 text-muted">
+                    <span class="docs-normal">Kontrol Halaman</span>
+                </h6>
+                <!-- Nav items -->
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="<?= base_url('backend/keuntungan') ?>">
+                            <i class="ni ni-diamond text-lime"></i>
+                            <span class="nav-link-text">Keuntungan Anggota</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="<?= base_url('backend/aturan') ?>">
+                            <i class="ni ni-key-25 text-cyan"></i>
+                            <span class="nav-link-text">Peraturan Forum</span>
+                        </a>
+                    </li>
+                </ul>
+                <!-- Divider -->
+                <hr class="my-3">
+                <!-- Heading -->
+                <h6 class="navbar-heading p-0 text-muted">
                     <span class="docs-normal">Log</span>
                 </h6>
                 <!-- Nav items -->
