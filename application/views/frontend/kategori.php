@@ -182,7 +182,24 @@
                 <?=$who['nama']?>
             </small>
             <small>
-                <?=date('d F Y', strtotime($comment->tanggal))?>, <?=$comment->jam?>
+            <?php
+            $bedanya = time()-$comment->tanggal;
+            if($bedanya<(60)):
+                echo "Baru saja";
+            elseif($bedanya<(60*60)):
+                echo floor($bedanya/60)." menit yang lalu <br>";
+            elseif($bedanya<(60*60*24)):
+                echo floor($bedanya/(60*60))." jam yang lalu";
+            elseif($bedanya<(60*60*24*7)):
+                echo floor($bedanya/(60*60*24))." hari yang lalu";
+            elseif($bedanya<(60*60*24*30)):
+                echo floor($bedanya/(60*60*24*7))." minggu yang lalu";
+            elseif($bedanya<(60*60*24*30*12)):
+                echo floor($bedanya/(60*60*24*30))." bulan yang lalu";
+            else:
+                echo floor($bedanya/(60*60*24*365))." tahun yang lalu <br>";
+            endif;
+            ?>
             </small>
         </div>
         </li>
