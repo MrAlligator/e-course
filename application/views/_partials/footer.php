@@ -22,7 +22,7 @@
 
                 <div class="col-lg-3 col-md-6 footer-contact"><br>
                 <div>
-                    <img width="80%" src="<?= base_url() ?>/assets/img/logo-koin.png" width="200px" alt="..."><p></p>
+                    <img width="80%" src="<?= base_url() ?>/assets/img/logo.png" width="200px" alt="..."><p></p>
                 </div><br>
                     <h6><i class="bx bxs-phone"></i> 0821-3122-2331<br></h6>
                     <h6><i class="bx bx-mail-send"></i> elecomp.sh@gmail.com<br></h6>
@@ -30,7 +30,7 @@
 
                 <!-- -->
                 <div class="col-lg-3 col-md-6 footer-links">
-                    <h4>Data Kami</h4>
+                    <h4>Data-data</h4>
                     <ul>
                     <?php if (isset($user['email'])) : ?>
                         <li><i class="bx bx-chevron-right"></i> <a href="<?= base_url('frontend/buyers') ?>">Data Importir (Buyer)</a></li>

@@ -70,12 +70,9 @@
     <div class="php-email-form">
         <div class="section-title"><h4>Peraturan dalam forum</h4><p></p></div>
         <ul class="list-group list-group-flush">
-            <li class="list-group-item"><h6>1. Dilarang menggunakan kata yang mengandung unsur SARA</h6></li>
-            <li class="list-group-item"><h6>2. Dilarang menggunakan kata kasar dan seksual</h6></li>
-            <li class="list-group-item"><h6>3. Dilarang menggunakan kalimat yang dapat menyebarkan kebencian</h6></li>
-            <li class="list-group-item"><h6>4. Dilarang menyebarkan informasi palsu (hoax)</h6></li>
-            <li class="list-group-item"><h6>5. Dilarang menyebarkan kalimat yang menyesatkan atau spam</h6></li>
-
+            <?php $i=1; foreach($peraturan as $peraturan):?>
+                <li class="list-group-item"><h6><?=$i++.". ".$peraturan->peraturan?></h6></li>
+            <?php endforeach?>
         </ul>
     </div>
 </div>

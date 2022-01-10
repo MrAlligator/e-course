@@ -35,7 +35,7 @@ class Home extends CI_Controller
         $data['user'] = $this->db->get_where('tb_user', ['email' => $this->session->userdata('email')])->row_array();
         $data['title'] = "KEANGGOTAAN";
         $data['artikel'] = $this->Artikel_model->getRandom();
-
+        $data['keuntungan'] = $this->db->get('tb_keuntungan_anggota')->result();
 
         $this->load->view('_partials/header', $data);
         $this->load->view('_partials/topbar', $data);
@@ -74,6 +74,7 @@ class Home extends CI_Controller
         $data['kategori_terpopuler'] = $this->Forum_model->getKategoriTerpopuler();
         $data['title'] = "Forum";
         $data['artikel'] = $this->Artikel_model->getRandom();
+        $data['peraturan'] = $this->db->get('tb_peraturan_forum')->result();
 
         $this->load->view('_partials/header', $data);
         $this->load->view('_partials/topbar', $data);

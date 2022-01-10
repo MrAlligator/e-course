@@ -16,24 +16,11 @@
                     <div class="card card-body">
                     <!-- <h4><sup>Rp</sup>0<span>per bulan</span><br><span>Keuntungan</span></h4> -->
                     <ul>
-                        <li><i class="bx bx-check"></i>
-                            <h6>Dapat Melihat Data Importir(Buyers)</h6>
-                        </li>
-                        <li><i class="bx bx-check"></i>
-                            <h6>Dapat Melihat Data Permintaan (Inquiry)</h6>
-                        </li>
-                        <li><i class="bx bx-check"></i>
-                            <h6>Dapat Mengakses Kalkulator Perhitungan Harga Ekspor</h6>
-                        </li>
-                        <li><i class="bx bx-check"></i>
-                            <h6>Mendapatkan Update Artikel Seputar Ekspor</h6>
-                        </li>
-                        <li><i class="bx bx-check"></i>
-                            <h6>Tergabung Dalam Group Telegram</h6>
-                        </li>
-                        <li><i class="bx bx-check"></i>
-                            <h6>Sharing Sesama Member</h6>
-                        </li>
+                        <?php foreach($keuntungan as $keuntungan): ?>
+                            <li><i class="bx bx-check"></i>
+                            <h6><?=$keuntungan->keuntungan?></h6>
+                            </li>
+                        <?php endforeach?>
                     </ul>
                 </div>
             </div>

@@ -28,7 +28,7 @@
                         <li><a href="<?= base_url('home/forum') ?>"><h6>Forum Komunitas</h6></a></li>
                     <?php if (isset($user['email'])) : ?>
                         <li><a href="<?= base_url('home/kalkulator') ?>"><h6>Kalkulator Harga Ekspor</h6></a></li>
-                        <li class="dropdown"><a href="#"><span><h6>Data Kami</h6></span></a>
+                        <li class="dropdown"><a href="#"><span><h6>Data-data</h6></span></a>
                             <!-- i class="bi bi-chevron-down"></i></a> -->
                             <ul>
                                 <li><a href="<?= base_url('frontend/buyers') ?>"><h6>Data Importir (Buyer)</h6></a></li>

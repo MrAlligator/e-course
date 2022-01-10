@@ -34,6 +34,20 @@ class Profile extends CI_Controller
         $raw = $this->db->where('email', $this->session->userdata('email'))->get('tb_user')->row_array();
         $data['title'] = $raw['nama'];
 
+        
+        $this->load->view('_partials/header', $data);
+        $this->load->view('_partials/topbar', $data);
+        if(!isset($_SESSION['email'])){
+        $this->load->view('_partials/hero', $data);
+        }
+        $this->load->view('frontend/profile', $data);
+        $this->load->view('_partials/footer', $data);
+        $this->load->view('_partials/js', $data);
+        
+        
+    }
+    public function changePassword()
+    {
         $this->form_validation->set_rules('old-password', 'Password Lama', 'required|trim', [
             'required' => 'Field tidak boleh kosong'
         ]);
@@ -49,18 +63,12 @@ class Profile extends CI_Controller
         ]);
 
         if ($this->form_validation->run() == FALSE) {
-            $this->load->view('_partials/header', $data);
-            $this->load->view('_partials/topbar', $data);
-            if(!isset($_SESSION['email'])){
-            $this->load->view('_partials/hero', $data);
-            }
-            $this->load->view('frontend/profile', $data);
-            $this->load->view('_partials/footer', $data);
-            $this->load->view('_partials/js', $data);
-        } else {
+            echo '<script type="text/javascript">alert("Password Gagal diubah");</script>';
+            redirect('profile');
+        }else{
             $current_password = $this->input->post('old-password');
             $new_password = $this->input->post('new-password');
-            if (!password_verify($current_password, $data['user']['password'])) {
+            if (!password_verify($current_password, $_SESSION['password'])) {
                 $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Password lama Salah!</div>');
                 redirect('profile');
             } else {
@@ -78,7 +86,7 @@ class Profile extends CI_Controller
                     $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Password berhasil diganti!</div>');
                     redirect('profile');
                 }
-            }
+            }        
         }
     }
 
@@ -90,9 +98,12 @@ class Profile extends CI_Controller
             'kota_tempat_tinggal' => $this->input->post('kota_tinggal')
         ];
 
-        $this->db->where('email', $this->input->post('email'));
-        $this->db->update('tb_user_detail', $data);
-        $this->db->update('tb_user', ['nomor_hp' => $this->input->post('nomor')], ['id_user' => $_SESSION['id_user']]);
+        $data1 = [
+            'nomor_hp' => $this->input->post('nomor')
+        ];
+
+        $this->db->update('tb_user_detail', $data, ['email'=> $_SESSION['email']]);
+        $this->db->update('tb_user', $data1, ['id_user' => $_SESSION['id_user']]);
         redirect('profile');
     }
 
@@ -138,16 +149,7 @@ class Profile extends CI_Controller
     }
     public function prop()
     {
-        $data['title'] = 'Ubah Nama ';
-
-        $this->load->view('_partials/header', $data);
-        $this->load->view('_partials/topbar', $data);
-        if(!isset($_SESSION['email'])){
-            $this->load->view('_partials/hero', $data);
-        }
-        $this->load->view('frontend/name', $data);
-        $this->load->view('_partials/footer', $data);
-        $this->load->view('_partials/js', $data);
+        echo var_dump($_SESSION);
     }
 
     public function changeDataPerusahaan()

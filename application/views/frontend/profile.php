@@ -28,7 +28,7 @@
 
 <!-- Collapse -->
   <div class="collapse" id="ubah-profil">
-    <form action="<?=base_url('profile/changeProfile')?>" method="post">
+    <form action="<?=base_url('profile/changeProfile')?>" method="post" enctype="multipart/form-data">
       <div class="row justify-content-end">
         <input type="hidden" name="<?=$this->security->get_csrf_token_name();?>" value="<?=$this->security->get_csrf_hash();?>" style="display: none">
         <label for="name"><h6>Ubah foto profil</h6></label>
@@ -51,7 +51,29 @@
 <div class="member d-flex align-items-start">
   <div class="row justify-content-end">
   <p><h4 class="text-center">Pilihan</h4></p>
-    <a href="#" class="btn btn-primary">Ubah Password</a><p></p>
+  
+<!-- Collapse -->
+  <div class="collapse" id="ubah-password">
+  <form action="<?=base_url('profile/changePassword') ?>" method="POST" enctype="multipart/form-data">
+    <input type="hidden" name="<?=$this->security->get_csrf_token_name();?>" value="<?=$this->security->get_csrf_hash();?>" style="display: none">
+
+    <label for="email"><h6>Masukkan Password Lama</h6></label>
+    <input type="password" class="form-control" name="old-password" id="old-password"><?= form_error('old-password', '<small class="text-danger pl-3">', '</small>') ?><p></p>
+    
+    <label for="email"><h6>Masukkan Password Baru</h6></label>
+    <input type="password" class="form-control" name="new-password" id="new-password"><?= form_error('new-password', '<small class="text-danger pl-3">', '</small>') ?><p></p>
+    
+    <label for="email"><h6>Konfirmasi Password Anda</h6></label>
+    <input type="password" class="form-control" name="konf-password" id="konf-password"><?= form_error('konf-password', '<small class="text-danger pl-3">', '</small>') ?><p></p>
+    <br>
+    <div class="row justify-content-end">
+      <button type="submit" class="btn btn-sm btn-outline-dark">Simpan Password Baru</button>  
+    </div><p></p><br>
+  </form>
+</div>
+<!-- End Collapse -->
+
+    <a class="btn btn-primary" data-bs-toggle="collapse" data-bs-target="#ubah-password">Ubah Password</a><p></p>
     <a href="<?= base_url('profile/delete?id=' . base64_encode($user['id_user'])) ?>" class="btn btn-danger">Nonaktifkan Akun</a><p></p>
   </div>
 </div>
@@ -146,6 +168,8 @@
 <!-- Collapse -->
 <div class="collapse" id="ubah-data-perusahaan">
   <form action="<?=base_url('profile/changeDataPerusahaan')?>" method="post">
+  <input type="hidden" name="<?=$this->security->get_csrf_token_name();?>" value="<?=$this->security->get_csrf_hash();?>" style="display: none">
+
   <label for="nama"><h6>Nama Usaha</h6></label>
   <input value="<?=$user_detail['nama_usaha']?>" type="text" class="form-control" name="nama_usaha" id="nama_usaha"><p></p>
                     
