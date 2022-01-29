@@ -195,7 +195,7 @@ class Auth extends CI_Controller
                 'view_password' => htmlspecialchars($this->input->post('password', true)),
                 'role_id' => 2,
                 'is_member' => 1,
-                'is_active' => 1,
+                'is_active' => 0,
                 'date_created' => time(),
                 'month_created' => date('m', time()),
                 'year_created' => date('Y', time())
@@ -227,8 +227,8 @@ class Auth extends CI_Controller
 
             $this->db->insert('tb_user', $data);
             $this->db->insert('tb_user_detail', $data1);
-            // $this->db->insert('tb_token', $user_token);
-            // $this->_sendEmail($token, 'verify');
+            $this->db->insert('tb_token', $user_token);
+            $this->_sendEmail($token, 'verify');
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Akun berhasil dibuat. Silakan verifikasi akun email anda</div>');
             redirect('auth');
         }
@@ -239,11 +239,10 @@ class Auth extends CI_Controller
         $config = [
             'protocol' => 'smtp',
             'smtp_host' => 'smtp.gmail.com',
-            'smtp_user' => 'e41181025@student.polije.ac.id',
-            'smtp_pass' => 'e41181025',
-            // 'smtp_pass' => 'Koin1234',
-            'smtp_port' => 465,
-            'smtp_crypto' => 'ssl',
+            'smtp_user' => 'komunitas.ekspor.indonesia',
+            'smtp_pass' => 'Koin1234',
+            'smtp_port' => 587,
+            'smtp_crypto' => 'tls',
             'mailtype' => 'html',
             'charset' => 'utf-8',
             'newline' => "\r\n"
@@ -251,8 +250,8 @@ class Auth extends CI_Controller
 
         $this->email->initialize($config);
 
-        $this->email->from('elecomp.sh@gmail.com', 'Komunitas Ekspor Indonesia');
-        $this->email->to('ryzaldm@gmail.com');
+        $this->email->from('komunitas.ekspor.indonesia@gmail.com', 'Komunitas Ekspor Indonesia');
+        $this->email->to($this->input->post('email'));
         if ($type == 'verify') {
             $this->email->subject('Verifikasi Akun');
             $this->email->message('
@@ -550,7 +549,7 @@ class Auth extends CI_Controller
         
         <body style="background-color: #f4f4f4; margin: 0 !important; padding: 0 !important;">
             <!-- HIDDEN PREHEADER TEXT -->
-            <div style="display: none; font-size: 1px; color: #fefefe; line-height: 1px; font-family: "Lato", Helvetica, Arial, sans-serif; max-height: 0px; max-width: 0px; opacity: 0; overflow: hidden;"> Hai ' . $this->input->post('email') .  ' pesai ini digunakan untuk reset passwordmu.</div>
+            <div style="display: none; font-size: 1px; color: #fefefe; line-height: 1px; font-family: "Lato", Helvetica, Arial, sans-serif; max-height: 0px; max-width: 0px; opacity: 0; overflow: hidden;"> Hai ' . $this->input->post('email') .  ' pesan ini digunakan untuk reset passwordmu.</div>
             <table border="0" cellpadding="0" cellspacing="0" width="100%">
                 <!-- LOGO -->
                 <tr>

@@ -13,6 +13,7 @@
         <div class="form-group col-md-8">
         <?php echo $this->session->flashdata('message'); ?>
             <div class="d-grid gap-2">
+            <input type="hidden" name="<?= $this->security->get_csrf_token_name(); ?>" value="<?= $this->security->get_csrf_hash(); ?>" style="display: none">
                 <input type="email" name="email" class="form-control" id="email" placeholder="Input Your Email Here"><?= form_error('email', '<small class="text-danger pl-3">', '</small>') ?>
                 <button type="submit" class="btn-get-started">Reset Password</button>
             </div><br>
