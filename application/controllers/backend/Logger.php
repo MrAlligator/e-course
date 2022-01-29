@@ -116,7 +116,7 @@ class Logger extends CI_Controller
         $pengunjung = $this->db->query("SELECT COUNT(log_hits) as hits FROM tb_log WHERE log_desc = 'Mengunjungi Halaman Kalkulator'")->row();
         $totalpengunjung = isset($pengunjung->hits) ? ($pengunjung->hits) : 0;
         $data['pengunjung'] = $totalpengunjung;
-        $config['total_rows'] = $this->Log_model->hitung_jumlah_log($like);
+        $data['total_row'] = $this->Log_model->hitung_jumlah_log($like);
         $data['loggers'] = $this->Log_model->getSome($config['per_page'], $data['start'], $like);
 
         $this->load->view('_partadm/head', $data);

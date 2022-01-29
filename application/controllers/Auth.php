@@ -1,6 +1,10 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
+
 class Auth extends CI_Controller
 {
     public function __construct()
@@ -53,25 +57,24 @@ class Auth extends CI_Controller
     private function _forgotPassword()
     {
         $email = $this->input->post('email');
-        
+
         $user = $this->db->get_where('tb_user', ['email' => $email])->row_array();
-        
+
         if ($user) {
             if ($user['is_active'] == 1) {
-            
-            $token = base64_encode(random_bytes(32));
-            $user_token = [
-                'email' => $email,
-                'token' => $token,
-                'date_created' => time()
-            ];
 
-            $this->db->insert('tb_token', $user_token);
-            $this->_sendEmail($token, 'forgot');
-            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Reset password berhasil, silakan cek akun email anda</div>');
-            redirect('auth');
+                $token = base64_encode(random_bytes(32));
+                $user_token = [
+                    'email' => $email,
+                    'token' => $token,
+                    'date_created' => time()
+                ];
 
-             } else {
+                $this->db->insert('tb_token', $user_token);
+                $this->_sendEmail($token, 'forgot');
+                $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Reset password berhasil, silakan cek akun email anda</div>');
+                redirect('auth');
+            } else {
                 $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Akun anda belum diaktivasi</div>');
                 redirect('auth');
             }
@@ -104,7 +107,7 @@ class Auth extends CI_Controller
                         ];
                         $this->session->set_userdata($data);
                         // if ($user['is_member'] == 1) { 
-                            redirect('home');
+                        redirect('home');
                         // } else {
                         //     redirect('home/membership');
                         // }
@@ -125,31 +128,31 @@ class Auth extends CI_Controller
             redirect('auth');
         }
     }
-    
+
     public function daftar()
     {
-        $captcha_response=trim($this->input->post('g-recaptcha-response'));
-        if ($captcha_response!="") {
-            $keySecret='6Lfqp74dAAAAAADLyTIFK5tVJCRoPjBb4OD5PEFi';
-            $check=array(
-                'secret'=>$keySecret,
-                'response'=>$this->input->post('g-recaptcha-response')
+        $captcha_response = trim($this->input->post('g-recaptcha-response'));
+        if ($captcha_response != "") {
+            $keySecret = '6Lfqp74dAAAAAADLyTIFK5tVJCRoPjBb4OD5PEFi';
+            $check = array(
+                'secret' => $keySecret,
+                'response' => $this->input->post('g-recaptcha-response')
             );
-            $startProcess=curl_init();
-            curl_setopt($startProcess,CURLOPT_URL,"https://www.google.com/recaptcha/api/siteverify");
-            curl_setopt($startProcess,CURLOPT_POST,true);
-            curl_setopt($startProcess,CURLOPT_POSTFIELDS,http_build_query($check));
-            curl_setopt($startProcess,CURLOPT_SSL_VERIFYPEER,false);
+            $startProcess = curl_init();
+            curl_setopt($startProcess, CURLOPT_URL, "https://www.google.com/recaptcha/api/siteverify");
+            curl_setopt($startProcess, CURLOPT_POST, true);
+            curl_setopt($startProcess, CURLOPT_POSTFIELDS, http_build_query($check));
+            curl_setopt($startProcess, CURLOPT_SSL_VERIFYPEER, false);
 
             $receiveData = curl_exec($startProcess);
             $finalResponse = json_decode($receiveData, true);
             if ($finalResponse) {
                 $this->register();
-            }else{ 
+            } else {
                 $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Coba lagi</div>');
                 redirect('home/membership');
             }
-        }else{
+        } else {
             $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Harap isi captcha</div>');
             redirect('home/membership');
         }
@@ -192,14 +195,16 @@ class Auth extends CI_Controller
                 'view_password' => htmlspecialchars($this->input->post('password', true)),
                 'role_id' => 2,
                 'is_member' => 1,
-                'is_active' => 0,
-                'date_created' => time()
+                'is_active' => 1,
+                'date_created' => time(),
+                'month_created' => date('m', time()),
+                'year_created' => date('Y', time())
             ];
 
             $data1 = [
                 'email' => $this->input->post('email'),
                 'nama' => $this->input->post('nama'),
-                'tanggal_lahir' => $this->input->post('tanggal_lahir'),
+                'tanggal_lahir' => strtotime($this->input->post('tanggal_lahir')),
                 'jenis_kelamin' => $this->input->post('jenis_kelamin'),
                 'kota_tempat_tinggal' => $this->input->post('kota_tinggal'),
                 'nama_usaha' => $this->input->post('nama_usaha'),
@@ -228,7 +233,7 @@ class Auth extends CI_Controller
             redirect('auth');
         }
     }
-        
+
     private function _sendEmail($token, $type)
     {
         $config = [
@@ -237,8 +242,8 @@ class Auth extends CI_Controller
             'smtp_user' => 'e41181025@student.polije.ac.id',
             'smtp_pass' => 'e41181025',
             // 'smtp_pass' => 'Koin1234',
-            'smtp_port' => 465, 
-            'smtp_crypto' => 'ssl', 
+            'smtp_port' => 465,
+            'smtp_crypto' => 'ssl',
             'mailtype' => 'html',
             'charset' => 'utf-8',
             'newline' => "\r\n"
@@ -667,12 +672,12 @@ class Auth extends CI_Controller
             $user_token = $this->db->get_where('tb_token', ['token' => $token])->row_array();
             if ($user_token) {
                 $this->session->set_userdata('reset_email', $email);
-                $this->changePassword();   
-            }else{
+                $this->changePassword();
+            } else {
                 $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Reset password gagal, token salah</div>');
                 redirect('auth');
             }
-        }else{
+        } else {
             $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Reset password gagal, email salah</div>');
             redirect('auth');
         }
@@ -686,22 +691,22 @@ class Auth extends CI_Controller
         if ($user) {
             $user_token = $this->db->get_where('tb_token', ['token' => $token])->row_array();
             if ($user_token) {
-                if (time()-$user_token['date_created']<(60*60*24)) {
+                if (time() - $user_token['date_created'] < (60 * 60 * 24)) {
                     $this->session->set_userdata('reset_email', $email);
                     $this->aktivasi();
-                }else{
-                    $this->db->delete('tb_token', ['email'=>$email]);
-                    $this->db->delete('tb_user', ['email'=>$email]);
-                    $this->db->delete('tb_user_detail', ['email'=>$email]);
-                    
+                } else {
+                    $this->db->delete('tb_token', ['email' => $email]);
+                    $this->db->delete('tb_user', ['email' => $email]);
+                    $this->db->delete('tb_user_detail', ['email' => $email]);
+
                     $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Aktivasi gagal, token salah</div>');
                     redirect('auth');
                 }
-            }else{
+            } else {
                 $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Aktivasi gagal, token salah</div>');
                 redirect('auth');
             }
-        }else{
+        } else {
             $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Aktivasi gagal, email salah</div>');
             redirect('auth');
         }
@@ -712,11 +717,11 @@ class Auth extends CI_Controller
         $data = [
             'is_active' => '1'
         ];
-        $this->User_model->gantiPassword($this->input->get('email'),$data);
+        $this->User_model->gantiPassword($this->input->get('email'), $data);
         $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Akun berhasil diaktivasi, silakan login</div>');
         redirect('auth');
     }
-    
+
     public function changePassword()
     {
         $this->form_validation->set_rules('password', 'Password', 'required|trim|min_length[8]|matches[konf-password]', [
@@ -728,21 +733,57 @@ class Auth extends CI_Controller
             'required' => 'Password tidak boleh Kosong',
             'matches' => 'Password tidak sama'
         ]);
-    if ($this->form_validation->run() == false) {
-        $data['title']="Ganti Password";
-        $this->load->view('_partials/header', $data);
-        $this->load->view('_partials/topbar');
-        $this->load->view('frontend/ganti_pass');
-        $this->load->view('_partials/clients');
-        $this->load->view('_partials/js');
-    }else{
-    $data = [
-        'password' => password_hash($this->input->post('password'), PASSWORD_DEFAULT)
-    ];
-    $this->User_model->gantiPassword($this->input->get('email'),$data);
-    $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Ganti password berhasil, silakan login</div>');
-    redirect('auth');
+        if ($this->form_validation->run() == false) {
+            $data['title'] = "Ganti Password";
+            $this->load->view('_partials/header', $data);
+            $this->load->view('_partials/topbar');
+            $this->load->view('frontend/ganti_pass');
+            $this->load->view('_partials/clients');
+            $this->load->view('_partials/js');
+        } else {
+            $data = [
+                'password' => password_hash($this->input->post('password'), PASSWORD_DEFAULT)
+            ];
+            $this->User_model->gantiPassword($this->input->get('email'), $data);
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Ganti password berhasil, silakan login</div>');
+            redirect('auth');
+        }
     }
 
+    public function sendmail()
+    {
+        $to                 = "ryzaldm@gmail.com";
+        $subject            = "Halo";
+        $message            = "testing";
+
+        $mail = new PHPMailer(true);
+
+        try {
+            $mail->SMTPDebug = SMTP::DEBUG_SERVER;
+            $mail->isSMTP();
+            $mail->Host       = 'smtp.googlemail.com';
+            $mail->SMTPAuth   = true;
+            $mail->Username   = 'komunitas.ekspor.indonesia@gmail.com'; // ubah dengan alamat email Anda
+            $mail->Password   = 'Koin1234'; // ubah dengan password email Anda
+            $mail->SMTPSecure = 'ssl';
+            $mail->Port       = 465;
+
+            $mail->setFrom('komunitas.ekspor.indonesia@gmail.com', 'Niagahoster Tutorial'); // ubah dengan alamat email Anda
+            $mail->addAddress($to);
+            $mail->addReplyTo('noReply@gmail.com', 'Niagahoster Tutorial'); // ubah dengan alamat email Anda
+
+            // Isi Email
+            $mail->isHTML(true);
+            $mail->Subject = $subject;
+            $mail->Body    = $message;
+
+            $mail->send();
+
+            // Pesan Berhasil Kirim Email/Pesan Error
+
+            echo "berhasil";
+        } catch (Exception $e) {
+            echo "gagal";
+        }
     }
 }

@@ -28,7 +28,7 @@ class Forum_model extends CI_Model
     {
         return $this->db->order_by('id_kategori', 'DESC')->get($this->_table)->result();
     }
-    
+
     public function getKategoriTerpopuler()
     {
         return $this->db->order_by('tanggapan', 'DESC')->get($this->_table)->result();
@@ -41,6 +41,12 @@ class Forum_model extends CI_Model
 
     public function delete_post($id)
     {
+        $all_komen = $this->db->get_where('tb_komentar', ['id_post' => $id])->result_array();
+
+        foreach ($all_komen as $komen) {
+            $this->delete_komen($komen['id_komentar']);
+        }
+
         $this->db->delete('tb_tanggapan', ['id_post' => $id]);
         return $this->db->get('tb_tanggapan')->result();
     }
@@ -60,6 +66,12 @@ class Forum_model extends CI_Model
     public function create_komen($data)
     {
         $this->db->insert('tb_komentar', $data);
+        return $this->db->get('tb_komentar')->result();
+    }
+
+    public function delete_komen($id)
+    {
+        $this->db->delete('tb_komentar', ['id_komentar' => $id]);
         return $this->db->get('tb_komentar')->result();
     }
 }

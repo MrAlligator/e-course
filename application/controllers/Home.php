@@ -153,36 +153,36 @@ class Home extends CI_Controller
 
     public function tambah_pertanyaan()
     {
-        // $captcha_response = trim($this->input->post('g-recaptcha-response'));
-        // $id_kategori = $this->input->post('id_kategori');
-        // if ($captcha_response != "") {
-        //     $keySecret = '6Lfqp74dAAAAAADLyTIFK5tVJCRoPjBb4OD5PEFi';
-        //     $check = array(
-        //         'secret' => $keySecret,
-        //         'response' => $this->input->post('g-recaptcha-response')
-        //     );
-        //     $startProcess = curl_init();
-        //     curl_setopt($startProcess, CURLOPT_URL, "https://www.google.com/recaptcha/api/siteverify");
-        //     curl_setopt($startProcess, CURLOPT_POST, true);
-        //     curl_setopt($startProcess, CURLOPT_POSTFIELDS, http_build_query($check));
-        //     curl_setopt($startProcess, CURLOPT_SSL_VERIFYPEER, false);
+        $captcha_response = trim($this->input->post('g-recaptcha-response'));
+        $id_kategori = $this->input->post('id_kategori');
+        if ($captcha_response != "") {
+            $keySecret = '6Lfqp74dAAAAAADLyTIFK5tVJCRoPjBb4OD5PEFi';
+            $check = array(
+                'secret' => $keySecret,
+                'response' => $this->input->post('g-recaptcha-response')
+            );
+            $startProcess = curl_init();
+            curl_setopt($startProcess, CURLOPT_URL, "https://www.google.com/recaptcha/api/siteverify");
+            curl_setopt($startProcess, CURLOPT_POST, true);
+            curl_setopt($startProcess, CURLOPT_POSTFIELDS, http_build_query($check));
+            curl_setopt($startProcess, CURLOPT_SSL_VERIFYPEER, false);
 
-        //     $receiveData = curl_exec($startProcess);
-        //     $finalResponse = json_decode($receiveData, true);
-        //     if ($finalResponse) {
-                $data = [
-                    'nama_kategori' => $this->input->post('pertanyaan'),
-                    'tanggapan' => 0
-                ];
-                $this->Forum_model->create($data);
-                redirect('home/forum');
-        //     } else {
-        //         $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Coba lagi</div>');
-        //     }
-        // } else {
-        //     $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Harap isi captcha</div>');
-        //     redirect('home/forum');
-        // }
+            $receiveData = curl_exec($startProcess);
+            $finalResponse = json_decode($receiveData, true);
+            if ($finalResponse) {
+        $data = [
+            'nama_kategori' => $this->input->post('pertanyaan'),
+            'tanggapan' => 0
+        ];
+        $this->Forum_model->create($data);
+        redirect('home/forum');
+            } else {
+                $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Coba lagi</div>');
+            }
+        } else {
+            $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Harap isi captcha</div>');
+            redirect('home/forum');
+        }
     }
 
 
@@ -195,7 +195,8 @@ class Home extends CI_Controller
         $tanggapan = intval($tanggapan) - 1;
         $this->db->where('id_kategori', $id_kategori)->update('tb_pertanyaan', ['tanggapan' => $tanggapan]);
         $this->Forum_model->delete_post($id);
-        redirect('home/kategori/' . $id_kategori);
+        // redirect('home/kategori/' . $id_kategori);
+        redirect('home/kategori?id_kategori=' . base64_encode($id_kategori));
     }
     public function del_komen($id)
     {
@@ -206,16 +207,19 @@ class Home extends CI_Controller
         $komentar = $raws['komentar'];
         $komentar = intval($komentar) - 1;
         $this->db->where('id_post', $id_post)->update('tb_tanggapan', ['komentar' => $komentar]);
-        $this->Forum_model->delete_post($id);
-        redirect('home/kategori/' . $id_kategori);
+        // $this->Forum_model->delete_post($id);
+        $this->Forum_model->delete_komen($raw['id_komentar']);
+        // redirect('home/kategori/' . $id_kategori);
+        redirect('home/kategori?id_kategori=' . base64_encode($id_kategori));
     }
 
     public function article_read($id)
     {
         $data['user'] = $this->db->get_where('tb_user', ['email' => $this->session->userdata('email')])->row_array();
         $need = $this->db->get_where('tb_user', ['email' => $this->session->userdata('email')])->row_array();
-        $data['title'] = "Baca Artikel";
         $data['artikel'] = $this->db->where('id_artikel', $id)->get('tb_artikel')->row_array();;
+        // $data['title'] = "Baca Artikel | ";
+        $data['title'] = "Baca Artikel | " . $data['artikel']['judul'];
         $data['artikel_lainnya'] = $this->Artikel_model->getRandom();
 
         $this->load->view('_partials/header', $data);
@@ -232,43 +236,43 @@ class Home extends CI_Controller
 
     public function post_forum()
     {
-        // $captcha_response = trim($this->input->post('g-recaptcha-response'));
-        // $id_kategori = $this->input->post('id_kategori');
-        // if ($captcha_response != "") {
-        //     $keySecret = '6Lfqp74dAAAAAADLyTIFK5tVJCRoPjBb4OD5PEFi';
-        //     $check = array(
-        //         'secret' => $keySecret,
-        //         'response' => $this->input->post('g-recaptcha-response')
-        //     );
-        //     $startProcess = curl_init();
-        //     curl_setopt($startProcess, CURLOPT_URL, "https://www.google.com/recaptcha/api/siteverify");
-        //     curl_setopt($startProcess, CURLOPT_POST, true);
-        //     curl_setopt($startProcess, CURLOPT_POSTFIELDS, http_build_query($check));
-        //     curl_setopt($startProcess, CURLOPT_SSL_VERIFYPEER, false);
-        //     $receiveData = curl_exec($startProcess);
-        //     $finalResponse = json_decode($receiveData, true);
-        //     if ($finalResponse) {
-                $data = [
-                    'id_user' => $this->input->post('id_user'),
-                    'id_kategori' => $this->input->post('id_kategori'),
-                    'postingan' => $this->input->post('postingan'),
-                    'komentar' => 0,
-                    'tanggal' => $this->input->post('tanggal')
-                ];
+        $captcha_response = trim($this->input->post('g-recaptcha-response'));
+        $id_kategori = $this->input->post('id_kategori');
+        if ($captcha_response != "") {
+            $keySecret = '6Lfqp74dAAAAAADLyTIFK5tVJCRoPjBb4OD5PEFi';
+            $check = array(
+                'secret' => $keySecret,
+                'response' => $this->input->post('g-recaptcha-response')
+            );
+            $startProcess = curl_init();
+            curl_setopt($startProcess, CURLOPT_URL, "https://www.google.com/recaptcha/api/siteverify");
+            curl_setopt($startProcess, CURLOPT_POST, true);
+            curl_setopt($startProcess, CURLOPT_POSTFIELDS, http_build_query($check));
+            curl_setopt($startProcess, CURLOPT_SSL_VERIFYPEER, false);
+            $receiveData = curl_exec($startProcess);
+            $finalResponse = json_decode($receiveData, true);
+            if ($finalResponse) {
+        $data = [
+            'id_user' => $this->input->post('id_user'),
+            'id_kategori' => $this->input->post('id_kategori'),
+            'postingan' => $this->input->post('postingan'),
+            'komentar' => 0,
+            'tanggal' => $this->input->post('tanggal')
+        ];
 
-                $raw = $this->db->where('id_kategori', $this->input->post('id_kategori'))->get('tb_pertanyaan')->row_array();;
-                $tanggapan = $raw['tanggapan'];
-                $tanggapan = intval($tanggapan) + 1;
-                $this->Forum_model->create_post($data);
-                $this->db->where('id_kategori', $this->input->post('id_kategori'))->update('tb_pertanyaan', ['tanggapan' => $tanggapan]);
-                redirect('home/kategori?id_kategori=' . base64_encode($this->input->post('id_kategori')));
-            // } else {
-                // $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Coba lagi</div>');
-                // redirect('home/kategori?id_kategori=' . base64_encode($id_kategori));
-            // }
-        // } else {
-            // $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Harap isi captcha</div>');
-            // redirect('home/kategori?id_kategori=' . base64_encode($id_kategori));
-        // }
+        $raw = $this->db->where('id_kategori', $this->input->post('id_kategori'))->get('tb_pertanyaan')->row_array();;
+        $tanggapan = $raw['tanggapan'];
+        $tanggapan = intval($tanggapan) + 1;
+        $this->Forum_model->create_post($data);
+        $this->db->where('id_kategori', $this->input->post('id_kategori'))->update('tb_pertanyaan', ['tanggapan' => $tanggapan]);
+        redirect('home/kategori?id_kategori=' . base64_encode($this->input->post('id_kategori')));
+        } else {
+        $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Coba lagi</div>');
+        redirect('home/kategori?id_kategori=' . base64_encode($id_kategori));
+        }
+        } else {
+        $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Harap isi captcha</div>');
+        redirect('home/kategori?id_kategori=' . base64_encode($id_kategori));
+        }
     }
 }

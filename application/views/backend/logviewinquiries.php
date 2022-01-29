@@ -90,7 +90,7 @@
                         <thead class="thead-light text-primary">
                             <tr>
                                 <th>User yang paling sering Mengunjungi</th>
-                                <th><?= $max['log_user']; ?></th>
+                                <th><?= (!empty($max['log_user'])) ? $max['log_user'] : 0; ?></th>
                             </tr>
                             <tr>
                                 <th>Total Kunjungan Bulan ini</th>
